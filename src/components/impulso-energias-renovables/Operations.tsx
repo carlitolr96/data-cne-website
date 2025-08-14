@@ -13,7 +13,6 @@ export default function Operations() {
   return (
     <section className="bg-light py-16">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 px-6">
-        {/* Primer bloque */}
         <div className="flex-1">
           <div className="flex items-center gap-2 bg-red px-4 py-2 w-fit mb-8">
             <Image
@@ -27,14 +26,14 @@ export default function Operations() {
             </span>
           </div>
 
-          <h2 className="text-primary text-3xl md:text-4xl lg:text-4xl font-extrabold leading-tight mb-4">
+          <h2 className="text-primary text-3xl md:text-4xl lg:text-4xl font-extrabold leading-tight">
             35 PROYECTOS
           </h2>
 
-          <p className="text-gray-700 text-base md:text-lg max-w-md">
-            con una capacidad instalada de{" "}
+          <p className="text-primary text-base md:text-lg max-w-md">
+            con una capacidad instalada de<br/>
             <span className="font-extrabold text-primary">1,436.31 MW</span>,
-            están transformando la matriz energética
+            están transformando <br/>la matriz energética
           </p>
 
           <div className="h-0.5 w-full bg-red my-6 lg:hidden"></div>

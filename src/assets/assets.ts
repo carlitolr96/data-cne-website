@@ -8,7 +8,12 @@ import RenewableEnergy from "./Renewable-Energy.svg";
 import PanelEnergy from "./Panel-Energy.svg";
 import GrapChart from "./Grap-Chart.svg";
 
-import Image1 from "../../public/Imagen1.jpg";
+import TapIcon from "./Tap-Icon.svg";
+
+import ImageEscuela from "../../public/image-1.jpg";
+import ImageComunidad from "../../public/image-2.jpg";
+import ImageGente from "../../public/image-3.jpg";
+import ImageBarrio from "../../public/image-4.jpg";
 import LogoEnergiaCambio from "./Logo-Energia-Cambio.svg";
 import Bulk from "../assets/Bulk.svg";
 import Money from "../assets/Money.svg";
@@ -16,6 +21,7 @@ import Oil from "../assets/Oil.svg";
 import Petrolium from "../assets/Petrolium.svg";
 import BoxChart from "../assets/Box-Chart.svg";
 import LocartionIcon from "../assets/Location-Icon.svg";
+import HansIcon from "../assets/Hans-Icon.svg";
 
 export const assets = {
   logoCNE,
@@ -27,7 +33,10 @@ export const assets = {
   RenewableEnergy,
   PanelEnergy,
   GrapChart,
-  Image1,
+  ImageEscuela,
+  ImageComunidad,
+  ImageGente,
+  ImageBarrio,
   LogoEnergiaCambio,
   Bulk,
   Money,
@@ -35,11 +44,13 @@ export const assets = {
   Petrolium,
   BoxChart,
   LocartionIcon,
+  HansIcon,
+  TapIcon,
 } as const;
 
 export interface SlideOperations {
-img: string;
-location: string;
+  img: string;
+  location: string;
 }
 
 export interface ReportingTile {
@@ -58,9 +69,18 @@ export interface Category {
 }
 
 export const slideoperations: SlideOperations[] = [
-  { img: "https://api.dataifx.co:8010/sites/default/files/styles/original/public/2023-01/CATATUMBO%201.jpg?itok=k7bPKQIp", location: "Location 1" },
-  { img: "https://api.dataifx.co:8010/sites/default/files/styles/original/public/2023-01/CATATUMBO%201.jpg?itok=k7bPKQIp", location: "Location 2" },
-  { img: "https://api.dataifx.co:8010/sites/default/files/styles/original/public/2023-01/CATATUMBO%201.jpg?itok=k7bPKQIp", location: "Location 3" },
+  {
+    img: "https://api.dataifx.co:8010/sites/default/files/styles/original/public/2023-01/CATATUMBO%201.jpg?itok=k7bPKQIp",
+    location: "Location 1",
+  },
+  {
+    img: "https://api.dataifx.co:8010/sites/default/files/styles/original/public/2023-01/CATATUMBO%201.jpg?itok=k7bPKQIp",
+    location: "Location 2",
+  },
+  {
+    img: "https://api.dataifx.co:8010/sites/default/files/styles/original/public/2023-01/CATATUMBO%201.jpg?itok=k7bPKQIp",
+    location: "Location 3",
+  },
 ];
 
 export const reportingtile: ReportingTile[] = [
