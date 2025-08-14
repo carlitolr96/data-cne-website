@@ -1,103 +1,103 @@
+'use client';
+
 import Image from "next/image";
+import Link from "next/link";
+import { assets, categories } from "../assets/assets";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-[url(/Background-CNE.jpg)] bg-cover bg-center relative overflow-hidden">
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.1%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      <header className="relative z-10 flex flex-col sm:flex-row justify-between items-center gap-4 px-4 sm:px-8 py-6">
+        <div className="flex items-center justify-center">
+          <Image
+            src={assets.logoCNE}
+            alt="CNE Logo"
+            width={200}
+            height={48}
+            className="max-w-[150px] w-full h-auto"
+          />
+        </div>
+
+        <button className="bg-green hover:bg-green-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg flex items-center space-x-2 cursor-pointer w-full sm:w-auto justify-center">
+          <Image
+            src={assets.GrapChart}
+            alt="Tablero Dinamico CNE"
+            width={200}
+            height={80}
+            className="w-6 h-6 sm:w-8 sm:h-8"
+          />
+          <div className="w-px h-8 sm:h-10 bg-white"></div>
+          <div className="text-left font-montserrat text-[15px] sm:text-base">
+            <div className="font-light">TABLEROS</div>
+            <div className="font-bold">DINÁMICOS</div>
+          </div>
+        </button>
+      </header>
+
+      <main className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-8 py-12 sm:py-16">
+        <div className="text-center mb-8">
+          <div className="flex items-center justify-center space-x-4 mb-4">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src={assets.logoDataCNE}
+              alt="Data CNE"
+              width={200}
+              height={80}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+          <p className="text-white text-base sm:text-lg font-medium">
+            Conectando datos,{" "}
+            <span className="font-bold">impulsando energía</span>
+          </p>
+        </div>
+
+        <div className="text-center max-w-4xl mb-12 sm:mb-16 px-2">
+          <p className="text-white leading-relaxed font-montserrat text-sm sm:text-base">
+            Aquí encontrarás cifras, indicadores y recursos educativos que
+            muestran cómo la <span className="font-bold">CNE</span> impulsa el
+            desarrollo energético sostenible de la{" "}
+            <span className="font-bold">República Dominicana</span>, de manera
+            clara, accesible y cercana a ti.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl w-full">
+          {categories.map((category, index) => (
+            <Link
+              key={category.id}
+              href="/impulso-energias-renovables"
+              className={`bg-white/95 hover:bg-white rounded-xl p-4 sm:p-6 shadow-lg transition-all duration-300 hover:scale-105 group cursor-pointer ${
+                index !== 0 ? "opacity-50 pointer-events-none" : ""
+              }`}
+            >
+              <div className="flex items-center space-x-3 sm:space-x-4">
+                <div
+                  className={`${category.color} transition-transform group-hover:scale-110`}
+                >
+                  <Image
+                    src={category.icon}
+                    alt={category.title}
+                    width={48}
+                    height={48}
+                  />
+                </div>
+                <div className="w-px h-10 bg-primary"></div>
+                <div className="text-left">
+                  <div className="text-primary text-base sm:text-lg font-semibold">
+                    {category.title}
+                  </div>
+                  <div className="text-primary text-base sm:text-lg font-bold">
+                    {category.subtitle}
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
