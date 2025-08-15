@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { assets } from "@/assets/assets";
+import Image from "next/image";
 import BarChart from "@/components/BarChart";
 import Boton from "@/components/Boton";
 
@@ -20,14 +22,16 @@ export default function GenerationCapacity() {
   };
 
   return (
-    <section className="bg-white py-10">
+    <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div>
-          <p className="text-2xl font-bold text-primary mb-4">
+          <p className="min-w-90 text-3xl font-extrabold text-primary mb-4">
             EN LOS ÚLTIMOS AÑOS, LA REPÚBLICA DOMINICANA HA INCREMENTADO
             SIGNIFICATIVAMENTE SU{" "}
-            <span className="text-red">CAPACIDAD DE GENERACIÓN</span> A PARTIR
-            DE FUENTES RENOVABLES.
+            <span className="bg-red text-white px-4">
+              CAPACIDAD DE GENERACIÓN
+            </span>{" "}
+            A PARTIR DE FUENTES RENOVABLES.
           </p>
         </div>
 
@@ -39,12 +43,17 @@ export default function GenerationCapacity() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">
             <BarChart data={chartData} heightFactor={0.1} />
             <div className="flex flex-col items-center">
-              <span className="text-4xl font-semibold text-green-500">
+              <span className="flex grid-cols-10 text-4xl font-extrabold text-primary">
                 13.9%
+                <Image
+                  src={assets.ArrowUpWideIcon}
+                  alt="CNE Arrow Up Wide"
+                  width={30}
+                  height={30}
+                  className="ml-2"
+                />
               </span>
-              <span className="text-sm font-bold text-primary">
-                DE AUMENTO
-              </span>
+              <span className="text-sm font-bold text-primary">DE AUMENTO</span>
             </div>
           </div>
 

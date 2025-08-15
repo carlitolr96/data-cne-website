@@ -31,9 +31,11 @@ export default function Operations() {
           </h2>
 
           <p className="text-primary text-base md:text-lg max-w-md">
-            con una capacidad instalada de<br/>
+            con una capacidad instalada de
+            <br />
             <span className="font-extrabold text-primary">1,436.31 MW</span>,
-            están transformando <br/>la matriz energética
+            están transformando <br />
+            la matriz energética
           </p>
 
           <div className="h-0.5 w-full bg-red my-6 lg:hidden"></div>
@@ -50,7 +52,7 @@ export default function Operations() {
               bulletClass:
                 "swiper-pagination-bullet w-3 h-3 bg-gray-300 opacity-100 rounded-full mx-1",
               bulletActiveClass:
-                "swiper-pagination-bullet-active bg-red w-3 h-3 rounded-full mx-1",
+                "swiper-pagination-bullet-active w-5 h-5 rounded-full mx-1",
             }}
             autoplay={{ delay: 3000 }}
             loop={true}
@@ -81,7 +83,6 @@ export default function Operations() {
               </SwiperSlide>
             ))}
           </Swiper>
-
           <div className="custom-pagination flex justify-center mt-4" />
         </div>
       </div>

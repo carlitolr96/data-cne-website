@@ -59,7 +59,7 @@ export default function BarChart({ data, heightFactor = 1.5 }: BarChartProps) {
   }, [data, animateCharts]);
 
   return (
-    <div className="flex items-end justify-center space-x-10 h-64">
+    <div className="flex items-end justify-center space-x-10 h-64 gap-8">
       {data.map((item, i) => (
         <div key={item.label} className="relative flex flex-col items-center">
           <span

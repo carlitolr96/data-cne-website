@@ -19,3 +19,7 @@
 .font-monserrat {
   font-family: "Montserrat", sans-serif;
 }
+
+span.swiper-pagination-bullet.opacity-100.swiper-pagination-bullet-active.w-5.h-5.rounded-full.mx-1 {
+  background-color: var(--color-red);
+}

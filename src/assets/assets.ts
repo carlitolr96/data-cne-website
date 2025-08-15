@@ -22,6 +22,8 @@ import Petrolium from "../assets/Petrolium.svg";
 import BoxChart from "../assets/Box-Chart.svg";
 import LocartionIcon from "../assets/Location-Icon.svg";
 import HansIcon from "../assets/Hans-Icon.svg";
+import ArrowUpWideIcon from "../assets/Arrow-Up-Wide-Icon.svg";
+import ImageLoader from "../../public/image-loader.jpg";
 
 export const assets = {
   logoCNE,
@@ -46,6 +48,8 @@ export const assets = {
   LocartionIcon,
   HansIcon,
   TapIcon,
+  ArrowUpWideIcon,
+  ImageLoader,
 } as const;
 
 export interface SlideOperations {
