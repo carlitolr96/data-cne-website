@@ -1,3 +1,6 @@
+import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { IconType } from "react-icons";
+
 import logoCNE from "./Logo-CNE.svg";
 import logoDataCNE from "./Logo-DataCNE.svg";
 import DevelopingMarketing from "./Developing-Marketing.svg";
@@ -24,6 +27,11 @@ import LocartionIcon from "../assets/Location-Icon.svg";
 import HansIcon from "../assets/Hans-Icon.svg";
 import ArrowUpWideIcon from "../assets/Arrow-Up-Wide-Icon.svg";
 import ImageLoader from "../../public/image-loader.jpg";
+import BoxLine from "../assets/Box-Line.svg"
+import BoxPlus from "../assets/Box-Plus.svg"
+import DocumentIcon from "../assets/Document-Icon.svg"
+import HansStageIcon from "../assets/Hans-Stage-Icon.svg"
+import SavingIcon from "../assets/Saving-Icon.svg"
 
 export const assets = {
   logoCNE,
@@ -50,7 +58,31 @@ export const assets = {
   TapIcon,
   ArrowUpWideIcon,
   ImageLoader,
+  FaFacebookF,
+  FaInstagram,
+  FaTwitter,
+  FaYoutube,
+  BoxPlus,
+  BoxLine,
+  DocumentIcon,
+  HansStageIcon,
+  SavingIcon
 } as const;
+
+export interface SocialIcon {
+  id: string;
+  icon: IconType;
+  url: string;
+}
+
+export interface StageIcon {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  leftLabel?: string;
+  rightLabel?: string;
+}
 
 export interface SlideOperations {
   img: string;
@@ -158,3 +190,58 @@ export const categories: Category[] = [
     color: "text-red-500",
   },
 ];
+
+export const socialicon: SocialIcon[] = [
+  {
+    id: "1",
+    url: "https://facebook.com",
+    icon: FaFacebookF,
+  },
+  {
+    id: "2",
+    url: "https://instagram.com",
+    icon: FaInstagram,
+  },
+  {
+    id: "3",
+    url: "https://linkedin.com",
+    icon: FaTwitter,
+  },
+  {
+    id: "4",
+    url: "https://youtube.com",
+    icon: FaYoutube,
+  },
+];
+
+
+export const stageicon: StageIcon[] = [
+    {
+      id: "01",
+      title: "FASE INICIAL (CONCESIÓN PROVISIONAL)",
+      description:
+        "Significa que un proyecto de energía renovable tiene un permiso inicial que autoriza estudios para evaluar la viabilidad del proyecto, pero no su construcción ni operación.",
+      icon: DocumentIcon,
+    },
+    {
+      id: "02",
+      title: "CONCESIÓN DEFINITIVA",
+      description:
+        "Significa que el proyecto cuenta con una autorización oficial tras cumplir con todos los requisitos legales, técnicos y ambientales, permitiendo la construcción y operación.",
+      icon: HansStageIcon,
+    },
+    {
+      id: "03",
+      title: "CONSTRUCCIÓN",
+      description:
+        "El proyecto está en la fase de instalación de la infraestructura necesaria para generar electricidad, como paneles solares, aerogeneradores o turbinas hidroeléctricas.",
+      icon: BoxPlus,
+    },
+    {
+      id: "04",
+      title: "OPERACIÓN",
+      description:
+        "El proyecto entra en funcionamiento, generando y suministrando energía a la red con monitoreo y mantenimiento continuo.",
+      icon: BoxLine,
+    },
+  ];

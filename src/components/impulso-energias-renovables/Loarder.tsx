@@ -64,13 +64,12 @@ const Loader: React.FC = () => {
       <div className="absolute inset-0 bg-primary opacity-30 z-10" />
 
       <div className="relative z-10 text-center text-white max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="mb-8">
-          <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold mb-10 leading-tight">
-            Cerca del{" "}
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-4xl md:text-4xl font-bold mb-10 leading-tight">
+            Cerca del
             <span className="bg-red px-3 py-1">
-              25% de la energía que consumes
-              <br />en tu día a día
-            </span>{" "}
+              25% de la energía que consumes en tu día a día
+            </span>
             proviene de fuentes renovables.
           </h1>
         </div>

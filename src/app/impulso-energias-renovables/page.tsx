@@ -13,6 +13,8 @@ import MapsLocation from "@/components/impulso-energias-renovables/MapsLocation"
 import Storage from "@/components/impulso-energias-renovables/Storage"
 import Stage from "@/components/impulso-energias-renovables/Stage";
 
+import Saving from "@/components/impulso-energias-renovables/Saving"
+
 export default function ImpulsoEnergíasRenovables() {
   return (
     <>
@@ -28,6 +30,7 @@ export default function ImpulsoEnergíasRenovables() {
       <Storage />
       <Stage />
       <FeedGrid />
+      <Saving />
     </>
   );
 }
