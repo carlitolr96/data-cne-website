@@ -3,6 +3,7 @@
 import Hero from "@/components/impulso-energias-renovables/Hero";
 import Operations from "@/components/impulso-energias-renovables/Operations";
 import ReportingTiles from "@/components/impulso-energias-renovables/ReportingTiles";
+import Incentives from "@/components/impulso-energias-renovables/Incentives";
 import FeedGrid from "@/components/impulso-energias-renovables/FeedGrid";
 import Concession from "@/components/impulso-energias-renovables/Concession";
 import GenerationCapacity from "@/components/impulso-energias-renovables/GenerationCapacity";
@@ -29,6 +30,7 @@ export default function ImpulsoEnergíasRenovables() {
       <Concession />
       <Storage />
       <Stage />
+      <Incentives />
       <FeedGrid />
       <Saving />
     </>

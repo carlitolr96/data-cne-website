@@ -56,11 +56,11 @@ export default function Operations() {
             }}
             autoplay={{ delay: 3000 }}
             loop={true}
-            className="overflow-hidden w-full max-w-[600px]"
+            className="overflow-hidden w-full max-w-[600px] mx-auto"
           >
             {slideoperations.map((slide, index) => (
               <SwiperSlide key={index}>
-                <div className="relative w-full h-[300px] md:h-[400px] lg:h-[320px]">
+                <div className="relative w-full h-[220px] sm:h-[280px] md:h-[360px] lg:h-[320px] overflow-hidden">
                   <Image
                     src={slide.img}
                     alt={slide.location}
@@ -68,21 +68,24 @@ export default function Operations() {
                     className="object-cover"
                   />
 
-                  <div className="absolute bottom-0 left-0 w-full h-30 bg-gradient-to-t from-black/80 to-transparent" />
+                  <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/80 to-transparent" />
 
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 text-white">
                     <Image
                       src={assets.LocartionIcon}
                       alt="Ubicación"
-                      width={16}
-                      height={16}
+                      width={18}
+                      height={18}
                     />
-                    <span className="text-sm">{slide.location}</span>
+                    <span className="text-xs sm:text-sm md:text-base">
+                      {slide.location}
+                    </span>
                   </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
+
           <div className="custom-pagination flex justify-center mt-4" />
         </div>
       </div>

@@ -21,13 +21,14 @@ const LineChartTwo: React.FC = () => {
     { year: 2024, value: 47.99, label: "$47.99M" },
   ];
 
-  const width = 400;
-  const height = 200;
+  // Tamaño base para viewBox
+  const width = 500;
+  const height = 250;
   const padding = 40;
 
+  // Escalado relativo para que funcione en cualquier tamaño
   const xScale = (year: number) =>
     padding + ((year - 2019) / (2024 - 2019)) * (width - 2 * padding);
-
   const yScale = (value: number) =>
     height - padding - ((value - 10) / (50 - 10)) * (height - 2 * padding);
 
@@ -88,38 +89,38 @@ const LineChartTwo: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full flex flex-col h-full">
       <div className="mb-4">
-        <h3 className="text-primary text-lg font-extrabold">
+        <h3 className="text-primary text-lg sm:text-xl font-extrabold">
           Evolución del ahorro
-          <span className="text-primary text-lg font-medium"> por <br/>Energía Renovable</span>
+          <span className="block text-primary font-medium sm:text-lg">
+            por Energía Renovable
+          </span>
         </h3>
       </div>
 
-      <div className="flex-1 relative">
+      <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px]">
         <svg
           ref={svgRef}
           width="100%"
           height="100%"
           viewBox={`0 0 ${width} ${height}`}
-          className="overflow-visible relative border-b-2 border-primary"
+          className="overflow-visible relative"
         >
-          <defs>
-            <pattern
-              id="grid"
-              width="20"
-              height="20"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 40 0 L 0 0 0 20"
-                fill="none"
+          {Array.from({ length: 5 }).map((_, i) => {
+            const y = padding + i * ((height - 2 * padding) / 4);
+            return (
+              <line
+                key={i}
+                x1={padding}
+                x2={width - padding}
+                y1={y}
+                y2={y}
                 stroke="#e5e7eb"
-                strokeWidth="0.5"
+                strokeWidth={0.5}
               />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" opacity="0.3" />
+            );
+          })}
 
           <path
             ref={pathRef}
@@ -139,10 +140,10 @@ const LineChartTwo: React.FC = () => {
                 }}
                 cx={xScale(point.year)}
                 cy={yScale(point.value)}
-                r="3"
+                r={index === data.length - 1 ? 5 : 3}
                 fill="#22c55e"
                 stroke="white"
-                strokeWidth="2"
+                strokeWidth={2}
                 className="drop-shadow-sm"
               />
 
@@ -150,37 +151,36 @@ const LineChartTwo: React.FC = () => {
                 x={xScale(point.year)}
                 y={height - 10}
                 textAnchor="middle"
-                className="text-xs fill-primary font-medium"
+                className="text-xs sm:text-sm fill-primary font-medium"
               >
                 {point.year}
               </text>
 
               {index === data.length - 1 && (
-                <g>
+                <>
                   <rect
-                    x={xScale(point.year) + 10}
-                    y={yScale(point.value) - 25}
-                    width="120"
-                    height="20"
+                    x={xScale(point.year) + 0}
+                    y={yScale(point.value) - 32}
+                    width="140"
+                    height="25"
                     fill="#22c55e"
-                    className="drop-shadow-sm"
                   />
                   <text
                     x={xScale(point.year) + 70}
-                    y={yScale(point.value) - 11}
+                    y={yScale(point.value) - 15}
                     textAnchor="middle"
-                    className="text-xs fill-white font-bold"
+                    className="text-xs sm:text-sm fill-white font-bold"
                   >
-                    $47.99 millones
+                    {point.label} millones
                   </text>
-                </g>
+                </>
               )}
             </g>
           ))}
         </svg>
 
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-8">
-          <p className="text-sm text-primary font-medium">
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-6">
+          <p className="text-sm sm:text-sm text-primary font-medium">
             Ahorro en millones de dólares
           </p>
         </div>

@@ -76,7 +76,7 @@ export default function BarChart({ data, heightFactor = 1.5 }: BarChartProps) {
             }}
             className="w-15 bg-primary"
             style={{
-              height: "0px",
+              height: "20px",
               backgroundColor: item.color || "#00000",
             }}
           ></div>

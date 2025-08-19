@@ -27,11 +27,20 @@ import LocartionIcon from "../assets/Location-Icon.svg";
 import HansIcon from "../assets/Hans-Icon.svg";
 import ArrowUpWideIcon from "../assets/Arrow-Up-Wide-Icon.svg";
 import ImageLoader from "../../public/image-loader.jpg";
-import BoxLine from "../assets/Box-Line.svg"
-import BoxPlus from "../assets/Box-Plus.svg"
-import DocumentIcon from "../assets/Document-Icon.svg"
-import HansStageIcon from "../assets/Hans-Stage-Icon.svg"
-import SavingIcon from "../assets/Saving-Icon.svg"
+import BoxLine from "../assets/Box-Line.svg";
+import BoxPlus from "../assets/Box-Plus.svg";
+import DocumentIcon from "../assets/Document-Icon.svg";
+import HansStageIcon from "../assets/Hans-Stage-Icon.svg";
+import SavingIcon from "../assets/Saving-Icon.svg";
+import HomeNav from "../assets/Home-Nav.svg";
+import ZapNav from "../assets/Zap-Nav.svg";
+import LightBulbNav from "../assets/LightBulb-Nav.svg";
+import FileTextNav from "../assets/FileText-Nav.svg";
+import SolarNav from "../assets/Solar-Nav.svg";
+import BatteryNav from "../assets/Battery-Nav.svg";
+import NuclearNav from "../assets/Nuclear-Nav.svg";
+import BarChartNav from "../assets/BarChart-Nav.svg";
+import MapaSVG from "../assets/Mapa-SVG.svg"
 
 export const assets = {
   logoCNE,
@@ -66,8 +75,24 @@ export const assets = {
   BoxLine,
   DocumentIcon,
   HansStageIcon,
-  SavingIcon
+  SavingIcon,
+  HomeNav,
+  ZapNav,
+  LightBulbNav,
+  FileTextNav,
+  SolarNav,
+  BatteryNav,
+  NuclearNav,
+  BarChartNav,
+  MapaSVG
 } as const;
+
+export interface NavItemsOne {
+  icon: string;
+  label: string;
+  url?: string;
+  active?: boolean;
+}
 
 export interface SocialIcon {
   id: string;
@@ -103,6 +128,17 @@ export interface Category {
   icon: string;
   color: string;
 }
+
+export const navitemsone: NavItemsOne[] = [
+  { icon: HomeNav, label: "INICIO", url: "/" },
+  { icon: ZapNav, label: "PLAN ENERGÉTICO NACIONAL", url: "/plan-energetico" },
+  { icon: BatteryNav, label: "IMPULSO A LAS ENERGÍAS RENOVABLES", url: "/impulso" },
+  { icon: SolarNav, label: "GENERACIÓN DISTRIBUIDA", url: "/generacion" },
+  { icon: FileTextNav, label: "PLANES Y NORMATIVAS", url: "/planes" },
+  { icon: NuclearNav, label: "ASUNTOS RADIOLÓGICOS Y NUCLEARES", url: "/nuclear" },
+  { icon: LightBulbNav, label: "CULTURA DE AHORRO ENERGÉTICO", url: "/cultura" },
+  { icon: BarChartNav, label: "TABLEROS INTERACTIVOS", url: "/tableros" },
+];
 
 export const slideoperations: SlideOperations[] = [
   {
@@ -214,34 +250,33 @@ export const socialicon: SocialIcon[] = [
   },
 ];
 
-
 export const stageicon: StageIcon[] = [
-    {
-      id: "01",
-      title: "FASE INICIAL (CONCESIÓN PROVISIONAL)",
-      description:
-        "Significa que un proyecto de energía renovable tiene un permiso inicial que autoriza estudios para evaluar la viabilidad del proyecto, pero no su construcción ni operación.",
-      icon: DocumentIcon,
-    },
-    {
-      id: "02",
-      title: "CONCESIÓN DEFINITIVA",
-      description:
-        "Significa que el proyecto cuenta con una autorización oficial tras cumplir con todos los requisitos legales, técnicos y ambientales, permitiendo la construcción y operación.",
-      icon: HansStageIcon,
-    },
-    {
-      id: "03",
-      title: "CONSTRUCCIÓN",
-      description:
-        "El proyecto está en la fase de instalación de la infraestructura necesaria para generar electricidad, como paneles solares, aerogeneradores o turbinas hidroeléctricas.",
-      icon: BoxPlus,
-    },
-    {
-      id: "04",
-      title: "OPERACIÓN",
-      description:
-        "El proyecto entra en funcionamiento, generando y suministrando energía a la red con monitoreo y mantenimiento continuo.",
-      icon: BoxLine,
-    },
-  ];
+  {
+    id: "01",
+    title: "FASE INICIAL (CONCESIÓN PROVISIONAL)",
+    description:
+      "Significa que un proyecto de energía renovable tiene un permiso inicial que autoriza estudios para evaluar la viabilidad del proyecto, pero no su construcción ni operación.",
+    icon: DocumentIcon,
+  },
+  {
+    id: "02",
+    title: "CONCESIÓN DEFINITIVA",
+    description:
+      "Significa que el proyecto cuenta con una autorización oficial tras cumplir con todos los requisitos legales, técnicos y ambientales, permitiendo la construcción y operación.",
+    icon: HansStageIcon,
+  },
+  {
+    id: "03",
+    title: "CONSTRUCCIÓN",
+    description:
+      "El proyecto está en la fase de instalación de la infraestructura necesaria para generar electricidad, como paneles solares, aerogeneradores o turbinas hidroeléctricas.",
+    icon: BoxPlus,
+  },
+  {
+    id: "04",
+    title: "OPERACIÓN",
+    description:
+      "El proyecto entra en funcionamiento, generando y suministrando energía a la red con monitoreo y mantenimiento continuo.",
+    icon: BoxLine,
+  },
+];
