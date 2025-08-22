@@ -15,6 +15,9 @@ import Storage from "@/components/impulso-energias-renovables/Storage"
 import Stage from "@/components/impulso-energias-renovables/Stage";
 
 import Saving from "@/components/impulso-energias-renovables/Saving"
+import AttractiveReliable from "@/components/impulso-energias-renovables/AttractiveReliable";
+import AmericanLider from "@/components/impulso-energias-renovables/AmericanLider";
+import RecordInvestments from "@/components/impulso-energias-renovables/RecordInvestments";
 
 export default function ImpulsoEnergíasRenovables() {
   return (
@@ -32,6 +35,9 @@ export default function ImpulsoEnergíasRenovables() {
       <Stage />
       <Incentives />
       <FeedGrid />
+      <AmericanLider />
+      <RecordInvestments />
+      <AttractiveReliable />
       <Saving />
     </>
   );

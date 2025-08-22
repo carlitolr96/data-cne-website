@@ -4,7 +4,9 @@
 @import "swiper/css";
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
+@import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
 
 @theme {
   --color-primary: #17447a;

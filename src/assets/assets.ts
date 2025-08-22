@@ -1,6 +1,11 @@
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { Home, Inbox, Calendar, Search, Settings } from "lucide-react";
 import { IconType } from "react-icons";
 
+//Components
+import TapIcon from "./Tap-Icon.svg";
+
+//Home Page Menu
 import logoCNE from "./Logo-CNE.svg";
 import logoDataCNE from "./Logo-DataCNE.svg";
 import DevelopingMarketing from "./Developing-Marketing.svg";
@@ -11,8 +16,7 @@ import RenewableEnergy from "./Renewable-Energy.svg";
 import PanelEnergy from "./Panel-Energy.svg";
 import GrapChart from "./Grap-Chart.svg";
 
-import TapIcon from "./Tap-Icon.svg";
-
+//LandingPage Plan Energetico Nacional
 import ImageEscuela from "../../public/image-1.jpg";
 import ImageComunidad from "../../public/image-2.jpg";
 import ImageGente from "../../public/image-3.jpg";
@@ -40,7 +44,33 @@ import SolarNav from "../assets/Solar-Nav.svg";
 import BatteryNav from "../assets/Battery-Nav.svg";
 import NuclearNav from "../assets/Nuclear-Nav.svg";
 import BarChartNav from "../assets/BarChart-Nav.svg";
-import MapaSVG from "../assets/Mapa-SVG.svg"
+import MapaOneSVG from "../assets/MapaOne-SVG.svg";
+import MapaTwoSVG from "../assets/MapaTwo-SVG.svg";
+import EllipseSVG from "../assets/Ellipse-SVG.svg";
+import SolarPanel from "../assets/Solar-Panel.svg";
+import EolicAir from "../assets/Eolic-Air.svg";
+import BiomasaRSU from "../assets/Biomasa-RSU.svg";
+import Minihidraulic from "../assets/Mini-Hidraulic.svg";
+import DoneSheck from "../assets/Done-Sheck.svg";
+import Generation from "../assets/Generation.svg";
+import Transmicion from "../assets/Transmicion.svg";
+import Electricity from "../assets/HomeEnergy.svg";
+import HomeEnergy from "../assets/HomeEnergy.svg";
+import Distribucion from "../assets/Distribucion.svg";
+import Energy from "../assets/Energy.svg";
+import Storage from "../assets/Storage.svg";
+import Batery from "../assets/Batery-Icon.svg";
+
+//Sidebar Tablero Dinamico
+import ChartRenovableBar from "../assets/ChartRenovableBar.svg";
+import EolicBar from "../assets/EolicBar.svg";
+import MapaRDBar from "../assets/MapsRDBar.svg";
+import MonitorBar from "../assets/MonitorBar.svg";
+import NuclearBar from "../assets/NuclearBar.svg";
+import PanelBar from "../assets/PanelBar.svg";
+import PetroliumBar from "../assets/PetroliumBar.svg";
+import VoltageTowerBar from "../assets/VoltageTowerBar.svg";
+import HomeBar from "../assets/HomeBar.svg";
 
 export const assets = {
   logoCNE,
@@ -84,14 +114,58 @@ export const assets = {
   BatteryNav,
   NuclearNav,
   BarChartNav,
-  MapaSVG
+  MapaOneSVG,
+  MapaTwoSVG,
+  EllipseSVG,
+  SolarPanel,
+  EolicAir,
+  BiomasaRSU,
+  Minihidraulic,
+  DoneSheck,
+  Home,
+  Inbox,
+  Calendar,
+  Search,
+  Settings,
+  ChartRenovableBar,
+  EolicBar,
+  MapaRDBar,
+  MonitorBar,
+  NuclearBar,
+  PanelBar,
+  PetroliumBar,
+  VoltageTowerBar,
+  HomeBar,
+  Generation,
+  Transmicion,
+  HomeEnergy,
+  Electricity,
+  Distribucion,
+  Energy,
+  Storage,
+  Batery,
 } as const;
+
+export interface TableroDinamicoBar {
+  icon: string;
+  title: string;
+  url: string;
+}
 
 export interface NavItemsOne {
   icon: string;
   label: string;
   url?: string;
   active?: boolean;
+}
+
+export interface RenewableEnergiesList {
+  description: string;
+}
+
+export interface RenewableEnergiesFonts {
+  icon: string;
+  title: string;
 }
 
 export interface SocialIcon {
@@ -127,17 +201,179 @@ export interface Category {
   subtitle: string;
   icon: string;
   color: string;
+  url?: string;
 }
+
+export interface AttractiveReliable {
+  label: string;
+}
+
+export interface TeamsNavBar {
+  name: string;
+  logo: React.ElementType;
+  plan: string;
+}
+
+export interface ItemsNavBar {
+  title: string;
+  url: string;
+  icon: React.ElementType;
+}
+
+export const tablerodinamicobar: TableroDinamicoBar[] = [
+  {
+    icon: HomeBar,
+    title: "Inicio",
+    url: "/tablero-dinamico/",
+  },
+  {
+    icon: VoltageTowerBar,
+    title: "Demanda Eléctrica Nacional",
+    url: "/tablero-dinamico/demanda-electrica-nacional",
+  },
+  {
+    icon: PanelBar,
+    title: "Programa Medición Neta",
+    url: "/tablero-dinamico/programa-medicion-neta",
+  },
+  {
+    icon: MapaRDBar,
+    title: "Mapa Energético Nacional",
+    url: "/tablero-dinamico/mapa-energetico-nacional",
+  },
+  {
+    icon: ChartRenovableBar,
+    title: "Variables Macroeconómicas",
+    url: "/tablero-dinamico/variable-macroeconomicas",
+  },
+  {
+    icon: EolicBar,
+    title: "Proyectos Renovables",
+    url: "/tablero-dinamico/proyectos-renovables",
+  },
+  {
+    icon: PetroliumBar,
+    title: "Importación de Hidrocarburos",
+    url: "/tablero-dinamico/importancia-hidrocarburos",
+  },
+  {
+    icon: NuclearBar,
+    title: "Asuntos Nucleares",
+    url: "/tablero-dinamico/asuntos-nucleares",
+  },
+  {
+    icon: MonitorBar,
+    title: "Monitoreo SENI",
+    url: "/tablero-dinamico/monitoreo-seni",
+  },
+];
+
+export const itemsnavbar: ItemsNavBar[] = [
+  {
+    title: "Home",
+    url: "#",
+    icon: Home,
+  },
+  {
+    title: "Inbox",
+    url: "#",
+    icon: Inbox,
+  },
+  {
+    title: "Calendar",
+    url: "#",
+    icon: Calendar,
+  },
+  {
+    title: "Search",
+    url: "#",
+    icon: Search,
+  },
+  {
+    title: "Settings",
+    url: "#",
+    icon: Settings,
+  },
+];
+
+export const teamsnavbar: TeamsNavBar[] = [
+  {
+    name: "Acme Inc.",
+    logo: Home,
+    plan: "Enterprise",
+  },
+  {
+    name: "Startup XYZ",
+    logo: Settings,
+    plan: "Pro",
+  },
+];
+
+export const renewableenergieslist: RenewableEnergiesList[] = [
+  { description: "NO CONTAMINAN" },
+  { description: "FUENTE INAGOTABLE DE RECURSOS" },
+  { description: "GENERAN EMPLEOS" },
+  { description: "AUMENTAN LA SEGURIDAD ENERGÉTICA" },
+];
+
+export const renewableenergiesfonts: RenewableEnergiesFonts[] = [
+  {
+    icon: SolarPanel,
+    title: "Solar",
+  },
+  {
+    icon: EolicAir,
+    title: "Eolica",
+  },
+  {
+    icon: BiomasaRSU,
+    title: "Biomasa / RSU",
+  },
+  {
+    icon: Minihidraulic,
+    title: "Minihidraulica",
+  },
+];
 
 export const navitemsone: NavItemsOne[] = [
   { icon: HomeNav, label: "INICIO", url: "/" },
   { icon: ZapNav, label: "PLAN ENERGÉTICO NACIONAL", url: "/plan-energetico" },
-  { icon: BatteryNav, label: "IMPULSO A LAS ENERGÍAS RENOVABLES", url: "/impulso" },
+  {
+    icon: BatteryNav,
+    label: "IMPULSO A LAS ENERGÍAS RENOVABLES",
+    url: "/impulso",
+  },
   { icon: SolarNav, label: "GENERACIÓN DISTRIBUIDA", url: "/generacion" },
   { icon: FileTextNav, label: "PLANES Y NORMATIVAS", url: "/planes" },
-  { icon: NuclearNav, label: "ASUNTOS RADIOLÓGICOS Y NUCLEARES", url: "/nuclear" },
-  { icon: LightBulbNav, label: "CULTURA DE AHORRO ENERGÉTICO", url: "/cultura" },
+  {
+    icon: NuclearNav,
+    label: "ASUNTOS RADIOLÓGICOS Y NUCLEARES",
+    url: "/nuclear",
+  },
+  {
+    icon: LightBulbNav,
+    label: "CULTURA DE AHORRO ENERGÉTICO",
+    url: "/cultura",
+  },
   { icon: BarChartNav, label: "TABLEROS INTERACTIVOS", url: "/tableros" },
+];
+
+export const attractivereliable: AttractiveReliable[] = [
+  {
+    label: "Seguridad jurídica",
+  },
+  {
+    label: "Agilidad administrativa",
+  },
+  {
+    label: "Política atractiva de incentivos",
+  },
+  {
+    label: "Transparencia en los contratos de compra y venta de energía",
+  },
+  {
+    label: "Innovación y tecnología",
+  },
 ];
 
 export const slideoperations: SlideOperations[] = [
@@ -185,17 +421,19 @@ export const reportingtile: ReportingTile[] = [
 export const categories: Category[] = [
   {
     id: "1",
-    title: "Impulso a las",
-    subtitle: "Energías Renovables",
-    icon: RenewableEnergy,
-    color: "text-red-500",
-  },
-  {
-    id: "2",
     title: "Plan Energético",
     subtitle: "Nacional",
     icon: DevelopingMarketing,
     color: "text-red-500",
+    url: "",
+  },
+  {
+    id: "2",
+    title: "Impulso a las",
+    subtitle: "Energías Renovables",
+    icon: RenewableEnergy,
+    color: "text-red-500",
+    url: "/impulso-energias-renovables",
   },
   {
     id: "3",
@@ -203,6 +441,7 @@ export const categories: Category[] = [
     subtitle: "normativas",
     icon: LawDoc,
     color: "text-red-500",
+    url: "",
   },
   {
     id: "4",
@@ -210,6 +449,7 @@ export const categories: Category[] = [
     subtitle: "ahorro energético",
     icon: PowerManagement,
     color: "text-red-500",
+    url: "/cultura-ahorro-energetico",
   },
   {
     id: "5",
@@ -217,6 +457,7 @@ export const categories: Category[] = [
     subtitle: "y Nucleares",
     icon: NuclearMark,
     color: "text-yellow-500",
+    url: "",
   },
   {
     id: "6",
@@ -224,6 +465,7 @@ export const categories: Category[] = [
     subtitle: "Distribuida",
     icon: PanelEnergy,
     color: "text-red-500",
+    url: "",
   },
 ];
 

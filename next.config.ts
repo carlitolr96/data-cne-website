@@ -1,9 +1,19 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    domains: ['api.dataifx.co'],
-  },
-}
+import type { NextConfig } from "next";
 
-module.exports = nextConfig
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  output: "export",
+  images: {
+    unoptimized: true,
+  },
+  // webpack(config) {
+  //   config.module.rules.push({
+  //     test: /\.svg$/i,
+  //     issuer: /\.[jt]sx?$/,
+  //     use: ["@svgr/webpack"],
+  //   });
+  //   return config;
+  // },
+};
+
+export default nextConfig;

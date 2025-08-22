@@ -57,7 +57,7 @@ export default function NavMenu() {
       {/* Menu móvil */}
       <div
         ref={menuRef}
-        className="overflow-hidden md:hidden bg-white shadow-lg rounded-2xl absolute top-12 left-0 w-full z-40"
+        className="overflow-hidden md:hidden bg-white shadow-lg rounded-2xl absolute top-16 left-0 w-full z-40"
         style={{ height: 0, opacity: 0 }}
       >
         <nav className="flex flex-col gap-4 p-4">

@@ -12,7 +12,7 @@ export default function MapsLocation() {
         <div className="absolute inset-0 flex items-center justify-start pl-0 md:pl-8">
           <div className="w-full max-w-4xl">
             <Image
-              src={assets.MapaSVG}
+              src={assets.MapaOneSVG}
               alt="Mapa CNE"
               width={800}
               height={600}
