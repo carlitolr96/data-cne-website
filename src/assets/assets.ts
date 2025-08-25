@@ -60,6 +60,11 @@ import Distribucion from "../assets/Distribucion.svg";
 import Energy from "../assets/Energy.svg";
 import Storage from "../assets/Storage.svg";
 import Batery from "../assets/Batery-Icon.svg";
+import AmericanLider from "../assets/American-Latin.svg";
+import FireCard from "../assets/Fire-Card.svg";
+import HeolicCard from "../assets/Heolic-Card.svg";
+import HidraulicCard from "../assets/Hidraulic-Card.svg";
+import SolarCard from "../assets/Solar-Card.svg";
 
 //Sidebar Tablero Dinamico
 import ChartRenovableBar from "../assets/ChartRenovableBar.svg";
@@ -144,6 +149,11 @@ export const assets = {
   Energy,
   Storage,
   Batery,
+  AmericanLider,
+  FireCard,
+  HeolicCard,
+  HidraulicCard,
+  SolarCard,
 } as const;
 
 export interface TableroDinamicoBar {
