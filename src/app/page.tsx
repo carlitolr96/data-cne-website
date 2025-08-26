@@ -68,6 +68,7 @@ export default function Home() {
               alt="Data CNE"
               width={200}
               height={80}
+              priority
             />
           </div>
           <p className="text-white text-base sm:text-lg font-medium">

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { FC, ReactNode, MouseEventHandler } from "react";
@@ -12,17 +12,17 @@ interface BotonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
   icon?: keyof typeof assets;
-  iconPosition?: 'left' | 'right';
+  iconPosition?: "left" | "right";
 }
 
-const Boton: FC<BotonProps> = ({ 
-  href, 
-  children, 
-  className, 
-  onClick, 
-  disabled, 
+const Boton: FC<BotonProps> = ({
+  href,
+  children,
+  className,
+  onClick,
+  disabled,
   icon,
-  iconPosition = 'left'
+  iconPosition = "left",
 }) => {
   const baseClasses = `
     bg-red hover:bg-red-700 text-white font-bold py-2 px-6 font-montserrat 
@@ -31,21 +31,32 @@ const Boton: FC<BotonProps> = ({
     ${className ?? ""}
   `;
 
-  const iconElement = icon && (
-    <Image 
-      src={assets[icon]} 
-      alt={`${icon} icon`} 
-      width={20} 
-      height={20} 
-      className={iconPosition === 'left' ? "mr-2" : "ml-2"}
-    />
-  );
+  const iconElement =
+    icon &&
+    (typeof assets[icon] === "string" && assets[icon].endsWith(".svg") ? (
+      /* eslint-disable @next/next/no-img-element */
+      <img
+        src={assets[icon]}
+        alt={`${icon} icon`}
+        className={`${iconPosition === "left" ? "mr-2" : "ml-2"} w-5 h-5`}
+      />
+    ) : (
+      /* eslint-enable @next/next/no-img-element */
+
+      <Image
+        src={assets[icon]}
+        alt={`${icon} icon`}
+        width={20}
+        height={20}
+        className={iconPosition === "left" ? "mr-2" : "ml-2"}
+      />
+    ));
 
   const content = (
     <>
-      {iconPosition === 'left' && iconElement}
+      {iconPosition === "left" && iconElement}
       {children}
-      {iconPosition === 'right' && iconElement}
+      {iconPosition === "right" && iconElement}
     </>
   );
 
@@ -58,10 +69,12 @@ const Boton: FC<BotonProps> = ({
   }
 
   return (
-    <button 
-      onClick={onClick} 
-      disabled={disabled} 
-      className={`${baseClasses} ${disabled ? "opacity-50 cursor-not-allowed hover:scale-100" : ""}`}
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`${baseClasses} ${
+        disabled ? "opacity-50 cursor-not-allowed hover:scale-100" : ""
+      }`}
     >
       {content}
     </button>
