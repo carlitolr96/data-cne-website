@@ -33,39 +33,27 @@ export default function NavMenu() {
   return (
     <div className="relative">
       <button
-        className="md:hidden p-3 focus:outline-none z-50"
+        className={`hamburger hamburger--spin custom-hamburger z-50 hidden md:hidden ${
+          isOpen ? "is-active" : ""
+        }`}
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <div
-          className="w-6 h-0.5 bg-primary mb-1 transition-transform duration-300"
-          style={{
-            transform: isOpen ? "rotate(45deg) translateY(6px)" : "none",
-          }}
-        ></div>
-        <div
-          className="w-6 h-0.5 bg-primary mb-1 transition-opacity duration-300"
-          style={{ opacity: isOpen ? 0 : 1 }}
-        ></div>
-        <div
-          className="w-6 h-0.5 bg-primary transition-transform duration-300"
-          style={{
-            transform: isOpen ? "rotate(-45deg) translateY(-6px)" : "none",
-          }}
-        ></div>
+        <span className="hamburger-box">
+          <span className="hamburger-inner"></span>
+        </span>
       </button>
-
-      {/* Menu móvil */}
       <div
         ref={menuRef}
-        className="overflow-hidden md:hidden bg-white shadow-lg rounded-2xl absolute top-16 left-0 w-full z-40"
+        className="overflow-hidden md:hidden bg-white shadow-lg rounded-2xl absolute top-16 left-0 w-full mt-2 z-40"
         style={{ height: 0, opacity: 0 }}
       >
-        <nav className="flex flex-col gap-4 p-4">
+        <nav className="flex flex-col gap-6 p-4">
           {navitemsone.map((item, index) => (
             <Link
               key={index}
               href={item.url || "#"}
-              className="flex flex-col items-center"
+              className="flex text-start items-center gap-3"
             >
               {item.icon && (
                 <Image
@@ -73,18 +61,16 @@ export default function NavMenu() {
                   alt={item.label}
                   width={32}
                   height={32}
-                  className="mb-2"
+                  className=""
                 />
               )}
-              <span className="text-sm text-primary font-bold text-center">
+              <span className="text-sm text-primary font-bold">
                 {item.label}
               </span>
             </Link>
           ))}
         </nav>
       </div>
-
-      {/* Menu desktop */}
       <nav className="hidden md:grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
         {navitemsone.map((item, index) => (
           <Link

@@ -7,8 +7,8 @@ import Image from "next/image";
 export default function Storage() {
   return (
     <section className="bg-white relative overflow-hidden py-16">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-start relative">
-        <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-[2px] h-[35%] bg-red transform -translate-x-1/2" />
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start relative">
+        <div className="hidden md:block absolute top-1/2 left-1/2 w-[2px] h-[35%] bg-red transform -translate-x-1/2 -translate-y-1/2" />
         <div className="flex flex-col space-y-6 text-primary">
           <div>
             <div className="flex items-center gap-3">

@@ -35,17 +35,15 @@ const Hero: React.FC = () => {
 
     <div className="flex flex-col max-w-7xl w-full mx-auto px-4">
       <div className="flex justify-center mb-8">
-        <div className="bg-white rounded-2xl shadow-lg p-1 md:p-5 w-full">
+        <div className="bg-white rounded-2xl shadow-lg p-4 w-full">
           <NavBar />
         </div>
       </div>
 
       <div className="flex justify-end">
         <div className="max-w-2xl text-right text-white">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-light leading-tight mt-20">
-            Las <span className="font-bold">energías renovables {" "}</span> son el 
-            motor de un {" "}
-            <span className="font-bold">futuro sostenible, impulsando desarrollo, innovación</span> y bienestar para todos.
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight mt-20">
+            DIVISIÓN DE DIFUSIÓN EN EL USO RACIONAL DE LA ENERGÍA
           </h1>
           <div className="flex justify-end mt-4">
             <div className="w-48 h-1 bg-red-600 rounded"></div>

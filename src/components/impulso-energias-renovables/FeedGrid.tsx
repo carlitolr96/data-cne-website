@@ -3,10 +3,39 @@
 import Image from "next/image";
 import { assets } from "@/assets/assets";
 import Boton from "@/components/Boton";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 export default function FeedGrid() {
+  const openPopup = () => {
+    MySwal.fire({
+      html: `
+      <div class="relative w-full h-0 pb-[56.25%]">
+        <iframe 
+          class="absolute top-0 left-0 w-full h-full rounded-xl shadow-lg"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" 
+          frameborder="0" 
+          allow="autoplay; encrypted-media" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    `,
+      showConfirmButton: false,
+      backdrop: `
+      rgba(0,0,0,0.4)
+    `,
+      customClass: {
+        container: "swal2-blur-bg",
+        popup: "bg-transparent shadow-none p-0",
+      },
+      width: "70%",
+    });
+  };
+
   return (
-    <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 border-b-[15px] border-red">
+    <section className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 border-b-[15px] border-red">
       <div className="flex items-center justify-center relative w-full h-full min-h-[250px]">
         <Image
           src={assets.ImageComunidad}
@@ -46,7 +75,10 @@ export default function FeedGrid() {
 
         <div className="absolute inset-0 bg-black/40 transition duration-300 group-hover:bg-black/50"></div>
 
-        <div className="absolute flex items-center justify-center w-16 h-16 rounded-full bg-white text-red animate-pulse">
+        <button
+          onClick={openPopup}
+          className="absolute flex items-center justify-center w-16 h-16 rounded-full bg-white text-red-600 animate-pulse shadow-lg hover:scale-110 transition-transform cursor-pointer"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="w-8 h-8"
@@ -55,7 +87,7 @@ export default function FeedGrid() {
           >
             <path d="M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l4-2.5a.5.5 0 0 0 0-.814l-4-2.5z" />
           </svg>
-        </div>
+        </button>
       </div>
 
       <div className="lg:col-start-4 flex relative w-full h-full min-h-[250px]">
@@ -77,6 +109,6 @@ export default function FeedGrid() {
           </span>
         </p>
       </div>
-    </div>
+    </section>
   );
 }
