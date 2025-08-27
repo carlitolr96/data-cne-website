@@ -21,7 +21,7 @@ export default function RenewableEnergies() {
               Son fuentes de energía obtenidas de recursos naturales inagotables
               o que se regeneran de manera continua, como el sol, el viento, el
               agua o la biomasa, ofreciendo una alternativa limpia y sostenible
-              frente a los combustibles fósiles.
+              frente a los combustibles fósiles..
             </p>
           </div>
 
