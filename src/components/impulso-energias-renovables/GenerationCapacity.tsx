@@ -1,25 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { assets } from "@/assets/assets";
-import Image from "next/image";
 import BarChart from "@/components/BarChart";
 import Boton from "@/components/Boton";
 
 export default function GenerationCapacity() {
-  const [chartData, setChartData] = useState([
+  const [chartData] = useState([
     { value: 571.33, label: "2019", color: "#ff0000" },
     { value: 1403.13, label: "2024", color: "#17447a" },
   ]);
-
-  const refreshData = () => {
-    setChartData(
-      chartData.map((item) => ({
-        ...item,
-        value: Math.floor(Math.random() * 1000) + 500,
-      }))
-    );
-  };
 
   return (
     <section className="bg-white py-20">
@@ -42,19 +31,6 @@ export default function GenerationCapacity() {
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">
             <BarChart data={chartData} heightFactor={0.1} />
-            <div className="flex flex-col items-center">
-              <span className="flex grid-cols-10 text-4xl font-extrabold text-primary">
-                13.9%
-                <Image
-                  src={assets.ArrowUpWideIcon}
-                  alt="CNE Arrow Up Wide"
-                  width={30}
-                  height={30}
-                  className="ml-2"
-                />
-              </span>
-              <span className="text-sm font-bold text-primary">DE AUMENTO</span>
-            </div>
           </div>
 
           <div className="flex flex-col items-end w-full max-w-sm">

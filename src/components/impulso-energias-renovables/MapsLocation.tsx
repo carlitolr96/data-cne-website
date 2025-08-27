@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { assets } from "../../assets/assets";
 import Image from "next/image";
 import gsap from "gsap";
 import Boton from "@/components/Boton";
-import { assets } from "../../assets/assets";
 
 interface LocationPoint {
   id: string;
@@ -48,8 +48,9 @@ const locations: LocationPoint[] = [
 export default function MapsLocation() {
   const pointsRef = useRef<HTMLDivElement[]>([]);
   const tooltipsRef = useRef<HTMLDivElement[]>([]);
-  const [hovered, setHovered] = useState<string | null>(null);
+  const [activeId, setActiveId] = useState<string | null>(null);
 
+  // Animar la entrada de los puntos rojos
   useEffect(() => {
     gsap.fromTo(
       pointsRef.current,
@@ -64,11 +65,12 @@ export default function MapsLocation() {
     );
   }, []);
 
+  // Animar tooltips al activar/desactivar
   useEffect(() => {
     locations.forEach((loc, i) => {
       const tooltip = tooltipsRef.current[i];
       if (tooltip) {
-        if (hovered === loc.id) {
+        if (activeId === loc.id) {
           gsap.fromTo(
             tooltip,
             { scale: 0.8, opacity: 0, y: 10 },
@@ -78,6 +80,7 @@ export default function MapsLocation() {
               y: 0,
               duration: 0.4,
               ease: "power3.out",
+              pointerEvents: "auto",
             }
           );
         } else {
@@ -86,11 +89,27 @@ export default function MapsLocation() {
             opacity: 0,
             duration: 0.3,
             ease: "power3.in",
+            pointerEvents: "none",
           });
         }
       }
     });
-  }, [hovered]);
+  }, [activeId]);
+
+  // Cerrar tooltip al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        !pointsRef.current.some((el) => el?.contains(event.target as Node)) &&
+        !tooltipsRef.current.some((el) => el?.contains(event.target as Node))
+      ) {
+        setActiveId(null);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
 
   return (
     <section className="bg-white relative overflow-hidden">
@@ -120,8 +139,9 @@ export default function MapsLocation() {
                     if (el) pointsRef.current[i] = el;
                   }}
                   className="w-5 h-5 bg-red rounded-full cursor-pointer shadow-lg"
-                  onMouseEnter={() => setHovered(loc.id)}
-                  onMouseLeave={() => setHovered(null)}
+                  onClick={() =>
+                    setActiveId(activeId === loc.id ? null : loc.id)
+                  }
                 />
 
                 <div

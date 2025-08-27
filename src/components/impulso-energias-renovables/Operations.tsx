@@ -1,17 +1,67 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { assets, slideoperations } from "../../assets/assets";
+import gsap from "gsap";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
 export default function Operations() {
+  const projectsRef = useRef<HTMLHeadingElement | null>(null);
+  const capacityRef = useRef<HTMLSpanElement | null>(null);
+  const containerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const animateNumbers = () => {
+      if (projectsRef.current) {
+        const obj = { val: 0 };
+        gsap.to(obj, {
+          val: 35,
+          duration: 1.5,
+          ease: "power3.out",
+          onUpdate: () => {
+            projectsRef.current!.textContent = `${Math.floor(obj.val)} PROYECTOS`;
+          },
+        });
+      }
+
+      if (capacityRef.current) {
+        const obj = { val: 0 };
+        gsap.to(obj, {
+          val: 1436.31,
+          duration: 1.8,
+          ease: "power3.out",
+          onUpdate: () => {
+            capacityRef.current!.textContent = `${obj.val.toFixed(2)} MW`;
+          },
+        });
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateNumbers();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(containerRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="bg-light py-16">
+    <section ref={containerRef} className="bg-light py-16">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 px-6">
         <div className="flex-1">
           <div className="flex items-center gap-2 bg-red px-4 py-2 w-fit mb-8">
@@ -26,15 +76,23 @@ export default function Operations() {
             </span>
           </div>
 
-          <h2 className="text-primary text-3xl md:text-4xl lg:text-4xl font-extrabold leading-tight">
-            35 PROYECTOS
+          <h2
+            ref={projectsRef}
+            className="text-primary text-3xl md:text-4xl lg:text-4xl font-extrabold leading-tight"
+          >
+            0 PROYECTOS
           </h2>
 
           <p className="text-primary text-base md:text-lg max-w-md">
             con una capacidad instalada de
             <br />
-            <span className="font-extrabold text-primary">1,436.31 MW</span>,
-            están transformando <br />
+            <span
+              ref={capacityRef}
+              className="font-extrabold text-primary"
+            >
+              0 MW
+            </span>
+            , están transformando <br />
             la matriz energética
           </p>
 
