@@ -50,7 +50,6 @@ export default function MapsLocation() {
   const tooltipsRef = useRef<HTMLDivElement[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
 
-  // Animar la entrada de los puntos rojos
   useEffect(() => {
     gsap.fromTo(
       pointsRef.current,
@@ -65,7 +64,6 @@ export default function MapsLocation() {
     );
   }, []);
 
-  // Animar tooltips al activar/desactivar
   useEffect(() => {
     locations.forEach((loc, i) => {
       const tooltip = tooltipsRef.current[i];
@@ -96,7 +94,6 @@ export default function MapsLocation() {
     });
   }, [activeId]);
 
-  // Cerrar tooltip al hacer clic fuera
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (

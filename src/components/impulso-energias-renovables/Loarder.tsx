@@ -24,7 +24,6 @@ const Loader: React.FC = () => {
       },
     });
 
-    // Animar barra
     tl.fromTo(
       progressRef.current,
       { width: "0%" },

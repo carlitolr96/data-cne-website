@@ -66,7 +66,7 @@ export default function Concession() {
   return (
     <section className="bg-light relative" ref={sectionRef}>
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row relative">
-        <div className="flex flex-col items-center justify-center bg-red-600 text-white px-8 py-6 sm:rounded-r-full rounded-r-none z-10">
+        <div className="flex flex-col items-center justify-center bg-red text-white px-8 py-6 sm:rounded-r-full rounded-r-none z-10">
           <Image
             src={assets.HansIcon}
             alt="Concesión"
