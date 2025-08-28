@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import NavBar from "../NavBar";
+import NavBar from "@/components/NavBar";
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-100 w-full overflow-hidden">
+    <section className="relative w-full min-h-100 overflow-hidden pt-24">
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -18,9 +18,10 @@ const Hero: React.FC = () => {
           }}
         />
       </div>
-      <div className="z-30 flex items-center justify-center min-h-screen px-4">
+
+      <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <NavBar />
-        <div className="relative max-w-6xl text-center text-white">
+        <div className="max-w-6xl text-center text-white">
           <h1 className="text-2xl md:text-3xl lg:text-5xl font-light leading-tight">
             Las <span className="font-bold">energías renovables </span> son el
             motor de un{" "}

@@ -143,7 +143,6 @@ export default function Operations() {
               </SwiperSlide>
             ))}
           </Swiper>
-
           <div className="custom-pagination flex justify-center mt-4" />
         </div>
       </div>

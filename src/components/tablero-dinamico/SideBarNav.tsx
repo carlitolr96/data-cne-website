@@ -32,13 +32,15 @@ export default function SideBarNav() {
       />
 
       <div className="flex items-center justify-center mb-8">
-        <Image
-          src={assets.logoDataCNE}
-          alt="Data CNE"
-          width={open ? 200 : 50}
-          height={open ? 80 : 50}
-          className="transition-all duration-300"
-        />
+        <Link href="/">
+          <Image
+            src={assets.logoDataCNE}
+            alt="Data CNE"
+            width={open ? 150 : 50}
+            height={open ? 80 : 50}
+            className="transition-all duration-300"
+          />
+        </Link>
       </div>
 
       <div></div>
@@ -52,10 +54,9 @@ export default function SideBarNav() {
               <Link
                 href={item.url}
                 className={`flex items-center rounded-md p-2 cursor-pointer transition-colors
-                  ${
-                    isActive
-                      ? "bg-white text-primary font-semibold"
-                      : "text-white hover:bg-white/20"
+                  ${isActive
+                    ? "bg-white text-primary font-semibold"
+                    : "text-white hover:bg-white/20"
                   }
                   ${open ? "gap-2 justify-start" : "justify-center"}
                 `}

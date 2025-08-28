@@ -1,50 +1,21 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { assets } from "../assets/assets";
+import { useState } from "react";
+import { assets, navitemsone } from "../assets/assets";
+import { Squash as Hamburger } from "hamburger-react";
+import Boton from "@/components/Boton";
 import Image from "next/image";
 import Link from "next/link";
 
 const NavBar = () => {
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Products", path: "/" },
-    { name: "Contact", path: "/" },
-    { name: "About", path: "/" },
-  ];
-
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    const handleScroll = () => {
-      setIsScrolled(node.scrollTop > 10);
-    };
-
-    node.addEventListener("scroll", handleScroll);
-
-    return () => {
-      node.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
-    <div ref={ref} className="h-88 md:h-64 overflow-y-scroll bg-white">
-      <nav
-        className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${
-          isScrolled
-            ? "bg-white/80 shadow-md text-gray-700 backdrop-blur-lg py-3 md:py-4"
-            : "py-4 md:py-6"
-        }`}
-      >
-        {/* Logo */}
+    <header className="fixed top-0 left-0 w-full z-50">
+      <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src={assets.logoCNE}
+            src={assets.logoDataCNE}
             alt="CNE Logo"
             width={200}
             height={48}
@@ -52,83 +23,72 @@ const NavBar = () => {
           />
         </Link>
 
-        {/* Desktop Right */}
-        <div className="hidden md:flex items-center gap-4">
-          <svg
-            className={`h-6 w-6 text-white transition-all duration-500 ${
-              isScrolled ? "invert" : ""
-            }`}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <button
-            className={`px-8 py-2.5 rounded-full ml-4 transition-all duration-500 ${
-              isScrolled ? "text-white bg-black" : "bg-white text-black"
-            }`}
-          >
-            Login
-          </button>
-        </div>
+        <Hamburger
+          toggled={isMenuOpen}
+          toggle={setIsMenuOpen}
+          size={25}
+          color="#fff"
+        />
+      </nav>
 
-        {/* Mobile Menu Button */}
-        <div className="flex items-center gap-3 md:hidden">
-          <svg
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`h-6 w-6 cursor-pointer ${isScrolled ? "invert" : ""}`}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <line x1="4" y1="6" x2="20" y2="6" />
-            <line x1="4" y1="12" x2="20" y2="12" />
-            <line x1="4" y1="18" x2="20" y2="18" />
-          </svg>
-        </div>
-
-        {/* Mobile Menu */}
+      {/* Overlay con blur cuando el menú está abierto */}
+      {isMenuOpen && (
         <div
-          className={`fixed top-0 left-0 w-full h-screen bg-white text-base flex flex-col md:hidden items-center justify-center gap-6 font-medium text-gray-800 transition-all duration-500 ${
-            isMenuOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
-        >
-          <button
-            className="absolute top-4 right-4"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 transition-opacity duration-300"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
 
-          {navLinks.map((link, i) => (
-            <a key={i} href={link.path} onClick={() => setIsMenuOpen(false)}>
-              {link.name}
-            </a>
+      {/* Menú lateral */}
+      <aside
+        className={`fixed top-0 left-0 h-full w-full md:w-90 bg-white shadow-lg z-40 transform transition-transform duration-300 ${
+          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <button
+          className="absolute top-4 right-4 p-2"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <Hamburger
+            toggled={isMenuOpen}
+            toggle={setIsMenuOpen}
+            size={25}
+            color="#000"
+          />
+        </button>
+
+        <div className="flex flex-col gap-6 mt-20 px-6">
+          {navitemsone.map((item, index) => (
+            <Link
+              key={index}
+              href={item.url || "#"}
+              className="flex items-center gap-3 px-5 py-2 rounded-lg transition-all duration-300 text-primary hover:bg-primary hover:text-white hover:shadow-md"
+            >
+              {item.icon && (
+                <Image
+                  src={item.icon}
+                  alt={item.label}
+                  width={32}
+                  height={32}
+                  className="object-contain transition-all duration-300 group-hover:invert"
+                />
+              )}
+              <span className="text-sm font-bold">{item.label}</span>
+            </Link>
           ))}
 
-          <button className="border px-4 py-1 text-sm font-light rounded-full cursor-pointer transition-all">
-            New Launch
-          </button>
-
-          <button className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500">
-            Login
-          </button>
+          <Boton
+            href="/tablero-dinamico"
+            color="green"
+            iconPosition="left"
+            icon="GrapChart"
+            className="uppercase mt-3"
+          >
+            Tablero Dinamico
+          </Boton>
         </div>
-      </nav>
-    </div>
+      </aside>
+    </header>
   );
 };
 

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { FC, ReactNode, MouseEventHandler } from "react";
-import Image from "next/image";
 import { assets } from "@/assets/assets";
+import Image from "next/image";
 
 interface BotonProps {
   href?: string;
@@ -13,6 +13,7 @@ interface BotonProps {
   disabled?: boolean;
   icon?: keyof typeof assets;
   iconPosition?: "left" | "right";
+  color?: "red" | "green" | "primary"; 
 }
 
 const Boton: FC<BotonProps> = ({
@@ -23,9 +24,16 @@ const Boton: FC<BotonProps> = ({
   disabled,
   icon,
   iconPosition = "left",
+  color = "red",
 }) => {
+  const colorClasses: Record<string, string> = {
+    red: "bg-red hover:bg-red-700",
+    green: "bg-green hover:bg-green-700",
+    blue: "bg-primary hover:bg-blue-700",
+  };
+
   const baseClasses = `
-    bg-red hover:bg-red-700 text-white font-bold py-2 px-6 font-montserrat 
+    ${colorClasses[color]} text-white font-bold py-2 px-6 font-montserrat 
     cursor-pointer rounded-full shadow-lg transition-all duration-300 
     hover:scale-105 inline-flex items-center justify-center 
     ${className ?? ""}
@@ -34,15 +42,12 @@ const Boton: FC<BotonProps> = ({
   const iconElement =
     icon &&
     (typeof assets[icon] === "string" && assets[icon].endsWith(".svg") ? (
-      /* eslint-disable @next/next/no-img-element */
       <img
         src={assets[icon]}
         alt={`${icon} icon`}
         className={`${iconPosition === "left" ? "mr-2" : "ml-2"} w-5 h-5`}
       />
     ) : (
-      /* eslint-enable @next/next/no-img-element */
-
       <Image
         src={assets[icon]}
         alt={`${icon} icon`}

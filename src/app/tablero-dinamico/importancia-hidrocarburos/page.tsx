@@ -4,11 +4,10 @@ export default function ImportanciaHidrocarburos() {
   return (
     <div className="flex flex-col items-center justify-center">
       <iframe
-        title="Difusion 2"
-        width="1400"
-        height="850"
-        src="https://app.powerbi.com/view?r=eyJrIjoiOTJjN2VmMjItM2FlMC00ODE3LWE3YjYtYzIyMDc5YzQwMDk0IiwidCI6IjNiZTZlZTYxLWNiYjktNDZmNC1iYzJiLWE2ZjU4ZmVlZDJmNSIsImMiOjJ9&navContentPaneEnabled=false"
-        frameBorder="0"
+        title="Importancia de Hidrocarburos"
+        width="1600"
+        height="860"
+        src="https://app.powerbi.com/view?r=eyJrIjoiMjA5MTJiZDctMmFhYi00ZWViLWE5YmEtYzdiNGE3MWM1NTk2IiwidCI6IjNiZTZlZTYxLWNiYjktNDZmNC1iYzJiLWE2ZjU4ZmVlZDJmNSIsImMiOjJ9"
         allowFullScreen={true}
       ></iframe>
     </div>

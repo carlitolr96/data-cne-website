@@ -6,10 +6,6 @@
 @import "swiper/css/pagination";
 @import "tw-animate-css";
 
-@import "hamburgers/dist/hamburgers.min.css";
-
-@custom-variant dark (&:is(.dark *));
-
 @theme {
   --color-primary: #17447a;
   --color-red: #ff0000;
@@ -26,16 +22,6 @@
 
 span.swiper-pagination-bullet.opacity-100.swiper-pagination-bullet-active.w-5.h-5.rounded-full.mx-1 {
   background-color: var(--color-red);
-}
-
-.custom-hamburger .hamburger-inner,
-.custom-hamburger .hamburger-inner::before,
-.custom-hamburger .hamburger-inner::after {
-  background-color: theme('colors.primary');
-}
-
-.custom-hamburger {
-  @apply md:hidden;
 }
 
 .swal2-blur-bg {

@@ -33,13 +33,15 @@ export default function Home() {
       </div>
       <header className="relative z-10 flex flex-col sm:flex-row justify-between items-center gap-4 px-4 sm:px-8 py-6">
         <div className="flex items-center justify-center">
-          <Image
-            src={assets.logoCNE}
-            alt="CNE Logo"
-            width={200}
-            height={48}
-            className="max-w-[200px] w-full h-auto"
-          />
+          <Link href="/">
+            <Image
+              src={assets.logoCNE}
+              alt="CNE Logo"
+              width={200}
+              height={48}
+              className="w-[140px] md:w-[180px] lg:w-[200px] h-auto"
+            />
+          </Link>
         </div>
 
         <Link
@@ -71,13 +73,13 @@ export default function Home() {
               priority
             />
           </div>
-          <p className="text-white text-base sm:text-lg font-medium">
+          <p className="text-white text-base sm:text-2xl font-medium">
             Conectando datos,{" "}
             <span className="font-bold">impulsando energía</span>
           </p>
         </div>
 
-        <div className="text-center max-w-4xl mb-12 sm:mb-16 px-2">
+        <div className="text-center max-w-5xl mb-12 sm:mb-16 px-2">
           <p className="text-white leading-relaxed font-montserrat text-sm sm:text-lg">
             Aquí encontrarás cifras, indicadores y recursos educativos que
             muestran cómo la <span className="font-bold">CNE</span> impulsa el
@@ -97,11 +99,10 @@ export default function Home() {
                 key={category.id}
                 href={category.url}
                 className={`rounded-xl p-4 sm:p-6 shadow-lg transition-all duration-300 group cursor-pointer
-              ${
-                isActive
-                  ? "bg-primary text-white scale-105"
-                  : "bg-white/95 hover:bg-white hover:scale-105"
-              }
+              ${isActive
+                    ? "bg-primary text-white scale-105"
+                    : "bg-white/95 hover:bg-white hover:scale-105"
+                  }
             `}
               >
                 <div className="flex items-center space-x-3 sm:space-x-4">
