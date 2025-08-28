@@ -12,61 +12,56 @@ export default function Concession() {
   const [concesionesProv, setConcesionesProv] = useState(0);
   const [capacidadMW, setCapacidadMW] = useState(0);
 
-  // const finalValues = {
-  //   concesionesDef: 84,
-  //   concesionesProv: 54,
-  //   capacidadMW: 3107,
-  // };
-
-useEffect(() => {
   const finalValues = {
     concesionesDef: 84,
     concesionesProv: 54,
     capacidadMW: 3107,
   };
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          gsap.to({ val: 0 }, {
-            val: finalValues.concesionesDef,
-            duration: 1.5,
-            ease: "power1.out",
-            onUpdate: function () {
-              setConcesionesDef(Math.floor(this.targets()[0].val));
-            },
-          });
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setConcesionesDef(0);
+            setConcesionesProv(0);
+            setCapacidadMW(0);
 
-          gsap.to({ val: 0 }, {
-            val: finalValues.concesionesProv,
-            duration: 1.5,
-            ease: "power1.out",
-            onUpdate: function () {
-              setConcesionesProv(Math.floor(this.targets()[0].val));
-            },
-          });
+            gsap.to({ val: 0 }, {
+              val: finalValues.concesionesDef,
+              duration: 1.5,
+              ease: "power1.out",
+              onUpdate: function () {
+                setConcesionesDef(Math.floor(this.targets()[0].val));
+              },
+            });
 
-          gsap.to({ val: 0 }, {
-            val: finalValues.capacidadMW,
-            duration: 2,
-            ease: "power1.out",
-            onUpdate: function () {
-              setCapacidadMW(Math.floor(this.targets()[0].val));
-            },
-          });
+            gsap.to({ val: 0 }, {
+              val: finalValues.concesionesProv,
+              duration: 1.5,
+              ease: "power1.out",
+              onUpdate: function () {
+                setConcesionesProv(Math.floor(this.targets()[0].val));
+              },
+            });
 
-          observer.disconnect();
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
+            gsap.to({ val: 0 }, {
+              val: finalValues.capacidadMW,
+              duration: 2,
+              ease: "power1.out",
+              onUpdate: function () {
+                setCapacidadMW(Math.floor(this.targets()[0].val));
+              },
+            });
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
 
-  if (sectionRef.current) observer.observe(sectionRef.current);
-  return () => observer.disconnect();
-}, []);
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [finalValues.concesionesDef, finalValues.concesionesProv, finalValues.capacidadMW]);
 
   return (
     <section className="bg-light relative" ref={sectionRef}>

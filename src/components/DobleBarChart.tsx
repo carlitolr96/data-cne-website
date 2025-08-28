@@ -20,6 +20,7 @@ export default function DobleBarChart({
   data,
   heightFactor = 1.5,
 }: DobleBarChartProps) {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
   const bars1Ref = useRef<HTMLDivElement[]>([]);
   const bars2Ref = useRef<HTMLDivElement[]>([]);
   const numbers1Ref = useRef<HTMLSpanElement[]>([]);
@@ -45,16 +46,16 @@ export default function DobleBarChart({
       const total = item.value1 + item.value2;
       const targetPercent = total > 0 ? (item.value1 / total) * 100 : 0;
 
+      // Reiniciar barras y números antes de animar
+      if (bar1) gsap.set(bar1, { height: 0 });
+      if (bar2) gsap.set(bar2, { height: 0 });
+      if (number1) number1.textContent = `0 MW`;
+      if (number2) number2.textContent = `0 MW`;
+      if (centerNumber) centerNumber.textContent = `0%`;
+
+      // Animar barra 1 y número
       if (bar1 && number1) {
-        gsap.fromTo(
-          bar1,
-          { height: 0 },
-          {
-            height: `${item.value1 * heightFactor}px`,
-            duration: 1,
-            ease: "power3.out",
-          }
-        );
+        gsap.to(bar1, { height: `${item.value1 * heightFactor}px`, duration: 1, ease: "power3.out" });
         const obj1 = { val: 0 };
         gsap.to(obj1, {
           val: item.value1,
@@ -66,16 +67,9 @@ export default function DobleBarChart({
         });
       }
 
+      // Animar barra 2 y número
       if (bar2 && number2) {
-        gsap.fromTo(
-          bar2,
-          { height: 0 },
-          {
-            height: `${item.value2 * heightFactor}px`,
-            duration: 1,
-            ease: "power3.out",
-          }
-        );
+        gsap.to(bar2, { height: `${item.value2 * heightFactor}px`, duration: 1, ease: "power3.out" });
         const obj2 = { val: 0 };
         gsap.to(obj2, {
           val: item.value2,
@@ -87,6 +81,7 @@ export default function DobleBarChart({
         });
       }
 
+      // Animar porcentaje central
       if (centerNumber) {
         const objCenter = { val: 0 };
         gsap.to(objCenter, {
@@ -101,90 +96,70 @@ export default function DobleBarChart({
     });
   }, [data, heightFactor]);
 
+  // IntersectionObserver para disparar animación al entrar en vista y repetir
   useEffect(() => {
-    if (
-      bars1Ref.current.length === data.length &&
-      bars2Ref.current.length === data.length &&
-      numbers1Ref.current.length === data.length &&
-      numbers2Ref.current.length === data.length &&
-      centerNumberRef.current.length === data.length
-    ) {
-      animateCharts();
-    }
-  }, [data, animateCharts]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCharts();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [animateCharts]);
 
   return (
-    <div className="flex items-end justify-center space-x-16 h-72 gap-8 relative">
+    <div ref={sectionRef} className="flex items-end justify-center space-x-16 h-72 gap-8 relative">
       <div className="absolute bottom-0 left-0 w-full h-[1px] bg-light z-20"></div>
 
-      {data.map((item, i) => {
-        // const [, ...textParts] = item.centerText.split("\n");
-        // const remainingText = textParts.join("\n");
+      {data.map((item, i) => (
+        <div key={i} className="relative flex flex-col items-center text-center z-10">
+          <div className="flex items-end justify-center gap-6 relative">
+            <div className="flex flex-col items-center">
+              <span
+                ref={(el) => { if (el) numbers1Ref.current[i] = el; }}
+                className="mb-1 text-white text-base font-medium"
+              >
+                0 MW
+              </span>
+              <div
+                ref={(el) => { if (el) bars1Ref.current[i] = el; }}
+                className="w-16 bg-red"
+                style={{ height: "20px" }}
+              ></div>
+            </div>
 
-        return (
-          <div
-            key={i}
-            className="relative flex flex-col items-center text-center z-10"
-          >
-            <div className="flex items-end justify-center gap-6 relative">
-              <div className="flex flex-col items-center">
-                <span
-                  ref={(el) => {
-                    if (el) numbers1Ref.current[i] = el;
-                  }}
-                  className="mb-1 text-white text-base font-medium"
-                >
-                  0 MW
-                </span>
-                <div
-                  ref={(el) => {
-                    if (el) bars1Ref.current[i] = el;
-                  }}
-                  className="w-16 bg-red"
-                  style={{
-                    height: "20px",
-                  }}
-                ></div>
-              </div>
+            <div className="flex flex-col items-center justify-center px-4 text-white text-center">
+              <span
+                ref={(el) => { if (el) centerNumberRef.current[i] = el; }}
+                className="text-3xl font-extrabold"
+              >
+                0%
+              </span>
+              <span className="text-sm font-medium w-40">{item.centerText}</span>
+            </div>
 
-              <div className="flex flex-col items-center justify-center px-4 text-white text-center">
-                <span
-                  ref={(el) => {
-                    if (el) centerNumberRef.current[i] = el;
-                  }}
-                  className="text-3xl font-extrabold"
-                >
-                  0%
-                </span>
-
-                <span className="text-sm font-medium w-40">
-                  de la inversión extranjera directa
-                </span>
-              </div>
-
-              <div className="flex flex-col items-center">
-                <span
-                  ref={(el) => {
-                    if (el) numbers2Ref.current[i] = el;
-                  }}
-                  className="mb-1 text-white text-3xl font-extrabold bg-green px-2"
-                >
-                  0 MW
-                </span>
-                <div
-                  ref={(el) => {
-                    if (el) bars2Ref.current[i] = el;
-                  }}
-                  className="w-16 bg-white"
-                  style={{
-                    height: "20px",
-                  }}
-                ></div>
-              </div>
+            <div className="flex flex-col items-center">
+              <span
+                ref={(el) => { if (el) numbers2Ref.current[i] = el; }}
+                className="mb-1 text-white text-3xl font-extrabold bg-green px-2"
+              >
+                0 MW
+              </span>
+              <div
+                ref={(el) => { if (el) bars2Ref.current[i] = el; }}
+                className="w-16 bg-white"
+                style={{ height: "20px" }}
+              ></div>
             </div>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 }

@@ -38,7 +38,7 @@ export default function Home() {
             alt="CNE Logo"
             width={200}
             height={48}
-            className="max-w-[150px] w-full h-auto"
+            className="max-w-[200px] w-full h-auto"
           />
         </div>
 

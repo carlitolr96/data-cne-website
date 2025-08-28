@@ -54,7 +54,7 @@ export default function BarChart({ data, heightFactor = 1.5 }: BarChartProps) {
         const obj = { val: 0 };
         gsap.to(obj, {
           val: item.value,
-          duration: 1.2,
+          duration: 1.3,
           ease: "power3.out",
           onUpdate() {
             number.textContent = `${Math.floor(obj.val)} MW`;

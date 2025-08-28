@@ -3,7 +3,7 @@
 import React from "react";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
-import NavBar from "@/components/impulso-energias-renovables/NavBar";
+import NavBar from "@/components/NavBar";
 
 const Hero: React.FC = () => {
   return (
