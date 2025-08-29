@@ -24,6 +24,10 @@ span.swiper-pagination-bullet.opacity-100.swiper-pagination-bullet-active.w-5.h-
   background-color: var(--color-red);
 }
 
+span.swiper-pagination-bullet.opacity-100.swiper-pagination-bullet-active.w-5.h-5.rounded-full.mx-1.two {
+  background-color: var(--color-green);
+}
+
 .swal2-blur-bg {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);

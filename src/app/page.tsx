@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { assets, categories } from "../assets/assets";
 import { usePathname } from "next/navigation";
+import Boton from "@/components/Boton";
 
 export default function Home() {
   const pathname = usePathname();
@@ -31,37 +32,48 @@ export default function Home() {
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.1%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
       </div>
-      <header className="relative z-10 flex flex-col sm:flex-row justify-between items-center gap-4 px-4 sm:px-8 py-6">
-        <div className="flex items-center justify-center">
-          <Link href="/">
+
+      <header className="relative top-0 left-0 w-full z-50">
+        <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4">
+          <Link href="/" className="flex items-center gap-2">
             <Image
               src={assets.logoCNE}
               alt="CNE Logo"
               width={200}
-              height={48}
-              className="w-[140px] md:w-[180px] lg:w-[200px] h-auto"
+              height={70}
+              className="w-[100px] md:w-[190px] h-auto"
             />
           </Link>
-        </div>
 
-        <Link
-          href="/tablero-dinamico"
-          className="bg-green hover:bg-green-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg flex items-center space-x-2 cursor-pointer w-full sm:w-auto justify-center"
-        >
-          <Image
-            src={assets.GrapChart}
-            alt="Tablero Dinamico CNE"
-            width={200}
-            height={80}
-            className="w-6 h-6 sm:w-8 sm:h-8"
-          />
-          <div className="w-px h-8 sm:h-10 bg-white"></div>
-          <div className="text-left font-montserrat text-[15px] sm:text-base">
-            <div className="font-light">TABLEROS</div>
-            <div className="font-bold">DINÁMICOS</div>
-          </div>
-        </Link>
+          <Boton
+            href="/tablero-dinamico"
+            icon="GrapChart"
+            iconPosition="left"
+            color="green"
+          >
+            Tablero Dinamico
+          </Boton>
+
+          {/* <Link
+            href="/tablero-dinamico"
+            className="bg-green hover:bg-green-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg flex items-center space-x-2 cursor-pointer w-full sm:w-auto justify-center"
+          >
+            <Image
+              src={assets.GrapChart}
+              alt="Tablero Dinamico CNE"
+              width={200}
+              height={80}
+              className="w-6 h-6 sm:w-8 sm:h-8"
+            />
+            <div className="w-px h-8 sm:h-10 bg-white"></div>
+            <div className="text-left font-montserrat text-[15px] sm:text-base">
+              <div className="font-light">TABLEROS</div>
+              <div className="font-bold">DINÁMICOS</div>
+            </div>
+          </Link> */}
+        </nav>
       </header>
+
       <main className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-8 py-12 sm:py-16">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-4 mb-4">
@@ -99,10 +111,11 @@ export default function Home() {
                 key={category.id}
                 href={category.url}
                 className={`rounded-xl p-4 sm:p-6 shadow-lg transition-all duration-300 group cursor-pointer
-              ${isActive
-                    ? "bg-primary text-white scale-105"
-                    : "bg-white/95 hover:bg-white hover:scale-105"
-                  }
+              ${
+                isActive
+                  ? "bg-primary text-white scale-105"
+                  : "bg-white/95 hover:bg-white hover:scale-105"
+              }
             `}
               >
                 <div className="flex items-center space-x-3 sm:space-x-4">

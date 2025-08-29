@@ -31,7 +31,6 @@ const NavBar = () => {
         />
       </nav>
 
-      {/* Overlay con blur cuando el menú está abierto */}
       {isMenuOpen && (
         <div
           className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 transition-opacity duration-300"
@@ -39,7 +38,6 @@ const NavBar = () => {
         />
       )}
 
-      {/* Menú lateral */}
       <aside
         className={`fixed top-0 left-0 h-full w-full md:w-90 bg-white shadow-lg z-40 transform transition-transform duration-300 ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"

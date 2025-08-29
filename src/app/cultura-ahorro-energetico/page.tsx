@@ -5,6 +5,9 @@ import TextoSection from "@/components/cultura-ahorro-energetico/TextoSection";
 import DisseminationProgram from "@/components/cultura-ahorro-energetico/DisseminationProgram";
 import Sensitized from "@/components/cultura-ahorro-energetico/Sensitized";
 import Goal from "@/components/cultura-ahorro-energetico/Goal"
+import Satisfaction from "@/components/cultura-ahorro-energetico/Satisfaction"
+import Teams from "@/components/cultura-ahorro-energetico/Teams";
+import MapsLocation from "@/components/cultura-ahorro-energetico/MapsLocation"
 
 export default function CulturaAhorroEnergetico() {
   return (
@@ -14,6 +17,9 @@ export default function CulturaAhorroEnergetico() {
       <DisseminationProgram />
       <Sensitized />
       <Goal />
+      <Satisfaction />
+      <Teams />
+      <MapsLocation />
     </>
   )
 }

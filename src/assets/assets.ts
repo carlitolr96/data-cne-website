@@ -66,6 +66,13 @@ import HeolicCard from "../assets/Heolic-Card.svg";
 import HidraulicCard from "../assets/Hidraulic-Card.svg";
 import SolarCard from "../assets/Solar-Card.svg";
 
+//Cultura de Ahorro Energetico
+import FemaleIcon from "../assets/FemaleIcon.svg";
+import MasculeIcon from "../assets/MasculeIcon.svg";
+import BackPackIcon from "../assets/BackpackIcon.svg";
+import ClassIcon from "../assets/ClassIcon.svg";
+import Conference from "../assets/ConferenceIcon.svg";
+
 //Sidebar Tablero Dinamico
 import ChartRenovableBar from "../assets/ChartRenovableBar.svg";
 import EolicBar from "../assets/EolicBar.svg";
@@ -76,6 +83,7 @@ import PanelBar from "../assets/PanelBar.svg";
 import PetroliumBar from "../assets/PetroliumBar.svg";
 import VoltageTowerBar from "../assets/VoltageTowerBar.svg";
 import HomeBar from "../assets/HomeBar.svg";
+import TeamsIcon from "../assets/TemsIcon.svg"
 
 export const assets = {
   logoCNE,
@@ -154,6 +162,12 @@ export const assets = {
   HeolicCard,
   HidraulicCard,
   SolarCard,
+  FemaleIcon,
+  MasculeIcon,
+  BackPackIcon,
+  ClassIcon,
+  Conference,
+  TeamsIcon,
 } as const;
 
 export interface TableroDinamicoBar {
@@ -229,6 +243,55 @@ export interface ItemsNavBar {
   url: string;
   icon: React.ElementType;
 }
+
+export interface TeamMembers {
+  name: string;
+  role: string;
+  img: string;
+}
+
+export const teammembers: TeamMembers[] = [
+  {
+    name: "John Doe",
+    role: "Software Engineer",
+    img: "https://spacema-dev.com/elevate/assets/images/team/1.jpg",
+  },
+  {
+    name: "Jane Smith",
+    role: "Graphic Designer",
+    img: "https://spacema-dev.com/elevate/assets/images/team/4.jpg",
+  },
+  {
+    name: "Alex Johnson",
+    role: "Marketing Manager",
+    img: "https://spacema-dev.com/elevate/assets/images/team/3.jpg",
+  },
+  {
+    name: "Peter Johnson",
+    role: "SEO Specialist",
+    img: "https://spacema-dev.com/elevate/assets/images/team/2.jpg",
+  },
+  {
+    name: "Emily Brown",
+    role: "UX Designer",
+    img: "https://spacema-dev.com/elevate/assets/images/team/5.jpg",
+  },
+  {
+    name: "Michael Davis",
+    role: "Frontend Developer",
+    img: "https://spacema-dev.com/elevate/assets/images/team/6.jpg",
+  },
+  {
+    name: "Sarah Johnson",
+    role: "Content Writer",
+    img: "https://spacema-dev.com/elevate/assets/images/team/7.jpg",
+  },
+  {
+    name: "David Wilson",
+    role: "Project Manager",
+    img: "https://spacema-dev.com/elevate/assets/images/team/8.jpg",
+  },
+];
 
 export const tablerodinamicobar: TableroDinamicoBar[] = [
   {

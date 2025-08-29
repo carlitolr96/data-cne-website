@@ -1,5 +1,9 @@
+"use client";
+
+import { assets } from "../../assets/assets";
 import React from "react";
 import Boton from "@/components/Boton";
+import Image from "next/image";
 
 export default function DisseminationProgram() {
   return (
@@ -34,6 +38,13 @@ export default function DisseminationProgram() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-20 mt-12">
           <div className="flex flex-col items-center text-center">
+            <Image
+              src={assets.BackPackIcon}
+              alt="CNE Icon"
+              width="85"
+              height="85"
+              className="mb-2"
+            />
             <p className="text-primary text-[15px] leading-relaxed mb-6">
               El programa ofrece charlas para niños/as de 6 a 11 años, de manera
               interactiva, tanto presencial, como virtual en español a nivel
@@ -44,35 +55,44 @@ export default function DisseminationProgram() {
           </div>
 
           <div className="flex">
-            <div className="flex mb-6 relative text-center gap-5">
-              <div>
-                <p className="text-primary text-[15px] leading-relaxed mb-5">
-                  En ese apartado se atiende a jóvenes entre 12 y 18 años a
-                  través de charlas o seminarios presenciales o virtuales en
-                  español, con el objetivo de ayudar a la formación del
-                  adolescente y motivarlo a contribuir con el uso responsable de
-                  la energía, además, incentivarlos a estudiar carreras afines
-                  con los temas tratados, de forma que sean profesionales en
-                  servicio de la nación.
-                </p>
-              </div>
+            <div className="flex flex-col items-center text-center">
+              <Image
+                src={assets.ClassIcon}
+                alt="CNE Icon"
+                width="80"
+                height="80"
+                className="mb-4"
+              />
+              <p className="text-primary text-[15px] leading-relaxed mb-5">
+                En ese apartado se atiende a jóvenes entre 12 y 18 años a través
+                de charlas o seminarios presenciales o virtuales en español, con
+                el objetivo de ayudar a la formación del adolescente y motivarlo
+                a contribuir con el uso responsable de la energía, además,
+                incentivarlos a estudiar carreras afines con los temas tratados,
+                de forma que sean profesionales en servicio de la nación.
+              </p>
             </div>
           </div>
 
           <div className="flex flex-col">
-            <div className="flex items-start mb-6 relative text-center gap-5">
-              <div>
-                <p className="text-primary text-[15px] leading-relaxed mb-4">
-                  Las actividades del programa atienden a organismos sociales,
-                  iglesias, instituciones del gobierno, juntas de vecinos y
-                  público adulto en general, a través de acciones de difusión,
-                  charlas y talleres de sensibilización a las personas, para
-                  promover, sensibilizar e informar acerca de la importancia del
-                  ahorro de energía y el uso de las energías renovables, lo que
-                  permite adoptar decisiones responsables sobre el consumo
-                  energético.
-                </p>
-              </div>
+            <div className="flex flex-col items-center text-center">
+              <Image
+                src={assets.Conference}
+                alt="CNE Icon"
+                width="65"
+                height="65"
+                className="mb-7"
+              />
+              <p className="text-primary text-[15px] leading-relaxed mb-4">
+                Las actividades del programa atienden a organismos sociales,
+                iglesias, instituciones del gobierno, juntas de vecinos y
+                público adulto en general, a través de acciones de difusión,
+                charlas y talleres de sensibilización a las personas, para
+                promover, sensibilizar e informar acerca de la importancia del
+                ahorro de energía y el uso de las energías renovables, lo que
+                permite adoptar decisiones responsables sobre el consumo
+                energético.
+              </p>
             </div>
           </div>
         </div>
