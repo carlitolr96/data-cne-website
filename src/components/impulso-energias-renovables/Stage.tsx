@@ -81,19 +81,34 @@ export default function Stage() {
                   />
 
                   <foreignObject x="24" y="18" width="996" height="173">
-                    <div className="w-full h-full flex items-center justify-between px-6 md:px-20">
-                      {stage.leftLabel && (
-                        <div className="hidden md:flex flex-col items-start gap-1 shrink-0 text-left">
-                          <span className="uppercase text-[11px] leading-tight font-semibold opacity-90">
-                            {stage.leftLabel}
-                          </span>
-                          <span className="text-[40px] leading-none font-extrabold">
-                            {String(stage.id).padStart(2, "0")}
-                          </span>
-                        </div>
-                      )}
+                    <div
+                      className={`w-full h-full flex items-center justify-between px-6 md:px-20 ${
+                        Number(stage.id) % 2 === 0
+                          ? "flex-row-reverse"
+                          : "flex-row"
+                      }`}
+                    >
+                      <div
+                        className={`hidden md:flex flex-col ${
+                          Number(stage.id) % 2 === 0
+                            ? "items-start text-left"
+                            : "items-end text-right"
+                        } gap-1 shrink-0`}
+                      >
+                        <span className="uppercase text-[11px] leading-tight font-semibold opacity-90">
+                          {stage.id % 2 === 0
+                            ? stage.leftLabel
+                            : stage.rightLabel}
+                        </span>
+                      </div>
 
-                      <div className="flex-1 flex flex-col md:flex-row items-center gap-5">
+                      <div
+                        className={`flex-1 flex flex-col md:flex-row items-center gap-5 ${
+                          Number(stage.id) % 2 === 0
+                            ? "md:flex-row-reverse text-left"
+                            : "md:flex-row text-right"
+                        }`}
+                      >
                         <div className="flex flex-col gap-2 shrink-0">
                           <h2 className="uppercase text-md leading-tight font-semibold opacity-90 max-w-[170px]">
                             {stage.title}
@@ -105,21 +120,16 @@ export default function Stage() {
 
                         <div className="hidden md:block w-0.5 h-25 bg-green opacity-90" />
 
-                        <p className="text-sm md:text-base leading-relaxed opacity-95 flex-1">
+                        <p
+                          className={`text-sm md:text-base leading-relaxed opacity-95 flex-1 ${
+                            Number(stage.id) % 2 === 0
+                              ? "text-end"
+                              : "text-start"
+                          }`}
+                        >
                           {stage.description}
                         </p>
                       </div>
-
-                      {stage.rightLabel && (
-                        <div className="hidden md:flex flex-col items-end gap-1 shrink-0 text-right">
-                          <span className="uppercase text-[11px] leading-tight font-semibold opacity-90">
-                            {stage.rightLabel}
-                          </span>
-                          <span className="text-[40px] leading-none font-extrabold">
-                            {String(stage.id).padStart(2, "0")}
-                          </span>
-                        </div>
-                      )}
                     </div>
                   </foreignObject>
                 </svg>

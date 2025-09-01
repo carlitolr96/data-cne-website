@@ -22,22 +22,22 @@ export default function ImpulsoEnergíasRenovables() {
   return (
     <>
       <Hero />
-      <RenewableEnergies />
-      <ElectricityHome />
-      <Loarder />
-      <GenerationCapacity />
-      <Operations />
-      <ReportingTiles />
-      <MapsLocation />
-      <Concession />
-      <Storage />
+      {/* <RenewableEnergies /> */}
+      {/* <ElectricityHome /> */}
+      {/* <Loarder /> */}
+      {/* <GenerationCapacity /> */}
+      {/* <Operations /> */}
+      {/* <ReportingTiles /> */}
+      {/* <MapsLocation /> */}
+      {/* <Concession /> */}
+      {/* <Storage /> */}
       <Stage />
-      <Incentives />
-     {/* <FeedGrid /> */}
+      {/* <Incentives /> */}
+      {/* <FeedGrid /> */}
       {/* <AmericanLider /> */}
-      <RecordInvestments />
-      <AttractiveReliable />
-      <Saving />
+      {/* <RecordInvestments /> */}
+      {/* <AttractiveReliable /> */}
+      {/* <Saving /> */}
     </>
   );
 }

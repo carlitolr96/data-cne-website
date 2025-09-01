@@ -1,4 +1,6 @@
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { PiSolarPanelDuotone } from "react-icons/pi";
+import { TbHome,  } from "react-icons/tb";
 import { Home, Inbox, Calendar, Search, Settings } from "lucide-react";
 import { IconType } from "react-icons";
 
@@ -8,6 +10,7 @@ import TapIcon from "./Tap-Icon.svg";
 //Home Page Menu
 import logoCNE from "./Logo-CNE.svg";
 import logoDataCNE from "./Logo-DataCNE.svg";
+import logoAzulDataCNE from "./logo-Azul-DataCNE.svg";
 import DevelopingMarketing from "./Developing-Marketing.svg";
 import LawDoc from "./Law-Doc.svg";
 import NuclearMark from "./Nuclear-Mark.svg";
@@ -65,6 +68,8 @@ import FireCard from "../assets/Fire-Card.svg";
 import HeolicCard from "../assets/Heolic-Card.svg";
 import HidraulicCard from "../assets/Hidraulic-Card.svg";
 import SolarCard from "../assets/Solar-Card.svg";
+import CardDerecho from "../assets/Card-Derecho.svg"
+import CardIzquierdo from "../assets/Card-Izquierdo.svg"
 
 //Cultura de Ahorro Energetico
 import FemaleIcon from "../assets/FemaleIcon.svg";
@@ -168,10 +173,15 @@ export const assets = {
   ClassIcon,
   Conference,
   TeamsIcon,
+  logoAzulDataCNE,
+  PiSolarPanelDuotone,
+  TbHome,
+  CardDerecho,
+  CardIzquierdo,
 } as const;
 
 export interface TableroDinamicoBar {
-  icon: string;
+  icon: IconType;
   title: string;
   url: string;
 }
@@ -199,7 +209,7 @@ export interface SocialIcon {
 }
 
 export interface StageIcon {
-  id: string;
+  id: number;
   title: string;
   description: string;
   icon: string;
@@ -295,47 +305,47 @@ export const teammembers: TeamMembers[] = [
 
 export const tablerodinamicobar: TableroDinamicoBar[] = [
   {
-    icon: HomeBar,
+    icon: TbHome,
     title: "Inicio",
     url: "/tablero-dinamico/",
   },
   {
-    icon: VoltageTowerBar,
+    icon: FaFacebookF,
     title: "Demanda Eléctrica Nacional",
     url: "/tablero-dinamico/demanda-electrica-nacional",
   },
   {
-    icon: PanelBar,
+    icon: FaFacebookF,
     title: "Programa Medición Neta",
     url: "/tablero-dinamico/programa-medicion-neta",
   },
   {
-    icon: MapaRDBar,
+    icon: FaFacebookF,
     title: "Mapa Energético Nacional",
     url: "/tablero-dinamico/mapa-energetico-nacional",
   },
   {
-    icon: ChartRenovableBar,
+    icon: FaFacebookF,
     title: "Variables Macroeconómicas",
     url: "/tablero-dinamico/variable-macroeconomicas",
   },
   {
-    icon: EolicBar,
+    icon: FaFacebookF,
     title: "Proyectos Renovables",
     url: "/tablero-dinamico/proyectos-renovables",
   },
   {
-    icon: PetroliumBar,
+    icon: FaFacebookF,
     title: "Importación de Hidrocarburos",
     url: "/tablero-dinamico/importancia-hidrocarburos",
   },
   {
-    icon: NuclearBar,
+    icon: FaFacebookF,
     title: "Asuntos Nucleares",
     url: "/tablero-dinamico/asuntos-nucleares",
   },
   {
-    icon: MonitorBar,
+    icon: FaFacebookF,
     title: "Monitoreo SENI",
     url: "/tablero-dinamico/monitoreo-seni",
   },
@@ -498,7 +508,7 @@ export const categories: Category[] = [
     subtitle: "Nacional",
     icon: DevelopingMarketing,
     color: "text-red-500",
-    url: "",
+    url: "/plan-energetico-nacional",
   },
   {
     id: "2",
@@ -567,31 +577,31 @@ export const socialicon: SocialIcon[] = [
 
 export const stageicon: StageIcon[] = [
   {
-    id: "01",
+    id: 1,
     title: "FASE INICIAL (CONCESIÓN PROVISIONAL)",
     description:
       "Significa que un proyecto de energía renovable tiene un permiso inicial que autoriza estudios para evaluar la viabilidad del proyecto, pero no su construcción ni operación.",
     icon: DocumentIcon,
   },
   {
-    id: "02",
+    id: 2,
     title: "CONCESIÓN DEFINITIVA",
     description:
       "Significa que el proyecto cuenta con una autorización oficial tras cumplir con todos los requisitos legales, técnicos y ambientales, permitiendo la construcción y operación.",
     icon: HansStageIcon,
   },
   {
-    id: "03",
+    id: 3,
     title: "CONSTRUCCIÓN",
     description:
       "El proyecto está en la fase de instalación de la infraestructura necesaria para generar electricidad, como paneles solares, aerogeneradores o turbinas hidroeléctricas.",
     icon: BoxPlus,
   },
   {
-    id: "04",
+    id: 4,
     title: "OPERACIÓN",
     description:
-      "El proyecto entra en funcionamiento, generando y suministrando energía a la red con monitoreo y mantenimiento continuo.",
+      "El poyecto entra en funcionamiento, generando y suministrando energía a la red con monitoreo y mantenimiento continuo.",
     icon: BoxLine,
   },
 ];

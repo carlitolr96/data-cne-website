@@ -53,24 +53,6 @@ export default function Home() {
           >
             Tablero Dinamico
           </Boton>
-
-          {/* <Link
-            href="/tablero-dinamico"
-            className="bg-green hover:bg-green-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg flex items-center space-x-2 cursor-pointer w-full sm:w-auto justify-center"
-          >
-            <Image
-              src={assets.GrapChart}
-              alt="Tablero Dinamico CNE"
-              width={200}
-              height={80}
-              className="w-6 h-6 sm:w-8 sm:h-8"
-            />
-            <div className="w-px h-8 sm:h-10 bg-white"></div>
-            <div className="text-left font-montserrat text-[15px] sm:text-base">
-              <div className="font-light">TABLEROS</div>
-              <div className="font-bold">DINÁMICOS</div>
-            </div>
-          </Link> */}
         </nav>
       </header>
 
