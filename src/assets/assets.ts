@@ -1,6 +1,6 @@
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { PiSolarPanelDuotone } from "react-icons/pi";
-import { TbHome,  } from "react-icons/tb";
+import { TbHome } from "react-icons/tb";
 import { Home, Inbox, Calendar, Search, Settings } from "lucide-react";
 import { IconType } from "react-icons";
 
@@ -68,8 +68,8 @@ import FireCard from "../assets/Fire-Card.svg";
 import HeolicCard from "../assets/Heolic-Card.svg";
 import HidraulicCard from "../assets/Hidraulic-Card.svg";
 import SolarCard from "../assets/Solar-Card.svg";
-import CardDerecho from "../assets/Card-Derecho.svg"
-import CardIzquierdo from "../assets/Card-Izquierdo.svg"
+import CardDerecho from "../assets/Card-Derecho.svg";
+import CardIzquierdo from "../assets/Card-Izquierdo.svg";
 
 //Cultura de Ahorro Energetico
 import FemaleIcon from "../assets/FemaleIcon.svg";
@@ -88,7 +88,7 @@ import PanelBar from "../assets/PanelBar.svg";
 import PetroliumBar from "../assets/PetroliumBar.svg";
 import VoltageTowerBar from "../assets/VoltageTowerBar.svg";
 import HomeBar from "../assets/HomeBar.svg";
-import TeamsIcon from "../assets/TemsIcon.svg"
+import TeamsIcon from "../assets/TemsIcon.svg";
 
 export const assets = {
   logoCNE,
@@ -260,6 +260,11 @@ export interface TeamMembers {
   img: string;
 }
 
+export interface EditionPen {
+  image: string;
+  description: string;
+}
+
 export const teammembers: TeamMembers[] = [
   {
     name: "John Doe",
@@ -300,6 +305,34 @@ export const teammembers: TeamMembers[] = [
     name: "David Wilson",
     role: "Project Manager",
     img: "https://spacema-dev.com/elevate/assets/images/team/8.jpg",
+  },
+];
+
+export const editionpen: EditionPen[] = [
+  {
+    image: "/portadas-pen-2025-04.png",
+    description:
+      "Un análisis detallado de cómo está hoy nuestro sistema eléctrico: generación, demanda, renovables, precios y cobertura.",
+  },
+  {
+    image: "/portadas-pen-2025-1.png",
+    description:
+      "Modelos técnicos que indican qué tipo de plantas se necesitan, dónde y cuándo construirlas para responder a la demanda proyectada.",
+  },
+  {
+    image: "/portadas-pen-2025-03.png",
+    description:
+      "Evaluación del potencial solar, eólico, hidráulico y de biomasa del país, con metas claras de expansión limpia.",
+  },
+  {
+    image: "/portadas-pen-2025-01.png",
+    description:
+      "Proyecciones de consumo, crecimiento económico y necesidades futuras para asegurar energía suficiente y sostenible.",
+  },
+  {
+    image: "/portadas-pen-2025-02.png",
+    description:
+      "Define cómo asegurar el suministro confiable de gas natural, GLP y otros combustibles clave en la matriz energética.",
   },
 ];
 
