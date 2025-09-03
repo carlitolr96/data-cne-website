@@ -1,19 +1,47 @@
+// app/tablero-dinamico/layout.tsx
 "use client";
 
 import { useState, useEffect } from "react";
-import SideBarNav from "@/components/tablero-dinamico/SideBarNav";
 import { Menu, X } from "lucide-react";
+import SideBarNav from "@/components/tablero-dinamico/SideBarNav";
+import { usePathname } from "next/navigation";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) {
+        setIsOpen(false);
+      } else {
+        setIsOpen(true);
+      }
+    };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  const closeSidebar = () => {
+    if (isMobile) {
+      setIsOpen(false);
+    }
+  };
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -26,13 +54,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             : `${isOpen ? "w-64" : "w-16"} relative h-full`
         }`}
       >
-        <SideBarNav isOpen={isOpen} />
+        <SideBarNav
+          isOpen={isOpen}
+          isMobile={isMobile}
+          onClose={closeSidebar}
+          onItemClick={closeSidebar}
+        />
       </div>
 
       {isMobile && isOpen && (
         <div
           className="fixed inset-0 bg-black/40 z-40"
-          onClick={() => setIsOpen(false)}
+          onClick={closeSidebar}
         />
       )}
 
@@ -46,7 +79,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </button>
         </div>
 
-        <main className="flex-1 bg-gray-100 overflow-auto">{children}</main>
+        <main className="flex-1 bg-light overflow-auto">
+          {isLoading ? (
+            <div className="flex items-center justify-center min-h-full">
+              <div className="text-center">
+                <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                <p className="text-gray-600">Cargando reporte...</p>
+              </div>
+            </div>
+          ) : (
+            children
+          )}
+        </main>
       </div>
     </div>
   );
