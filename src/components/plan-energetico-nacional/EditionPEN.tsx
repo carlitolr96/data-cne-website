@@ -1,19 +1,34 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { editionpen } from "../../assets/assets";
 
 export default function EditionPEN() {
- const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
+  // Un solo estado para manejar el tilt de cada tarjeta
+  const [tilts, setTilts] = useState(
+    Array(editionpen.length).fill({ x: 0, y: 0 })
+  );
 
   const threshold = 12;
 
-  const handleMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleMove = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    index: number
+  ) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
     const x = ((e.clientX - left) / width - 0.5) * 2 * threshold;
     const y = ((e.clientY - top) / height - 0.5) * 2 * threshold;
-    setTilt({ x, y });
+
+    const newTilts = [...tilts];
+    newTilts[index] = { x: y * -1, y: x };
+    setTilts(newTilts);
+  };
+
+  const handleLeave = (index: number) => {
+    const newTilts = [...tilts];
+    newTilts[index] = { x: 0, y: 0 };
+    setTilts(newTilts);
   };
 
   return (
@@ -33,44 +48,30 @@ export default function EditionPEN() {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 justify-items-center">
-            {editionpen.map((doc, index) => {
-              const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
-
-              const handleMove = (
-                e: React.MouseEvent<HTMLDivElement, MouseEvent>
-              ) => {
-                const { left, top, width, height } =
-                  e.currentTarget.getBoundingClientRect();
-                const x = (e.clientX - left) / width - 0.5;
-                const y = (e.clientY - top) / height - 0.5;
-                setTilt({ x: y * -threshold, y: x * threshold });
-              };
-
-              return (
-                <div
-                  key={index}
-                  className="overflow-hidden transition-transform duration-200 ease-out cursor-pointer max-w-80"
-                  onMouseMove={handleMove}
-                  onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-                  style={{
-                    transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-                  }}
-                >
-                  <div className="flex flex-col items-center">
-                    <Image
-                      src={doc.image}
-                      alt={`Document cover ${index + 1}`}
-                      width={100}
-                      height={100}
-                      className="w-48 md:w-52 h-auto border border-primary bg-white object-cover mb-4"
-                    />
-                    <p className="text-primary text-sm font-medium text-start">
-                      {doc.description}
-                    </p>
-                  </div>
+            {editionpen.map((doc, index) => (
+              <div
+                key={index}
+                className="overflow-hidden transition-transform duration-200 ease-out cursor-pointer max-w-80"
+                onMouseMove={(e) => handleMove(e, index)}
+                onMouseLeave={() => handleLeave(index)}
+                style={{
+                  transform: `perspective(1000px) rotateX(${tilts[index].x}deg) rotateY(${tilts[index].y}deg)`,
+                }}
+              >
+                <div className="flex flex-col items-center">
+                  <Image
+                    src={doc.image}
+                    alt={`Document cover ${index + 1}`}
+                    width={100}
+                    height={100}
+                    className="w-48 md:w-52 h-auto border border-primary bg-white object-cover mb-4"
+                  />
+                  <p className="text-primary text-sm font-medium text-start">
+                    {doc.description}
+                  </p>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </div>
