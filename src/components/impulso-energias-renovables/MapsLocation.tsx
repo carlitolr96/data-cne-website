@@ -49,14 +49,14 @@ export default function MapsLocation() {
       <div className="max-w-7xl min-h-screen mx-auto relative">
         <div className="absolute inset-0 flex items-center justify-start pl-0 md:pl-8">
           <div className="relative w-full max-w-4xl">
-            <Image src={assets.MapaOneSVG} alt="Mapa CNE" width={800} height={600} className="w-full h-auto" />
+            <Image src={assets.MapaOneSVG} alt="Mapa CNE" width={800} height={600} className="w-full h-auto z-0" />
             {locations.map((loc, i) => (
-              <div key={loc.id} className="absolute" style={{ left: `${loc.x}%`, top: `${loc.y}%`, transform: "translate(-50%, -50%)" }}>
+              <button key={loc.id} className="absolute z-50" style={{ left: `${loc.x}%`, top: `${loc.y}%`, transform: "translate(-50%, -50%)" }}>
                 <div
                   ref={(el) => {
                     if (el) tooltipsRef.current[i] = el;
                   }}
-                  className="w-5 h-5 bg-red rounded-full cursor-pointer shadow-lg"
+                  className="w-5 h-5 bg-red hover:bg-red-700 rounded-full cursor-pointer shadow-lg border-2"
                   onClick={() => setActiveId(activeId === loc.id ? null : loc.id)}
                 />
                 <div
@@ -69,7 +69,7 @@ export default function MapsLocation() {
                   <h4 className="text-primary font-bold text-lg mb-1">{loc.name}</h4>
                   <p className="text-sm text-gray-600">{loc.description}</p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
