@@ -20,8 +20,6 @@ export default function AmericanLider() {
       setRankingGlobal,
       finalValues
     );
-
-    return () => cleanup && cleanup();
   }, []);
 
   return (
