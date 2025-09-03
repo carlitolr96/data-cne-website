@@ -5,18 +5,15 @@ import Image from "next/image";
 import { editionpen } from "../../assets/assets";
 
 export default function EditionPEN() {
-  const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
+ const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
 
   const threshold = 12;
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const { left, top, width, height } =
-      e.currentTarget.getBoundingClientRect();
-
-    const x = (e.clientX - left) / width - 0.5;
-    const y = (e.clientY - top) / height - 0.5;
-
-    setTilt({ x: y * -threshold, y: x * threshold });
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - left) / width - 0.5) * 2 * threshold;
+    const y = ((e.clientY - top) / height - 0.5) * 2 * threshold;
+    setTilt({ x, y });
   };
 
   return (
