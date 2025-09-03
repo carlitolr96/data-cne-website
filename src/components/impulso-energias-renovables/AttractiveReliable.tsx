@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function AttractiveReliable() {
   return (
     <section className="relative bg-primary min-h-[60vh] md:min-h-[100vh] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-4 flex flex-col relative z-10 py-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-4 flex flex-col relative z-0 py-12">
         <div className="flex md:flex-row items-center justify-center text-center md:space-x-4 uppercase mb-6">
           <h1 className="text-2xl sm:text-3xl md:text-4xl text-white px-3 py-1">
             UN MERCADO
@@ -21,7 +21,7 @@ export default function AttractiveReliable() {
         </p>
 
         <div
-          className="absolute z-10 flex flex-col gap-9 items-start"
+          className="absolute z-0 flex flex-col gap-9 items-start"
           style={{
             top: "160%",
             left: "14%",

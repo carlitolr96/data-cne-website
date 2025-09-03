@@ -3,8 +3,16 @@
 import { assets } from "@/assets/assets";
 import LineChartTwo from "../LineChart";
 import Image from "next/image";
+import { useRef, useEffect } from "react";
+import { animateCurrency } from "@/utils/animations";
 
 export default function Saving() {
+  const amountRef = useRef<HTMLHeadingElement | null>(null);
+
+  useEffect(() => {
+    animateCurrency(amountRef.current, 47.99);
+  }, []);
+
   return (
     <section className="bg-light py-8 sm:py-10">
       <div className="max-w-7xl mx-auto px-6 md:px-4 flex flex-col gap-20 min-h-[80vh] justify-center">
@@ -31,11 +39,14 @@ export default function Saving() {
                 height={70}
               />
               <div className="flex flex-col items-start">
-                <h3 className="text-primary text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight">
+                <h3
+                  ref={amountRef}
+                  className="text-primary text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight"
+                >
                   <span className="text-green font-bold text-6xl sm:text-7xl">
                     +
                   </span>{" "}
-                  US$47.99
+                  US$0.00
                 </h3>
                 <span className="bg-green text-white px-3 py-1 font-medium text-sm sm:text-base md:text-lg ml-15 inline-block">
                   millones

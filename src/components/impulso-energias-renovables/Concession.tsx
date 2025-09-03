@@ -12,24 +12,25 @@ export default function Concession() {
   const [concesionesProv, setConcesionesProv] = useState(0);
   const [capacidadMW, setCapacidadMW] = useState(0);
 
-  const finalValues = { concesionesDef: 84, concesionesProv: 54, capacidadMW: 3107 };
+  const finalValues = {
+    concesionesDef: 84,
+    concesionesProv: 54,
+    capacidadMW: 3107,
+  };
 
   useEffect(() => {
-    const cleanup = animateConcessionCounters(
+    animateConcessionCounters(
       sectionRef.current,
       setConcesionesDef,
       setConcesionesProv,
-      setCapacidadMW,
-      finalValues
+      setCapacidadMW
     );
-
-    return () => cleanup && cleanup();
   }, []);
 
   return (
     <section ref={sectionRef} className="bg-light relative">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row relative">
-        <div className="flex flex-col items-center justify-center bg-red text-white px-8 py-6 sm:rounded-r-full rounded-r-none z-10">
+        <div className="flex flex-col items-center justify-center bg-red text-white px-8 py-6 sm:rounded-r-full rounded-r-none z-0">
           <Image
             src={assets.HansIcon}
             alt="Concesión"
@@ -42,9 +43,9 @@ export default function Concession() {
           </span>
         </div>
 
-        <div className="hidden sm:block absolute top-0 left-[calc(31.5rem)] w-[calc(95%-8rem)] h-full bg-gray z-11"></div>
+        <div className="hidden sm:block absolute top-0 left-[calc(31.5rem)] w-[calc(95%-8rem)] h-full bg-gray z-0"></div>
 
-        <div className="flex flex-wrap sm:flex-1 items-center justify-center sm:justify-around px-6 py-4 gap-6 relative z-20">
+        <div className="flex flex-wrap sm:flex-1 items-center justify-center sm:justify-around px-6 py-4 gap-6 relative z-0">
           <div className="flex items-center sm:items-center justify-center gap-3 min-w-[120px]">
             <h1 className="text-4xl sm:text-6xl font-extrabold text-primary">
               {concesionesDef.toLocaleString()}

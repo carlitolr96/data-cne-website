@@ -1,12 +1,30 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { assets } from "@/assets/assets";
 import Boton from "@/components/Boton";
 import Image from "next/image";
+import { animateNumber } from "@/utils/animations";
 
 export default function Storage() {
+  const proyectosRef = useRef<HTMLHeadingElement | null>(null);
+  const energiaRef = useRef<HTMLParagraphElement | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (proyectosRef.current) {
+      animateNumber(proyectosRef.current, 25);
+    }
+    if (energiaRef.current) {
+      animateNumber(energiaRef.current, 234958);
+    }
+  }, []);
+
   return (
-    <section className="bg-white relative overflow-hidden py-16">
+    <section
+      ref={sectionRef}
+      className="bg-white relative overflow-hidden py-16"
+    >
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start relative">
         <div className="hidden md:block absolute top-1/2 left-1/2 w-[2px] h-[35%] bg-red transform -translate-x-1/2 -translate-y-1/2" />
         <div className="flex flex-col space-y-6 text-primary">
@@ -64,15 +82,23 @@ export default function Storage() {
             <span className="block w-12 h-[3px] bg-red mt-1 ml-auto" />
 
             <div className="flex items-center justify-end gap-3 mt-6">
-              <h1 className="text-4xl sm:text-6xl font-extrabold">25</h1>
+              <h1
+                ref={proyectosRef}
+                className="text-4xl sm:text-6xl font-extrabold"
+              >
+                0
+              </h1>
               <span className="text-sm sm:text-base leading-tight">
                 Proyectos fotovoltaicos
                 <br /> con almacenamiento
               </span>
             </div>
 
-            <p className="font-extrabold text-2xl md:text-5xl mt-4">
-              234,958 MWh
+            <p
+              ref={energiaRef}
+              className="font-extrabold text-2xl md:text-7xl mt-4"
+            >
+              0 MWh
             </p>
           </div>
 

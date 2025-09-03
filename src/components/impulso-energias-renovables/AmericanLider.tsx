@@ -42,7 +42,7 @@ export default function AmericanLider() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-4 flex flex-col items-center justify-end text-center min-h-screen py-16">
-        <div className="mb-34 relative z-10">
+        <div className="mb-34 relative z-0">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
             <span className="text-primary">REPÚBLICA DOMINICANA, </span>
             <span className="bg-red text-white px-4 py-2 font-extrabold">

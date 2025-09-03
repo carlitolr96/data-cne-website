@@ -25,10 +25,10 @@ const Loader: React.FC = () => {
       ref={sectionRef}
       className="relative w-full flex items-center justify-center overflow-hidden h-[600px] sm:h-[550px] min-h-[450px] bg-[url('/image-loader.jpg')] bg-cover bg-center"
     >
-      <div className="absolute inset-0 bg-gradient-to-bl from-primary z-0" />
-      <div className="absolute inset-0 bg-primary opacity-30 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-bl from-primary" />
+      <div className="absolute inset-0 bg-primary opacity-30 " />
 
-      <div className="relative z-10 text-center text-white max-w-5xl mx-auto px-4 sm:px-6">
+      <div className="relative z-0 text-center text-white max-w-5xl mx-auto px-4 sm:px-6">
         <div className="mb-6 sm:mb-8">
           <h1 className="text-2xl sm:text-4xl md:text-4xl font-bold mb-10 leading-tight">
             Cerca del

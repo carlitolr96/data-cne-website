@@ -74,7 +74,7 @@ export default function MapsLocation() {
           </div>
         </div>
 
-        <div className="relative z-10 min-h-screen flex items-start justify-end pt-16 md:pt-60 pr-6 md:pr-12">
+        <div className="relative z-0 min-h-screen flex items-start justify-end pt-16 md:pt-60 pr-6 md:pr-12">
           <div className="flex flex-col items-end max-w-md">
             <div className="flex items-center gap-2 bg-red px-4 py-2 mb-6">
               <Image src={assets.BoxChart} alt="Icon Constructions" width={25} height={25} />

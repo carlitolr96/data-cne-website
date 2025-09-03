@@ -1,6 +1,5 @@
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { PiSolarPanelDuotone } from "react-icons/pi";
-import { TbHome } from "react-icons/tb";
 import { Home, Inbox, Calendar, Search, Settings } from "lucide-react";
 import { IconType } from "react-icons";
 
@@ -180,7 +179,6 @@ export const assets = {
   TeamsIcon,
   logoAzulDataCNE,
   PiSolarPanelDuotone,
-  TbHome,
   CardDerecho,
   CardIzquierdo,
   METARD2036,
