@@ -12,8 +12,8 @@ import Concession from "@/components/impulso-energias-renovables/Concession";
 import Storage from "@/components/impulso-energias-renovables/Storage"
 import Stage from "@/components/impulso-energias-renovables/Stage";
 import Incentives from "@/components/impulso-energias-renovables/Incentives";
-// import FeedGrid from "@/components/impulso-energias-renovables/FeedGrid";
-// import AmericanLider from "@/components/impulso-energias-renovables/AmericanLider";
+import FeedGrid from "@/components/impulso-energias-renovables/FeedGrid";
+import AmericanLider from "@/components/impulso-energias-renovables/AmericanLider";
 import RecordInvestments from "@/components/impulso-energias-renovables/RecordInvestments";
 import AttractiveReliable from "@/components/impulso-energias-renovables/AttractiveReliable";
 import Saving from "@/components/impulso-energias-renovables/Saving"
@@ -33,8 +33,8 @@ export default function ImpulsoEnergíasRenovables() {
       <Storage />
       <Stage />
       <Incentives />
-      {/* <FeedGrid /> */}
-      {/* <AmericanLider /> */}
+      <FeedGrid />
+      <AmericanLider />
       <RecordInvestments />
       <AttractiveReliable />
       <Saving />

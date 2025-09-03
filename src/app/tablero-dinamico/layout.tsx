@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import SideBarNavTwo from "@/components/tablero-dinamico/SideBarNavTwo";
+import SideBarNav from "@/components/tablero-dinamico/SideBarNav";
 import { Menu, X } from "lucide-react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -26,7 +26,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             : `${isOpen ? "w-64" : "w-16"} relative h-full`
         }`}
       >
-        <SideBarNavTwo isOpen={isOpen} />
+        <SideBarNav isOpen={isOpen} />
       </div>
 
       {isMobile && isOpen && (

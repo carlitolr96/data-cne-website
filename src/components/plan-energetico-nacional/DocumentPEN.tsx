@@ -2,7 +2,7 @@
 
 export default function DocumentPEN() {
   return (
-    <div className="relative z-10 bg-white w-full py-5">
+    <div className="relative bg-white w-full py-5">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-12 px-6">
         
         <div className="hidden md:block" />

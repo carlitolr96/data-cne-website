@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { assets, slideoperations } from "../../assets/assets";
-import gsap from "gsap";
+import { animateNumbers } from "@/utils/animations";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -18,37 +18,11 @@ export default function Operations() {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const animateNumbers = () => {
-      if (projectsRef.current) {
-        const obj = { val: 0 };
-        gsap.to(obj, {
-          val: 35,
-          duration: 1.5,
-          ease: "power3.out",
-          onUpdate: () => {
-            projectsRef.current!.textContent = `${Math.floor(obj.val)} PROYECTOS`;
-          },
-        });
-      }
-
-      if (capacityRef.current) {
-        const obj = { val: 0 };
-        gsap.to(obj, {
-          val: 1436.31,
-          duration: 1.8,
-          ease: "power3.out",
-          onUpdate: () => {
-            capacityRef.current!.textContent = `${obj.val.toFixed(2)} MW`;
-          },
-        });
-      }
-    };
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            animateNumbers();
+            animateNumbers(projectsRef.current, capacityRef.current);
           }
         });
       },

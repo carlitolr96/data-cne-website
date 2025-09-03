@@ -90,6 +90,11 @@ import VoltageTowerBar from "../assets/VoltageTowerBar.svg";
 import HomeBar from "../assets/HomeBar.svg";
 import TeamsIcon from "../assets/TemsIcon.svg";
 
+//Plan Energetico Nacional
+import METARD2036 from "../assets/METARD2036.svg";
+import CityPEN from "../assets/City-PEN.svg";
+import ArrowBottomIcon from "../assets/Arrow-Bottom-Icon.svg";
+
 export const assets = {
   logoCNE,
   logoDataCNE,
@@ -178,7 +183,16 @@ export const assets = {
   TbHome,
   CardDerecho,
   CardIzquierdo,
+  METARD2036,
+  CityPEN,
+  ArrowBottomIcon,
 } as const;
+
+export interface MainAxes {
+  number: string;
+  title: string;
+  description: string;
+}
 
 export interface TableroDinamicoBar {
   icon: IconType;
@@ -265,6 +279,32 @@ export interface EditionPen {
   description: string;
 }
 
+export const mainaxes: MainAxes[] = [
+  {
+    number: "1",
+    title: "PLANIFICACIÓN ESTRATÉGICA",
+    description:
+      " QUE RESPONDA AL CRECIMIENTO ECONÓMICO Y A LA CRECIENTE DEMANDA DE ELECTRICIDAD.",
+  },
+  {
+    number: "2",
+    title: "INVERSIONES EN INFRAESTRUCTURA",
+    description: " Y TECNOLOGÍA PARA FORTALECER LA SEGURIDAD ENERGÉTICA.",
+  },
+  {
+    number: "3",
+    title: "INTEGRACIÓN DE TECNOLOGÍAS",
+    description:
+      " DE ALMACENAMIENTO PARA OPTIMIZAR EL USO DE ENERGÍAS RENOVABLES.",
+  },
+  {
+    number: "4",
+    title: "GENERACIÓN TÉRMICA FLEXIBLE,",
+    description:
+      " CON EL GAS NATURAL COMO ALIADO CLAVE PARA GARANTIZAR UN SUMINISTRO CONFIABLE Y UNA TRANSICIÓN EQUILIBRADA.",
+  },
+];
+
 export const teammembers: TeamMembers[] = [
   {
     name: "John Doe",
@@ -337,11 +377,6 @@ export const editionpen: EditionPen[] = [
 ];
 
 export const tablerodinamicobar: TableroDinamicoBar[] = [
-  {
-    icon: TbHome,
-    title: "Inicio",
-    url: "/tablero-dinamico/",
-  },
   {
     icon: FaFacebookF,
     title: "Demanda Eléctrica Nacional",
@@ -452,26 +487,46 @@ export const renewableenergiesfonts: RenewableEnergiesFonts[] = [
 ];
 
 export const navitemsone: NavItemsOne[] = [
-  { icon: HomeNav, label: "INICIO", url: "/" },
-  { icon: ZapNav, label: "PLAN ENERGÉTICO NACIONAL", url: "/plan-energetico" },
+  {
+    icon: HomeNav,
+    label: "INICIO",
+    url: "/",
+  },
+  {
+    icon: ZapNav,
+    label: "PLAN ENERGÉTICO NACIONAL",
+    url: "/plan-energetico-nacional",
+  },
   {
     icon: BatteryNav,
     label: "IMPULSO A LAS ENERGÍAS RENOVABLES",
-    url: "/impulso",
+    url: "/impulso-energias-renovables",
   },
-  { icon: SolarNav, label: "GENERACIÓN DISTRIBUIDA", url: "/generacion" },
-  { icon: FileTextNav, label: "PLANES Y NORMATIVAS", url: "/planes" },
+  {
+    icon: SolarNav,
+    label: "GENERACIÓN DISTRIBUIDA",
+    url: "",
+  },
+  {
+    icon: FileTextNav,
+    label: "PLANES Y NORMATIVAS",
+    url: "",
+  },
   {
     icon: NuclearNav,
     label: "ASUNTOS RADIOLÓGICOS Y NUCLEARES",
-    url: "/nuclear",
+    url: "",
   },
   {
     icon: LightBulbNav,
     label: "CULTURA DE AHORRO ENERGÉTICO",
-    url: "/cultura",
+    url: "/cultura-ahorro-energetico",
   },
-  { icon: BarChartNav, label: "TABLEROS INTERACTIVOS", url: "/tableros" },
+  {
+    icon: BarChartNav,
+    label: "TABLEROS INTERACTIVOS",
+    url: "",
+  },
 ];
 
 export const attractivereliable: AttractiveReliable[] = [

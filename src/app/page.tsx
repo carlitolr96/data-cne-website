@@ -19,6 +19,7 @@ export default function Home() {
         }}
         src="/Background-Video-CNE.mp4"
         autoPlay
+        playsInline
         muted
         loop
       />

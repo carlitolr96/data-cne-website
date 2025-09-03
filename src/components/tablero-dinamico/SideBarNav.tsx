@@ -21,6 +21,7 @@ export default function SideBarNavTwo({ isOpen }: { isOpen: boolean }) {
             className="transition-all duration-300"
           />
         </Link>
+        
       </div>
 
       <nav className="flex-grow px-2">

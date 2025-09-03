@@ -15,10 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"
-      ></meta>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content={metadata.description} />
+        <meta charSet="UTF-8" />
+      </head>
       <body className={montserrat.className}>{children}</body>
     </html>
   );

@@ -10,7 +10,6 @@ import {
   ChartOptions,
 } from "chart.js";
 
-// Registrar elementos de Chart.js
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface CircularBarProps {

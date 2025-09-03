@@ -2,46 +2,28 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { stageicon } from "@/assets/assets";
 import Boton from "@/components/Boton";
-
-gsap.registerPlugin(ScrollTrigger);
+import { animateStagePaths } from "@/utils/animations";
 
 export default function Stage() {
-  const pathRefs = useRef<Array<SVGPathElement | null>>([]);
+  const pathRefs = useRef<(SVGPathElement | null)[]>([]);
 
   useEffect(() => {
-    pathRefs.current.forEach((path) => {
-      if (!path) return;
-      const length = path.getTotalLength();
-      gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-      gsap.to(path, {
-        strokeDashoffset: 0,
-        ease: "none",
-        onComplete: () => {
-          gsap.to(path, { fill: "#23B53E", duration: 0.5 });
-        },
-        scrollTrigger: {
-          trigger: path.closest(".stage-item"),
-          start: "top 80%",
-          end: "bottom 20%",
-          scrub: true,
-        },
-      });
-    });
+    animateStagePaths(pathRefs.current);
   }, []);
 
   return (
     <section className="stage-section bg-primary text-white py-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative px-6">
+        {/* Encabezado */}
         <div className="flex justify-center items-center">
           <h2 className="text-center text-lg font-bold bg-green px-4 py-2 inline-block mx-auto">
             ETAPAS DE UN PROYECTO DE GENERACIÓN RENOVABLE
           </h2>
         </div>
 
+        {/* Etapas */}
         <div className="mt-12 flex flex-col">
           {stageicon.map((stage, index) => (
             <div
@@ -55,6 +37,7 @@ export default function Stage() {
                   : "md:flex-row-reverse"
               }`}
             >
+              {/* Ícono */}
               <div className="shrink-0">
                 <Image
                   src={stage.icon!}
@@ -65,6 +48,7 @@ export default function Stage() {
                 />
               </div>
 
+              {/* Path + contenido */}
               <div className="w-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,6 +77,7 @@ export default function Stage() {
                           : "flex-row"
                       }`}
                     >
+                      {/* Label lateral */}
                       <div
                         className={`hidden md:flex flex-col ${
                           Number(stage.id) % 2 === 0
@@ -107,6 +92,7 @@ export default function Stage() {
                         </span>
                       </div>
 
+                      {/* Contenido principal */}
                       <div
                         className={`flex-1 flex flex-col md:flex-row items-center gap-5 ${
                           Number(stage.id) % 2 === 0
@@ -143,6 +129,7 @@ export default function Stage() {
           ))}
         </div>
 
+        {/* CTA final */}
         <div className="mt-12 flex flex-col items-center justify-center text-center">
           <p className="font-bold text-white text-lg">
             ¿Eres un desarrollador o inversionista? <br />

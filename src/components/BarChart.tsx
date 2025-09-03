@@ -1,9 +1,10 @@
+// En BarChart.tsx
 "use client";
 
 import { useRef, useEffect, useCallback } from "react";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
-import gsap from "gsap";
+import { animateChartsTwo, resetCharts } from "../utils/animations";
 
 interface BarData {
   value: number;
@@ -17,52 +18,24 @@ interface BarChartProps {
 }
 
 export default function BarChart({ data, heightFactor = 1.5 }: BarChartProps) {
-  const barsRef = useRef<HTMLDivElement[]>([]);
-  const numbersRef = useRef<HTMLSpanElement[]>([]);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const barsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const numbersRef = useRef<(HTMLSpanElement | null)[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
 
+  // Reinicializar arrays cuando los datos cambien
   useEffect(() => {
     barsRef.current = [];
     numbersRef.current = [];
   }, [data]);
 
-  const resetCharts = useCallback(() => {
-    barsRef.current.forEach((bar, i) => {
-      if (bar) bar.style.height = "0px";
-      if (numbersRef.current[i]) numbersRef.current[i].textContent = "0 MW";
-    });
+  // Funciones para establecer referencias
+  const setBarRef = useCallback((el: HTMLDivElement | null, index: number) => {
+    barsRef.current[index] = el;
   }, []);
 
-  const animateCharts = useCallback(() => {
-    data.forEach((item, i) => {
-      const bar = barsRef.current[i];
-      const number = numbersRef.current[i];
-
-      if (bar && number) {
-        const barHeight = item.value * heightFactor;
-
-        gsap.fromTo(
-          bar,
-          { height: 0 },
-          {
-            height: `${barHeight}px`,
-            duration: 1.2,
-            ease: "power3.out",
-          }
-        );
-
-        const obj = { val: 0 };
-        gsap.to(obj, {
-          val: item.value,
-          duration: 1.3,
-          ease: "power3.out",
-          onUpdate() {
-            number.textContent = `${Math.floor(obj.val)} MW`;
-          },
-        });
-      }
-    });
-  }, [data, heightFactor]);
+  const setNumberRef = useCallback((el: HTMLSpanElement | null, index: number) => {
+    numbersRef.current[index] = el;
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -71,10 +44,11 @@ export default function BarChart({ data, heightFactor = 1.5 }: BarChartProps) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            resetCharts();
-            animateCharts();
+            // Pasar las referencias completas
+            resetCharts({ barsRef, numbersRef });
+            animateChartsTwo({ data, barsRef, numbersRef, heightFactor });
           } else {
-            resetCharts();
+            resetCharts({ barsRef, numbersRef });
           }
         });
       },
@@ -82,9 +56,8 @@ export default function BarChart({ data, heightFactor = 1.5 }: BarChartProps) {
     );
 
     observer.observe(containerRef.current);
-
     return () => observer.disconnect();
-  }, [animateCharts, resetCharts]);
+  }, [data, heightFactor]);
 
   return (
     <div
@@ -94,17 +67,13 @@ export default function BarChart({ data, heightFactor = 1.5 }: BarChartProps) {
       {data.map((item, i) => (
         <div key={item.label} className="relative flex flex-col items-center">
           <span
-            ref={(el) => {
-              if (el) numbersRef.current[i] = el;
-            }}
+            ref={(el) => setNumberRef(el, i)}
             className="mb-1 text-primary text-xl font-medium"
           >
             0 MW
           </span>
           <div
-            ref={(el) => {
-              if (el) barsRef.current[i] = el;
-            }}
+            ref={(el) => setBarRef(el, i)}
             className="w-16 bg-primary relative z-10"
             style={{
               backgroundColor: item.color || "#000000",

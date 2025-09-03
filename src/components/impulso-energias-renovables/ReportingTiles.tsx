@@ -1,63 +1,22 @@
 "use client";
 
-import React, { useRef, useEffect, useCallback } from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { reportingtile } from "../../assets/assets";
-import gsap from "gsap";
+import { animateNumberList } from "@/utils/animations";
 
 export default function ReportingTiles() {
-  const numbersRef = useRef<HTMLSpanElement[]>([]);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const numbersRef = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
-    numbersRef.current = [];
-  }, []);
-
-  const parseNumber = (value: string) => {
-    const clean = value.replace(/[^0-9]/g, "");
-    return parseInt(clean, 10);
-  };
-
-  const animateNumbers = useCallback(() => {
-    reportingtile.forEach((tile, i) => {
-      const numberEl = numbersRef.current[i];
-      if (!numberEl) return;
-
-      const targetValue = parseNumber(tile.number);
-      const obj = { val: 0 };
-
-      gsap.to(obj, {
-        val: targetValue,
-        duration: 1.5,
-        ease: "power3.out",
-        onUpdate: () => {
-          numberEl.textContent = obj.val.toLocaleString();
-        },
-      });
-    });
-  }, []);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateNumbers();
-          }
-        });
-      },
-      { threshold: 0.3 }
+    const targets = reportingtile.map((tile) =>
+      parseInt(tile.number.replace(/[^0-9]/g, ""), 10)
     );
-
-    observer.observe(containerRef.current);
-
-    return () => observer.disconnect();
-  }, [animateNumbers]);
+    animateNumberList(numbersRef.current, targets);
+  }, []);
 
   return (
-    <section ref={containerRef} className="bg-primary py-3">
+    <section className="bg-primary py-3">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 w-full">
           {reportingtile.map((tile, index) => (

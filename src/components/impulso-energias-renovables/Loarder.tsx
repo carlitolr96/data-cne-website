@@ -1,10 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { animateLoader } from "@/utils/animations";
 
 const Loader: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -14,40 +11,13 @@ const Loader: React.FC = () => {
   const percent2030Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-        once: true,
-      },
-    });
-
-    tl.fromTo(
+    animateLoader(
+      sectionRef.current,
       progressRef.current,
-      { width: "0%" },
-      { width: "100%", duration: 3.5, ease: "power2.out" }
+      percent2019Ref.current,
+      percent2025Ref.current,
+      percent2030Ref.current
     );
-
-    const animateNumber = (el: HTMLDivElement | null, endValue: number) => {
-      if (!el) return;
-
-      const obj = { val: 0 };
-
-      gsap.to(obj, {
-        val: endValue,
-        duration: 1.5,
-        ease: "power1.out",
-        onUpdate: () => {
-          el.innerText = `${Math.floor(obj.val)}%`;
-        },
-      });
-    };
-
-    animateNumber(percent2019Ref.current, 7);
-    animateNumber(percent2025Ref.current, 25);
-    animateNumber(percent2030Ref.current, 30);
   }, []);
 
   return (
@@ -71,16 +41,10 @@ const Loader: React.FC = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-center">
           <div className="text-center items-center flex flex-col">
-            <div
-              ref={percent2019Ref}
-              className="text-2xl sm:text-3xl font-bold mb-1"
-            >
+            <div ref={percent2019Ref} className="text-2xl sm:text-3xl font-bold mb-1">
               0%
             </div>
-            <div
-              className="w-5 h-5 rounded-full border-2 border-white my-2"
-              style={{ backgroundColor: "#FFBF00" }}
-            />
+            <div className="w-5 h-5 rounded-full border-2 border-white my-2" style={{ backgroundColor: "#FFBF00" }} />
             <div className="text-sm sm:text-base font-semibold">2019</div>
           </div>
 
@@ -90,24 +54,17 @@ const Loader: React.FC = () => {
                 ref={progressRef}
                 className="h-full rounded-full"
                 style={{
-                  background:
-                    "linear-gradient(90deg, #FFBF00 0%, #7DB925 70%, #19E53E 100%)",
+                  background: "linear-gradient(90deg, #FFBF00 0%, #7DB925 70%, #19E53E 100%)",
                 }}
               />
             </div>
           </div>
 
           <div className="text-center items-center flex flex-col">
-            <div
-              ref={percent2025Ref}
-              className="text-2xl sm:text-3xl font-bold mb-1"
-            >
+            <div ref={percent2025Ref} className="text-2xl sm:text-3xl font-bold mb-1">
               0%
             </div>
-            <div
-              className="w-5 h-5 rounded-full mx-auto border-2 border-white my-1"
-              style={{ backgroundColor: "#7DB925" }}
-            />
+            <div className="w-5 h-5 rounded-full mx-auto border-2 border-white my-1" style={{ backgroundColor: "#7DB925" }} />
             <div className="text-sm sm:text-base font-semibold">2025</div>
           </div>
 
@@ -116,16 +73,10 @@ const Loader: React.FC = () => {
           </div>
 
           <div className="text-center items-center flex flex-col">
-            <div
-              ref={percent2030Ref}
-              className="text-2xl sm:text-3xl font-bold mb-1"
-            >
+            <div ref={percent2030Ref} className="text-2xl sm:text-3xl font-bold mb-1">
               0%
             </div>
-            <div
-              className="w-5 h-5 rounded-full mx-auto border-2 border-white my-1"
-              style={{ backgroundColor: "#19E53E" }}
-            />
+            <div className="w-5 h-5 rounded-full mx-auto border-2 border-white my-1" style={{ backgroundColor: "#19E53E" }} />
             <div className="text-sm sm:text-base font-semibold">2030</div>
           </div>
         </div>

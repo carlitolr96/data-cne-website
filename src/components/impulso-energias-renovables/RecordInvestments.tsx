@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import DobleBarChart from "../DobleBarChart";
 import CircularBar from "../CircularBar";
+import { animateCharts } from "@/utils/animations";
 
 export default function RecordInvestments() {
   const data = [30, 25, 20, 25];
@@ -17,8 +18,19 @@ export default function RecordInvestments() {
     },
   ];
 
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      animateCharts(sectionRef.current);
+    }
+  }, []);
+
   return (
-    <section className="bg-primary py-10 sm:py-14">
+    <section
+      ref={sectionRef}
+      className="bg-primary py-10 sm:py-14"
+    >
       <div className="max-w-6xl min-h-100 mx-auto px-4 flex flex-col items-center text-center">
         <h1 className="font-extrabold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white px-3 py-1 uppercase tracking-wide mb-3">
           INVERSIONES RÉCORD

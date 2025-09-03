@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { assets } from "@/assets/assets";
-import gsap from "gsap";
+import { animateAmericanLiderCounters } from "@/utils/animations";
+import Image from "next/image";
 
 export default function AmericanLider() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -11,52 +11,21 @@ export default function AmericanLider() {
   const [rankingLatam, setRankingLatam] = useState(0);
   const [rankingGlobal, setRankingGlobal] = useState(0);
 
-  const finalValues = {
-    rankingLatam: 5,
-    rankingGlobal: 24,
-  };
+  const finalValues = { rankingLatam: 5, rankingGlobal: 24 };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Reiniciar los contadores antes de animar
-            setRankingLatam(0);
-            setRankingGlobal(0);
-
-            gsap.to({ val: 0 }, {
-              val: finalValues.rankingLatam,
-              duration: 1.5,
-              ease: "power1.out",
-              onUpdate: function () {
-                setRankingLatam(Math.floor(this.targets()[0].val));
-              },
-            });
-
-            gsap.to({ val: 0 }, {
-              val: finalValues.rankingGlobal,
-              duration: 1.5,
-              ease: "power1.out",
-              onUpdate: function () {
-                setRankingGlobal(Math.floor(this.targets()[0].val));
-              },
-            });
-          }
-        });
-      },
-      { threshold: 0.3 }
+    const cleanup = animateAmericanLiderCounters(
+      sectionRef.current,
+      setRankingLatam,
+      setRankingGlobal,
+      finalValues
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
+    return () => cleanup && cleanup();
   }, []);
 
   return (
-    <section
-      className="relative overflow-hidden min-h-screen"
-      ref={sectionRef}
-    >
+    <section ref={sectionRef} className="relative overflow-hidden min-h-screen">
       <div className="absolute inset-0">
         <div
           className="absolute top-0 left-0 w-full"
@@ -69,7 +38,6 @@ export default function AmericanLider() {
             className="object-cover"
           />
         </div>
-
         <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gray"></div>
       </div>
 
@@ -81,6 +49,7 @@ export default function AmericanLider() {
               LÍDER EN LA TRANSICIÓN
             </span>
           </h1>
+
           <div className="bg-red text-white px-4 py-2 font-extrabold text-2xl md:text-3xl lg:text-4xl">
             ENERGÉTICA EN AMÉRICA LATINA Y EL CARIBE
           </div>

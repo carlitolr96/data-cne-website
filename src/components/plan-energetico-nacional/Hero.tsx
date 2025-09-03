@@ -24,13 +24,13 @@ export default function Hero() {
     <section className="relative min-h-screen flex flex-col">
       <div className="absolute inset-0">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-contain bg-center bg-no-repeat -translate-y-40"
           style={{
             backgroundImage: `
               linear-gradient(
                 to bottom, 
-                rgba(19, 52, 109, 1) 15%, 
-                rgba(37, 102, 211, 0.1) 110%
+                rgba(19, 52, 109, 1) 50%, 
+                rgba(37, 102, 211, 0.1) 100%
               ),
               url('/BannerPEN.jpg')
             `,
@@ -50,7 +50,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute z-20 top-[63vh] left-[32%]">
+      <div className="absolute z-5 top-[63vh] left-[32%]">
         <div
           className="overflow-hidden transition-transform duration-200 ease-out cursor-pointer max-w-80"
           onMouseMove={handleMove}

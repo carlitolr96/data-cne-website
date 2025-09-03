@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { assets, navitemsone } from "../assets/assets";
 import { Squash as Hamburger } from "hamburger-react";
 import Boton from "@/components/Boton";
@@ -9,17 +9,30 @@ import Link from "next/link";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50">
-      <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
+        isScrolled ? "bg-white shadow-sm" : "bg-transparent"
+      }`}
+    >
+      <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-3.5">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src={assets.logoDataCNE}
+            src={isScrolled ? assets.logoAzulDataCNE : assets.logoDataCNE}
             alt="CNE Logo"
             width={200}
             height={48}
-            className="max-w-[150px] w-full h-auto"
+            className="max-w-[120px] w-full h-auto transition-all duration-300"
           />
         </Link>
 
@@ -27,7 +40,7 @@ const NavBar = () => {
           toggled={isMenuOpen}
           toggle={setIsMenuOpen}
           size={25}
-          color="#fff"
+          color={isScrolled ? "#17447a" : "#fff"}
         />
       </nav>
 
