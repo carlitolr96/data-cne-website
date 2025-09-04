@@ -17,7 +17,7 @@ export default function Satisfaction() {
         <div className="flex-1 bg-primary"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl flex flex-col items-center">
+      <div className="relative w-full max-w-7xl flex flex-col items-center">
         <Swiper
           modules={[Pagination, Autoplay]}
           pagination={{

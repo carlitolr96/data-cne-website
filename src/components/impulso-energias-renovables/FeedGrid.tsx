@@ -15,7 +15,7 @@ export default function FeedGrid() {
       <div class="relative w-full h-0 pb-[56.25%]">
         <iframe 
           class="absolute top-0 left-0 w-full h-full rounded-xl shadow-lg"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" 
+          src="" 
           frameborder="0" 
           allow="autoplay; encrypted-media" 
           allowfullscreen>

@@ -88,7 +88,7 @@ export default function Operations() {
             }}
             autoplay={{ delay: 3000 }}
             loop={true}
-            className="overflow-hidden w-full max-w-[600px] mx-auto"
+            className="overflow-hidden w-full max-w-[350px] sm:max-w-[600px] mx-auto"
           >
             {slideoperations.map((slide, index) => (
               <SwiperSlide key={index}>

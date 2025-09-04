@@ -82,15 +82,15 @@ export default function Goal() {
   return (
     <section className="bg-light relative" ref={sectionRef}>
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row relative">
-        <div className="flex flex-col items-center justify-center bg-green text-white px-8 py-6 sm:rounded-r-full rounded-r-none z-10">
+        <div className="flex flex-col items-center justify-center bg-green text-white px-8 py-6 sm:rounded-r-full rounded-r-none">
           <h1 className="font-extrabold text-base sm:text-2xl uppercase mt-0 sm:mt-2 px-15">
             Meta
           </h1>
         </div>
 
-        <div className="hidden sm:block absolute top-0 left-[calc(31.5rem)] w-[calc(95%-8rem)] h-full bg-gray z-11"></div>
+        <div className="hidden sm:block absolute top-0 left-[calc(31.5rem)] w-[calc(95%-8rem)] h-full bg-gray"></div>
 
-        <div className="flex flex-wrap sm:flex-1 items-center justify-center sm:justify-around px-6 py-4 gap-6 relative z-20">
+        <div className="flex flex-wrap sm:flex-1 items-center justify-center sm:justify-around px-6 py-4 gap-6 relative">
           <div className="flex items-center sm:items-center justify-center gap-3 min-w-[120px]">
             <h1 className="text-2xl sm:text-5xl font-extrabold text-primary">
               {format.format(numberDef)}
