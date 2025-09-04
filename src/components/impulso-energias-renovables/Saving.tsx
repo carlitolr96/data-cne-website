@@ -48,7 +48,7 @@ export default function Saving() {
                   </span>{" "}
                   US$0.00
                 </h3>
-                <span className="bg-green text-white px-3 py-1 font-medium text-sm sm:text-base md:text-lg ml-15 inline-block">
+                <span className="bg-green text-white px-3 py-1 font-medium text-sm sm:text-base md:text-lg inline-block">
                   millones
                 </span>
               </div>

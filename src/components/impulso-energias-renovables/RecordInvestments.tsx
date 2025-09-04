@@ -28,7 +28,6 @@ export default function RecordInvestments() {
 
   return (
     <section
-      ref={sectionRef}
       className="bg-primary py-10 sm:py-14"
     >
       <div className="max-w-6xl min-h-100 mx-auto px-4 flex flex-col items-center text-center">

@@ -36,12 +36,24 @@ const NavBar = () => {
           />
         </Link>
 
-        <Hamburger
-          toggled={isMenuOpen}
-          toggle={setIsMenuOpen}
-          size={25}
-          color={isScrolled ? "#17447a" : "#fff"}
-        />
+        <div className="flex items-center gap-2 sm:gap-5">
+          <Boton
+            href="/tablero-dinamico"
+            color="green"
+            iconPosition="left"
+            icon="GrapChart"
+            className="uppercase whitespace-nowrap text-xs px-3 py-2 sm:text-sm sm:px-4 sm:py-2"
+          >
+            Tablero Dinamico
+          </Boton>
+
+          <Hamburger
+            toggled={isMenuOpen}
+            toggle={setIsMenuOpen}
+            size={25}
+            color={isScrolled ? "#17447a" : "#fff"}
+          />
+        </div>
       </nav>
 
       {isMenuOpen && (
@@ -87,16 +99,6 @@ const NavBar = () => {
               <span className="text-sm font-bold">{item.label}</span>
             </Link>
           ))}
-
-          <Boton
-            href="/tablero-dinamico"
-            color="green"
-            iconPosition="left"
-            icon="GrapChart"
-            className="uppercase mt-3"
-          >
-            Tablero Dinamico
-          </Boton>
         </div>
       </aside>
     </header>

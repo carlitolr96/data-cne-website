@@ -44,7 +44,7 @@ export default function SideBarNavTwo({
   };
 
   return (
-    <div className="flex flex-col h-full md:h-auto">
+    <div className="flex flex-col h-screen">
       <div className="flex items-center justify-between py-4 px-2">
         <Link href="/" onClick={handleItemClick}>
           <Image

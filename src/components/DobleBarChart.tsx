@@ -1,8 +1,7 @@
-// En DobleBarChart.tsx
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
-import { resetDoubleCharts, animateDoubleCharts } from "../utils/animations";
+import { useRef, useEffect } from "react";
+import { animateDoubleCharts } from "../utils/animations";
 
 interface DoubleBarData {
   value1: number;
@@ -17,16 +16,17 @@ interface DobleBarChartProps {
   heightFactor?: number;
 }
 
-export default function DobleBarChart({ data, heightFactor = 1.5 }: DobleBarChartProps) {
-  // Inicializar las referencias como arrays vacíos
-  const bars1Ref = useRef<(HTMLDivElement | null)[]>([]);
-  const bars2Ref = useRef<(HTMLDivElement | null)[]>([]);
-  const numbers1Ref = useRef<(HTMLSpanElement | null)[]>([]);
-  const numbers2Ref = useRef<(HTMLSpanElement | null)[]>([]);
-  const centerNumberRef = useRef<(HTMLSpanElement | null)[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
+export default function DobleBarChart({
+  data,
+  heightFactor = 1.5,
+}: DobleBarChartProps) {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const bars1Ref = useRef<HTMLDivElement[]>([]);
+  const bars2Ref = useRef<HTMLDivElement[]>([]);
+  const numbers1Ref = useRef<HTMLSpanElement[]>([]);
+  const numbers2Ref = useRef<HTMLSpanElement[]>([]);
+  const centerNumberRef = useRef<HTMLSpanElement[]>([]);
 
-  // Reinicializar arrays cuando los datos cambien
   useEffect(() => {
     bars1Ref.current = [];
     bars2Ref.current = [];
@@ -35,42 +35,11 @@ export default function DobleBarChart({ data, heightFactor = 1.5 }: DobleBarChar
     centerNumberRef.current = [];
   }, [data]);
 
-  // Funciones para establecer referencias
-  const setBar1Ref = useCallback((el: HTMLDivElement | null, index: number) => {
-    bars1Ref.current[index] = el;
-  }, []);
-
-  const setBar2Ref = useCallback((el: HTMLDivElement | null, index: number) => {
-    bars2Ref.current[index] = el;
-  }, []);
-
-  const setNumber1Ref = useCallback((el: HTMLSpanElement | null, index: number) => {
-    numbers1Ref.current[index] = el;
-  }, []);
-
-  const setNumber2Ref = useCallback((el: HTMLSpanElement | null, index: number) => {
-    numbers2Ref.current[index] = el;
-  }, []);
-
-  const setCenterNumberRef = useCallback((el: HTMLSpanElement | null, index: number) => {
-    centerNumberRef.current[index] = el;
-  }, []);
-
   useEffect(() => {
-    if (!containerRef.current) return;
-
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Pasar las referencias completas, no solo .current
-            resetDoubleCharts({
-              bars1Ref,
-              bars2Ref,
-              numbers1Ref,
-              numbers2Ref,
-              centerNumberRef
-            });
             animateDoubleCharts({
               data,
               bars1Ref,
@@ -78,69 +47,101 @@ export default function DobleBarChart({ data, heightFactor = 1.5 }: DobleBarChar
               numbers1Ref,
               numbers2Ref,
               centerNumberRef,
-              heightFactor
+              heightFactor,
             });
-          } else {
-            resetDoubleCharts({
-              bars1Ref,
-              bars2Ref,
-              numbers1Ref,
-              numbers2Ref,
-              centerNumberRef
-            });
+            obs.unobserve(entry.target); // deja de observar después de animar
           }
         });
       },
       { threshold: 0.3 }
     );
 
-    observer.observe(containerRef.current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+
+      // FORZAR comprobación inmediata en caso de que ya esté visible
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+      if (rect.top < windowHeight * 0.7 && rect.bottom > windowHeight * 0.3) {
+        animateDoubleCharts({
+          data,
+          bars1Ref,
+          bars2Ref,
+          numbers1Ref,
+          numbers2Ref,
+          centerNumberRef,
+          heightFactor,
+        });
+        observer.unobserve(sectionRef.current);
+      }
+    }
+
     return () => observer.disconnect();
   }, [data, heightFactor]);
 
   return (
-    <div ref={containerRef} className="flex flex-col space-y-8">
+    <div
+      ref={sectionRef}
+      className="flex items-end justify-center space-x-16 h-72 gap-8 relative"
+    >
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-light z-20"></div>
+
       {data.map((item, i) => (
-        <div key={i} className="flex items-end justify-center space-x-4 h-48">
-          {/* Barra 1 */}
-          <div className="flex flex-col items-center">
-            <span
-              ref={(el) => setNumber1Ref(el, i)}
-              className="mb-1 text-sm font-medium"
-            >
-              0 MW
-            </span>
-            <div
-              ref={(el) => setBar1Ref(el, i)}
-              className="w-12 bg-blue-500"
-              style={{ height: "0px", backgroundColor: item.color1 }}
-            ></div>
-          </div>
+        <div
+          key={i}
+          className="relative flex flex-col items-center text-center z-10"
+        >
+          <div className="flex items-end justify-center gap-6 relative">
+            <div className="flex flex-col items-center">
+              <span
+                ref={(el) => {
+                  if (el) numbers1Ref.current[i] = el;
+                }}
+                className="mb-1 text-white text-base font-medium"
+              >
+                0 MW
+              </span>
+              <div
+                ref={(el) => {
+                  if (el) bars1Ref.current[i] = el;
+                }}
+                className="w-16 bg-red"
+                style={{ height: "20px" }}
+              ></div>
+            </div>
 
-          {/* Texto central */}
-          <div className="flex flex-col items-center mx-4">
-            <span
-              ref={(el) => setCenterNumberRef(el, i)}
-              className="text-lg font-bold"
-            >
-              0%
-            </span>
-            <span className="text-sm mt-1">{item.centerText}</span>
-          </div>
+            <div className="flex flex-col items-center justify-center px-4 text-white text-center">
+              <span
+                ref={(el) => {
+                  if (el) centerNumberRef.current[i] = el;
+                }}
+                className="text-3xl font-extrabold"
+              >
+                0%
+              </span>
+              <span className="text-sm font-medium w-40">
+                {item.centerText}
+              </span>
+            </div>
 
-          {/* Barra 2 */}
-          <div className="flex flex-col items-center">
-            <span
-              ref={(el) => setNumber2Ref(el, i)}
-              className="mb-1 text-sm font-medium"
-            >
-              0 MW
-            </span>
-            <div
-              ref={(el) => setBar2Ref(el, i)}
-              className="w-12 bg-red-500"
-              style={{ height: "0px", backgroundColor: item.color2 }}
-            ></div>
+            <div className="flex flex-col items-center">
+              <span
+                ref={(el) => {
+                  if (el) numbers2Ref.current[i] = el;
+                }}
+                className="mb-1 text-white text-3xl font-extrabold bg-green px-2"
+              >
+                0 MW
+              </span>
+              <div
+                ref={(el) => {
+                  if (el) bars2Ref.current[i] = el;
+                }}
+                className="w-16 bg-white"
+                style={{ height: "20px" }}
+              ></div>
+            </div>
           </div>
         </div>
       ))}

@@ -35,7 +35,7 @@ export default function Teams() {
               <h3 className="text-primary text-xl font-semibold mb-1">
                 {items.name}
               </h3>
-              <p className="text-primary">{items.role}</p>
+              <p className="text-green uppercase">{items.role}</p>
             </div>
           ))}
         </div>

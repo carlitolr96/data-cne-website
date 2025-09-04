@@ -447,50 +447,50 @@ interface AnimateDoubleChartsParams {
   heightFactor: number;
 }
 
-export const resetDoubleCharts = ({
-  bars1Ref,
-  bars2Ref,
-  numbers1Ref,
-  numbers2Ref,
-  centerNumberRef,
-}: {
-  bars1Ref: React.MutableRefObject<(HTMLDivElement | null)[]>;
-  bars2Ref: React.MutableRefObject<(HTMLDivElement | null)[]>;
-  numbers1Ref: React.MutableRefObject<(HTMLSpanElement | null)[]>;
-  numbers2Ref: React.MutableRefObject<(HTMLSpanElement | null)[]>;
-  centerNumberRef: React.MutableRefObject<(HTMLSpanElement | null)[]>;
-}) => {
-  // Filtrar y procesar elementos no nulos
-  bars1Ref.current
-    .filter((bar) => bar !== null)
-    .forEach((bar) => {
-      gsap.set(bar!, { height: 0 });
-    });
+// export const resetDoubleCharts = ({
+//   bars1Ref,
+//   bars2Ref,
+//   numbers1Ref,
+//   numbers2Ref,
+//   centerNumberRef,
+// }: {
+//   bars1Ref: React.MutableRefObject<(HTMLDivElement | null)[]>;
+//   bars2Ref: React.MutableRefObject<(HTMLDivElement | null)[]>;
+//   numbers1Ref: React.MutableRefObject<(HTMLSpanElement | null)[]>;
+//   numbers2Ref: React.MutableRefObject<(HTMLSpanElement | null)[]>;
+//   centerNumberRef: React.MutableRefObject<(HTMLSpanElement | null)[]>;
+// }) => {
+//   // Filtrar y procesar elementos no nulos
+//   bars1Ref.current
+//     .filter((bar) => bar !== null)
+//     .forEach((bar) => {
+//       gsap.set(bar!, { height: 0 });
+//     });
 
-  numbers1Ref.current
-    .filter((num) => num !== null)
-    .forEach((num) => {
-      num!.textContent = "0 MW";
-    });
+//   numbers1Ref.current
+//     .filter((num) => num !== null)
+//     .forEach((num) => {
+//       num!.textContent = "0 MW";
+//     });
 
-  bars2Ref.current
-    .filter((bar) => bar !== null)
-    .forEach((bar) => {
-      gsap.set(bar!, { height: 0 });
-    });
+//   bars2Ref.current
+//     .filter((bar) => bar !== null)
+//     .forEach((bar) => {
+//       gsap.set(bar!, { height: 0 });
+//     });
 
-  numbers2Ref.current
-    .filter((num) => num !== null)
-    .forEach((num) => {
-      num!.textContent = "0 MW";
-    });
+//   numbers2Ref.current
+//     .filter((num) => num !== null)
+//     .forEach((num) => {
+//       num!.textContent = "0 MW";
+//     });
 
-  centerNumberRef.current
-    .filter((num) => num !== null)
-    .forEach((num) => {
-      num!.textContent = "0%";
-    });
-};
+//   centerNumberRef.current
+//     .filter((num) => num !== null)
+//     .forEach((num) => {
+//       num!.textContent = "0%";
+//     });
+// };
 
 export const animateDoubleCharts = ({
   data,
@@ -680,7 +680,6 @@ export const animateLineChart = (
    Sección: Animación de paths SVG (Stage)
 ======================================== */
 export const animateStagePaths = (paths: (SVGPathElement | null)[]) => {
-  // Filtrar paths nulos
   const validPaths = paths.filter((path) => path !== null) as SVGPathElement[];
 
   validPaths.forEach((path) => {
@@ -706,6 +705,41 @@ export const animateStagePaths = (paths: (SVGPathElement | null)[]) => {
     });
   });
 };
+
+// utils/animations.ts
+export function animateStagePathsOnScroll(paths: (SVGPathElement | null)[]) {
+  if (!paths) return;
+
+  paths.forEach((path) => {
+    if (!path) return;
+
+    const length = path.getTotalLength();
+    path.style.strokeDasharray = `${length}`;
+    path.style.strokeDashoffset = `${length}`;
+    path.style.transition = 'stroke-dashoffset 1s linear';
+    path.style.fill = 'none';
+    path.style.stroke = '#23B53E'; // color de trazo
+    path.style.strokeWidth = '2';
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const path = entry.target as SVGPathElement;
+        if (entry.isIntersecting) {
+          path.style.strokeDashoffset = '0';
+          observer.unobserve(path);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  paths.forEach((path) => {
+    if (path) observer.observe(path);
+  });
+}
+
 
 /* ========================================
    Animación de doble línea SVG

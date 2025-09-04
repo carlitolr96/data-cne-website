@@ -305,44 +305,49 @@ export const mainaxes: MainAxes[] = [
 
 export const teammembers: TeamMembers[] = [
   {
-    name: "John Doe",
-    role: "Software Engineer",
-    img: "https://spacema-dev.com/elevate/assets/images/team/1.jpg",
+    name: "Rosalina García",
+    role: "representante",
+    img: "/img-difucion/RosalinaGarcia.jpg",
   },
   {
-    name: "Jane Smith",
-    role: "Graphic Designer",
-    img: "https://spacema-dev.com/elevate/assets/images/team/4.jpg",
+    name: "Alejandrina Girón",
+    role: "representante",
+    img: "/img-difucion/AlejandrinaGiron.png",
   },
   {
-    name: "Alex Johnson",
-    role: "Marketing Manager",
-    img: "https://spacema-dev.com/elevate/assets/images/team/3.jpg",
+    name: "Germania Pérez",
+    role: "representante",
+    img: "/img-difucion/GermaniaPerez.png",
   },
   {
-    name: "Peter Johnson",
-    role: "SEO Specialist",
-    img: "https://spacema-dev.com/elevate/assets/images/team/2.jpg",
+    name: "Anny Lorena Vásquez",
+    role: "representante",
+    img: "/img-difucion/AnnyVasquez.png",
   },
   {
-    name: "Emily Brown",
-    role: "UX Designer",
-    img: "https://spacema-dev.com/elevate/assets/images/team/5.jpg",
+    name: "Betty Brazobán",
+    role: "representante",
+    img: "/img-difucion/BettyBrazoban.png",
   },
   {
-    name: "Michael Davis",
-    role: "Frontend Developer",
-    img: "https://spacema-dev.com/elevate/assets/images/team/6.jpg",
+    name: "Warni Liriano",
+    role: "representante",
+    img: "/img-difucion/WarniLiriano.png",
   },
   {
-    name: "Sarah Johnson",
-    role: "Content Writer",
-    img: "https://spacema-dev.com/elevate/assets/images/team/7.jpg",
+    name: "Madeline Romero",
+    role: "representante",
+    img: "/img-difucion/MadelineRomero.png",
   },
   {
-    name: "David Wilson",
-    role: "Project Manager",
-    img: "https://spacema-dev.com/elevate/assets/images/team/8.jpg",
+    name: "Lenny Francisco",
+    role: "representante",
+    img: "/img-difucion/LennyFrancisco.png",
+  },
+    {
+    name: "Sandrelys Revi",
+    role: "representante",
+    img: "/img-difucion/SandrelysRevi.png",
   },
 ];
 
@@ -519,11 +524,6 @@ export const navitemsone: NavItemsOne[] = [
     icon: LightBulbNav,
     label: "CULTURA DE AHORRO ENERGÉTICO",
     url: "/cultura-ahorro-energetico",
-  },
-  {
-    icon: BarChartNav,
-    label: "TABLEROS INTERACTIVOS",
-    url: "",
   },
 ];
 

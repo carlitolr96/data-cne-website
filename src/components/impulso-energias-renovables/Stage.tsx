@@ -16,14 +16,12 @@ export default function Stage() {
   return (
     <section className="stage-section bg-primary text-white py-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative px-6">
-        {/* Encabezado */}
         <div className="flex justify-center items-center">
           <h2 className="text-center text-lg font-bold bg-green px-4 py-2 inline-block mx-auto">
             ETAPAS DE UN PROYECTO DE GENERACIÓN RENOVABLE
           </h2>
         </div>
 
-        {/* Etapas */}
         <div className="mt-12 flex flex-col">
           {stageicon.map((stage, index) => (
             <div
@@ -37,7 +35,6 @@ export default function Stage() {
                   : "md:flex-row-reverse"
               }`}
             >
-              {/* Ícono */}
               <div className="shrink-0">
                 <Image
                   src={stage.icon!}
@@ -48,7 +45,6 @@ export default function Stage() {
                 />
               </div>
 
-              {/* Path + contenido */}
               <div className="w-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -150,3 +146,8 @@ export default function Stage() {
     </section>
   );
 }
+
+
+// ref={(el) => {
+//                       pathRefs.current[index] = el;
+//                     }}

@@ -76,7 +76,7 @@ export default function Operations() {
         <div className="hidden lg:block w-0.5 h-50 bg-red"></div>
 
         <div className="flex-1 relative">
-          <Swiper
+          {/* <Swiper
             modules={[Pagination, Autoplay]}
             pagination={{
               el: ".custom-pagination",
@@ -116,7 +116,7 @@ export default function Operations() {
                 </div>
               </SwiperSlide>
             ))}
-          </Swiper>
+          </Swiper> */}
           <div className="custom-pagination flex justify-center mt-4" />
         </div>
       </div>
