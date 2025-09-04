@@ -45,6 +45,7 @@ export default function SideBarNavTwo({
 
   return (
     <div className="flex flex-col h-screen">
+      {/* LOGO */}
       <div className="flex items-center justify-between py-4 px-2">
         <Link href="/" onClick={handleItemClick}>
           <Image
@@ -66,10 +67,11 @@ export default function SideBarNavTwo({
         )}
       </div>
 
+      {/* NAV */}
       <nav className="flex-grow px-2">
         {tablerodinamicobar.map((item, index: number) => {
           const isActive = pathname === item.url;
-          const Icon = item.icon;
+
           return (
             <div key={index} className="relative">
               <Link
@@ -83,7 +85,17 @@ export default function SideBarNavTwo({
                 onMouseLeave={handleMouseLeave}
                 onClick={handleItemClick}
               >
-                {/* {Icon && <Icon className="w-6 h-6" />} */}
+                {/* Nuevo: Ícono como imagen */}
+                {item.icon && (
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={24}
+                    height={24}
+                    className="shrink-0"
+                  />
+                )}
+
                 {isOpen && <span>{item.title}</span>}
               </Link>
 
@@ -103,6 +115,7 @@ export default function SideBarNavTwo({
         })}
       </nav>
 
+      {/* FOOTER */}
       <div className="p-2 text-center text-xs text-gray-400">
         {isOpen && "© 2025 Data CNE"}
       </div>

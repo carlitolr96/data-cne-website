@@ -76,18 +76,18 @@ import MasculeIcon from "../assets/MasculeIcon.svg";
 import BackPackIcon from "../assets/BackpackIcon.svg";
 import ClassIcon from "../assets/ClassIcon.svg";
 import Conference from "../assets/ConferenceIcon.svg";
+import TeamsIcon from "../assets/TemsIcon.svg";
 
 //Sidebar Tablero Dinamico
+import VoltageTowerBar from "../assets/VoltageTowerBar.svg";
+import MapaRDBar from "../assets/MapsRDBar.svg";
 import ChartRenovableBar from "../assets/ChartRenovableBar.svg";
 import EolicBar from "../assets/EolicBar.svg";
-import MapaRDBar from "../assets/MapsRDBar.svg";
-import MonitorBar from "../assets/MonitorBar.svg";
+import PetroliumBar from "../assets/PetroliumBar.svg";
 import NuclearBar from "../assets/NuclearBar.svg";
 import PanelBar from "../assets/PanelBar.svg";
-import PetroliumBar from "../assets/PetroliumBar.svg";
-import VoltageTowerBar from "../assets/VoltageTowerBar.svg";
-import TeamsIcon from "../assets/TemsIcon.svg";
 import ElectricBar from "../assets/ElectricBar.svg"
+import PanelSolarBar from "../assets/PanelSolarBar.svg"
 
 //Plan Energetico Nacional
 import METARD2036 from "../assets/METARD2036.svg";
@@ -152,7 +152,6 @@ export const assets = {
   ChartRenovableBar,
   EolicBar,
   MapaRDBar,
-  MonitorBar,
   NuclearBar,
   PanelBar,
   PetroliumBar,
@@ -183,7 +182,8 @@ export const assets = {
   METARD2036,
   CityPEN,
   ArrowBottomIcon,
-  ElectricBar
+  ElectricBar,
+  PanelSolarBar
 } as const;
 
 export interface MainAxes {
@@ -193,7 +193,7 @@ export interface MainAxes {
 }
 
 export interface TableroDinamicoBar {
-  icon: IconType;
+  icon: string;
   title: string;
   url: string;
 }
@@ -381,85 +381,44 @@ export const editionpen: EditionPen[] = [
 
 export const tablerodinamicobar: TableroDinamicoBar[] = [
   {
-    icon: FaFacebookF,
+    icon: VoltageTowerBar,
     title: "Demanda Eléctrica Nacional",
     url: "/tablero-dinamico/demanda-electrica-nacional",
   },
   {
-    icon: FaFacebookF,
+    icon: PanelSolarBar,
     title: "Programa Medición Neta",
     url: "/tablero-dinamico/programa-medicion-neta",
   },
   {
-    icon: FaFacebookF,
+    icon: MapaRDBar,
     title: "Mapa Energético Nacional",
     url: "/tablero-dinamico/mapa-energetico-nacional",
   },
   {
-    icon: FaFacebookF,
+    icon: ChartRenovableBar,
     title: "Variables Macroeconómicas",
     url: "/tablero-dinamico/variable-macroeconomicas",
   },
   {
-    icon: FaFacebookF,
+    icon: EolicBar,
     title: "Proyectos Renovables",
     url: "/tablero-dinamico/proyectos-renovables",
   },
   {
-    icon: FaFacebookF,
+    icon: PetroliumBar,
     title: "Importación de Hidrocarburos",
     url: "/tablero-dinamico/importancia-hidrocarburos",
   },
   {
-    icon: FaFacebookF,
+    icon: NuclearBar,
     title: "Asuntos Nucleares",
     url: "/tablero-dinamico/asuntos-nucleares",
   },
   {
-    icon: FaFacebookF,
+    icon: PanelBar,
     title: "Monitoreo SENI",
     url: "/tablero-dinamico/monitoreo-seni",
-  },
-];
-
-export const itemsnavbar: ItemsNavBar[] = [
-  {
-    title: "Home",
-    url: "#",
-    icon: Home,
-  },
-  {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-];
-
-export const teamsnavbar: TeamsNavBar[] = [
-  {
-    name: "Acme Inc.",
-    logo: Home,
-    plan: "Enterprise",
-  },
-  {
-    name: "Startup XYZ",
-    logo: Settings,
-    plan: "Pro",
   },
 ];
 
