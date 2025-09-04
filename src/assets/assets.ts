@@ -593,7 +593,7 @@ export const categories: Category[] = [
     subtitle: "Distribuida",
     icon: PanelEnergy,
     color: "text-red-500",
-    url: "",
+    url: "/generacion-distribuida",
   },
 ];
 

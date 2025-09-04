@@ -68,7 +68,6 @@ export const animateConcessionCounters = (
 ) => {
   if (!section) return;
 
-  // Valores fijos
   const projectsValue = 84;
   const investmentsValue = 54;
   const capacityValue = 3107;
@@ -106,7 +105,10 @@ export const animateConcessionCounters = (
       val: capacityValue,
       duration: 2,
       ease: "power1.out",
-      onUpdate: () => setCapacity(Math.floor(objCapacity.val)),
+      onUpdate: () => {
+        const value = Math.floor(objCapacity.val); // parte entera
+        setCapacity(value); // guardar número puro en state
+      },
       scrollTrigger: {
         trigger: section,
         start: "top 80%",
@@ -119,15 +121,25 @@ export const animateConcessionCounters = (
 /**
  * Animar los contadores de Storage
  */
-export const animateNumber = (el: HTMLElement | null, endValue: number) => {
+export const animateNumberStorage = (
+  el: HTMLElement | null,
+  endValue: number,
+  showUnit: boolean = true
+) => {
   if (!el) return;
+
   const obj = { val: 0 };
+
   gsap.to(obj, {
     val: endValue,
     duration: 1.5,
     ease: "power1.out",
     onUpdate: () => {
-      el.innerText = `${Math.floor(obj.val)}`;
+      const value = Math.floor(obj.val);
+      const formattedValue =
+        value > 999 ? value.toLocaleString("en-US") : value.toString();
+
+      el.innerText = showUnit ? `${formattedValue} MWh` : formattedValue;
     },
     scrollTrigger: {
       trigger: el,
@@ -292,10 +304,14 @@ export const animateNumbers = (
       duration: 1.5,
       ease: "power3.out",
       onUpdate: () => {
-        projectsEl.textContent = `${Math.floor(obj.val)} PROYECTOS`;
+        const value = Math.floor(obj.val);
+        const displayVal =
+          value > 9999 ? value.toLocaleString() : value.toString();
+        projectsEl.textContent = `${displayVal} PROYECTOS`;
       },
     });
   }
+
   if (capacityEl) {
     const obj = { val: 0 };
     gsap.to(obj, {
@@ -303,36 +319,42 @@ export const animateNumbers = (
       duration: 1.8,
       ease: "power3.out",
       onUpdate: () => {
-        capacityEl.textContent = `${obj.val.toFixed(2)} MW`;
+        const value = obj.val;
+        const formattedValue =
+          Math.floor(value) > 999
+            ? value.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })
+            : value.toFixed(2);
+
+        capacityEl.textContent = `${formattedValue} MW`;
       },
     });
   }
 };
 
-export const animateNumberList = (
-  elements: (HTMLSpanElement | null)[],
-  targets: number[]
-) => {
-  // Filtrar elementos nulos
-  const validElements = elements.filter(
-    (el) => el !== null
-  ) as HTMLSpanElement[];
+export function animateNumberList(
+  elements: HTMLElement[],
+  targets: number[],
+  formatter: (value: number) => string = (value) => value.toString()
+) {
+  elements.forEach((el, i) => {
+    if (!el) return;
+    const target = targets[i];
+    let current = 0;
+    const step = Math.ceil(target / 100);
 
-  validElements.forEach((el, i) => {
-    if (i >= targets.length) return;
-
-    const obj = { val: 0 };
-    gsap.to(obj, {
-      val: targets[i],
-      duration: 1.5,
-      ease: "power3.out",
-      onUpdate: () => {
-        el.textContent = Math.floor(obj.val).toLocaleString();
-      },
-      scrollTrigger: { trigger: el, start: "top 80%", once: true },
-    });
+    const interval = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(interval);
+      }
+      el.textContent = formatter(current);
+    }, 20);
   });
-};
+}
 
 /* ========================================
    Sección: Animación de charts y barras
@@ -511,48 +533,40 @@ export const animateDoubleCharts = ({
     const total = item.value1 + item.value2;
     const targetPercent = total > 0 ? (item.value1 / total) * 100 : 0;
 
+    // Barra izquierda
     if (bar1 && number1) {
-      gsap.to(bar1, {
-        height: `${item.value1 * heightFactor}px`,
-        duration: 1,
-        ease: "power3.out",
-      });
-      const obj1 = { val: 0 };
-      gsap.to(obj1, {
+      gsap.to(bar1, { height: `${item.value1 * heightFactor}px`, duration: 1, ease: "power3.out" });
+      gsap.to({ val: 0 }, {
         val: item.value1,
         duration: 1,
         ease: "power3.out",
         onUpdate() {
-          number1.textContent = `${Math.floor(obj1.val)} MW`;
+          number1.textContent = `${Math.floor(this.targets()[0].val).toLocaleString("en-US")} MW`;
         },
       });
     }
 
+    // Barra derecha
     if (bar2 && number2) {
-      gsap.to(bar2, {
-        height: `${item.value2 * heightFactor}px`,
-        duration: 1,
-        ease: "power3.out",
-      });
-      const obj2 = { val: 0 };
-      gsap.to(obj2, {
+      gsap.to(bar2, { height: `${item.value2 * heightFactor}px`, duration: 1, ease: "power3.out" });
+      gsap.to({ val: 0 }, {
         val: item.value2,
         duration: 1,
         ease: "power3.out",
         onUpdate() {
-          number2.textContent = `${Math.floor(obj2.val)} MW`;
+          number2.textContent = `${Math.floor(this.targets()[0].val).toLocaleString("en-US")} MW`;
         },
       });
     }
 
+    // Porcentaje central
     if (centerNumber) {
-      const objCenter = { val: 0 };
-      gsap.to(objCenter, {
+      gsap.to({ val: 0 }, {
         val: targetPercent,
         duration: 1,
         ease: "power3.out",
         onUpdate() {
-          centerNumber.textContent = `${objCenter.val.toFixed(1)}%`;
+          centerNumber.textContent = `${this.targets()[0].val.toFixed(1)}%`;
         },
       });
     }
@@ -679,34 +693,35 @@ export const animateLineChart = (
 /* ========================================
    Sección: Animación de paths SVG (Stage)
 ======================================== */
-export const animateStagePaths = (paths: (SVGPathElement | null)[]) => {
-  const validPaths = paths.filter((path) => path !== null) as SVGPathElement[];
+// export const animateStagePaths = (paths: (SVGPathElement | null)[]) => {
+//   const validPaths = paths.filter((path) => path !== null) as SVGPathElement[];
 
-  validPaths.forEach((path) => {
-    const length = path.getTotalLength();
-    gsap.set(path, {
-      strokeDasharray: length,
-      strokeDashoffset: length,
-      fill: "transparent",
-    });
+//   validPaths.forEach((path) => {
+//     const length = path.getTotalLength();
+//     gsap.set(path, {
+//       strokeDasharray: length,
+//       strokeDashoffset: length,
+//       fill: "transparent",
+//     });
 
-    gsap.to(path, {
-      strokeDashoffset: 0,
-      ease: "none",
-      scrollTrigger: {
-        trigger: path.closest(".stage-item"),
-        start: "top 80%",
-        end: "bottom 20%",
-        scrub: true,
-      },
-      onComplete: () => {
-        gsap.to(path, { fill: "#23B53E", duration: 0.5 });
-      },
-    });
-  });
-};
+//     gsap.to(path, {
+//       strokeDashoffset: 0,
+//       ease: "none",
+//       scrollTrigger: {
+//         trigger: path.closest(".stage-item"),
+//         start: "top 80%",
+//         end: "bottom 20%",
+//         scrub: true,
+//       },
+//       onComplete: () => {
+//         gsap.to(path, { fill: "#23B53E", duration: 0.5 });
+//       },
+//     });
+//   });
+// };
 
 // utils/animations.ts
+
 export function animateStagePathsOnScroll(paths: (SVGPathElement | null)[]) {
   if (!paths) return;
 
@@ -716,10 +731,10 @@ export function animateStagePathsOnScroll(paths: (SVGPathElement | null)[]) {
     const length = path.getTotalLength();
     path.style.strokeDasharray = `${length}`;
     path.style.strokeDashoffset = `${length}`;
-    path.style.transition = 'stroke-dashoffset 1s linear';
-    path.style.fill = 'none';
-    path.style.stroke = '#23B53E'; // color de trazo
-    path.style.strokeWidth = '2';
+    path.style.transition = "stroke-dashoffset 1s linear";
+    path.style.fill = "none";
+    path.style.stroke = "#23B53E"; // color de trazo
+    path.style.strokeWidth = "2";
   });
 
   const observer = new IntersectionObserver(
@@ -727,7 +742,7 @@ export function animateStagePathsOnScroll(paths: (SVGPathElement | null)[]) {
       entries.forEach((entry) => {
         const path = entry.target as SVGPathElement;
         if (entry.isIntersecting) {
-          path.style.strokeDashoffset = '0';
+          path.style.strokeDashoffset = "0";
           observer.unobserve(path);
         }
       });
@@ -739,7 +754,6 @@ export function animateStagePathsOnScroll(paths: (SVGPathElement | null)[]) {
     if (path) observer.observe(path);
   });
 }
-
 
 /* ========================================
    Animación de doble línea SVG

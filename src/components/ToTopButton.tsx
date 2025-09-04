@@ -14,7 +14,6 @@ export default function ToTopButton() {
 
     window.addEventListener("scroll", toggleVisibility);
 
-    // Detectar si está sobre bg-primary
     const sections = document.querySelectorAll<HTMLElement>(".bg-primary");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -26,7 +25,7 @@ export default function ToTopButton() {
           }
         });
       },
-      { threshold: 0.5 } // 50% visible
+      { threshold: 0.5 }
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -49,7 +48,7 @@ export default function ToTopButton() {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className={`fixed bottom-6 right-6 p-3 rounded-full shadow-lg transition-all duration-300 z-50 animate-bounce
+          className={`fixed bottom-6 right-6 p-3 rounded-full shadow-lg transition-all duration-300 z-50 animate-bounce cursor-pointer
             ${isOnPrimary ? "bg-white text-primary hover:bg-gray-100" : "bg-primary text-white hover:bg-primary/80"}`}
           aria-label="Volver arriba"
         >

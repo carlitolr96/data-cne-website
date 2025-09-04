@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { assets } from "@/assets/assets";
 import Boton from "@/components/Boton";
 import Image from "next/image";
-import { animateNumber } from "@/utils/animations";
+import { animateNumberStorage } from "@/utils/animations";
 
 export default function Storage() {
   const proyectosRef = useRef<HTMLHeadingElement | null>(null);
@@ -13,10 +13,10 @@ export default function Storage() {
 
   useEffect(() => {
     if (proyectosRef.current) {
-      animateNumber(proyectosRef.current, 25);
+      animateNumberStorage(proyectosRef.current, 25, false); // sin MWh
     }
     if (energiaRef.current) {
-      animateNumber(energiaRef.current, 234958);
+      animateNumberStorage(energiaRef.current, 234958); // con MWh
     }
   }, []);
 

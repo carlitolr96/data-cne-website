@@ -12,12 +12,6 @@ export default function Concession() {
   const [concesionesProv, setConcesionesProv] = useState(0);
   const [capacidadMW, setCapacidadMW] = useState(0);
 
-  const finalValues = {
-    concesionesDef: 84,
-    concesionesProv: 54,
-    capacidadMW: 3107,
-  };
-
   useEffect(() => {
     animateConcessionCounters(
       sectionRef.current,
@@ -73,7 +67,7 @@ export default function Concession() {
 
           <div className="flex flex-col items-center sm:items-end text-center sm:text-right min-w-[140px]">
             <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-primary">
-              {capacidadMW.toLocaleString()} MW
+              {capacidadMW.toLocaleString("en-US")} MW
             </h1>
             <span className="text-sm sm:text-[17px] text-primary">
               Capacidad

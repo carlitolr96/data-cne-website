@@ -7,10 +7,10 @@ import { socialicon } from "../assets/assets";
 export default function Footer() {
   return (
     <footer className="bg-primary">
-      <div className="container mx-auto px-6 py-8">
+      <div className="container mx-auto px-6 py-5">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
 
-          <p className="text-sm text-white text-center sm:text-left">
+          <p className="text-[11px] text-light text-center sm:text-left">
             &copy; {new Date().getFullYear()} Todos los Derechos Reservados.
             Desarrollado por la Comisión Nacional de Energía (CNE).
           </p>

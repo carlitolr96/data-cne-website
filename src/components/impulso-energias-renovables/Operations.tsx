@@ -22,7 +22,10 @@ export default function Operations() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            animateNumbers(projectsRef.current, capacityRef.current);
+           animateNumbers(
+              projectsRef.current,
+              capacityRef.current
+            );
           }
         });
       },
@@ -60,10 +63,7 @@ export default function Operations() {
           <p className="text-primary text-base md:text-lg max-w-md">
             con una capacidad instalada de
             <br />
-            <span
-              ref={capacityRef}
-              className="font-extrabold text-primary"
-            >
+            <span ref={capacityRef} className="font-extrabold text-primary">
               0 MW
             </span>
             , están transformando <br />

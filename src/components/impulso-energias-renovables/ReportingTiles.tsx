@@ -12,7 +12,14 @@ export default function ReportingTiles() {
     const targets = reportingtile.map((tile) =>
       parseInt(tile.number.replace(/[^0-9]/g, ""), 10)
     );
-    animateNumberList(numbersRef.current, targets);
+
+    const elements = numbersRef.current.filter(
+      (el): el is HTMLElement => el !== null
+    );
+
+    animateNumberList(elements, targets, (value) =>
+      value.toLocaleString("en-US")
+    );
   }, []);
 
   return (
