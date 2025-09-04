@@ -83,7 +83,7 @@ export default function SideBarNavTwo({
                 onMouseLeave={handleMouseLeave}
                 onClick={handleItemClick}
               >
-                {Icon && <Icon className="w-6 h-6" />}
+                {/* {Icon && <Icon className="w-6 h-6" />} */}
                 {isOpen && <span>{item.title}</span>}
               </Link>
 
