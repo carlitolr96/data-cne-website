@@ -86,8 +86,8 @@ import NuclearBar from "../assets/NuclearBar.svg";
 import PanelBar from "../assets/PanelBar.svg";
 import PetroliumBar from "../assets/PetroliumBar.svg";
 import VoltageTowerBar from "../assets/VoltageTowerBar.svg";
-import HomeBar from "../assets/HomeBar.svg";
 import TeamsIcon from "../assets/TemsIcon.svg";
+import ElectricBar from "../assets/ElectricBar.svg"
 
 //Plan Energetico Nacional
 import METARD2036 from "../assets/METARD2036.svg";
@@ -157,7 +157,6 @@ export const assets = {
   PanelBar,
   PetroliumBar,
   VoltageTowerBar,
-  HomeBar,
   Generation,
   Transmicion,
   HomeEnergy,
@@ -184,6 +183,7 @@ export const assets = {
   METARD2036,
   CityPEN,
   ArrowBottomIcon,
+  ElectricBar
 } as const;
 
 export interface MainAxes {
