@@ -25,7 +25,7 @@ export default function Incentives() {
           </span>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-24 w-full mt-8">
+        <div className="flex flex-col lg:flex-row items-center gap-0 md:gap-24 w-full mt-8">
           <div className="w-full lg:w-10/12 h-72 sm:h-80 md:h-96">
             <LineChartTwo />
           </div>

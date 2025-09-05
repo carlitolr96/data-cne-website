@@ -27,13 +27,13 @@ export default function RecordInvestments() {
   }, []);
 
   return (
-    <section className="bg-primary min-h-screen flex flex-col justify-center py-10 sm:py-12">
+    <section className="bg-white min-h-screen flex flex-col justify-center py-10 sm:py-12">
       <div className="max-w-6xl mx-auto px-4 flex flex-col justify-center items-center text-center mb-10">
-        <h1 className="font-extrabold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white px-3 py-1 uppercase tracking-wide mb-3">
+        <h1 className="font-extrabold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary px-3 py-1 uppercase tracking-wide mb-3">
           INVERSIONES RÉCORD
         </h1>
 
-        <span className="font-medium text-white text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl uppercase text-balance">
+        <span className="font-medium text-primary text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-4xl uppercase text-balance">
           Sector energético encabeza captación de inversión extranjera directa
           (IED)
         </span>
@@ -46,7 +46,7 @@ export default function RecordInvestments() {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 px-6 mt-10">
         <div className="flex-1 flex flex-col items-center">
           <DobleBarChart data={chartData} />
-          <p className="text-light text-sm font-light mt-2 text-center">
+          <p className="text-primary text-sm font-light mt-2 text-center">
             Evolución comparativa de IED 2019 - 2024
           </p>
         </div>
@@ -60,7 +60,7 @@ export default function RecordInvestments() {
             colors={colors}
             title="Participación por sector"
           />
-          <p className="text-light text-sm font-light mt-2 text-center">
+          <p className="text-primary text-sm font-light mt-2 text-center">
             Participación en la IED por sector 2019 - 2024
           </p>
         </div>

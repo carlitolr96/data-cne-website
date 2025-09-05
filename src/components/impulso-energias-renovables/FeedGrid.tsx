@@ -51,9 +51,9 @@ export default function FeedGrid() {
           alt="CNE Logo"
           className="mx-auto"
         />
-        <Boton href="/" className="uppercase mt-3">
+        {/* <Boton href="/" className="uppercase mt-3">
           Descubre más
-        </Boton>
+        </Boton> */}
       </div>
 
       <div className="lg:row-span-2 lg:col-start-3 flex items-center justify-center relative w-full h-full">

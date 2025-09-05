@@ -14,14 +14,14 @@ export default function GenerationCapacity() {
     <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div>
-          <p className="min-w-90 text-3xl font-extrabold text-primary mb-4">
+          <h1 className="min-w-90 text-2xl md:text-3xl font-extrabold text-primary mb-4">
             EN LOS ÚLTIMOS AÑOS, LA REPÚBLICA DOMINICANA HA INCREMENTADO
             SIGNIFICATIVAMENTE SU{" "}
             <span className="bg-red text-white px-4">
               CAPACIDAD DE GENERACIÓN
             </span>{" "}
             A PARTIR DE FUENTES RENOVABLES.
-          </p>
+          </h1>
         </div>
 
         <div className="flex flex-col items-center md:items-center">
@@ -33,7 +33,7 @@ export default function GenerationCapacity() {
             <BarChart data={chartData} heightFactor={0.1} />
           </div>
 
-          <div className="flex flex-col items-end w-full max-w-sm">
+          <div className="flex flex-col items-center md:items-end w-full max-w-sm">
             <p className="text-[18px] font-medium text-primary mb-2">
               Para más información
             </p>

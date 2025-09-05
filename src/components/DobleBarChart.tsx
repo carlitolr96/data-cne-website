@@ -73,13 +73,12 @@ export default function DobleBarChart({
       {data.map((item, i) => (
         <div key={i} className="flex flex-col items-center text-center z-10">
           <div className="flex items-end justify-center gap-6 relative">
-            {/* Barra izquierda */}
             <div className="flex flex-col items-center justify-end">
               <span
                 ref={(el) => {
                   if (el) numbers1Ref.current[i] = el;
                 }}
-                className="mb-1 text-white text-base font-medium"
+                className="mb-1 text-primary text-base font-medium"
               >
                 0 MW
               </span>
@@ -96,8 +95,7 @@ export default function DobleBarChart({
               />
             </div>
 
-            {/* Número central */}
-            <div className="flex flex-col items-center justify-center px-4 text-white text-center">
+            <div className="flex flex-col items-center justify-center px-4 text-primary text-center font-montserrat">
               <span
                 ref={(el) => {
                   if (el) centerNumberRef.current[i] = el;
@@ -111,13 +109,12 @@ export default function DobleBarChart({
               </span>
             </div>
 
-            {/* Barra derecha */}
             <div className="flex flex-col items-center justify-end">
               <span
                 ref={(el) => {
                   if (el) numbers2Ref.current[i] = el;
                 }}
-                className="mb-1 text-white text-base font-medium"
+                className="mb-1 text-primary text-base font-medium"
               >
                 0 MW
               </span>

@@ -25,12 +25,12 @@ export default function Storage() {
       ref={sectionRef}
       className="bg-white relative overflow-hidden py-16"
     >
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start relative">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start relative px-5">
         <div className="hidden md:block absolute top-1/2 left-1/2 w-[2px] h-[35%] bg-red transform -translate-x-1/2 -translate-y-1/2" />
         <div className="flex flex-col space-y-6 text-primary">
           <div>
             <div className="flex items-center gap-3">
-              <Image src={assets.Batery} alt="Batería" className="w-10 h-10" />
+              <Image src={assets.Batery} alt="Batería" width={100} height={100} />
               <h2 className="font-extrabold text-xl sm:text-2xl md:text-3xl uppercase">
                 Almacenamiento: Tecnología en crecimiento para un sistema
                 estable
@@ -50,7 +50,9 @@ export default function Storage() {
             <Image
               src={assets.Energy}
               alt="Energía"
-              className="w-40 md:w-200 h-auto"
+              width={400}
+              height={100}
+              className="md:w-200"
             />
           </div>
 

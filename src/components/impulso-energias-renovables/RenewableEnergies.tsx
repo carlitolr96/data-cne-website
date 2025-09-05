@@ -14,7 +14,7 @@ export default function RenewableEnergies() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-24">
           <div className="flex-1">
-            <h1 className="text-primary text-2xl md:text-3xl font-extrabold mb-4">
+            <h1 className="text-primary text-2xl md:text-3xl font-extrabold font-montserrat mb-4">
               Energías renovables
             </h1>
             <p className="text-primary font-medium leading-relaxed">
@@ -25,23 +25,25 @@ export default function RenewableEnergies() {
             </p>
           </div>
 
-          <div className="flex-1 space-y-4">
-            {renewableenergieslist.map((item, index) => (
-              <div
-                key={index}
-                className="flex justify-center lg:justify-end items-center gap-2"
-              >
-                <span className="bg-primary text-white font-bold text-sm md:text-lg px-2 whitespace-nowrap">
-                  {item.description}
-                </span>
-                <Image
-                  src={assets.DoneSheck}
-                  alt={item.description}
-                  width={23}
-                  height={23}
-                />
-              </div>
-            ))}
+          <div className="flex-1 w-full">
+            <div className="space-y-4 flex-col justify-center">
+              {renewableenergieslist.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex justify-center lg:justify-end items-center gap-2"
+                >
+                  <span className="bg-primary text-white font-bold text-sm md:text-lg px-2 whitespace-nowrap">
+                    {item.description}
+                  </span>
+                  <Image
+                    src={assets.DoneSheck}
+                    alt={item.description}
+                    width={23}
+                    height={23}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
