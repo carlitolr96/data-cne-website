@@ -13,7 +13,8 @@ interface BotonProps {
   disabled?: boolean;
   icon?: keyof typeof assets;
   iconPosition?: "left" | "right";
-  color?: "red" | "green" | "primary"; 
+  color?: "red" | "green" | "primary";
+  showTextOnMobile?: boolean; // Nueva prop
 }
 
 const Boton: FC<BotonProps> = ({
@@ -25,11 +26,12 @@ const Boton: FC<BotonProps> = ({
   icon,
   iconPosition = "left",
   color = "red",
+  showTextOnMobile = true,
 }) => {
   const colorClasses: Record<string, string> = {
     red: "bg-red hover:bg-red-700",
     green: "bg-green hover:bg-green-700",
-    blue: "bg-primary hover:bg-blue-700",
+    primary: "bg-primary hover:bg-blue-700",
   };
 
   const baseClasses = `
@@ -53,14 +55,21 @@ const Boton: FC<BotonProps> = ({
         alt={`${icon} icon`}
         width={20}
         height={20}
-        className={iconPosition === "left" ? "mr-2" : "ml-2"}
+        className={iconPosition === "left" ? "mr-0 md:mr-2" : "ml-2"}
       />
     ));
+
+  // Aplicamos hide/show del texto según prop
+  const textElement = (
+    <span className={`${showTextOnMobile ? "" : "hidden sm:inline"}`}>
+      {children}
+    </span>
+  );
 
   const content = (
     <>
       {iconPosition === "left" && iconElement}
-      {children}
+      {textElement}
       {iconPosition === "right" && iconElement}
     </>
   );

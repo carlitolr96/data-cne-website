@@ -80,7 +80,7 @@ import TeamsIcon from "../assets/TemsIcon.svg";
 
 //Sidebar Tablero Dinamico
 import VoltageTowerBar from "../assets/VoltageTowerBar.svg";
-import MapaRDBar from "../assets/MapsRDBar.svg";
+import MapaRDBar from "../assets/MapaRDBar.svg";
 import ChartRenovableBar from "../assets/ChartRenovableBar.svg";
 import EolicBar from "../assets/EolicBar.svg";
 import PetroliumBar from "../assets/PetroliumBar.svg";
@@ -93,6 +93,9 @@ import PanelSolarBar from "../assets/PanelSolarBar.svg"
 import METARD2036 from "../assets/METARD2036.svg";
 import CityPEN from "../assets/City-PEN.svg";
 import ArrowBottomIcon from "../assets/Arrow-Bottom-Icon.svg";
+
+//Generacion Distribuida
+
 
 export const assets = {
   logoCNE,
@@ -186,6 +189,11 @@ export const assets = {
   PanelSolarBar
 } as const;
 
+export interface ItemSystem {
+  icon: string;
+  description: string;
+}
+
 export interface MainAxes {
   number: string;
   title: string;
@@ -277,6 +285,23 @@ export interface EditionPen {
   description: string;
 }
 
+export const itemsystem: ItemSystem[] = [
+  {
+    icon: DoneSheck,
+    description:
+      "Grandes plantas generan la electricidad (hidroeléctricas, térmicas, solares, etc.).",
+  },
+  {
+    icon: DoneSheck,
+    description: "Esa energía viaja por líneas de transmisión hasta llegar a nuestras casas, negociose industrias.",
+  },
+  {
+    icon: DoneSheck,
+    description:
+      "Es un sistema centralizado, donde la mayoría solo consume.",
+  }
+];
+
 export const mainaxes: MainAxes[] = [
   {
     number: "1",
@@ -313,11 +338,6 @@ export const teammembers: TeamMembers[] = [
     name: "Alejandrina Girón",
     role: "representante",
     img: "/img-difucion/AlejandrinaGiron.png",
-  },
-  {
-    name: "Germania Pérez",
-    role: "representante",
-    img: "/img-difucion/GermaniaPerez.png",
   },
   {
     name: "Anny Lorena Vásquez",
@@ -451,37 +471,37 @@ export const renewableenergiesfonts: RenewableEnergiesFonts[] = [
 export const navitemsone: NavItemsOne[] = [
   {
     icon: HomeNav,
-    label: "INICIO",
+    label: "Inicio",
     url: "/",
   },
   {
     icon: ZapNav,
-    label: "PLAN ENERGÉTICO NACIONAL",
+    label: "Plan Energético Nacional",
     url: "/plan-energetico-nacional",
   },
   {
     icon: BatteryNav,
-    label: "IMPULSO A LAS ENERGÍAS RENOVABLES",
+    label: "Impulso A Las Energías Renovables",
     url: "/impulso-energias-renovables",
   },
   {
     icon: SolarNav,
-    label: "GENERACIÓN DISTRIBUIDA",
+    label: "Generación Distribuida",
     url: "",
   },
   {
     icon: FileTextNav,
-    label: "PLANES Y NORMATIVAS",
+    label: "Planes Y Normativas",
     url: "",
   },
   {
     icon: NuclearNav,
-    label: "ASUNTOS RADIOLÓGICOS Y NUCLEARES",
+    label: "Asuntos Radiológicos Y Nucleares",
     url: "",
   },
   {
     icon: LightBulbNav,
-    label: "CULTURA DE AHORRO ENERGÉTICO",
+    label: "Cultura De Ahorro Energético",
     url: "/cultura-ahorro-energetico",
   },
 ];
@@ -565,14 +585,6 @@ export const categories: Category[] = [
   },
   {
     id: "3",
-    title: "Planes y",
-    subtitle: "normativas",
-    icon: LawDoc,
-    color: "text-red-500",
-    url: "",
-  },
-  {
-    id: "4",
     title: "Cultura de",
     subtitle: "ahorro energético",
     icon: PowerManagement,
@@ -580,7 +592,7 @@ export const categories: Category[] = [
     url: "/cultura-ahorro-energetico",
   },
   {
-    id: "5",
+    id: "4",
     title: "Asuntos radiológicos",
     subtitle: "y Nucleares",
     icon: NuclearMark,
@@ -588,12 +600,12 @@ export const categories: Category[] = [
     url: "",
   },
   {
-    id: "6",
+    id: "5",
     title: "Generación",
     subtitle: "Distribuida",
     icon: PanelEnergy,
     color: "text-red-500",
-    url: "/generacion-distribuida",
+    url: "",
   },
 ];
 

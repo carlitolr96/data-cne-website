@@ -45,18 +45,16 @@ export default function SideBarNavTwo({
 
   return (
     <div className="flex flex-col h-screen">
-      {/* LOGO */}
-      <div className="flex items-center justify-between py-4 px-2">
+      <div className="flex items-center justify-between md:justify-center py-4 px-2">
         <Link href="/" onClick={handleItemClick}>
           <Image
-            src={assets.logoAzulDataCNE}
+            src={assets.logoDataCNE}
             alt="Data CNE"
-            width={isOpen ? 150 : 40}
+            width={isOpen ? 100 : 40}
             height={40}
             className="transition-all duration-300"
           />
         </Link>
-
         {isMobile && isOpen && (
           <button
             onClick={onClose}
@@ -67,7 +65,6 @@ export default function SideBarNavTwo({
         )}
       </div>
 
-      {/* NAV */}
       <nav className="flex-grow px-2">
         {tablerodinamicobar.map((item, index: number) => {
           const isActive = pathname === item.url;
@@ -79,13 +76,12 @@ export default function SideBarNavTwo({
                 className={`flex items-center gap-3 px-2 py-2 mt-2 text-sm font-medium rounded-md transition-colors ${
                   isActive
                     ? "bg-gray-200 text-primary"
-                    : "hover:bg-gray-300 text-gray-600"
+                    : "hover:bg-gray-300 text-white hover:text-primary"
                 }`}
                 onMouseEnter={(e) => !isOpen && handleMouseEnter(index, e)}
                 onMouseLeave={handleMouseLeave}
                 onClick={handleItemClick}
               >
-                {/* Nuevo: Ícono como imagen */}
                 {item.icon && (
                   <Image
                     src={item.icon}
@@ -115,9 +111,15 @@ export default function SideBarNavTwo({
         })}
       </nav>
 
-      {/* FOOTER */}
-      <div className="p-2 text-center text-xs text-gray-400">
-        {isOpen && "© 2025 Data CNE"}
+      <div className="flex flex-col items-center p-2 text-xs text-gray-400">
+        <Image
+          src={assets.logoCNE}
+          alt="CNE Logo"
+          width={150}
+          height={40}
+          className="opacity-40 mb-5"
+        />
+        {isOpen && <span>© 2025 Data CNE</span>}
       </div>
     </div>
   );

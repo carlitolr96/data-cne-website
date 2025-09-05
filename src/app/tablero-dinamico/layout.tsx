@@ -1,10 +1,12 @@
-// app/tablero-dinamico/layout.tsx
 "use client";
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import SideBarNav from "@/components/tablero-dinamico/SideBarNav";
 import { usePathname } from "next/navigation";
+import { assets } from "../../assets/assets";
+import SideBarNav from "@/components/tablero-dinamico/SideBarNav";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -46,7 +48,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex h-screen overflow-hidden">
       <div
-        className={`bg-white text-black transition-all duration-300 ${
+        className={`bg-primary text-white transition-all duration-300 ${
           isMobile
             ? `fixed top-0 left-0 w-full h-screen z-50 transform ${
                 isOpen ? "translate-y-0" : "-translate-y-full"
@@ -70,16 +72,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       )}
 
       <div className="flex-1 flex flex-col relative z-0">
-        <div className="bg-gray-200 p-2 flex justify-start">
+        <div className="bg-white p-2 flex justify-between md:justify-start">
+          <Link href="/">
+            <Image
+              src={assets.logoAzulDataCNE}
+              alt="Data CNE"
+              width={80}
+              height={80}
+              className="inline md:hidden transition-all duration-300"
+            />
+          </Link>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition z-50"
+            className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-white hover:bg-primary/90 transition z-50 cursor-pointer"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
-        <main className="flex-1 bg-light overflow-auto">
+        <main className="flex-1 bg-white overflow-auto">
           {isLoading ? (
             <div className="flex items-center justify-center min-h-full">
               <div className="text-center">

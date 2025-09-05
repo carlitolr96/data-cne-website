@@ -27,10 +27,8 @@ export default function RecordInvestments() {
   }, []);
 
   return (
-    <section
-      className="bg-primary py-10 sm:py-14"
-    >
-      <div className="max-w-6xl min-h-100 mx-auto px-4 flex flex-col items-center text-center">
+    <section className="bg-primary min-h-screen flex flex-col justify-center py-10 sm:py-12">
+      <div className="max-w-6xl mx-auto px-4 flex flex-col justify-center items-center text-center mb-10">
         <h1 className="font-extrabold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white px-3 py-1 uppercase tracking-wide mb-3">
           INVERSIONES RÉCORD
         </h1>
@@ -45,30 +43,26 @@ export default function RecordInvestments() {
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 px-6">
-        <div className="flex-1">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 px-6 mt-10">
+        <div className="flex-1 flex flex-col items-center">
           <DobleBarChart data={chartData} />
-          <div className="flex justify-center">
-            <p className="text-light text-sm font-light mt-2">
-              Evolución comparativa de IED 2019 - 2024
-            </p>
-          </div>
+          <p className="text-light text-sm font-light mt-2 text-center">
+            Evolución comparativa de IED 2019 - 2024
+          </p>
         </div>
 
-        <div className="hidden lg:block w-0.5 h-50 bg-red"></div>
+        <div className="hidden lg:block w-px h-80 bg-red mx-6"></div>
 
-        <div className="flex-1">
+        <div className="flex-1 flex flex-col items-center">
           <CircularBar
             data={data}
             labels={labels}
             colors={colors}
             title="Participación por sector"
           />
-          <div className="flex justify-center">
-            <p className="text-light text-sm font-light mt-2">
-              Participación en la IED por sector 2019 - 2024
-            </p>
-          </div>
+          <p className="text-light text-sm font-light mt-2 text-center">
+            Participación en la IED por sector 2019 - 2024
+          </p>
         </div>
       </div>
     </section>

@@ -27,7 +27,6 @@ export default function DobleBarChart({
   const numbers2Ref = useRef<HTMLSpanElement[]>([]);
   const centerNumberRef = useRef<HTMLSpanElement[]>([]);
 
-  // Reset refs cuando cambian los datos
   useEffect(() => {
     bars1Ref.current = new Array(data.length);
     bars2Ref.current = new Array(data.length);
@@ -129,7 +128,7 @@ export default function DobleBarChart({
                 className="w-16"
                 style={{
                   height: "0px",
-                  backgroundColor: item.color2 || "green",
+                  backgroundColor: item.color2 || "white",
                   transformOrigin: "bottom",
                 }}
               />
