@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { animateDoubleCharts } from "../utils/animations";
+import { animateDoubleChartsTwo } from "../utils/animations";
 
 interface DoubleBarData {
   value1: number;
@@ -21,19 +21,22 @@ export default function DobleBarChart({
   heightFactor = 1.5,
 }: DobleBarChartProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const bars1Ref = useRef<HTMLDivElement[]>([]);
-  const bars2Ref = useRef<HTMLDivElement[]>([]);
-  const numbers1Ref = useRef<HTMLSpanElement[]>([]);
-  const numbers2Ref = useRef<HTMLSpanElement[]>([]);
-  const centerNumberRef = useRef<HTMLSpanElement[]>([]);
 
-  useEffect(() => {
-    bars1Ref.current = new Array(data.length);
-    bars2Ref.current = new Array(data.length);
-    numbers1Ref.current = new Array(data.length);
-    numbers2Ref.current = new Array(data.length);
-    centerNumberRef.current = new Array(data.length);
-  }, [data]);
+  const bars1Ref = useRef<(HTMLDivElement | null)[]>(
+    Array(data.length).fill(null)
+  );
+  const bars2Ref = useRef<(HTMLDivElement | null)[]>(
+    Array(data.length).fill(null)
+  );
+  const numbers1Ref = useRef<(HTMLSpanElement | null)[]>(
+    Array(data.length).fill(null)
+  );
+  const numbers2Ref = useRef<(HTMLSpanElement | null)[]>(
+    Array(data.length).fill(null)
+  );
+  const centerNumberRef = useRef<(HTMLSpanElement | null)[]>(
+    Array(data.length).fill(null)
+  );
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -42,7 +45,7 @@ export default function DobleBarChart({
       (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            animateDoubleCharts({
+            animateDoubleChartsTwo({
               data,
               bars1Ref,
               bars2Ref,
@@ -68,19 +71,19 @@ export default function DobleBarChart({
       ref={sectionRef}
       className="flex items-end justify-center gap-16 relative h-72"
     >
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-light z-20"></div>
+      <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-light"></div>
 
       {data.map((item, i) => (
-        <div key={i} className="flex flex-col items-center text-center z-10">
-          <div className="flex items-end justify-center gap-6 relative">
+        <div key={i} className="flex flex-col items-center text-center">
+          <div className="flex items-end justify-center relative">
             <div className="flex flex-col items-center justify-end">
               <span
                 ref={(el) => {
                   if (el) numbers1Ref.current[i] = el;
                 }}
-                className="mb-1 text-primary text-base font-medium"
+                className="mb-1 text-primary text-xl font-extrabold"
               >
-                0 MW
+                US$0
               </span>
               <div
                 ref={(el) => {
@@ -89,7 +92,7 @@ export default function DobleBarChart({
                 className="w-16"
                 style={{
                   height: "0px",
-                  backgroundColor: item.color1 || "red",
+                  backgroundColor: item.color1 || "#FF0000",
                   transformOrigin: "bottom",
                 }}
               />
@@ -104,7 +107,7 @@ export default function DobleBarChart({
               >
                 0%
               </span>
-              <span className="text-sm font-medium w-40">
+              <span className="text-sm font-medium w-40 mb-10">
                 {item.centerText}
               </span>
             </div>
@@ -114,10 +117,11 @@ export default function DobleBarChart({
                 ref={(el) => {
                   if (el) numbers2Ref.current[i] = el;
                 }}
-                className="mb-1 text-primary text-base font-medium"
+                className="mb-1 text-white bg-green py-2 px-3 text-2xl font-extrabold whitespace-nowrap"
               >
-                0 MW
+                US$0
               </span>
+              <span className="text-sm text-primary whitespace-nowrap font-medium">Millones invertidos</span>
               <div
                 ref={(el) => {
                   if (el) bars2Ref.current[i] = el;
@@ -125,7 +129,7 @@ export default function DobleBarChart({
                 className="w-16"
                 style={{
                   height: "0px",
-                  backgroundColor: item.color2 || "white",
+                  backgroundColor: item.color2 || "#17447A",
                   transformOrigin: "bottom",
                 }}
               />

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
@@ -21,12 +23,10 @@ const LineChartTwo: React.FC = () => {
     { year: 2024, value: 47.99, label: "$47.99M" },
   ];
 
-  // Tamaño base para viewBox
   const width = 500;
   const height = 250;
   const padding = 40;
 
-  // Escalado relativo para que funcione en cualquier tamaño
   const xScale = (year: number) =>
     padding + ((year - 2019) / (2024 - 2019)) * (width - 2 * padding);
   const yScale = (value: number) =>
@@ -107,17 +107,18 @@ const LineChartTwo: React.FC = () => {
           viewBox={`0 0 ${width} ${height}`}
           className="overflow-visible relative"
         >
-          {Array.from({ length: 5 }).map((_, i) => {
-            const y = padding + i * ((height - 2 * padding) / 4);
+          {Array.from({ length: 6 }).map((_, i) => {
+            const x = padding + i * ((width - 2 * padding) / 5);
             return (
               <line
-                key={i}
-                x1={padding}
-                x2={width - padding}
-                y1={y}
-                y2={y}
-                stroke="#e5e7eb"
-                strokeWidth={0.5}
+                key={`v-${i}`}
+                x1={x}
+                x2={x}
+                y1={padding}
+                y2={height - padding}
+                stroke="#CDCDCD"
+                strokeWidth={2}
+                strokeDasharray="4 4"
               />
             );
           })}

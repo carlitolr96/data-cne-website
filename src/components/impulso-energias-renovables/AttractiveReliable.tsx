@@ -1,61 +1,42 @@
 "use client";
 
-import { assets, attractivereliable } from "@/assets/assets";
 import Image from "next/image";
 
 export default function AttractiveReliable() {
   return (
-    <section className="relative bg-primary min-h-[60vh] md:min-h-[100vh] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-4 flex flex-col relative z-0 py-12">
-        <div className="flex md:flex-row items-center justify-center text-center md:space-x-4 uppercase mb-6">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl text-white px-3 py-1">
-            UN MERCADO
-          </h1>
-          <span className="text-2xl sm:text-3xl md:text-4xl text-white bg-red font-bold mt-2 mx-0 md:mt-0">
-            ATRACTIVO Y CONFIABLE
-          </span>
-        </div>
+    <section className="relative bg-primary min-h-[60vh] md:min-h-[70vh] overflow-hidden flex flex-col justify-start">
+  <div className="max-w-7xl mx-auto px-6 md:px-4 flex flex-col items-center text-center pt-12 md:pt-16">
 
-        <p className="text-white font-medium text-center text-xl sm:text-2xl md:text-3xl mb-10">
-          El país destaca por ofrecer:
-        </p>
+    <div className="flex flex-col md:flex-row items-center justify-center uppercase gap-2 md:gap-4 mb-4">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl text-white font-semibold">
+        UN MERCADO
+      </h1>
+      <span className="text-3xl sm:text-4xl md:text-5xl text-white bg-red font-bold px-2 py-1 rounded">
+        ATRACTIVO Y CONFIABLE
+      </span>
+    </div>
 
-        <div
-          className="absolute z-0 flex flex-col gap-9 items-start"
-          style={{
-            top: "160%",
-            left: "14%",
-          }}
-        >
-          {attractivereliable.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-2"
-              style={{
-                marginLeft: `${index * 130}px`,
-              }}
-            >
-              <Image
-                src={assets.EllipseSVG}
-                alt={item.label}
-                className="w-6 h-6"
-              />
-              <span className="text-white text-base md:text-2xl font-medium">
-                {item.label}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
+    <p className="text-white font-medium text-lg sm:text-xl md:text-2xl mb-6">
+      El país destaca por ofrecer:
+    </p>
 
-      {/* Mapa */}
-      <div className="absolute bottom-0 left-0 w-full h-full opacity-80 -z-0">
-        <Image
-          src={assets.MapaTwoSVG}
-          alt="Mapa Rep. Dom"
-          className="object-cover scale-95 translate-x-[-19%] translate-y-[37%]"
-        />
-      </div>
-    </section>
+    <div className="w-full flex justify-center">
+      <Image
+        src="/AtractivoConfiable.png"
+        alt="Mapa Rep. Dom"
+        width={1300}
+        height={400}
+        className="
+          object-contain
+          max-w-full sm:max-w-sm md:max-w-4xl lg:max-w-7xl
+          translate-x-0 sm:translate-x-[-10%] md:translate-x-[-32%] 
+          translate-y-[20%] sm:translate-y-[25%] md:translate-y-[30%]
+          transition-all duration-500
+        "
+      />
+    </div>
+  </div>
+</section>
+
   );
 }

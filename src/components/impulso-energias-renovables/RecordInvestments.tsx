@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import DobleBarChart from "../DobleBarChart";
 import CircularBar from "../CircularBar";
-import { animateCharts } from "@/utils/animations";
+import { animateDoubleChartsTwo } from "@/utils/animations";
 
 export default function RecordInvestments() {
   const data = [30, 25, 20, 25];
@@ -12,19 +12,13 @@ export default function RecordInvestments() {
 
   const chartData = [
     {
-      value1: 150,
-      value2: 200,
+      value1: 100.1,
+      value2: 180.5,
       centerText: "de la inversión extranjera directa",
     },
   ];
 
   const sectionRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    if (sectionRef.current) {
-      animateCharts(sectionRef.current);
-    }
-  }, []);
 
   return (
     <section className="bg-white min-h-screen flex flex-col justify-center py-10 sm:py-12">
@@ -38,7 +32,7 @@ export default function RecordInvestments() {
           (IED)
         </span>
 
-        <p className="text-white font-light sm:text-base md:text-sm mt-3">
+        <p className="text-primary font-light sm:text-base md:text-sm mt-3">
           (Datos del Banco Central enero - septiembre 2024)
         </p>
       </div>

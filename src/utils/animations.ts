@@ -5,7 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Definir la interfaz BarData que falta
 interface BarData {
   value: number;
   label: string;
@@ -15,8 +14,6 @@ interface BarData {
 /* ========================================
    Sección: Animación de contadores
 ======================================== */
-
-gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Animar los contadores de American Lider
@@ -254,7 +251,6 @@ export const animateMapLocations = (
   tooltips: HTMLElement[],
   activeId: string | null
 ) => {
-  // Filtrar elementos nulos
   const validPoints = points.filter((point) => point !== null);
   const validTooltips = tooltips.filter((tooltip) => tooltip !== null);
 
@@ -381,10 +377,8 @@ export const resetCharts = (refs: {
 }) => {
   const { barsRef, numbersRef } = refs;
 
-  // Verificar que los arrays existan
   if (!barsRef.current || !numbersRef.current) return;
 
-  // Filtrar elementos nulos
   const validBars = barsRef.current.filter(
     (bar) => bar !== null
   ) as HTMLDivElement[];
@@ -434,7 +428,6 @@ export const animateChartsTwo = ({
 
   validNumbers.forEach((number, i) => {
     if (i < data.length) {
-      // Solucionar el problema con 'this' usando una variable local
       const progressObj = { progress: 0 };
 
       gsap.to(progressObj, {
@@ -450,7 +443,6 @@ export const animateChartsTwo = ({
   });
 };
 
-/* Double Bar Charts */
 interface DoubleBarData {
   value1: number;
   value2: number;
@@ -469,52 +461,7 @@ interface AnimateDoubleChartsParams {
   heightFactor: number;
 }
 
-// export const resetDoubleCharts = ({
-//   bars1Ref,
-//   bars2Ref,
-//   numbers1Ref,
-//   numbers2Ref,
-//   centerNumberRef,
-// }: {
-//   bars1Ref: React.MutableRefObject<(HTMLDivElement | null)[]>;
-//   bars2Ref: React.MutableRefObject<(HTMLDivElement | null)[]>;
-//   numbers1Ref: React.MutableRefObject<(HTMLSpanElement | null)[]>;
-//   numbers2Ref: React.MutableRefObject<(HTMLSpanElement | null)[]>;
-//   centerNumberRef: React.MutableRefObject<(HTMLSpanElement | null)[]>;
-// }) => {
-//   // Filtrar y procesar elementos no nulos
-//   bars1Ref.current
-//     .filter((bar) => bar !== null)
-//     .forEach((bar) => {
-//       gsap.set(bar!, { height: 0 });
-//     });
-
-//   numbers1Ref.current
-//     .filter((num) => num !== null)
-//     .forEach((num) => {
-//       num!.textContent = "0 MW";
-//     });
-
-//   bars2Ref.current
-//     .filter((bar) => bar !== null)
-//     .forEach((bar) => {
-//       gsap.set(bar!, { height: 0 });
-//     });
-
-//   numbers2Ref.current
-//     .filter((num) => num !== null)
-//     .forEach((num) => {
-//       num!.textContent = "0 MW";
-//     });
-
-//   centerNumberRef.current
-//     .filter((num) => num !== null)
-//     .forEach((num) => {
-//       num!.textContent = "0%";
-//     });
-// };
-
-export const animateDoubleCharts = ({
+export const animateDoubleChartsTwo = ({
   data,
   bars1Ref,
   bars2Ref,
@@ -533,42 +480,56 @@ export const animateDoubleCharts = ({
     const total = item.value1 + item.value2;
     const targetPercent = total > 0 ? (item.value1 / total) * 100 : 0;
 
-    // Barra izquierda
     if (bar1 && number1) {
-      gsap.to(bar1, { height: `${item.value1 * heightFactor}px`, duration: 1, ease: "power3.out" });
-      gsap.to({ val: 0 }, {
-        val: item.value1,
+      gsap.to(bar1, {
+        height: `${item.value1 * heightFactor}px`,
         duration: 1,
         ease: "power3.out",
-        onUpdate() {
-          number1.textContent = `${Math.floor(this.targets()[0].val).toLocaleString("en-US")} MW`;
-        },
       });
+      gsap.to(
+        { val: 0 },
+        {
+          val: item.value1,
+          duration: 1,
+          ease: "power3.out",
+          onUpdate() {
+            number1.textContent = `US$${this.targets()[0].val.toFixed(1)}`;
+          },
+        }
+      );
     }
 
-    // Barra derecha
     if (bar2 && number2) {
-      gsap.to(bar2, { height: `${item.value2 * heightFactor}px`, duration: 1, ease: "power3.out" });
-      gsap.to({ val: 0 }, {
-        val: item.value2,
+      gsap.to(bar2, {
+        height: `${item.value2 * heightFactor}px`,
         duration: 1,
         ease: "power3.out",
-        onUpdate() {
-          number2.textContent = `${Math.floor(this.targets()[0].val).toLocaleString("en-US")} MW`;
-        },
       });
+      gsap.to(
+        { val: 0 },
+        {
+          val: item.value2,
+          duration: 1,
+          ease: "power3.out",
+          onUpdate() {
+            number2.textContent = `US$${this.targets()[0].val.toFixed(1)}`;
+          },
+        }
+      );
     }
 
-    // Porcentaje central
     if (centerNumber) {
-      gsap.to({ val: 0 }, {
-        val: targetPercent,
-        duration: 1,
-        ease: "power3.out",
-        onUpdate() {
-          centerNumber.textContent = `${this.targets()[0].val.toFixed(1)}%`;
-        },
-      });
+      gsap.to(
+        { val: 0 },
+        {
+          val: targetPercent,
+          duration: 1,
+          ease: "power3.out",
+          onUpdate() {
+            centerNumber.textContent = `${this.targets()[0].val.toFixed(1)}%`;
+          },
+        }
+      );
     }
   });
 };
@@ -690,38 +651,6 @@ export const animateLineChart = (
   }
 };
 
-/* ========================================
-   Sección: Animación de paths SVG (Stage)
-======================================== */
-// export const animateStagePaths = (paths: (SVGPathElement | null)[]) => {
-//   const validPaths = paths.filter((path) => path !== null) as SVGPathElement[];
-
-//   validPaths.forEach((path) => {
-//     const length = path.getTotalLength();
-//     gsap.set(path, {
-//       strokeDasharray: length,
-//       strokeDashoffset: length,
-//       fill: "transparent",
-//     });
-
-//     gsap.to(path, {
-//       strokeDashoffset: 0,
-//       ease: "none",
-//       scrollTrigger: {
-//         trigger: path.closest(".stage-item"),
-//         start: "top 80%",
-//         end: "bottom 20%",
-//         scrub: true,
-//       },
-//       onComplete: () => {
-//         gsap.to(path, { fill: "#23B53E", duration: 0.5 });
-//       },
-//     });
-//   });
-// };
-
-// utils/animations.ts
-
 export function animateStagePathsOnScroll(paths: (SVGPathElement | null)[]) {
   if (!paths) return;
 
@@ -733,7 +662,7 @@ export function animateStagePathsOnScroll(paths: (SVGPathElement | null)[]) {
     path.style.strokeDashoffset = `${length}`;
     path.style.transition = "stroke-dashoffset 1s linear";
     path.style.fill = "none";
-    path.style.stroke = "#23B53E"; // color de trazo
+    path.style.stroke = "#23B53E";
     path.style.strokeWidth = "2";
   });
 
@@ -783,7 +712,6 @@ export const animateDoubleLineChart = (
     const pointsRef = pointsArray[index]?.current;
     if (!pointsRef) return;
 
-    // Filtrar puntos nulos
     const validPoints = pointsRef.filter(
       (point) => point !== null
     ) as SVGCircleElement[];

@@ -50,6 +50,12 @@ const LineChartTwo: React.FC = () => {
     );
   }, []);
 
+  const gridLines = Array.from({ length: 5 }).map((_, i) => {
+    const value = (yDomainMax / 4) * i;
+    const y = yScale(value);
+    return { y, value };
+  });
+
   return (
     <div className="relative w-full h-[260px] sm:h-[300px] md:h-[360px] lg:h-[420px]">
       <svg
@@ -60,6 +66,28 @@ const LineChartTwo: React.FC = () => {
         className="overflow-visible"
         aria-label="Gráfico de solicitudes de incentivos 2020–2024"
       >
+        {gridLines.map((g, i) => (
+          <g key={`grid-${i}`}>
+            <line
+              x1={padding}
+              x2={width - padding}
+              y1={g.y}
+              y2={g.y}
+              stroke="#CDCDCD"
+              strokeWidth={1}
+              strokeDasharray="4 4"
+            />
+            <text
+              x={padding - 10}
+              y={g.y + 4}
+              textAnchor="end"
+              className="fill-[#183B6B] font-medium"
+              style={{ fontSize: 12 }}
+            >
+              {g.value.toFixed(1)}
+            </text>
+          </g>
+        ))}
 
         <line
           x1={padding}
@@ -142,7 +170,6 @@ const LineChartTwo: React.FC = () => {
             strokeWidth={2}
           />
         ))}
-
         {data.map((d, i) => (
           <circle
             key={`red-${d.year}`}

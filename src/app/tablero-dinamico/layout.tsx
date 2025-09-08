@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { PanelRightClose, PanelRightOpen, X, Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { assets } from "../../assets/assets";
 import SideBarNav from "@/components/tablero-dinamico/SideBarNav";
@@ -53,7 +53,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             ? `fixed top-0 left-0 w-full h-screen z-50 transform ${
                 isOpen ? "translate-y-0" : "-translate-y-full"
               }`
-            : `${isOpen ? "w-64" : "w-16"} relative h-full`
+            : `${isOpen ? "w-75" : "w-16"} relative h-full`
         }`}
       >
         <SideBarNav
@@ -82,12 +82,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               className="inline md:hidden transition-all duration-300"
             />
           </Link>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-white hover:bg-primary/90 transition z-50 cursor-pointer"
-          >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          {isMobile ? (
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-white hover:bg-primary/90 transition z-50 cursor-pointer"
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          ) : (
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-white hover:bg-primary/90 transition z-50 cursor-pointer"
+            >
+              {isOpen ? (
+                <PanelRightOpen size={20} />
+              ) : (
+                <PanelRightClose size={20} />
+              )}
+            </button>
+          )}
         </div>
 
         <main className="flex-1 bg-white overflow-auto">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { assets } from "../../assets/assets";
+import { assets, locationspoint } from "../../assets/assets";
 import Image from "next/image";
 import Boton from "@/components/Boton";
 import { animateMapLocations } from "@/utils/animations";
@@ -14,39 +14,8 @@ interface LocationPoint {
   y: number;
 }
 
-const locations: LocationPoint[] = [
-  {
-    id: "santo-domingo",
-    name: "Santo Domingo",
-    description: "Capital del país con proyectos solares y eólicos en marcha.",
-    x: 55,
-    y: 60,
-  },
-  {
-    id: "santiago",
-    name: "Santiago",
-    description: "Centro de proyectos hidroeléctricos en la zona norte.",
-    x: 40,
-    y: 35,
-  },
-  {
-    id: "punta-cana",
-    name: "Punta Cana",
-    description: "Expansión de energía renovable para turismo sostenible.",
-    x: 80,
-    y: 65,
-  },
-  {
-    id: "san-cristobal",
-    name: "San Cristobal",
-    description: "Expansión de energía renovable para turismo sostenible.",
-    x: 50,
-    y: 65,
-  },
-];
-
 export default function MapsLocation() {
-  const pointsRef = useRef<HTMLDivElement[]>([]);
+  const pointsRef = useRef<HTMLButtonElement[]>([]);
   const tooltipsRef = useRef<HTMLDivElement[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
 
@@ -80,38 +49,47 @@ export default function MapsLocation() {
               height={600}
               className="w-full h-auto z-0"
             />
-            {locations.map((loc, i) => (
-              <button
-                key={loc.id}
-                className="absolute z-50"
-                style={{
-                  left: `${loc.x}%`,
-                  top: `${loc.y}%`,
-                  transform: "translate(-50%, -50%)",
-                }}
-              >
-                <div
+
+             {locationspoint.map((loc: LocationPoint, i: number) => (
+              <div key={loc.id}>
+                <button
                   ref={(el) => {
-                    if (el) tooltipsRef.current[i] = el;
+                    if (el) pointsRef.current[i] = el;
                   }}
-                  className="w-5 h-5 bg-red hover:bg-red-700 rounded-full cursor-pointer shadow-lg border-2"
+                  className="absolute z-1"
+                  style={{
+                    left: `${loc.x}%`,
+                    top: `${loc.y}%`,
+                    transform: "translate(-50%, -50%)",
+                  }}
                   onClick={() =>
                     setActiveId(activeId === loc.id ? null : loc.id)
                   }
-                />
-                <div
-                  ref={(el) => {
-                    if (el) tooltipsRef.current[i] = el;
-                  }}
-                  data-id={loc.id}
-                  className="absolute -top-24 left-1/2 -translate-x-1/2 w-56 p-4 rounded-xl bg-white shadow-lg border border-gray-200 opacity-0 pointer-events-none"
                 >
-                  <h4 className="text-primary font-bold text-lg mb-1">
-                    {loc.name}
-                  </h4>
-                  <p className="text-sm text-gray-600">{loc.description}</p>
-                </div>
-              </button>
+                  <div className="w-5 h-5 bg-red hover:bg-red-700 rounded-full cursor-pointer shadow-lg outline-2 outline-offset-2" />
+                </button>
+                {activeId === loc.id && (
+                  <div
+                    ref={(el) => {
+                      if (el) tooltipsRef.current[i] = el;
+                    }}
+                    data-id={loc.id}
+                    style={{
+                      top: `calc(${loc.y}% - 6rem)`,
+                      left: `${loc.x}%`,
+                      transform: "translateX(-50%)",
+                    }}
+                    className="absolute w-56 p-4 rounded-xl bg-white shadow-lg border border-gray-200 z-50"
+                  >
+                    <div className="absolute -bottom-3 left-1/2 w-3 h-3 bg-red rounded-full border-2 border-white transform -translate-x-1/2" />
+
+                    <h4 className="text-primary font-bold text-lg mb-1">
+                      {loc.name}
+                    </h4>
+                    <p className="text-sm text-gray-600">{loc.description}</p>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         </div>

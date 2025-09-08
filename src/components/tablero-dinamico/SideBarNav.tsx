@@ -43,6 +43,8 @@ export default function SideBarNavTwo({
     }
   };
 
+  const yearActual = new Date().getFullYear();
+
   return (
     <div className="flex flex-col h-screen">
       <div className="flex items-center justify-between md:justify-center py-4 px-2">
@@ -65,7 +67,7 @@ export default function SideBarNavTwo({
         )}
       </div>
 
-      <nav className="flex-grow px-2">
+      <nav className="flex-grow px-2 pt-4">
         {tablerodinamicobar.map((item, index: number) => {
           const isActive = pathname === item.url;
 
@@ -73,26 +75,34 @@ export default function SideBarNavTwo({
             <div key={index} className="relative">
               <Link
                 href={item.url}
-                className={`flex items-center gap-3 px-2 py-2 mt-2 text-sm font-medium rounded-md transition-colors ${
-                  isActive
-                    ? "bg-gray-200 text-primary"
-                    : "hover:bg-gray-300 text-white hover:text-primary"
-                }`}
+                className={`flex items-center px-2 py-2 mt-5 text-sm font-medium rounded-md transition-colors
+                  ${isOpen ? "justify-start" : "justify-center"}
+                  ${
+                    isActive
+                      ? "bg-gray-200 text-primary"
+                      : "hover:bg-gray-300 text-white hover:text-primary"
+                  }`}
                 onMouseEnter={(e) => !isOpen && handleMouseEnter(index, e)}
                 onMouseLeave={handleMouseLeave}
                 onClick={handleItemClick}
               >
                 {item.icon && (
                   <Image
-                    src={item.icon}
+                    src={isActive ? item.iconActive : item.icon}
                     alt={item.title}
                     width={24}
                     height={24}
                     className="shrink-0"
                   />
                 )}
-
-                {isOpen && <span>{item.title}</span>}
+                <span
+                  className={`overflow-hidden whitespace-nowrap transition-all duration-300 ease-in-out
+                    ${
+                      isOpen ? "ml-2 opacity-100 max-w-xs" : "opacity-0 max-w-0"
+                    }`}
+                >
+                  {item.title}
+                </span>
               </Link>
 
               {!isOpen && hoveredItem === index && (
@@ -111,7 +121,7 @@ export default function SideBarNavTwo({
         })}
       </nav>
 
-      <div className="flex flex-col items-center p-2 text-xs text-gray-400">
+      <div className="flex flex-col items-center p-2 text-xs text-gray-400 opacity-40">
         <Image
           src={assets.logoCNE}
           alt="CNE Logo"
@@ -119,7 +129,7 @@ export default function SideBarNavTwo({
           height={40}
           className="opacity-40 mb-5"
         />
-        {isOpen && <span>© 2025 Data CNE</span>}
+        {isOpen && <span>© {yearActual} Data CNE</span>}
       </div>
     </div>
   );

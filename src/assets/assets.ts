@@ -86,8 +86,17 @@ import EolicBar from "../assets/EolicBar.svg";
 import PetroliumBar from "../assets/PetroliumBar.svg";
 import NuclearBar from "../assets/NuclearBar.svg";
 import PanelBar from "../assets/PanelBar.svg";
-import ElectricBar from "../assets/ElectricBar.svg"
-import PanelSolarBar from "../assets/PanelSolarBar.svg"
+import ElectricBar from "../assets/ElectricBar.svg";
+import PanelSolarBar from "../assets/PanelSolarBar.svg";
+import VoltageTowerAzulBar from "../assets/VoltageTowerAzulBar.svg";
+import MapaRDAzulBar from "../assets/MapaRDAzulBar.svg";
+import ChartRenovableAzulBar from "../assets/ChartRenovableAzulBar.svg";
+import EolicAzulBar from "../assets/EolicAzulBar.svg";
+import PetroliumAzulBar from "../assets/PetroliumAzulBar.svg";
+import NuclearAzulBar from "../assets/NuclearAzulBar.svg";
+import PanelAzulBar from "../assets/PanelAzulBar.svg";
+// import ElectricAzulBar from "../assets/ElectricAzulBar.svg";
+import PanelSolarAzulBar from "../assets/PanelSolarAzulBar.svg";
 
 //Plan Energetico Nacional
 import METARD2036 from "../assets/METARD2036.svg";
@@ -95,7 +104,6 @@ import CityPEN from "../assets/City-PEN.svg";
 import ArrowBottomIcon from "../assets/Arrow-Bottom-Icon.svg";
 
 //Generacion Distribuida
-
 
 export const assets = {
   logoCNE,
@@ -186,7 +194,15 @@ export const assets = {
   CityPEN,
   ArrowBottomIcon,
   ElectricBar,
-  PanelSolarBar
+  PanelSolarBar,
+  VoltageTowerAzulBar,
+  MapaRDAzulBar,
+  ChartRenovableAzulBar,
+  EolicAzulBar,
+  PetroliumAzulBar,
+  NuclearAzulBar,
+  PanelAzulBar,
+  PanelSolarAzulBar,
 } as const;
 
 export interface ItemSystem {
@@ -202,6 +218,7 @@ export interface MainAxes {
 
 export interface TableroDinamicoBar {
   icon: string;
+  iconActive: string;
   title: string;
   url: string;
 }
@@ -258,10 +275,6 @@ export interface Category {
   url?: string;
 }
 
-export interface AttractiveReliable {
-  label: string;
-}
-
 export interface TeamsNavBar {
   name: string;
   logo: React.ElementType;
@@ -285,6 +298,14 @@ export interface EditionPen {
   description: string;
 }
 
+export interface LocationPoint {
+  id: string;
+  name: string;
+  description: string;
+  x: number;
+  y: number;
+}
+
 export const itemsystem: ItemSystem[] = [
   {
     icon: DoneSheck,
@@ -293,13 +314,13 @@ export const itemsystem: ItemSystem[] = [
   },
   {
     icon: DoneSheck,
-    description: "Esa energía viaja por líneas de transmisión hasta llegar a nuestras casas, negociose industrias.",
+    description:
+      "Esa energía viaja por líneas de transmisión hasta llegar a nuestras casas, negociose industrias.",
   },
   {
     icon: DoneSheck,
-    description:
-      "Es un sistema centralizado, donde la mayoría solo consume.",
-  }
+    description: "Es un sistema centralizado, donde la mayoría solo consume.",
+  },
 ];
 
 export const mainaxes: MainAxes[] = [
@@ -364,7 +385,7 @@ export const teammembers: TeamMembers[] = [
     role: "representante",
     img: "/img-difucion/LennyFrancisco.png",
   },
-    {
+  {
     name: "Sandrelys Revi",
     role: "representante",
     img: "/img-difucion/SandrelysRevi.png",
@@ -402,41 +423,49 @@ export const editionpen: EditionPen[] = [
 export const tablerodinamicobar: TableroDinamicoBar[] = [
   {
     icon: VoltageTowerBar,
+    iconActive: VoltageTowerAzulBar,
     title: "Demanda Eléctrica Nacional",
     url: "/tablero-dinamico/demanda-electrica-nacional",
   },
   {
     icon: PanelSolarBar,
+    iconActive: PanelSolarAzulBar,
     title: "Programa Medición Neta",
     url: "/tablero-dinamico/programa-medicion-neta",
   },
   {
     icon: MapaRDBar,
+    iconActive: MapaRDAzulBar,
     title: "Mapa Energético Nacional",
     url: "/tablero-dinamico/mapa-energetico-nacional",
   },
   {
     icon: ChartRenovableBar,
+    iconActive: ChartRenovableAzulBar,
     title: "Variables Macroeconómicas",
     url: "/tablero-dinamico/variable-macroeconomicas",
   },
   {
     icon: EolicBar,
+    iconActive: EolicAzulBar,
     title: "Proyectos Renovables",
     url: "/tablero-dinamico/proyectos-renovables",
   },
   {
     icon: PetroliumBar,
+    iconActive: PetroliumAzulBar,
     title: "Importación de Hidrocarburos",
     url: "/tablero-dinamico/importancia-hidrocarburos",
   },
   {
     icon: NuclearBar,
+    iconActive: NuclearAzulBar,
     title: "Asuntos Nucleares",
     url: "/tablero-dinamico/asuntos-nucleares",
   },
   {
     icon: PanelBar,
+    iconActive: PanelAzulBar,
     title: "Monitoreo SENI",
     url: "/tablero-dinamico/monitoreo-seni",
   },
@@ -503,24 +532,6 @@ export const navitemsone: NavItemsOne[] = [
     icon: LightBulbNav,
     label: "Cultura De Ahorro Energético",
     url: "/cultura-ahorro-energetico",
-  },
-];
-
-export const attractivereliable: AttractiveReliable[] = [
-  {
-    label: "Seguridad jurídica",
-  },
-  {
-    label: "Agilidad administrativa",
-  },
-  {
-    label: "Política atractiva de incentivos",
-  },
-  {
-    label: "Transparencia en los contratos de compra y venta de energía",
-  },
-  {
-    label: "Innovación y tecnología",
   },
 ];
 
@@ -660,5 +671,36 @@ export const stageicon: StageIcon[] = [
     description:
       "El poyecto entra en funcionamiento, generando y suministrando energía a la red con monitoreo y mantenimiento continuo.",
     icon: BoxLine,
+  },
+];
+
+export const locationspoint: LocationPoint[] = [
+  {
+    id: "santo-domingo",
+    name: "Santo Domingo",
+    description: "Capital del país con proyectos solares y eólicos en marcha.",
+    x: 55,
+    y: 60,
+  },
+  {
+    id: "santiago",
+    name: "Santiago",
+    description: "Centro de proyectos hidroeléctricos en la zona norte.",
+    x: 40,
+    y: 35,
+  },
+  {
+    id: "punta-cana",
+    name: "Punta Cana",
+    description: "Expansión de energía renovable para turismo sostenible.",
+    x: 80,
+    y: 65,
+  },
+  {
+    id: "san-cristobal",
+    name: "San Cristobal",
+    description: "Expansión de energía renovable para turismo sostenible.",
+    x: 50,
+    y: 65,
   },
 ];
