@@ -2,10 +2,9 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { editionpen } from "../../assets/assets";
+import { editionpen } from "@/assets/assets";
 
 export default function EditionPEN() {
-  // Un solo estado para manejar el tilt de cada tarjeta
   const [tilts, setTilts] = useState(
     Array(editionpen.length).fill({ x: 0, y: 0 })
   );
@@ -32,7 +31,7 @@ export default function EditionPEN() {
   };
 
   return (
-    <section className="bg-light">
+    <section className="bg-light py-12 md:py-0">
       <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col gap-12 min-h-[90vh] justify-center">
         <div className="max-w-full mx-auto relative">
           <h1 className="text-center font-extrabold text-[#17447a] text-2xl md:text-3xl mb-6">
@@ -66,7 +65,7 @@ export default function EditionPEN() {
                     height={100}
                     className="w-48 md:w-52 h-auto border border-primary bg-white object-cover mb-4"
                   />
-                  <p className="text-primary text-sm font-medium text-start">
+                  <p className="text-primary text-sm font-medium text-center md:text-start">
                     {doc.description}
                   </p>
                 </div>

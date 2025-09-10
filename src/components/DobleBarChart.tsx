@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { animateDoubleChartsTwo } from "../utils/animations";
+import { animateDoubleChartsTwo } from "@/utils/animations";
 
 interface DoubleBarData {
   value1: number;

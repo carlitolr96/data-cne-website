@@ -1,4 +1,5 @@
-import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { PiSolarPanelDuotone } from "react-icons/pi";
 import { Home, Inbox, Calendar, Search, Settings } from "lucide-react";
 import { IconType } from "react-icons";
@@ -104,6 +105,15 @@ import CityPEN from "../assets/City-PEN.svg";
 import ArrowBottomIcon from "../assets/Arrow-Bottom-Icon.svg";
 
 //Generacion Distribuida
+import SolarHomeGD from "../assets/SolarHomeGD.svg";
+import RequestApprovalGD from "../assets/RequestApprovalGD.svg";
+import QuoteGD from "../assets/QuoteGD.svg";
+import CertificateGD from "../assets/CertificateGD.svg";
+import BusinessBankingGD from "../assets/BusinessBankingGD.svg";
+import FinanceBankingGD from "../assets/FinanceBankingGD.svg";
+import PowerEnergyGD from "../assets/PowerEnergyGD.svg";
+import RenewableEnergyGD from "../assets/RenewableEnergyGD.svg";
+import CurrencyGD from "../assets/CurrencyGD.svg";
 
 export const assets = {
   logoCNE,
@@ -132,7 +142,7 @@ export const assets = {
   ImageLoader,
   FaFacebookF,
   FaInstagram,
-  FaTwitter,
+  FaXTwitter,
   FaYoutube,
   BoxPlus,
   BoxLine,
@@ -203,7 +213,28 @@ export const assets = {
   NuclearAzulBar,
   PanelAzulBar,
   PanelSolarAzulBar,
+  SolarHomeGD,
+  RequestApprovalGD,
+  QuoteGD,
+  CertificateGD,
+  BusinessBankingGD,
+  FinanceBankingGD,
+  PowerEnergyGD,
+  RenewableEnergyGD,
+  CurrencyGD,
 } as const;
+
+export interface Requirements {
+  icon: string;
+  title: string;
+}
+
+export interface Benefits {
+  icon: string;
+  title: string;
+  description: string;
+  color: string;
+}
 
 export interface ItemSystem {
   icon: string;
@@ -516,12 +547,7 @@ export const navitemsone: NavItemsOne[] = [
   {
     icon: SolarNav,
     label: "Generación Distribuida",
-    url: "",
-  },
-  {
-    icon: FileTextNav,
-    label: "Planes Y Normativas",
-    url: "",
+    url: "/generacion-distribuida",
   },
   {
     icon: NuclearNav,
@@ -616,7 +642,7 @@ export const categories: Category[] = [
     subtitle: "Distribuida",
     icon: PanelEnergy,
     color: "text-red-500",
-    url: "",
+    url: "/generacion-distribuida",
   },
 ];
 
@@ -633,8 +659,8 @@ export const socialicon: SocialIcon[] = [
   },
   {
     id: "3",
-    url: "https://linkedin.com",
-    icon: FaTwitter,
+    url: "https://x.com/",
+    icon: FaXTwitter,
   },
   {
     id: "4",
@@ -702,5 +728,59 @@ export const locationspoint: LocationPoint[] = [
     description: "Expansión de energía renovable para turismo sostenible.",
     x: 50,
     y: 65,
+  },
+];
+
+export const requirements: Requirements[] = [
+  {
+    icon: SolarHomeGD,
+    title: "Tener un sistema de energía renovable (como paneles solares).",
+  },
+  {
+    icon: QuoteGD,
+    title:
+      "El diseño debe cumplir con las normativas establecidas en el Programa de Medición Neta",
+  },
+  {
+    icon: RequestApprovalGD,
+    title:
+      "Firmar acuerdo de interconexión a la red con la empresa distribuidora de tu área",
+  },
+  {
+    icon: CertificateGD,
+    title: "Instalar y conectar a la red, siempre con tu medidor bidireccional",
+  },
+];
+
+export const benefits: Benefits[] = [
+  {
+    icon: CurrencyGD,
+    title: "Ahorros:",
+    description: "puedes reducir hasta un 90% tu factura eléctrica.",
+    color: "text-red-600",
+  },
+  {
+    icon: PowerEnergyGD,
+    title: "Independencia:",
+    description: "usas menos energía del sistema nacional.",
+    color: "text-red-600",
+  },
+  {
+    icon: FinanceBankingGD,
+    title: "Créditos:",
+    description: "si aportas energía extra, se descuenta de tu factura.",
+    color: "text-red-600",
+  },
+  {
+    icon: BusinessBankingGD,
+    title: "Valor agregado:",
+    description: "tu propiedad vale más con un sistema solar.",
+    color: "text-red-600",
+  },
+  {
+    icon: RenewableEnergyGD,
+    title: "Sostenibilidad:",
+    description: "reduces tu huella de carbono y usas energía limpia.",
+    color: "text-red-600",
   },
 ];

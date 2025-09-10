@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { assets, categories } from "../assets/assets";
+import { assets, categories } from "@/assets/assets";
 import { usePathname } from "next/navigation";
-import { socialicon } from "../assets/assets";
+import { socialicon } from "@/assets/assets";
 import Boton from "@/components/Boton";
 
 export default function Home() {
@@ -54,7 +54,7 @@ export default function Home() {
             color="green"
             showTextOnMobile={false}
           >
-            Ver Tablero
+            Tableros Dinámicos
           </Boton>
         </nav>
       </header>
@@ -264,7 +264,7 @@ export default function Home() {
             </div>
           </main> */}
 
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-5">
           {socialicon.map(({ id, url, icon: Icon }) => (
             <Link
               key={id}

@@ -45,9 +45,9 @@ export default function BarChart({ data, heightFactor = 1.5 }: BarChartProps) {
   return (
     <div
       ref={containerRef}
-      className="relative flex items-end justify-center space-x-10 h-64"
+      className="relative flex flex-col-reverse md:flex-row items-center justify-center md:space-x-10 h-auto md:h-64"
     >
-      <div className="flex gap-5">
+      <div className="flex gap-5 justify-center md:justify-start">
         {data.map((item, i) => (
           <div
             key={item.label}
@@ -55,7 +55,7 @@ export default function BarChart({ data, heightFactor = 1.5 }: BarChartProps) {
           >
             <span
               ref={(el) => setNumberRef(el, i)}
-              className="mb-1 text-primary text-xl font-medium"
+              className="mb-1 text-primary text-sm md:text-xl font-bold whitespace-nowrap"
             >
               0 MW
             </span>
@@ -75,22 +75,20 @@ export default function BarChart({ data, heightFactor = 1.5 }: BarChartProps) {
             </span>
           </div>
         ))}
+      </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center ml-6">
-          <div className="flex flex-col items-center">
-            <span className="flex items-center text-4xl font-extrabold text-primary">
-              <span ref={percentRef}>0%</span>
-              <Image
-                src={assets.ArrowUpWideIcon}
-                alt="CNE Arrow Up Wide"
-                width={30}
-                height={30}
-                className="ml-2"
-              />
-            </span>
-            <span className="text-sm font-bold text-primary">DE AUMENTO</span>
-          </div>
-        </div>
+      <div className="flex flex-col items-center mt-6 ml-6 md:mt-0 md:ml-0 mb-5">
+        <span className="flex items-center text-4xl font-extrabold text-primary">
+          <span ref={percentRef}>0%</span>
+          <Image
+            src={assets.ArrowUpWideIcon}
+            alt="CNE Arrow Up Wide"
+            width={30}
+            height={30}
+            className="ml-2"
+          />
+        </span>
+        <span className="text-sm font-bold text-primary">DE AUMENTO</span>
       </div>
     </div>
   );

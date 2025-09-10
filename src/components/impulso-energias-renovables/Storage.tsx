@@ -86,7 +86,7 @@ export default function Storage() {
             <div className="flex items-center justify-end gap-3 mt-6">
               <h1
                 ref={proyectosRef}
-                className="text-4xl sm:text-6xl font-extrabold"
+                className="text-5xl sm:text-6xl font-extrabold"
               >
                 0
               </h1>
@@ -98,7 +98,7 @@ export default function Storage() {
 
             <p
               ref={energiaRef}
-              className="font-extrabold text-2xl md:text-7xl mt-4"
+              className="font-extrabold text-5xl md:text-7xl mt-4"
             >
               0 MWh
             </p>

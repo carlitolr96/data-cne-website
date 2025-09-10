@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import DobleBarChart from "../DobleBarChart";
-import CircularBar from "../CircularBar";
+import DobleBarChart from "@/components/DobleBarChart";
+import CircularBar from "@/components/CircularBar";
 import { animateDoubleChartsTwo } from "@/utils/animations";
 
 export default function RecordInvestments() {
-  const data = [30, 25, 20, 25];
+  const data = [30, 25, 20, 25, 80, 60];
   const labels = ["Energía", "Agua", "Transporte", "Industria"];
   const colors = ["#00b4fc", "#005bc5", "#012677", "#001449"];
 

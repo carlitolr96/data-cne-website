@@ -1,6 +1,6 @@
 "use client";
 
-import { assets } from "../../assets/assets";
+import { assets } from "@/assets/assets";
 import Image from "next/image";
 import Boton from "@/components/Boton";
 
@@ -21,7 +21,7 @@ export default function Numeric() {
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center text-white w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
           <div className="flex flex-col items-center md:items-center">
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-center md:items-start">
               <h3 className="font-semibold text-lg md:text-2xl">
                 BUSCA DUPLICAR PIB
               </h3>
@@ -42,28 +42,31 @@ export default function Numeric() {
               +US$22,000
             </p>
           </div>
-
+          
           <div className="flex flex-col items-center md:items-center">
-            <div className="flex flex-col items-start">
-              <h3 className="font-semibold text-base md:text-xl mb-2 whitespace-nowrap">
+            <div className="flex flex-col items-center md:items-start text-center md:text-left">
+              <h3 className="font-semibold text-sm sm:text-base md:text-xl mb-2 md:mb-3 px-2 md:px-0 max-w-xs md:max-w-none md:whitespace-nowrap">
                 EN EFECTO, SE DUPLICARÁ LA OFERTA ENERGÉTICA
               </h3>
-              <p className="font-black text-4xl md:text-6xl lg:text-7xl">
+              <p className="font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
                 25,397 GWH
               </p>
             </div>
+
             <Image
               src={assets.ArrowBottomIcon}
-              alt="CityPEN overlay"
-              width={25}
-              height={25}
+              alt="Flecha indicadora"
+              width={20}
+              height={20}
               priority
-              className="py-10"
+              className="py-6 sm:py-8 md:py-10 transform scale-90 md:scale-100"
             />
 
-            <p className="font-black text-4xl md:text-6xl lg:text-7xl">
-              50,794 GWH
-            </p>
+            <div className="text-center">
+              <p className="font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
+                50,794 GWH
+              </p>
+            </div>
           </div>
         </div>
 

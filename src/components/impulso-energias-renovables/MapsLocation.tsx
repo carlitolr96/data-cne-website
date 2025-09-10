@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { assets, locationspoint } from "../../assets/assets";
+import { assets, locationspoint } from "@/assets/assets";
 import Image from "next/image";
 import Boton from "@/components/Boton";
 import { animateMapLocations } from "@/utils/animations";

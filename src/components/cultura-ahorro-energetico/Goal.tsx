@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { assets } from "../../assets/assets";
+import { assets } from "@/assets/assets";
 import gsap from "gsap";
 
 export default function Goal() {
@@ -92,7 +92,7 @@ export default function Goal() {
 
         <div className="flex flex-wrap sm:flex-1 items-center justify-center sm:justify-around px-6 py-4 gap-6 relative">
           <div className="flex items-center sm:items-center justify-center gap-3 min-w-[120px]">
-            <h1 className="text-2xl sm:text-5xl font-extrabold text-primary">
+            <h1 className="text-6xl sm:text-5xl font-extrabold text-primary">
               {format.format(numberDef)}
             </h1>
           </div>
@@ -100,7 +100,7 @@ export default function Goal() {
           <div className="hidden sm:block w-0.5 h-16 bg-red"></div>
 
           <div className="flex flex-col items-center justify-center gap-3 min-w-[120px]">
-            <h1 className="text-2xl sm:text-5xl font-extrabold text-primary">
+            <h1 className="text-6xl sm:text-5xl font-extrabold text-primary">
               {format.format(dateProv)}
             </h1>
             <span className="text-sm sm:text-[17px] text-primary leading-tight">
@@ -118,7 +118,7 @@ export default function Goal() {
                 width="30"
                 height="30"
               />
-              <h1 className="text-2xl sm:text-5xl font-extrabold text-primary">
+              <h1 className="text-6xl sm:text-5xl font-extrabold text-primary">
                 {format.format(femenino)}
               </h1>
             </div>
@@ -137,7 +137,7 @@ export default function Goal() {
                 width="30"
                 height="30"
               />
-              <h1 className="text-2xl sm:text-5xl font-extrabold text-primary">
+              <h1 className="text-6xl sm:text-5xl font-extrabold text-primary">
                 {format.format(masculino)}
               </h1>
             </div>

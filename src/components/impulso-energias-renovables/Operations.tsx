@@ -2,9 +2,10 @@
 
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
+import Boton from "@/components/Boton";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import { assets, slideoperations } from "../../assets/assets";
+import { assets, slideoperations } from "@/assets/assets";
 import { animateNumbers } from "@/utils/animations";
 
 import "swiper/css";
@@ -22,10 +23,7 @@ export default function Operations() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-           animateNumbers(
-              projectsRef.current,
-              capacityRef.current
-            );
+            animateNumbers(projectsRef.current, capacityRef.current);
           }
         });
       },
@@ -40,17 +38,19 @@ export default function Operations() {
   return (
     <section ref={containerRef} className="bg-light py-16">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 px-6">
-        <div className="flex-1">
-          <div className="flex items-center gap-2 bg-red px-4 py-2 w-fit mb-8">
-            <Image
-              src={assets.BoxChart}
-              alt="Operaciones"
-              width={25}
-              height={25}
-            />
-            <span className="text-white font-bold text-md md:text-4xl uppercase">
-              En Operación
-            </span>
+        <div className="flex flex-col w-full">
+          <div className="flex justify-center md:justify-start">
+            <div className="flex items-center gap-2 bg-red px-4 py-2 w-fit mb-8">
+              <Image
+                src={assets.BoxChart}
+                alt="Operaciones"
+                width={25}
+                height={25}
+              />
+              <span className="text-white font-bold text-md md:text-4xl uppercase">
+                En Operación
+              </span>
+            </div>
           </div>
 
           <h2
@@ -76,6 +76,9 @@ export default function Operations() {
         <div className="hidden lg:block w-0.5 h-50 bg-red"></div>
 
         <div className="flex-1 relative">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red font-medium text-sm text-white px-4 py-1 rounded-md z-2 whitespace-nowrap">
+            ÚLTIMO 4 PROYECTO
+          </div>
           <Swiper
             modules={[Pagination, Autoplay]}
             pagination={{
@@ -102,7 +105,7 @@ export default function Operations() {
 
                   <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/80 to-transparent" />
 
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 text-white">
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 text-white z-10">
                     <Image
                       src={assets.LocartionIcon}
                       alt="Ubicación"
@@ -118,6 +121,14 @@ export default function Operations() {
             ))}
           </Swiper>
           <div className="custom-pagination flex justify-center mt-4" />
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left mt-8">
+            <p className="font-bold text-primary uppercase">
+              para ver todos los proyectos
+            </p>
+            <Boton href="/" color="green" className="uppercase">
+              Descargar PDF
+            </Boton>
+          </div>
         </div>
       </div>
     </section>

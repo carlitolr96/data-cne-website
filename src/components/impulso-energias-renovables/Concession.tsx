@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { assets } from "../../assets/assets";
+import { assets } from "@/assets/assets";
 import { animateConcessionCounters } from "@/utils/animations";
 
 export default function Concession() {
@@ -41,7 +41,7 @@ export default function Concession() {
 
         <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-around px-6 py-4 gap-6 relative z-0 w-full">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 min-w-[120px] text-center sm:text-left">
-            <h1 className="text-4xl sm:text-6xl font-extrabold text-primary">
+            <h1 className="text-6xl sm:text-6xl font-extrabold text-primary">
               {concesionesDef.toLocaleString()}
             </h1>
             <span className="text-sm sm:text-[17px] text-primary leading-tight">
@@ -54,7 +54,7 @@ export default function Concession() {
           <div className="hidden sm:block w-0.5 h-16 bg-red-600"></div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 min-w-[120px] text-center sm:text-left">
-            <h1 className="text-4xl sm:text-6xl font-extrabold text-primary">
+            <h1 className="text-6xl sm:text-6xl font-extrabold text-primary">
               {concesionesProv.toLocaleString()}
             </h1>
             <span className="text-sm sm:text-[17px] text-primary leading-tight">
@@ -66,7 +66,7 @@ export default function Concession() {
           <div className="hidden sm:block w-0.5 h-16 bg-red-600"></div>
 
           <div className="flex flex-col items-center sm:items-end text-center sm:text-right min-w-[140px]">
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-primary">
+            <h1 className="text-6xl sm:text-4xl md:text-6xl font-extrabold text-primary">
               {capacidadMW.toLocaleString("en-US")} MW
             </h1>
             <span className="text-sm sm:text-[17px] text-primary">

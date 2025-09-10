@@ -1,7 +1,7 @@
 "use client";
 
 import { assets } from "@/assets/assets";
-import LineChartTwo from "../LineChart";
+import LineChart from "@/components/LineChart";
 import Image from "next/image";
 import { useRef, useEffect } from "react";
 import { animateCurrency } from "@/utils/animations";
@@ -66,7 +66,7 @@ export default function Saving() {
           </div>
 
           <div className="flex-1 w-full h-72 sm:h-80 md:h-96">
-            <LineChartTwo />
+            <LineChart />
           </div>
         </div>
       </div>

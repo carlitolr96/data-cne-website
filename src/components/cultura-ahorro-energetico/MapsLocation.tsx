@@ -1,6 +1,6 @@
 "use client";
 
-import { assets } from "../../assets/assets";
+import { assets } from "@/assets/assets";
 import Image from "next/image";
 
 export default function MapsLocation() {
@@ -19,7 +19,7 @@ export default function MapsLocation() {
           </div>
         </div>
 
-        <div className="relative z-10 min-h-screen flex items-start justify-end pt-16 md:pt-45 pr-6 md:pr-12">
+        <div className="relative min-h-screen flex items-start justify-end pt-16 md:pt-45 pr-6 md:pr-12">
           <div className="flex flex-col items-end max-w-lg">
             <div className="text-right">
               <h2 className="text-primary text-2xl md:text-2xl lg:text-3xl font-bold uppercase">

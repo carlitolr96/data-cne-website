@@ -1,6 +1,6 @@
 "use client";
 
-import { assets } from "../../assets/assets";
+import { assets } from "@/assets/assets";
 import Image from "next/image";
 
 export default function MetaRD() {

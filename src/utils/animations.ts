@@ -607,34 +607,103 @@ export const animatePercentageOnce = (
 /* ========================================
    Sección: Animación de Line Charts
 ======================================== */
-export const animateLineChart = (
-  pathRef: React.RefObject<SVGPathElement | null>,
-  pointsRef: React.MutableRefObject<(SVGCircleElement | null)[]>
-) => {
+// export const animateLineChart = (
+//   pathRef: React.RefObject<SVGPathElement | null>,
+//   pointsRef: React.MutableRefObject<(SVGCircleElement | null)[]>
+// ) => {
+//   if (!pathRef.current) return;
+
+//   const path = pathRef.current;
+//   const pathLength = path.getTotalLength();
+//   path.style.strokeDasharray = `${pathLength}`;
+//   path.style.strokeDashoffset = `${pathLength}`;
+
+//   const tl = gsap.timeline({ delay: 0.5 });
+//   tl.to(path, { strokeDashoffset: 0, duration: 2, ease: "power2.out" });
+
+//   // Filtrar puntos nulos
+//   const validPoints = pointsRef.current.filter(
+//     (point) => point !== null
+//   ) as SVGCircleElement[];
+
+//   validPoints.forEach((point, index) => {
+//     gsap.set(point, { scale: 0, transformOrigin: "center" });
+//     tl.to(
+//       point,
+//       { scale: 1, duration: 0.3, ease: "back.out(1.7)" },
+//       `-=${1.8 - index * 0.3}`
+//     );
+//   });
+
+//   const finalPoint = validPoints[validPoints.length - 1];
+//   if (finalPoint) {
+//     tl.to(
+//       finalPoint,
+//       {
+//         scale: 1.3,
+//         duration: 0.5,
+//         yoyo: true,
+//         repeat: 1,
+//         ease: "power2.inOut",
+//       },
+//       "+=0.5"
+//     );
+//   }
+// };
+
+export interface DataPoint {
+  year: number;
+  value: number;
+  label: string;
+}
+
+export interface LineChartAnimationParams {
+  pathRef: React.RefObject<SVGPathElement | null>;
+  pointsRef: React.MutableRefObject<(SVGCircleElement | null)[]>;
+}
+
+/**
+ * Animación para el gráfico de línea
+ */
+export const animateLineChartTwo = ({
+  pathRef,
+  pointsRef
+}: LineChartAnimationParams) => {
   if (!pathRef.current) return;
 
   const path = pathRef.current;
   const pathLength = path.getTotalLength();
+
+  // Configurar el efecto de dibujo
   path.style.strokeDasharray = `${pathLength}`;
   path.style.strokeDashoffset = `${pathLength}`;
 
   const tl = gsap.timeline({ delay: 0.5 });
-  tl.to(path, { strokeDashoffset: 0, duration: 2, ease: "power2.out" });
 
-  // Filtrar puntos nulos
-  const validPoints = pointsRef.current.filter(
-    (point) => point !== null
-  ) as SVGCircleElement[];
+  // Animación del trazo
+  tl.to(path, {
+    strokeDashoffset: 0,
+    duration: 2,
+    ease: "power2.out",
+  });
 
+  // Animación de los puntos
+  const validPoints = pointsRef.current.filter(point => point !== null) as SVGCircleElement[];
+  
   validPoints.forEach((point, index) => {
     gsap.set(point, { scale: 0, transformOrigin: "center" });
     tl.to(
       point,
-      { scale: 1, duration: 0.3, ease: "back.out(1.7)" },
+      {
+        scale: 1,
+        duration: 0.3,
+        ease: "back.out(1.7)",
+      },
       `-=${1.8 - index * 0.3}`
     );
   });
 
+  // Animación especial para el punto final
   const finalPoint = validPoints[validPoints.length - 1];
   if (finalPoint) {
     tl.to(
@@ -649,6 +718,46 @@ export const animateLineChart = (
       "+=0.5"
     );
   }
+
+  return tl;
+};
+
+/**
+ * Función para calcular escalas del gráfico
+ */
+export const calculateScales = (
+  data: DataPoint[], 
+  width: number, 
+  height: number, 
+  padding: number
+) => {
+  const xScale = (year: number) =>
+    padding + ((year - data[0].year) / (data[data.length - 1].year - data[0].year)) * (width - 2 * padding);
+  
+  const yScale = (value: number) => {
+    const minValue = Math.min(...data.map(d => d.value)) * 0.8;
+    const maxValue = Math.max(...data.map(d => d.value)) * 1.2;
+    return height - padding - ((value - minValue) / (maxValue - minValue)) * (height - 2 * padding);
+  };
+
+  return { xScale, yScale };
+};
+
+/**
+ * Generar datos del path SVG
+ */
+export const generatePathData = (
+  data: DataPoint[],
+  xScale: (year: number) => number,
+  yScale: (value: number) => number
+): string => {
+  return data
+    .map((point, index) => {
+      const x = xScale(point.year);
+      const y = yScale(point.value);
+      return `${index === 0 ? "M" : "L"} ${x} ${y}`;
+    })
+    .join(" ");
 };
 
 export function animateStagePathsOnScroll(paths: (SVGPathElement | null)[]) {

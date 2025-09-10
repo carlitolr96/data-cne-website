@@ -53,7 +53,6 @@ export default function ElectricityHome() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-20 mt-12">
-          {/* GENERACIÓN */}
           <div className="flex flex-col items-center text-center">
             <h3 className="text-lg sm:text-xl md:hidden font-bold text-primary mb-3">
               Generación
@@ -117,10 +116,38 @@ export default function ElectricityHome() {
           </div>
 
           <div className="flex flex-col">
-            <h3 className="text-lg sm:text-xl md:hidden font-bold text-primary mb-3">
+            <div className="flex justify-center md:hidden mb-3">
+              <Image
+                src={assets.Transmicion}
+                alt="Transmisión"
+                width={85}
+                height={85}
+                className="mt-2"
+              />
+            </div>
+
+            <h3 className="text-lg sm:text-xl font-bold text-primary mb-3">
               Transmisión
             </h3>
-            <div className="flex mb-6 relative items-start text-start gap-5">
+
+            {/* Texto solo en móvil */}
+            <div className="md:hidden">
+              <p className="text-primary text-center text-[15px] leading-relaxed mb-5">
+                Una vez generada, la electricidad viaja por redes de alto
+                voltaje llamadas líneas de transmisión.
+              </p>
+              <p className="text-primary text-center text-[15px] leading-relaxed mb-5">
+                Estas llevan la energía desde la planta hasta las subestaciones
+                en distintas partes del país.
+              </p>
+              <p className="text-primary text-center text-[15px] leading-relaxed">
+                Este proceso permite transportar la electricidad a largas
+                distancias de manera segura y eficiente.
+              </p>
+            </div>
+
+            {/* Imagen + texto en escritorio */}
+            <div className="hidden md:flex mb-6 relative items-start text-start gap-5">
               <Image
                 src={assets.Transmicion}
                 alt="Transmisión"
@@ -129,15 +156,15 @@ export default function ElectricityHome() {
                 className="mt-2"
               />
               <div>
-                <p className="text-primary text-[15px] leading-relaxed mb-5">
+                <p className="text-primary text-start text-[15px] leading-relaxed mb-5">
                   Una vez generada, la electricidad viaja por redes de alto
                   voltaje llamadas líneas de transmisión.
                 </p>
-                <p className="text-primary text-[15px] leading-relaxed mb-5">
+                <p className="text-primary text-start text-[15px] leading-relaxed mb-5">
                   Estas llevan la energía desde la planta hasta las
                   subestaciones en distintas partes del país.
                 </p>
-                <p className="text-primary text-[15px] leading-relaxed">
+                <p className="text-primary text-start text-[15px] leading-relaxed">
                   Este proceso permite transportar la electricidad a largas
                   distancias de manera segura y eficiente.
                 </p>
@@ -146,10 +173,33 @@ export default function ElectricityHome() {
           </div>
 
           <div className="flex flex-col">
-            <h3 className="text-lg sm:text-xl md:hidden font-bold text-primary mb-3">
+            <div className="flex justify-center md:hidden mb-3">
+              <Image
+                src={assets.Distribucion}
+                alt="Distribución"
+                width={85}
+                height={85}
+                className="mt-2"
+              />
+            </div>
+
+            <h3 className="text-lg sm:text-xl font-bold text-primary mb-3">
               Distribución
             </h3>
-            <div className="flex items-start mb-6 relative text-start gap-5">
+
+            <div className="md:hidden">
+              <p className="text-primary text-center text-[15px] leading-relaxed mb-4">
+                En las subestaciones, el voltaje de la electricidad se reduce
+                para enviarla por redes de distribución hasta hogares, comercios
+                e industrias.
+              </p>
+              <p className="text-primary text-center text-[15px] leading-relaxed">
+                Así, al encender una luz o conectar un electrodoméstico, recibes
+                la energía que recorrió este camino para llegar a ti.
+              </p>
+            </div>
+
+            <div className="hidden md:flex items-start mb-6 relative text-start gap-5">
               <Image
                 src={assets.Distribucion}
                 alt="Distribución"
@@ -158,12 +208,12 @@ export default function ElectricityHome() {
                 className="mt-3"
               />
               <div>
-                <p className="text-primary text-[15px] leading-relaxed mb-4">
+                <p className="text-primary text-start text-[15px] leading-relaxed mb-4">
                   En las subestaciones, el voltaje de la electricidad se reduce
                   para enviarla por redes de distribución hasta hogares,
                   comercios e industrias.
                 </p>
-                <p className="text-primary text-[15px] leading-relaxed">
+                <p className="text-primary text-start text-[15px] leading-relaxed">
                   Así, al encender una luz o conectar un electrodoméstico,
                   recibes la energía que recorrió este camino para llegar a ti.
                 </p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { mainaxes } from "../../assets/assets";
+import { mainaxes } from "@/assets/assets";
 
 export default function MainAxes() {
   return (

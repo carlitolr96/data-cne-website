@@ -3,6 +3,9 @@
 import Hero from "@/components/generacion-distribuida/Hero";
 import ElectricalSystem from "@/components/generacion-distribuida/ElectricalSystem"
 import DistributedGeneration from "@/components/generacion-distribuida/DistributedGeneration"
+import Best from "@/components/generacion-distribuida/Best"
+import StorySession from "@/components/generacion-distribuida/StorySession";
+import Benefits from "@/components/generacion-distribuida/Benefits";
 
 export default function GeneracionDistribuida() {
   return (
@@ -10,6 +13,9 @@ export default function GeneracionDistribuida() {
       <Hero />
       <ElectricalSystem />
       <DistributedGeneration />
+      <Best />
+      <StorySession />
+      <Benefits />
     </>
   );
 }

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { assets } from "@/assets/assets";
-import Boton from "@/components/Boton";
+// import Boton from "@/components/Boton";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 

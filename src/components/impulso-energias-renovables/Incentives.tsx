@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
-import LineChartTwo from "../LineChartTwo";
+import LineChartDoble from "@/components/LineChartDoble";
 import Boton from "@/components/Boton";
 import { animateAmount } from "@/utils/animations";
 
@@ -27,7 +27,7 @@ export default function Incentives() {
 
         <div className="flex flex-col lg:flex-row items-center gap-0 md:gap-24 w-full mt-8">
           <div className="w-full lg:w-10/12 h-72 sm:h-80 md:h-96">
-            <LineChartTwo />
+            <LineChartDoble />
           </div>
 
           <div className="flex flex-col items-center lg:items-start gap-2 text-center lg:text-left lg:w-1/2">

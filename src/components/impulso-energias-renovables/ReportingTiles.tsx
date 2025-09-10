@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
-import { reportingtile } from "../../assets/assets";
+import { reportingtile } from "@/assets/assets";
 import { animateNumberList } from "@/utils/animations";
 
 export default function ReportingTiles() {
@@ -45,7 +45,7 @@ export default function ReportingTiles() {
                   ref={(el) => {
                     if (el) numbersRef.current[index] = el;
                   }}
-                  className="text-xl font-bold mb-1"
+                  className="text-4xl md:text-xl font-extrabold mb-1"
                 >
                   0
                 </span>

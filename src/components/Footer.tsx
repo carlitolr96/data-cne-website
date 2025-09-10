@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { socialicon } from "../assets/assets";
+import { socialicon } from "@/assets/assets";
 
 export default function Footer() {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { itemsystem } from "../../assets/assets";
+import { itemsystem } from "@/assets/assets";
 import Image from "next/image";
 
 export default function ElectricalSystem() {

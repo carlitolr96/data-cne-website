@@ -1,6 +1,6 @@
 "use client";
 
-import { assets, teammembers } from "../../assets/assets";
+import { assets, teammembers } from "@/assets/assets";
 import Image from "next/image";
 import React from "react";
 
