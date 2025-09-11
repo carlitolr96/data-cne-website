@@ -4,7 +4,7 @@ export default function Best() {
   return (
     <section className="relative w-full overflow-hidden pb-10">
       <div
-        className="relative h-[120px] md:h-[250px] lg:h-[300px] bg-cover bg-center"
+        className="relative h-[320px] md:h-[250px] lg:h-[300px] bg-cover bg-center"
         style={{ backgroundImage: "url('')" }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/40"></div>

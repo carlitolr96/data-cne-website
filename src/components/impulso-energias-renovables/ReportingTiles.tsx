@@ -29,14 +29,14 @@ export default function ReportingTiles() {
           {reportingtile.map((tile, index) => (
             <div
               key={tile.id}
-              className="flex flex-col md:flex-row items-center p-4 relative"
+              className="flex flex-col md:flex-row items-center py-0 md:py-7 px-0.5 relative"
             >
               <div className="flex flex-shrink-0 items-center justify-center h-15 w-15 rounded">
                 <Image
                   src={tile.icon}
                   alt={tile.description}
-                  width={30}
-                  height={30}
+                  width={35}
+                  height={35}
                 />
               </div>
 
@@ -45,11 +45,11 @@ export default function ReportingTiles() {
                   ref={(el) => {
                     if (el) numbersRef.current[index] = el;
                   }}
-                  className="text-4xl md:text-xl font-extrabold mb-1"
+                  className="text-4xl md:text-4xl font-extrabold mb-3"
                 >
                   0
                 </span>
-                <span className="text-sm tracking-wider">
+                <span className="text-sm">
                   {tile.description}
                 </span>
 

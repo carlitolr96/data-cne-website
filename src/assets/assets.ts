@@ -6,6 +6,7 @@ import { IconType } from "react-icons";
 
 //Components
 import TapIcon from "./Tap-Icon.svg";
+import GrapChart from "./Grap-Chart.svg";
 
 //Home Page Menu
 import logoCNE from "./Logo-CNE.svg";
@@ -17,7 +18,6 @@ import NuclearMark from "./Nuclear-Mark.svg";
 import PowerManagement from "./Power-Management.svg";
 import RenewableEnergy from "./Renewable-Energy.svg";
 import PanelEnergy from "./Panel-Energy.svg";
-import GrapChart from "./Grap-Chart.svg";
 
 //LandingPage Plan Energetico Nacional
 import ImageEscuela from "../../public/image-1.jpg";
@@ -42,7 +42,6 @@ import SavingIcon from "../assets/Saving-Icon.svg";
 import HomeNav from "../assets/Home-Nav.svg";
 import ZapNav from "../assets/Zap-Nav.svg";
 import LightBulbNav from "../assets/LightBulb-Nav.svg";
-import FileTextNav from "../assets/FileText-Nav.svg";
 import SolarNav from "../assets/Solar-Nav.svg";
 import BatteryNav from "../assets/Battery-Nav.svg";
 import NuclearNav from "../assets/Nuclear-Nav.svg";
@@ -57,7 +56,6 @@ import Minihidraulic from "../assets/Mini-Hidraulic.svg";
 import DoneSheck from "../assets/Done-Sheck.svg";
 import Generation from "../assets/Generation.svg";
 import Transmicion from "../assets/Transmicion.svg";
-import Electricity from "../assets/HomeEnergy.svg";
 import HomeEnergy from "../assets/HomeEnergy.svg";
 import Distribucion from "../assets/Distribucion.svg";
 import Energy from "../assets/Energy.svg";
@@ -152,7 +150,6 @@ export const assets = {
   HomeNav,
   ZapNav,
   LightBulbNav,
-  FileTextNav,
   SolarNav,
   BatteryNav,
   NuclearNav,
@@ -180,7 +177,6 @@ export const assets = {
   Generation,
   Transmicion,
   HomeEnergy,
-  Electricity,
   Distribucion,
   Energy,
   Storage,

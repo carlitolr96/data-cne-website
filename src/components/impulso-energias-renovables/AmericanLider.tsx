@@ -23,7 +23,7 @@ export default function AmericanLider() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden min-h-screen">
+    <section ref={sectionRef} className="relative overflow-hidden min-h-2/12 md:h-screen">
       <div className="absolute inset-0">
         <div
           className="absolute top-0 left-0 w-full"
@@ -33,14 +33,14 @@ export default function AmericanLider() {
             src={assets.AmericanLider}
             alt="CNE American"
             fill
-            className="object-container md:object-cover w-full h-full"
+            className="object-container md:object-cover w-full h-full hidden md:block"
           />
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gray"></div>
+        <div className="absolute bottom-0 left-0 w-full h-1/4 md:h-1/2 bg-gray hidden md:block"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-4 flex flex-col items-center justify-end text-center min-h-screen py-16">
-        <div className="mb-32 relative z-0">
+      <div className="max-w-7xl mx-auto px-6 md:px-4 flex flex-col items-center justify-end text-center min-h-auto md:min-h-screen py-16">
+        <div className="mb-0 md:mb-32 relative z-0">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
             <span className="text-primary">REPÚBLICA DOMINICANA, </span>
             <span className="bg-red text-white px-4 py-2 font-extrabold">

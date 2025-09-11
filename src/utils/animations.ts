@@ -254,12 +254,22 @@ export const animateMapLocations = (
   const validPoints = points.filter((point) => point !== null);
   const validTooltips = tooltips.filter((tooltip) => tooltip !== null);
 
-  gsap.fromTo(
-    validPoints,
-    { scale: 0, opacity: 0 },
-    { scale: 1, opacity: 1, stagger: 0.2, duration: 0.8, ease: "back.out(1.7)" }
-  );
+  // 🔹 Animar solo el punto activo
+  if (activeId) {
+    const activePoint = validPoints.find(
+      (point) => point.dataset?.id === activeId
+    );
 
+    if (activePoint) {
+      gsap.fromTo(
+        activePoint,
+        { scale: 0.8 },
+        { scale: 1, duration: 0.6, ease: "back.out(1.7)" }
+      );
+    }
+  }
+
+  // 🔹 Animar solo el tooltip correspondiente
   validTooltips.forEach((tooltip) => {
     if (activeId === tooltip.dataset?.id) {
       gsap.fromTo(
@@ -285,6 +295,7 @@ export const animateMapLocations = (
     }
   });
 };
+
 
 /* ========================================
    Sección: Animación de números

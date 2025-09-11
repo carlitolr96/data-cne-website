@@ -41,18 +41,18 @@ export default function Benefits() {
           </div>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-xl shadow-2xs sm:flex flex-row-reverse w-full h-60 mb-16">
-          <div className="shrink-0 relative w-2/3 sm:w-2/3 md:w-2/3 rounded-t-xl overflow-hidden sm:rounded-e-xl sm:rounded-s-none">
+        <div className="bg-white border border-gray-200 rounded-xl shadow-2xs w-full mb-16 flex flex-col-reverse md:flex-row-reverse">
+          <div className="relative w-full h-60 md:w-2/3 md:h-auto rounded-t-xl md:rounded-t-none md:rounded-e-xl overflow-hidden">
             <Image
               src="/benefits-image.jpg"
               alt="Card Image"
-              className="absolute top-0 left-0 w-full h-full object-cover object-bottom"
               fill
+              className="absolute top-0 left-0 w-full h-full object-cover object-bottom"
             />
           </div>
 
-          <div className="flex flex-1 w-1/3">
-            <div className="p-4 flex flex-col h-full sm:p-7 justify-center">
+          <div className="flex w-full md:w-1/3">
+            <div className="p-4 md:p-7 flex flex-col justify-center h-full md:h-60">
               <p className="text-primary text-xl font-medium">
                 Una vez aprobado,{" "}
                 <span className="font-bold">
@@ -74,7 +74,7 @@ export default function Benefits() {
                 key={index}
                 className={`flex items-start gap-4 text-left ${
                   index !== benefits.length - 1
-                    ? "border-r-2 border-red-500 pr-2"
+                    ? "md:border-r-2 md:border-red-500 md:pr-2"
                     : ""
                 }`}
               >

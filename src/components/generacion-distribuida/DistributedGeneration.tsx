@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function DistributedGeneration() {
   return (
     <section className="bg-white py-16">
@@ -15,7 +17,15 @@ export default function DistributedGeneration() {
           </p>
         </div>
 
-        <div className="flex-1">Imagen</div>
+        <div className="flex-1">
+          <Image
+            src={"/BannerPanelRD.jpg"}
+            alt="CityPEN overlay"
+            width={500}
+            height={100}
+            className="mb-4"
+          />
+        </div>
       </div>
     </section>
   );

@@ -80,17 +80,19 @@ export default function Goal() {
   }, []);
 
   return (
-    <section className="bg-light relative" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row relative">
-        <div className="flex flex-col items-center justify-center bg-green text-white px-8 py-6 sm:rounded-r-full rounded-r-none">
-          <h1 className="font-extrabold text-base sm:text-2xl uppercase mt-0 sm:mt-2 px-15">
-            Meta
-          </h1>
+    <section ref={sectionRef} className="bg-light relative">
+      <div className="mx-auto flex flex-col sm:flex-row relative">
+        <div className="w-full md:w-90 flex flex-col items-center md:items-end justify-center bg-green text-white px-8 py-6 sm:rounded-r-full rounded-r-none z-0 mb-4 sm:mb-0">
+          <div className="flex flex-col items-center">
+            <span className="font-bold text-base sm:text-lg uppercase">
+              Meta
+            </span>
+          </div>
         </div>
 
-        <div className="hidden sm:block absolute top-0 left-[calc(31.5rem)] w-[calc(95%-8rem)] h-full bg-gray"></div>
+        <div className="hidden sm:block absolute top-0 left-[calc(40rem)] w-[calc(80%-16.3rem)] h-full bg-gray z-0"></div>
 
-        <div className="flex flex-wrap sm:flex-1 items-center justify-center sm:justify-around px-6 py-4 gap-6 relative">
+        <div className="max-w-7xl flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-around px-6 py-4 gap-6 relative z-0 w-full">
           <div className="flex items-center sm:items-center justify-center gap-3 min-w-[120px]">
             <h1 className="text-6xl sm:text-5xl font-extrabold text-primary">
               {format.format(numberDef)}

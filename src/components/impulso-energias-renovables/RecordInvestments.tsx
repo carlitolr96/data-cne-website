@@ -37,7 +37,7 @@ export default function RecordInvestments() {
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 px-6 mt-10">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10 px-0 md:px-6 mt-10">
         <div className="flex-1 flex flex-col items-center">
           <DobleBarChart data={chartData} />
           <p className="text-primary text-sm font-light mt-2 text-center">
