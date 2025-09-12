@@ -37,7 +37,7 @@ export default function Home() {
 
       <header className="relative top-0 left-0 w-full z-50">
         <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="https://cne.gob.do/" target="_blank" className="flex items-center gap-2">
             <Image
               src={assets.logoCNE}
               alt="CNE Logo"

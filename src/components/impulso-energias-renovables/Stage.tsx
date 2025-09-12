@@ -111,7 +111,6 @@ export default function Stage() {
           ))}
         </div>
 
-        {/* CTA final */}
         <div className="mt-12 flex flex-col items-center justify-center text-center">
           <p className="font-bold text-white text-lg">
             ¿Eres un desarrollador o inversionista? <br />

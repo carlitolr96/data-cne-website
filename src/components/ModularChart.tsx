@@ -75,7 +75,7 @@ export default function ModularChart({
               }}
             />
 
-            <span className="mt-2 text-primary text-lg font-bold">
+            <span className="mt-2 text-primary text-lg font-medium text-center">
               {item.label}
             </span>
           </div>

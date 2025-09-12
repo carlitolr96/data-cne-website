@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { PanelRightClose, PanelRightOpen, X, Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { assets } from "../../assets/assets";
+import Boton from "@/components/Boton";
 import SideBarNav from "@/components/tablero-dinamico/SideBarNav";
 import Link from "next/link";
 import Image from "next/image";
@@ -94,7 +95,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           ) : (
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-white hover:bg-primary/90 transition z-50 cursor-pointer"
+              className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-white hover:bg-primary/90 transition z-50 cursor-pointer mr-3"
             >
               {isOpen ? (
                 <PanelRightOpen size={20} />
@@ -103,6 +104,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               )}
             </button>
           )}
+          <Boton href="/">Volver Atras</Boton>
         </div>
 
         <main className="flex-1 bg-white overflow-auto">

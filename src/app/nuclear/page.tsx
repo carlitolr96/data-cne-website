@@ -8,6 +8,7 @@ import Ionizantes from "@/components/nuclear/Ionizantes";
 import Resolution from "@/components/nuclear/Resolution";
 import Importance from "@/components/nuclear/Importance";
 import Radiological from "@/components/nuclear/Radiological";
+import EmitionsSession from "@/components/nuclear/EmitionsSession";
 
 export default function Nuclear() {
   return (
@@ -16,8 +17,9 @@ export default function Nuclear() {
       <RadiationSession />
       <Ionizantes />
       <WarningSession />
-
+      
       <Radiological />
+      <EmitionsSession />
       <Resolution />
       <Importance />
     </>

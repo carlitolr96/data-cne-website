@@ -567,7 +567,7 @@ export const navitemsone: NavItemsOne[] = [
   {
     icon: NuclearNav,
     label: "Asuntos Radiológicos Y Nucleares",
-    url: "",
+    url: "/nuclear",
   },
   {
     icon: LightBulbNav,
