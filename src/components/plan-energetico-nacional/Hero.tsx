@@ -64,6 +64,8 @@ export default function Hero() {
             alt="Portada PEN 2025-2038"
             width={300}
             height={400}
+            priority
+            quality={70}
             className="object-cover shadow-2xl rounded-md"
           />
         </div>

@@ -23,7 +23,7 @@ const Loader: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full flex items-center justify-center overflow-hidden h-[600px] sm:h-[550px] min-h-[450px] bg-[url('/image-loader.jpg')] bg-cover bg-center"
+      className="relative w-full flex items-center justify-center overflow-hidden h-[600px] sm:h-[550px] min-h-[450px] bg-[url('/ImageLoader.jpg')] bg-cover bg-center"
     >
       <div className="absolute inset-0 bg-gradient-to-bl from-primary" />
       <div className="absolute inset-0 bg-primary opacity-30 " />

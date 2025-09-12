@@ -54,6 +54,8 @@ export default function SideBarNavTwo({
             alt="Data CNE"
             width={isOpen ? 100 : 40}
             height={40}
+            priority
+            quality={70}
             className="transition-all duration-300"
           />
         </Link>
@@ -127,6 +129,8 @@ export default function SideBarNavTwo({
           alt="CNE Logo"
           width={150}
           height={40}
+          priority
+          quality={70}
           className="opacity-40 mb-5"
         />
         {isOpen && <span>© {yearActual} Data CNE</span>}

@@ -43,6 +43,8 @@ export default function Home() {
               alt="CNE Logo"
               width={200}
               height={70}
+              quality={70}
+              priority
               className="w-[100px] md:w-[190px] h-auto"
             />
           </Link>
@@ -67,6 +69,7 @@ export default function Home() {
               alt="Data CNE"
               width={200}
               height={80}
+              quality={70}
               priority
             />
           </div>

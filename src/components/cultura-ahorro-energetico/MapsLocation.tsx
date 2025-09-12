@@ -14,6 +14,8 @@ export default function MapsLocation() {
               alt="Mapa CNE"
               width={800}
               height={600}
+              priority
+              quality={70}
               className="w-full h-auto"
             />
           </div>

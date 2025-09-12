@@ -25,6 +25,8 @@ export default function AttractiveReliable() {
             alt="Mapa Rep. Dom"
             width={1500}
             height={400}
+            priority
+            quality={70}
             className="
           object-contain
           max-w-full

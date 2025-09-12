@@ -15,7 +15,8 @@ export default function EditionPEN() {
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     index: number
   ) => {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const { left, top, width, height } =
+      e.currentTarget.getBoundingClientRect();
     const x = ((e.clientX - left) / width - 0.5) * 2 * threshold;
     const y = ((e.clientY - top) / height - 0.5) * 2 * threshold;
 
@@ -63,7 +64,9 @@ export default function EditionPEN() {
                     alt={`Document cover ${index + 1}`}
                     width={100}
                     height={100}
-                    className="w-48 md:w-52 h-auto border border-primary bg-white object-cover mb-4"
+                    priority
+                    quality={70}
+                    className="md:w-52 w-48 h-64 bg-cover bg-center rounded-lg shadow-lg border-2 border-gray-200 mb-5"
                   />
                   <p className="text-primary text-sm font-medium text-center md:text-start">
                     {doc.description}

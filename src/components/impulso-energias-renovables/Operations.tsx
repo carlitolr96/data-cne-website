@@ -100,6 +100,8 @@ export default function Operations() {
                     src={slide.img}
                     alt={slide.location}
                     fill
+                    priority
+                    quality={70}
                     className="object-cover"
                   />
 

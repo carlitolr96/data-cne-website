@@ -12,6 +12,55 @@ interface BarData {
 }
 
 /* ========================================
+   Sección: Titulos y Textos
+======================================== */
+
+const wrapTextNodes = (element: HTMLElement, spans: HTMLElement[]) => {
+  const nodes = Array.from(element.childNodes);
+
+  nodes.forEach((node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const words = node.textContent?.split(/(\s+)/).filter(Boolean) || [];
+
+      words.forEach((word, index) => {
+        const span = document.createElement("span");
+        span.textContent = word;
+        span.className = "";
+        element.insertBefore(span, node);
+        spans.push(span);
+
+        if (index !== words.length - 1) {
+          element.insertBefore(document.createTextNode(" "), node);
+        }
+      });
+
+      element.removeChild(node);
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      wrapTextNodes(node as HTMLElement, spans);
+    }
+  });
+};
+
+export const textReveal = (element: HTMLElement | null) => {
+  if (!element) return;
+
+  const spans: HTMLElement[] = [];
+  wrapTextNodes(element, spans);
+
+  const tl = gsap.timeline();
+  tl.from(spans, {
+    y: 100,
+    opacity: 0,
+    ease: "power4.out",
+    duration: 1.8,
+    stagger: {
+      amount: 0.3,
+    },
+  });
+};
+
+
+/* ========================================
    Sección: Animación de contadores
 ======================================== */
 
@@ -295,7 +344,6 @@ export const animateMapLocations = (
     }
   });
 };
-
 
 /* ========================================
    Sección: Animación de números
@@ -678,7 +726,7 @@ export interface LineChartAnimationParams {
  */
 export const animateLineChartTwo = ({
   pathRef,
-  pointsRef
+  pointsRef,
 }: LineChartAnimationParams) => {
   if (!pathRef.current) return;
 
@@ -699,8 +747,10 @@ export const animateLineChartTwo = ({
   });
 
   // Animación de los puntos
-  const validPoints = pointsRef.current.filter(point => point !== null) as SVGCircleElement[];
-  
+  const validPoints = pointsRef.current.filter(
+    (point) => point !== null
+  ) as SVGCircleElement[];
+
   validPoints.forEach((point, index) => {
     gsap.set(point, { scale: 0, transformOrigin: "center" });
     tl.to(
@@ -737,18 +787,24 @@ export const animateLineChartTwo = ({
  * Función para calcular escalas del gráfico
  */
 export const calculateScales = (
-  data: DataPoint[], 
-  width: number, 
-  height: number, 
+  data: DataPoint[],
+  width: number,
+  height: number,
   padding: number
 ) => {
   const xScale = (year: number) =>
-    padding + ((year - data[0].year) / (data[data.length - 1].year - data[0].year)) * (width - 2 * padding);
-  
+    padding +
+    ((year - data[0].year) / (data[data.length - 1].year - data[0].year)) *
+      (width - 2 * padding);
+
   const yScale = (value: number) => {
-    const minValue = Math.min(...data.map(d => d.value)) * 0.8;
-    const maxValue = Math.max(...data.map(d => d.value)) * 1.2;
-    return height - padding - ((value - minValue) / (maxValue - minValue)) * (height - 2 * padding);
+    const minValue = Math.min(...data.map((d) => d.value)) * 0.8;
+    const maxValue = Math.max(...data.map((d) => d.value)) * 1.2;
+    return (
+      height -
+      padding -
+      ((value - minValue) / (maxValue - minValue)) * (height - 2 * padding)
+    );
   };
 
   return { xScale, yScale };

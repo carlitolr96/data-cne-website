@@ -48,6 +48,8 @@ export default function Hero() {
           src="/GraficoPowerBy.jpg"
           width={1200}
           height={800}
+          priority
+          quality={70}
           className="w-full h-full object-cover object-top rounded-t-2xl relative z-10"
           alt="Hero Sections Image"
         />

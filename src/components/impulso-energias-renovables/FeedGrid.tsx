@@ -41,6 +41,8 @@ export default function FeedGrid() {
           src={assets.ImageComunidad}
           alt="CNE Escuela"
           fill
+          priority
+          quality={70}
           className="object-cover"
         />
       </div>
@@ -49,6 +51,8 @@ export default function FeedGrid() {
         <Image
           src={assets.LogoEnergiaCambio}
           alt="CNE Logo"
+          priority
+          quality={70}
           className="mx-auto"
         />
         {/* <Boton href="/" className="uppercase mt-3">
@@ -61,6 +65,8 @@ export default function FeedGrid() {
           src={assets.ImageGente}
           alt="CNE Educación"
           fill
+          priority
+          quality={70}
           className="object-cover object-[46%_75%]"
         />
       </div>
@@ -70,6 +76,8 @@ export default function FeedGrid() {
           src={assets.ImageEscuela}
           alt="CNE Gente"
           fill
+          priority
+          quality={70}
           className="object-cover"
         />
 
@@ -94,6 +102,8 @@ export default function FeedGrid() {
         <Image
           src={assets.ImageBarrio}
           alt="CNE Comunidad"
+          priority
+          quality={70}
           className="object-cover object-[50%_75%]"
         />
       </div>

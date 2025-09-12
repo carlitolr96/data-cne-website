@@ -30,7 +30,12 @@ export default function Storage() {
         <div className="flex flex-col space-y-6 text-primary">
           <div>
             <div className="flex items-center gap-3">
-              <Image src={assets.Batery} alt="Batería" width={100} height={100} />
+              <Image
+                src={assets.Batery}
+                alt="Batería"
+                width={100}
+                height={100}
+              />
               <h2 className="font-extrabold text-xl sm:text-2xl md:text-3xl uppercase">
                 Almacenamiento: Tecnología en crecimiento para un sistema
                 estable
@@ -52,6 +57,8 @@ export default function Storage() {
               alt="Energía"
               width={400}
               height={100}
+              priority
+              quality={70}
               className="md:w-200"
             />
           </div>
@@ -107,6 +114,8 @@ export default function Storage() {
           <Image
             src={assets.Storage}
             alt="Sistema de baterías"
+            priority
+            quality={70}
             className="max-w-xs md:max-w-md"
           />
 

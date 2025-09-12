@@ -15,6 +15,7 @@ export default function Numeric() {
           height={100}
           className="w-full h-full object-cover object-top opacity-90 translate-y-60"
           priority
+          quality={70}
         />
       </div>
 
@@ -42,7 +43,7 @@ export default function Numeric() {
               +US$22,000
             </p>
           </div>
-          
+
           <div className="flex flex-col items-center md:items-center">
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
               <h3 className="font-semibold text-sm sm:text-base md:text-xl mb-2 md:mb-3 px-2 md:px-0 max-w-xs md:max-w-none md:whitespace-nowrap">

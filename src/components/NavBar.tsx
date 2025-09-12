@@ -37,8 +37,14 @@ const NavBar = () => {
     <header className="fixed top-0 left-0 w-full z-50">
       <nav
         className={`flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-3.5 transition-all duration-300 ${
-          isMenuOpen ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
-        } ${isScrolled ? "bg-black/40 backdrop-blur-md shadow-sm" : "bg-transparent"}`}
+          isMenuOpen
+            ? "-translate-y-full opacity-0"
+            : "translate-y-0 opacity-100"
+        } ${
+          isScrolled
+            ? "bg-black/40 backdrop-blur-md shadow-sm"
+            : "bg-transparent"
+        }`}
       >
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -46,6 +52,8 @@ const NavBar = () => {
             alt="CNE Logo"
             width={200}
             height={48}
+            priority
+            quality={70}
             className="max-w-[90px] w-full h-auto transition-all duration-300"
           />
         </Link>
@@ -90,6 +98,8 @@ const NavBar = () => {
               alt="Data CNE"
               width={100}
               height={40}
+              priority
+              quality={70}
               className="transition-all duration-300"
             />
           </Link>
@@ -164,6 +174,8 @@ const NavBar = () => {
               alt="Data CNE"
               width={90}
               height={40}
+              priority
+              quality={70}
               className="transition-all duration-300"
             />
           </Link>
@@ -220,6 +232,8 @@ const NavBar = () => {
             alt="CNE Logo"
             width={150}
             height={40}
+            priority
+            quality={70}
             className="opacity-60 mb-3"
           />
           <span>© {yearActual} Data CNE</span>

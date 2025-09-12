@@ -44,9 +44,11 @@ export default function Benefits() {
         <div className="bg-white border border-gray-200 rounded-xl shadow-2xs w-full mb-16 flex flex-col-reverse md:flex-row-reverse">
           <div className="relative w-full h-60 md:w-2/3 md:h-auto rounded-t-xl md:rounded-t-none md:rounded-e-xl overflow-hidden">
             <Image
-              src="/benefits-image.jpg"
+              src="/BenefitsImg.jpg"
               alt="Card Image"
               fill
+              priority
+              quality={70}
               className="absolute top-0 left-0 w-full h-full object-cover object-bottom"
             />
           </div>

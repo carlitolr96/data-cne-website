@@ -68,6 +68,8 @@ export default function MapsLocation() {
               src={assets.MapaOneSVG}
               alt="Mapa CNE"
               fill
+              priority
+              quality={70}
               className="object-contain"
             />
             {locationspoint.map((loc: LocationPoint, i: number) => (
@@ -126,6 +128,8 @@ export default function MapsLocation() {
                 alt="Mapa CNE"
                 width={800}
                 height={600}
+                priority
+                quality={70}
                 className="w-full h-auto z-0"
               />
               {locationspoint.map((loc: LocationPoint, i: number) => (

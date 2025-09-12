@@ -16,6 +16,21 @@
   --font-montserrat: "Montserrat", sans-serif;
 }
 
+@keyframes reveal {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-reveal {
+  animation: reveal 1s ease-out forwards;
+}
+
 * {
   font-family: "Montserrat", sans-serif;
 }

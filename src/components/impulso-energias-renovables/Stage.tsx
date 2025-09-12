@@ -132,8 +132,3 @@ export default function Stage() {
     </section>
   );
 }
-
-
-// ref={(el) => {
-//                       pathRefs.current[index] = el;
-//                     }}

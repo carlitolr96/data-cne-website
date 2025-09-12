@@ -23,7 +23,10 @@ export default function AmericanLider() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden min-h-2/12 md:h-screen">
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden min-h-2/12 md:h-screen"
+    >
       <div className="absolute inset-0">
         <div
           className="absolute top-0 left-0 w-full"
@@ -33,6 +36,8 @@ export default function AmericanLider() {
             src={assets.AmericanLider}
             alt="CNE American"
             fill
+            priority
+            quality={70}
             className="object-container md:object-cover w-full h-full hidden md:block"
           />
         </div>

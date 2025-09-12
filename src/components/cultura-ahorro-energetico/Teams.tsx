@@ -24,11 +24,20 @@ export default function Teams() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-5">
           {teammembers.map((items, index) => (
             <div key={index} className="text-center">
-              <div className="relative w-40 h-40 mx-auto mb-4">
+              <div
+                className="
+          relative w-40 h-40 mx-auto mb-4 
+          rounded-full border-4 border-transparent 
+          hover:border-green hover:shadow-lg hover:shadow-green/60
+          transition-all duration-300 cursor-pointer
+        "
+              >
                 <Image
                   src={items.img}
                   alt={items.name}
                   fill
+                  priority
+                  quality={70}
                   className="object-cover rounded-full"
                 />
               </div>

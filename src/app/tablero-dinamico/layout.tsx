@@ -79,6 +79,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               alt="Data CNE"
               width={80}
               height={80}
+              quality={70}
+              priority
               className="inline md:hidden transition-all duration-300"
             />
           </Link>

@@ -23,6 +23,8 @@ export default function DistributedGeneration() {
             alt="CityPEN overlay"
             width={500}
             height={100}
+            priority
+            quality={70}
             className="mb-4"
           />
         </div>

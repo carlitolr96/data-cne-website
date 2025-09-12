@@ -16,18 +16,18 @@ export default function CNEContribution() {
       <div className="max-w-7xl mx-auto px-6 md:px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12 mb-20">
           <div className="bg-light border border-gray-200 rounded-xl shadow-2xs w-full flex flex-col-reverse md:flex-row-reverse overflow-hidden">
-            <div className="flex w-full md:w-1/3">
-              <div className="p-4 md:p-7 flex flex-col justify-center h-full md:h-full">
-                <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6 uppercase font-montserrat">
+            <div className="flex w-full md:w-2/3">
+              <div className="p-4 md:p-10 flex flex-col justify-center h-full md:h-full">
+                <h2 className="text-2xl md:text-2xl font-bold text-primary mb-6 uppercase font-montserrat">
                   ¿Qué aporta la CNE en este programa?
                 </h2>
                 <div className="space-y-4 text-primary">
-                  <p className="text-lg leading-relaxed">
+                  <p className="text-lg md:text-md leading-relaxed">
                     La CNE se encarga del proceso de certificación de
                     cumplimiento de calidad de los equipos a utilizar (módulos
                     solares, inversores, tejas solares y aerogeneradores).
                   </p>
-                  <p className="text-lg leading-relaxed">
+                  <p className="text-lg md:text-xl leading-relaxed">
                     Además, es la institución responsable de gestionar los
                     incentivos fiscales relacionados.
                   </p>
@@ -35,11 +35,13 @@ export default function CNEContribution() {
               </div>
             </div>
 
-            <div className="relative w-full h-60 md:w-2/3 md:h-auto md:rounded-l-xl overflow-hidden">
+            <div className="relative w-full md:w-2/3 h-48 md:h-100 md:rounded-l-xl overflow-hidden">
               <Image
-                src="/benefits-image.jpg"
+                src="/BenefitsImg.jpg"
                 alt="Card Image"
                 fill
+                priority
+                quality={70}
                 className="absolute top-0 left-0 w-full h-full object-cover object-bottom"
               />
             </div>
@@ -52,15 +54,31 @@ export default function CNEContribution() {
           </h2>
 
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-center gap-12">
-            <div className="lg:w-1/2 max-w-md">
-              <p className="text-2xl md:text-3xl font-extrabold bg-primary text-white text-start p-4 mb-4">
-                MAS DEL 3% DE LA ENERGÍA QUE SE CONSUME EN EL PAÍS, PROVIENE DE
-                LA GENERACIÓN DISTRIBUIDA SOLAR COLOCADA EN LOS TECHOS
-              </p>
+            <div className="lg:w-1/2 max-w-4xl">
+              <div className="text-start space-y-2">
+                <span className="inline-block text-2xl md:text-3xl font-extrabold bg-primary text-white px-2">
+                  MAS DEL 3% DE LA ENERGÍA
+                </span>
+                <span className="inline-block text-2xl md:text-3xl font-extrabold bg-primary text-white px-2">
+                  QUE SE CONSUME EN EL PAÍS,
+                </span>
+                <span className="inline-block text-2xl md:text-3xl font-extrabold bg-primary text-white px-2">
+                  PROVIENE DE LA
+                </span>
+                <span className="inline-block text-2xl md:text-3xl font-extrabold bg-primary text-white px-2">
+                  GENERACIÓN DISTRIBUIDA
+                </span>
+                <span className="inline-block text-2xl md:text-3xl font-extrabold bg-primary text-white px-2">
+                  SOLAR COLOCADA EN
+                </span>
+                <span className="inline-block text-2xl md:text-3xl font-extrabold bg-primary text-white px-2">
+                  LOS TECHOS
+                </span>
+              </div>
             </div>
 
-            <div className="lg:w-1/2 flex flex-col items-center">
-              <div className="w-full flex justify-center h-64">
+            <div className="lg:w-1/2 w-full flex flex-col items-center">
+              <div className="w-full max-w-md flex justify-center h-64">
                 <ModularChart data={chartData} />
               </div>
               <p className="mt-4 text-primary text-sm font-medium text-center">

@@ -14,7 +14,7 @@ interface BotonProps {
   icon?: keyof typeof assets;
   iconPosition?: "left" | "right";
   color?: "red" | "green" | "primary";
-  showTextOnMobile?: boolean; // Nueva prop
+  showTextOnMobile?: boolean;
 }
 
 const Boton: FC<BotonProps> = ({
@@ -59,7 +59,6 @@ const Boton: FC<BotonProps> = ({
       />
     ));
 
-  // Aplicamos hide/show del texto según prop
   const textElement = (
     <span className={`${showTextOnMobile ? "" : "hidden sm:inline"}`}>
       {children}

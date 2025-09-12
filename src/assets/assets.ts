@@ -33,7 +33,7 @@ import BoxChart from "../assets/Box-Chart.svg";
 import LocartionIcon from "../assets/Location-Icon.svg";
 import HansIcon from "../assets/Hans-Icon.svg";
 import ArrowUpWideIcon from "../assets/Arrow-Up-Wide-Icon.svg";
-import ImageLoader from "../../public/image-loader.jpg";
+import ImageLoader from "../../public/ImageLoader.jpg";
 import BoxLine from "../assets/Box-Line.svg";
 import BoxPlus from "../assets/Box-Plus.svg";
 import DocumentIcon from "../assets/Document-Icon.svg";
@@ -112,6 +112,11 @@ import FinanceBankingGD from "../assets/FinanceBankingGD.svg";
 import PowerEnergyGD from "../assets/PowerEnergyGD.svg";
 import RenewableEnergyGD from "../assets/RenewableEnergyGD.svg";
 import CurrencyGD from "../assets/CurrencyGD.svg";
+
+//Nuclear
+import MedicineHeartNuclear from "../assets/MedicineHeartNuclear.svg";
+import IndystryNuclear from "../assets/IndustryNuclear.svg";
+import MedicineLiquidNuclear from "../assets/MedicineLiquidNuclear.svg";
 
 export const assets = {
   logoCNE,
@@ -218,6 +223,9 @@ export const assets = {
   PowerEnergyGD,
   RenewableEnergyGD,
   CurrencyGD,
+  MedicineHeartNuclear,
+  IndystryNuclear,
+  MedicineLiquidNuclear,
 } as const;
 
 export interface Requirements {
@@ -331,6 +339,17 @@ export interface LocationPoint {
   description: string;
   x: number;
   y: number;
+}
+
+export interface Regulations {
+  image: string;
+  title: string;
+  description: string;
+}
+
+export interface itemsionizantes {
+  icon: string;
+  description: string;
 }
 
 export const itemsystem: ItemSystem[] = [
@@ -630,7 +649,7 @@ export const categories: Category[] = [
     subtitle: "y Nucleares",
     icon: NuclearMark,
     color: "text-yellow-500",
-    url: "",
+    url: "nuclear",
   },
   {
     id: "5",
@@ -778,5 +797,40 @@ export const benefits: Benefits[] = [
     title: "Sostenibilidad:",
     description: "reduces tu huella de carbono y usas energía limpia.",
     color: "text-red-600",
+  },
+];
+
+export const regulations: Regulations[] = [
+  {
+    title: "Ley 57-07:",
+    description: "Promueve el uso de energías renovables en todo el país.",
+    image: "",
+  },
+  {
+    title: "Reglamento de Medición Neta:",
+    description:
+      "Explica cómo se mide la energía que los usuarios envían a la red y cómo se descuenta de su factura.",
+    image: "",
+  },
+  {
+    title: "Reglamento de Interconexión de Generación Distribuida:",
+    description:
+      "Establece los requisitos técnicos para conectar estos sistemas a la red.",
+    image: "",
+  },
+];
+
+export const itemsionizantes: itemsionizantes[] = [
+  {
+    description: "Medicina (por ejemplo, rayos X y tratamientos de cáncer)",
+    icon: MedicineHeartNuclear,
+  },
+  {
+    description: "Industria (como pruebas de soldadura o medición de niveles)",
+    icon: IndystryNuclear,
+  },
+  {
+    description: "Investigación (en universidades o laboratorios).",
+    icon: MedicineLiquidNuclear,
   },
 ];

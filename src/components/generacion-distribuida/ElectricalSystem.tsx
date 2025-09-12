@@ -8,7 +8,7 @@ export default function ElectricalSystem() {
     <section className="bg-light py-16 flex flex-col justify-center">
       <div className="max-w-7xl mx-auto px-6 flex flex-col">
         <div className="text-center mb-12">
-          <h1 className="font-extrabold uppercase text-primary text-2xl md:text-3xl mb-4">
+          <h1 className="font-montserrat font-extrabold uppercase text-primary text-2xl md:text-3xl mb-4">
             SISTEMA ELÉCTRICO
           </h1>
           <p className="font-normal text-primary text-lg max-w-3xl mx-auto line-clamp-2">

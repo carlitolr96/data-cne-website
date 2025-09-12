@@ -41,6 +41,7 @@ export default function Satisfaction() {
                   fill
                   className="object-cover object-center"
                   priority
+                  quality={70}
                 />
               </div>
             </SwiperSlide>
