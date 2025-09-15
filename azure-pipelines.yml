@@ -8,31 +8,34 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  NODE_ENV: 'production'
+  # Nombre de tu app en QA y Producción
+  QA_WEBAPP_NAME: 'tu-app-qa'
+  PROD_WEBAPP_NAME: 'tu-app-prod'
+  NODE_VERSION: '20.x'
 
-stages:
-  - stage: BuildAndDeploy
-    displayName: 'Build & Deploy Next.js'
-    jobs:
-      - job: Build
-        displayName: 'Build Next.js App'
-        steps:
-          # 1. Instalar Node.js
-          - task: NodeTool@0
-            inputs:
-              versionSpec: '20.x'
-            displayName: 'Data CNE Website'
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '$(NODE_VERSION)'
+  displayName: 'Instalar Node.js'
 
-          # 2. Instalar dependencias y construir
-          - script: |
-              npm install
-              npm run build
-            displayName: 'Install dependencies & Build Next.js'
+- script: |
+    npm install
+    npm run build
+  displayName: 'Build Next.js app'
 
-          # 3. Desplegar a Azure Web App
-          - task: AzureWebApp@1
-            displayName: 'Deploy to Azure Web App'
-            inputs:
-              azureSubscription: '<TU_CONEXIÓN_A_AZURE>'
-              appName: '$(WebAppName)'
-              package: '$(System.DefaultWorkingDirectory)'
+# Deploy a QA
+- task: AzureWebApp@1
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/qa')
+  inputs:
+    azureSubscription: 'Nombre-de-tu-service-connection'
+    appName: '$(QA_WEBAPP_NAME)'
+    package: '$(System.DefaultWorkingDirectory)'
+
+# Deploy a Producción
+- task: AzureWebApp@1
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+  inputs:
+    azureSubscription: 'Nombre-de-tu-service-connection'
+    appName: '$(PROD_WEBAPP_NAME)'
+    package: '$(System.DefaultWorkingDirectory)'
