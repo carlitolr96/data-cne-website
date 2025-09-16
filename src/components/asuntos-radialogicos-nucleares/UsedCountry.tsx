@@ -14,7 +14,7 @@ export default function UsoRadiaciones() {
 
   return (
     <section className="bg-white py-12 px-6 md:px-16 text-center">
-      <h2 className="text-xl md:text-2xl font-bold text-[#13346D] mb-5">
+      <h2 className="text-xl md:text-2xl font-black text-[#13346D] mb-5">
         ¿DÓNDE SE USAN EN EL PAÍS?
       </h2>
       <p className="text-primary max-w-2xl mx-auto mb-12 text-2xl">
@@ -37,19 +37,19 @@ export default function UsoRadiaciones() {
             </div>
 
             <div className="flex flex-col md:flex-row gap-6 flex-1 justify-between">
-              <div className="flex flex-col items-center text-center text-white font-montserrat flex-1">
+              <div className="flex flex-col justify-center items-center text-center text-white font-montserrat flex-1">
                 <span className="font-medium text-sm">Radiodiagnóstico</span>
               </div>
 
               <div className="hidden md:block w-0.5 bg-[#FFBF00] self-stretch"></div>
 
-              <div className="flex flex-col items-center text-center text-white flex-1">
+              <div className="flex flex-col justify-center items-center text-center text-white flex-1">
                 <span className="font-medium text-sm">Radioterapia </span>
               </div>
 
-              <div className="hidden md:block w-0.5 bg-[#FFBF00] self-stretch"></div>
+              <div className="hidden md:block w-0.5 h-10 bg-[#FFBF00] self-stretch"></div>
 
-              <div className="flex flex-col items-center text-center text-white flex-1">
+              <div className="flex flex-col justify-center items-center text-center text-white flex-1">
                 <span className="font-medium text-sm">Medicina nuclear </span>
               </div>
             </div>
@@ -102,7 +102,7 @@ export default function UsoRadiaciones() {
       </div>
 
       <div className="flex flex-col md:flex-row justify-center items-center gap-8">
-        <div className="w-40">
+        <div className="w-70">
           <ModularChart data={chartData} />
         </div>
 

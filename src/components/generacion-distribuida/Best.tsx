@@ -9,7 +9,7 @@ export default function Best() {
       >
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/40"></div>
         <div className="relative flex items-center justify-center h-full text-center px-6">
-          <h1 className="text-white text-2xl md:text-4xl lg:text-3xl font-extrabold leading-snug max-w-4xl font-montserrat">
+          <h1 className="text-white text-2xl md:text-4xl lg:text-3xl font-black leading-snug max-w-4xl font-montserrat">
             REPÚBLICA DOMINICANA ESTÁ ENTRE LOS 70 <br />
             PAÍSES CON MEJOR RECURSO SOLAR DEL MUNDO.
           </h1>
@@ -19,13 +19,13 @@ export default function Best() {
       <div className="relative -mt-12 max-w-5xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg p-6 max-w-5xl w-full">
           <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="bg-green text-white px-6 py-3 rounded-lg font-bold text-lg flex-shrink-0">
+            <div className="bg-green text-white px-6 py-3 rounded-lg font-black text-lg flex-shrink-0">
               VENTAJAS:
             </div>
 
             <div className="flex flex-col md:flex-row gap-6 flex-1 justify-between">
               <div className="flex flex-col items-center text-center text-primary font-montserrat flex-1">
-                <span className="font-bold text-sm">
+                <span className="font-black text-sm">
                   APROVECHA EL SOL
                   <br />
                   COMO FUENTE LIMPIA
@@ -57,7 +57,7 @@ export default function Best() {
       </div>
 
       <div className="max-w-5xl mx-auto text-center mt-16 px-6">
-        <h2 className="text-primary text-2xl md:text-3xl font-extrabold mb-8">
+        <h2 className="text-primary text-2xl md:text-3xl font-black mb-8">
           ¿Y SI ME SOBRA ENERGÍA?
         </h2>
         <div className="flex flex-col md:flex-row items-center justify-center gap-8">
@@ -75,10 +75,10 @@ export default function Best() {
       </div>
 
       <div className="max-w-5xl mx-auto text-center mt-16 px-6">
-        <h2 className="text-primary text-2xl md:text-3xl font-extrabold mb-8">
+        <h2 className="text-primary text-2xl md:text-3xl font-black mb-8">
           ¿QUÉ ES LA MEDICIÓN NETA?
         </h2>
-        <div className="flex flex-col md:flex-row items-start justify-center gap-8">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8">
           <div className="flex-1 text-primary text-lg leading-relaxed text-left">
             Es un programa que lleva control de la energía que produces y
             consumes de la red.
@@ -101,7 +101,7 @@ export default function Best() {
       </div>
 
       <div className="text-center mt-16 px-6">
-        <h3 className="text-primary text-xl md:text-2xl font-extrabold mb-6">
+        <h3 className="text-primary text-xl md:text-2xl font-black mb-6">
           ESTO SE LOGRA CON UN MEDIDOR BIDIRECCIONAL, <br /> Y AL FINAL DEL MES:
           SOLO PAGAS LA DIFERENCIA.
         </h3>

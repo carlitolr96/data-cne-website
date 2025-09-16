@@ -8,7 +8,7 @@ export default function ElectricalSystem() {
     <section className="bg-light py-16 flex flex-col justify-center">
       <div className="max-w-7xl mx-auto px-6 flex flex-col">
         <div className="text-center mb-12">
-          <h1 className="font-montserrat font-extrabold uppercase text-primary text-2xl md:text-3xl mb-4">
+          <h1 className="font-montserrat font-black uppercase text-primary text-2xl md:text-3xl mb-4">
             SISTEMA ELÉCTRICO
           </h1>
           <p className="font-normal text-primary text-lg max-w-3xl mx-auto line-clamp-2">
@@ -26,12 +26,12 @@ export default function ElectricalSystem() {
               <Image
                 src={item.icon}
                 alt="CityPEN overlay"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 className="mb-4"
                 priority
               />
-              <p className="font-semibold text-primary">{item.description}</p>
+              <p className="font-bold text-primary">{item.description}</p>
             </div>
           ))}
         </div>

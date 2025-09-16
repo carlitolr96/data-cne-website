@@ -11,14 +11,14 @@ export default function Sector() {
     <section className="bg-light py-16">
       <div className="max-w-7xl mx-auto px-6 md:px-4">
         <div className="text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-12 uppercase">
+          <h2 className="text-2xl md:text-3xl font-black text-primary mb-12 uppercase">
             ¿Cuánto ha avanzado la <br /> generación distribuida en RD?
           </h2>
 
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-center gap-12">
             <div className="lg:w-1/2 max-w-4xl">
               <div className="text-start space-y-2">
-                <h1 className="text-primary text-2xl font-extrabold font-montserrat uppercase">
+                <h1 className="text-primary text-2xl font-black font-montserrat uppercase">
                   {
                     "A junio de 2025, el sector industrial lidera la generación distribuida en el país, con el 62% de la capacidad instalada, seguido del sector residencial (22%) y el comercial (15%)."
                   }

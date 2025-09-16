@@ -6,8 +6,8 @@ export default function RadiationSession() {
   return (
     <section className="bg-light py-16">
       <div className="max-w-7xl mx-auto px-6 flex flex-col items-center gap-12">
-        <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-center mb-8">
+        <div className="mx-auto px-6">
+          <h1 className="text-primary text-2xl md:text-3xl lg:text-3xl font-extrabold text-center md:mb-8">
             ¿Por qué es importante regular el uso de las radiaciones ionizantes?
           </h1>
         </div>

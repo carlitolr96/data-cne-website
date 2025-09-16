@@ -128,6 +128,12 @@ import IndystryNuclear from "../assets/IndustryNuclear.svg";
 import MedicineLiquidNuclear from "../assets/MedicineLiquidNuclear.svg";
 import MedicalMedicineARN from "../assets/MedicalMedicineARN.svg";
 import FactoryIndustryARM from "../assets/FactoryIndustryARN.svg";
+import SunARN from "../assets/SunARN.svg";
+import PlanetARN from "../assets/PlanetARN.svg";
+import HomeARN from "../assets/HomeARN.svg";
+import XRayARN from "../assets/XRayARN.svg";
+import PlantChimneyARN from "../assets/PlantChimneyARN.svg";
+import RadioactiveARN from "../assets/RadioactiveARN.svg";
 
 export const assets = {
   logoCNE,
@@ -239,6 +245,12 @@ export const assets = {
   MedicineLiquidNuclear,
   MedicalMedicineARN,
   FactoryIndustryARM,
+  SunARN,
+  PlanetARN,
+  HomeARN,
+  XRayARN,
+  PlantChimneyARN,
+  RadioactiveARN,
 } as const;
 
 export interface Requirements {
@@ -379,6 +391,10 @@ export interface AuthorizationTypes {
 
 export interface Steps {
   number: number;
+  title: string;
+}
+
+export interface Principale {
   title: string;
 }
 
@@ -921,5 +937,20 @@ export const steps: Steps[] = [
   {
     number: 5,
     title: "Seguimiento y control",
+  },
+];
+
+export const principales: Principale[] = [
+  {
+    title: "Evaluar instalaciones",
+  },
+  {
+    title: "Licenciar prácticas",
+  },
+  {
+    title: "Supervisar equipos y personal",
+  },
+  {
+    title: "Monitorear los niveles de exposición",
   },
 ];

@@ -7,7 +7,7 @@ export default function DistributedGeneration() {
     <section className="bg-white py-16">
       <div className="max-w-7xl min-h-80 mx-auto flex flex-col lg:flex-row items-center gap-12 px-6">
         <div className="flex-1">
-          <h1 className="text-primary text-2xl md:text-3xl font-extrabold mb-7">
+          <h1 className="text-primary text-2xl md:text-3xl font-black mb-7">
             ¿QUÉ ES LA GENERACIÓN DISTRIBUIDA?
           </h1>
           <p className="text-primary font-medium leading-relaxed">

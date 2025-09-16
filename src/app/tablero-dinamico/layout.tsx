@@ -104,7 +104,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               )}
             </button>
           )}
-          <Boton href="/">Volver Atras</Boton>
+          {/* <Boton href="/">Volver Atras</Boton> */}
         </div>
 
         <main className="flex-1 bg-white overflow-auto">

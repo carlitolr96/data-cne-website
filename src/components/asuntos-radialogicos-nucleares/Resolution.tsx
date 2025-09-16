@@ -6,9 +6,9 @@ export default function Resolution() {
   return (
     <section className="bg-primary py-16">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 px-6">
-        <div className="flex flex-col w-full relative pl-6 ">
+        <div className="flex flex-col w-full relative pl-6 justify-center">
           <div className="absolute left-0 top-0 h-full w-1 bg-[#FF9000] rounded"></div>
-          <h1 className="text-white text-2xl md:text-4xl lg:text-3xl font-bold leading-tight">
+          <h1 className="text-white text-2xl md:text-4xl lg:text-3xl font-black leading-tight">
             EN LA REPÚBLICA DOMINICANA EL USO
             <br />
             DE LAS RADIACIONES IONIZANTES ES

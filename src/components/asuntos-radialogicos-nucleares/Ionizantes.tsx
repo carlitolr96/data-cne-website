@@ -8,7 +8,7 @@ export default function Ionizantes() {
     <section className="bg-white py-16 flex flex-col justify-center">
       <div className="max-w-7xl mx-auto px-6 flex flex-col">
         <div className="text-center mb-12">
-          <h1 className="font-montserrat font-extrabold uppercase text-primary text-2xl md:text-3xl mb-4">
+          <h1 className="font-montserrat font-black uppercase text-primary text-2xl md:text-3xl mb-4">
             ¿Qué son las radiaciones ionizantes?
           </h1>
           <p className="font-normal text-primary text-lg max-w-3xl mx-auto line-clamp-2">
@@ -30,7 +30,7 @@ export default function Ionizantes() {
                 className="mb-4"
                 priority
               />
-              <p className="font-semibold text-primary">{item.description}</p>
+              <p className="font-bold text-primary">{item.description}</p>
             </div>
           ))}
         </div>

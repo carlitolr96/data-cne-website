@@ -14,7 +14,7 @@ export default function Benefits() {
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-4">
         <div className="text-center mb-16">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-primary mb-12 uppercase font-montserrat">
+          <h2 className="text-2xl md:text-3xl font-black text-primary mb-12 uppercase font-montserrat">
             ¿Qué necesito para conectarme?
           </h2>
 
@@ -66,7 +66,7 @@ export default function Benefits() {
         </div>
 
         <div className="text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-primary mb-12 uppercase font-montserrat">
+          <h2 className="text-2xl md:text-3xl font-black text-primary mb-12 uppercase font-montserrat">
             ¿Qué beneficios tengo?
           </h2>
 

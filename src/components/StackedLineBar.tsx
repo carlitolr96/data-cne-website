@@ -1,6 +1,18 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect } from "react";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ChartOptions,
+} from "chart.js";
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 interface BarData {
   value: number;
@@ -10,77 +22,117 @@ interface BarData {
 
 interface ModularChartProps {
   data: BarData[];
-  heightFactor?: number;
-  barWidth?: string;
-  className?: string; 
+  className?: string;
+  showValues?: boolean;
+  animate?: boolean;
+  barPercentage?: number;
+  categoryPercentage?: number;
 }
 
 export default function StackedLineBar({
   data,
-  heightFactor = 0.8,
-  barWidth = "w-13",
   className = "",
+  showValues = false,
+  animate = true,
+  barPercentage = 0.9,
+  categoryPercentage = 0.8,
 }: ModularChartProps) {
-  const barsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const numbersRef = useRef<(HTMLSpanElement | null)[]>([]);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const chartInstance = useRef<ChartJS | null>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!canvasRef.current) return;
 
-    data.forEach((item, i) => {
-      const bar = barsRef.current[i];
-      const number = numbersRef.current[i];
-      if (bar && number) {
-        bar.style.height = `${item.value * heightFactor}px`;
-        number.textContent = `${item.value}`;
-      }
+    if (chartInstance.current) {
+      chartInstance.current.destroy();
+    }
+
+    const chartData = {
+      labels: data.map((item) => item.label),
+      datasets: [
+        {
+          data: data.map((item) => item.value),
+          backgroundColor: data.map((item) => item.color || "#6366f1"),
+          borderColor: data.map((item) => item.color || "#6366f1"),
+          borderWidth: 0,
+          borderRadius: 0,
+          barPercentage,
+          categoryPercentage,
+        },
+      ],
+    };
+
+    const options: ChartOptions<"bar"> = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          enabled: true,
+          mode: "index",
+          intersect: false,
+          backgroundColor: "rgba(17, 24, 39, 0.95)",
+          titleColor: "#f3f4f6",
+          bodyColor: "#f3f4f6",
+          borderColor: "rgba(255,255,255,0.1)",
+          borderWidth: 1,
+          padding: 12,
+          callbacks: {
+            title: (tooltipItems) => tooltipItems[0].label,
+            label: (context) => `Valor: ${context.parsed.y}`,
+          },
+        },
+      },
+      scales: {
+        x: {
+          type: "category",
+          grid: { display: false },
+          ticks: { color: "#ffffff", font: { size: 11, weight: 900 }, maxRotation: 45, minRotation: 0 },
+        },
+        y: {
+          display: false,
+          grid: { display: true },
+          beginAtZero: true,
+          suggestedMax: Math.max(...data.map((item) => item.value)) * 1.1,
+        },
+      },
+      animation: { duration: animate ? 1500 : 0, easing: "easeOutQuart" },
+      layout: { padding: { top: showValues ? 30 : 20, bottom: 15, left: 10, right: 10 } },
+    };
+
+    const valuePlugin = {
+      id: "valuePlugin",
+      afterDatasetsDraw: (chart: any) => {
+        if (!showValues) return;
+        const ctx = chart.ctx;
+        ctx.save();
+        chart.data.datasets.forEach((dataset: any, i: number) => {
+          const meta = chart.getDatasetMeta(i);
+          meta.data.forEach((bar: any, index: number) => {
+            const value = dataset.data[index];
+            const x = bar.x;
+            const y = bar.y - 10;
+
+            ctx.font = '900 14px "Montserrat", sans-serif';
+            ctx.textAlign = "center";
+            ctx.textBaseline = "bottom";
+            ctx.fillStyle = "#ffffff";
+            ctx.fillText(value.toString(), x, y);
+          });
+        });
+        ctx.restore();
+      },
+    };
+
+    chartInstance.current = new ChartJS(canvasRef.current, {
+      type: "bar",
+      data: chartData,
+      options,
+      plugins: [valuePlugin],
     });
-  }, [data, heightFactor]);
 
-  const setBarRef = useCallback((el: HTMLDivElement | null, i: number) => {
-    barsRef.current[i] = el;
-  }, []);
+    return () => chartInstance.current?.destroy();
+  }, [data, animate, barPercentage, categoryPercentage, showValues]);
 
-  const setNumberRef = useCallback((el: HTMLSpanElement | null, i: number) => {
-    numbersRef.current[i] = el;
-  }, []);
-
-  return (
-    <div
-      ref={containerRef}
-      className={`relative flex flex-col-reverse md:flex-row items-center justify-center md:space-x-10 h-auto md:h-64 ${className}`}
-    >
-      <div className="flex gap-5 justify-center md:justify-start">
-        {data.map((item, i) => (
-          <div
-            key={item.label}
-            className="relative flex flex-col items-center justify-end"
-          >
-            <span
-              ref={(el) => setNumberRef(el, i)}
-              className="mb-1 text-white text-sm md:text-md font-bold whitespace-nowrap"
-            >
-              0
-            </span>
-
-            <div
-              ref={(el) => setBarRef(el, i)}
-              className={`${barWidth} relative z-0`}
-              style={{
-                backgroundColor: item.color || "#000000",
-                height: "0px",
-                transformOrigin: "bottom",
-                transition: "height 1s ease-in-out",
-              }}
-            />
-
-            <span className="mt-2 text-white text-sm font-medium">
-              {item.label}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  return <canvas ref={canvasRef} className={`w-full h-64 md:h-72 lg:h-80 ${className}`} />;
 }

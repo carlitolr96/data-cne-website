@@ -4,7 +4,7 @@ import { useState } from "react";
 import StackedLineBar from "@/components/StackedLineBar";
 
 export default function PMNSection() {
-  const [chartData] = useState([
+  const [data] = useState([
     { value: 0, label: "2011", color: "#fff" },
     { value: 10, label: "2012", color: "#fff" },
     { value: 20, label: "2013", color: "#fff" },
@@ -26,7 +26,7 @@ export default function PMNSection() {
     <section className="bg-primary text-white py-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex-col justify-center">
-          <h2 className="text-center text-md md:text-3xl font-extrabold uppercase pb-10">
+          <h2 className="text-center text-md md:text-3xl font-black uppercase pb-10">
             República Dominicana pasó de tener 80 MW en el año 2019 a más de 400
             MW en el 2025 de generación distribuida interconectada al sistema
             eléctrico bajo el Programa de Medición Neta
@@ -37,8 +37,13 @@ export default function PMNSection() {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <div className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 h-64 sm:h-80">
-            <StackedLineBar data={chartData} />
+          <div className="w-full">
+            <StackedLineBar
+              data={data}
+              className="my-chartPMN"
+              showValues={true}
+              animate={true}
+            />
           </div>
         </div>
 

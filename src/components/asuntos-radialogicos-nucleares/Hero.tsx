@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `
-              linear-gradient(to bottom, rgba(19, 52, 109, 1) 15%, rgba(37, 102, 211, 0.1) 110%),
+              linear-gradient(to bottom, rgba(19, 52, 109, 1) 30%, rgba(37, 102, 211, 0.1) 150%),
               url('/BenefitsImg.jpg')
             `,
             backgroundBlendMode: "multiply",

@@ -39,7 +39,7 @@ export default function Regulations() {
     <section className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-6 md:px-4">
         <div className="text-center mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-12 uppercase">
+          <h2 className="text-2xl md:text-3xl font-black text-primary mb-12 uppercase">
             Normas que lo respaldan
           </h2>
 
@@ -76,7 +76,7 @@ export default function Regulations() {
         </div>
 
         <div className="text-center">
-          <h3 className="text-primary text-2xl md:text-3xl font-bold leading-tight max-w-4xl mx-auto">
+          <h3 className="text-primary text-2xl md:text-3xl font-black leading-tight max-w-4xl mx-auto">
             LA GENERACIÓN DISTRIBUIDA CONVIERTE AL
             <br />
             CONSUMIDOR EN PROTAGONISTA DEL SISTEMA ELÉCTRICO.

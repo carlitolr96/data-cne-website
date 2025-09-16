@@ -12,6 +12,8 @@ import ProgressBar from "@/components/asuntos-radialogicos-nucleares/ProgressBar
 import NuclearEvolution from "@/components/asuntos-radialogicos-nucleares/NuclearEvolution";
 import AuthorizationTypes from "@/components/asuntos-radialogicos-nucleares/AuthorizationTypes";
 import UsedCountry from "@/components/asuntos-radialogicos-nucleares/UsedCountry";
+import IonizingOrigin from "@/components/asuntos-radialogicos-nucleares/IonizingOrigin";
+import IonizingBenefits from "@/components/asuntos-radialogicos-nucleares/IonizingBenefits";
 
 export default function Nuclear() {
   return (
@@ -20,7 +22,8 @@ export default function Nuclear() {
       <RadiationSession />
       <Ionizantes />
       <WarningSession />
-      
+      <IonizingOrigin />
+      <IonizingBenefits />
       <UsedCountry />
       <Radiological />
       <ProgressBar currentStep={5} />

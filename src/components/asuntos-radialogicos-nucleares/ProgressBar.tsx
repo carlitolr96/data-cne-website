@@ -13,10 +13,10 @@ export default function ProgressBar({ currentStep }: ProgressBarProps) {
       <div className="max-w-7xl mx-auto px-6 md:px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-15 mb-16">
           <div className="w-120 border-l-4 border-[#FF9000] pl-6">
-            <h2 className="text-blue-900 text-xl font-bold mb-4 uppercase">
+            <h2 className="text-primary text-xl font-black mb-4 uppercase">
               ¿Quién necesita autorización?
             </h2>
-            <p className="text-blue-900 text-base leading-relaxed">
+            <p className="text-primary text-base leading-relaxed">
               Toda persona o empresa que utilice fuentes de radiación ionizante
               en RD debe de contar con una autorización otorgada por el por la
               CNE.
@@ -24,10 +24,10 @@ export default function ProgressBar({ currentStep }: ProgressBarProps) {
           </div>
 
           <div className="w-120 border-l-4 border-[#FF9000] pl-6">
-            <h2 className="text-blue-900 text-xl font-bold mb-4 uppercase">
+            <h2 className="text-primary text-xl font-black mb-4 uppercase">
               ¿Cómo se autoriza el uso de la radiación ionizante?
             </h2>
-            <p className="text-blue-900 text-base leading-relaxed">
+            <p className="text-primary text-base leading-relaxed">
               Cumpliendo los requisitos establecidos en las normativas
               nacionales ante la CNE.
             </p>
@@ -35,7 +35,7 @@ export default function ProgressBar({ currentStep }: ProgressBarProps) {
         </div>
 
         <div className="text-center mb-12">
-          <h3 className="text-blue-900 text-2xl font-bold uppercase">
+          <h3 className="text-primary text-2xl font-black uppercase">
             Proceso:
           </h3>
         </div>
@@ -46,7 +46,7 @@ export default function ProgressBar({ currentStep }: ProgressBarProps) {
               <React.Fragment key={step.number}>
                 <div className="flex flex-col items-center max-w-[100px]">
                   <div
-                    className={`w-12 h-12 flex items-center justify-center rounded-full text-white font-bold text-lg
+                    className={`w-12 h-12 flex items-center justify-center rounded-full text-white font-black text-lg
               ${
                 step.number <= currentStep
                   ? "bg-[#FF9000]"

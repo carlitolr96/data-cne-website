@@ -6,7 +6,7 @@ export default function Importance() {
       <div className="max-w-7xl mx-auto px-6 flex flex-col">
         <div className="py-16">
           <div className="max-w-7xl mx-auto px-6 md:px-4 text-center">
-            <h2 className="text-primary text-2xl md:text-3xl font-bold mb-8">
+            <h2 className="text-primary text-2xl md:text-3xl font-black mb-8">
               ¿POR QUÉ IMPORTA?
             </h2>
 
