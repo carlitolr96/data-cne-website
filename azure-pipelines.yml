@@ -1,0 +1,41 @@
+trigger:
+  branches:
+    include:
+      - main
+      - qa
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  # Nombre de tu app en QA y Producción
+  QA_WEBAPP_NAME: 'tu-app-qa'
+  PROD_WEBAPP_NAME: 'tu-app-prod'
+  NODE_VERSION: '20.x'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '$(NODE_VERSION)'
+  displayName: 'Instalar Node.js'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'Build Next.js app'
+
+# Deploy a QA
+- task: AzureWebApp@1
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/qa')
+  inputs:
+    azureSubscription: 'Nombre-de-tu-service-connection'
+    appName: '$(QA_WEBAPP_NAME)'
+    package: '$(System.DefaultWorkingDirectory)'
+
+# Deploy a Producción
+- task: AzureWebApp@1
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+  inputs:
+    azureSubscription: 'Nombre-de-tu-service-connection'
+    appName: '$(PROD_WEBAPP_NAME)'
+    package: '$(System.DefaultWorkingDirectory)'
