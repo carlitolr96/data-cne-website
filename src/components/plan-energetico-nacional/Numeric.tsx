@@ -19,7 +19,7 @@ export default function Numeric() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center text-white w-full">
+      <div className="relative max-w-7xl mx-auto flex flex-col items-center text-center text-white w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
           <div className="flex flex-col items-center md:items-center">
             <div className="flex flex-col items-center md:items-start">

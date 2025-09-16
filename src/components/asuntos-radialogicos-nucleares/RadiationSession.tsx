@@ -34,15 +34,20 @@ export default function RadiationSession() {
           </div>
 
           <div className="flex-1 flex justify-center lg:justify-end">
-            <Image
-              src="/BannerPanelRD.jpg"
-              alt="CityPEN overlay"
-              width={500}
-              height={100}
-              priority
-              quality={70}
-              className="rounded-lg"
-            />
+            <div className="lg:w-1/1">
+              <div className="relative">
+                <Image
+                  src="/BannerPanelRD.jpg"
+                  alt="CityPEN overlay"
+                  width={500}
+                  height={100}
+                  priority
+                  quality={70}
+                  className="w-full h-80 object-cover rounded-lg shadow-lg"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-transparent rounded-lg"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

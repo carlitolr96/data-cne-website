@@ -8,7 +8,7 @@ export default function Best() {
         style={{ backgroundImage: "url('/BenefitsImg.jpg')" }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/40"></div>
-        <div className="relative z-10 flex items-center justify-center h-full text-center px-6">
+        <div className="relative flex items-center justify-center h-full text-center px-6">
           <h1 className="text-white text-2xl md:text-4xl lg:text-3xl font-extrabold leading-snug max-w-4xl font-montserrat">
             REPÚBLICA DOMINICANA ESTÁ ENTRE LOS 70 <br />
             PAÍSES CON MEJOR RECURSO SOLAR DEL MUNDO.
@@ -16,7 +16,7 @@ export default function Best() {
         </div>
       </div>
 
-      <div className="relative z-20 -mt-12 max-w-5xl mx-auto">
+      <div className="relative -mt-12 max-w-5xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg p-6 max-w-5xl w-full">
           <div className="flex flex-col md:flex-row items-center gap-6">
             <div className="bg-green text-white px-6 py-3 rounded-lg font-bold text-lg flex-shrink-0">

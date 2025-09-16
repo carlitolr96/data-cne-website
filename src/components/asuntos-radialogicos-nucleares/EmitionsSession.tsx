@@ -34,10 +34,10 @@ export default function EmitionsSession() {
           <ModularChart data={chartData1} />
         </div>
 
-        <div className="hidden lg:block w-0.5 h-80 bg-red mx-6"></div>
+        <div className="hidden lg:block w-0.5 h-80 bg-[#FF9000] mx-6"></div>
 
         <div className="flex-1 flex flex-col items-center">
-          <div className="border-1 border-primary">
+          <div className="border-1 rounded-md border-primary">
             <ModularChart className="uppercase" data={chartData2} />
           </div>
         </div>

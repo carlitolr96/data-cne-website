@@ -1,7 +1,16 @@
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { PiSolarPanelDuotone } from "react-icons/pi";
-import { Home, Inbox, Calendar, Search, Settings } from "lucide-react";
+import {
+  Home,
+  Inbox,
+  Calendar,
+  Search,
+  Settings,
+  TrendingUp,
+  Shield,
+  AlertTriangle,
+} from "lucide-react";
 import { IconType } from "react-icons";
 
 //Components
@@ -113,10 +122,12 @@ import PowerEnergyGD from "../assets/PowerEnergyGD.svg";
 import RenewableEnergyGD from "../assets/RenewableEnergyGD.svg";
 import CurrencyGD from "../assets/CurrencyGD.svg";
 
-//Nuclear
+//Asuntos Radialogicos Nucleares
 import MedicineHeartNuclear from "../assets/MedicineHeartNuclear.svg";
 import IndystryNuclear from "../assets/IndustryNuclear.svg";
 import MedicineLiquidNuclear from "../assets/MedicineLiquidNuclear.svg";
+import MedicalMedicineARN from "../assets/MedicalMedicineARN.svg";
+import FactoryIndustryARM from "../assets/FactoryIndustryARN.svg";
 
 export const assets = {
   logoCNE,
@@ -226,6 +237,8 @@ export const assets = {
   MedicineHeartNuclear,
   IndystryNuclear,
   MedicineLiquidNuclear,
+  MedicalMedicineARN,
+  FactoryIndustryARM,
 } as const;
 
 export interface Requirements {
@@ -347,9 +360,26 @@ export interface Regulations {
   description: string;
 }
 
-export interface itemsionizantes {
+export interface ItemsIonizantes {
   icon: string;
   description: string;
+}
+
+export interface EvolutionPoint {
+  title: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  color: string;
+}
+
+export interface AuthorizationTypes {
+  code: string;
+  title: string;
+  color: string;
+}
+
+export interface Steps {
+  number: number;
+  title: string;
 }
 
 export const itemsystem: ItemSystem[] = [
@@ -567,7 +597,7 @@ export const navitemsone: NavItemsOne[] = [
   {
     icon: NuclearNav,
     label: "Asuntos Radiológicos Y Nucleares",
-    url: "/nuclear",
+    url: "/asuntos-radialogicos-nucleares",
   },
   {
     icon: LightBulbNav,
@@ -649,7 +679,7 @@ export const categories: Category[] = [
     subtitle: "y Nucleares",
     icon: NuclearMark,
     color: "text-yellow-500",
-    url: "nuclear",
+    url: "/asuntos-radialogicos-nucleares",
   },
   {
     id: "5",
@@ -820,7 +850,7 @@ export const regulations: Regulations[] = [
   },
 ];
 
-export const itemsionizantes: itemsionizantes[] = [
+export const itemsionizantes: ItemsIonizantes[] = [
   {
     description: "Medicina (por ejemplo, rayos X y tratamientos de cáncer)",
     icon: MedicineHeartNuclear,
@@ -832,5 +862,64 @@ export const itemsionizantes: itemsionizantes[] = [
   {
     description: "Investigación (en universidades o laboratorios).",
     icon: MedicineLiquidNuclear,
+  },
+];
+
+export const evolutionPoints: EvolutionPoint[] = [
+  {
+    title: "Aumento de autorizaciones",
+    icon: TrendingUp,
+    color: "text-orange-500",
+  },
+  {
+    title: "Mayor seguridad",
+    icon: Shield,
+    color: "text-green",
+  },
+  {
+    title: "Alertas y controles",
+    icon: AlertTriangle,
+    color: "text-red",
+  },
+];
+
+export const authorizationTypes: AuthorizationTypes[] = [
+  {
+    code: "LPO",
+    title: "LICENCIA PERSONAL DE OPERACIÓN",
+    color: "text-orange-500",
+  },
+  {
+    code: "LIO",
+    title: "LICENCIA INSTITUCIONAL DE OPERACIÓN",
+    color: "text-orange-500",
+  },
+  {
+    code: "IR",
+    title: "INSCRIPCIÓN EN REGISTRO",
+    color: "text-orange-500",
+  },
+];
+
+export const steps: Steps[] = [
+  {
+    number: 1,
+    title: "Entrega de solicitud ante la CNE",
+  },
+  {
+    number: 2,
+    title: "Evaluación de la solicitud",
+  },
+  {
+    number: 3,
+    title: "Inspección en caso de aplique",
+  },
+  {
+    number: 4,
+    title: "Emisión de la autorización",
+  },
+  {
+    number: 5,
+    title: "Seguimiento y control",
   },
 ];
