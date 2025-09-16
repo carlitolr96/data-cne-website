@@ -8,7 +8,7 @@ export default function TextoSection() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-24">
           <div className="flex-1">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8 font-montserrat">
+            <h2 className="text-3xl md:text-4xl font-black text-primary mb-8 font-montserrat">
               Uso Racional de la Energía
             </h2>
 

@@ -47,7 +47,7 @@ export default function Operations() {
                 width={25}
                 height={25}
               />
-              <span className="text-white font-bold text-md md:text-4xl uppercase">
+              <span className="text-white font-black text-md md:text-4xl uppercase">
                 En Operación
               </span>
             </div>

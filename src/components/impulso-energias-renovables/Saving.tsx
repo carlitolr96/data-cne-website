@@ -20,7 +20,7 @@ export default function Saving() {
           <h1 className="font-medium text-primary text-xl sm:text-2xl md:text-3xl">
             Energía renovable:
           </h1>
-          <span className="bg-green text-white px-4 py-2 font-bold text-base sm:text-lg md:text-xl">
+          <span className="bg-green text-white px-4 py-2 font-black text-base sm:text-lg md:text-xl">
             ahorro y estabilidad para las distribuidoras
           </span>
         </div>
@@ -43,7 +43,7 @@ export default function Saving() {
                   ref={amountRef}
                   className="text-primary text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight"
                 >
-                  <span className="text-green font-bold text-6xl sm:text-7xl">
+                  <span className="text-green font-black text-6xl sm:text-7xl">
                     +
                   </span>{" "}
                   US$0.00
@@ -56,11 +56,11 @@ export default function Saving() {
 
             <p className="text-primary text-base sm:text-lg md:text-xl max-w-md mt-4">
               adquiriendo{" "}
-              <span className="font-extrabold text-primary">
+              <span className="font-black text-primary">
                 energía renovable
               </span>
               , a precios más competitivos que el{" "}
-              <span className="font-extrabold text-primary">mercado spot</span>,
+              <span className="font-black text-primary">mercado spot</span>,
               reduciendo la volatilidad y asegurando costos predecibles.
             </p>
           </div>

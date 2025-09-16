@@ -9,7 +9,7 @@ export default function DisseminationProgram() {
   return (
     <section className="bg-white relative overflow-hidden py-12 md:py-0">
       <div className="max-w-7xl min-h-screen mx-auto px-6 md:px-4 flex flex-col items-center justify-center text-center">
-        <h1 className="max-w-3xl text-2xl sm:text-3xl md:text-4xl text-primary font-extrabold mb-6">
+        <h1 className="max-w-3xl text-2xl sm:text-3xl md:text-4xl text-primary font-black mb-6">
           PROGRAMA DE DIFUSIÓN EN EFICIENCIA ENERGÉTICA
         </h1>
 
@@ -22,7 +22,7 @@ export default function DisseminationProgram() {
                   className="flex-1 flex flex-col items-center transition-all duration-200"
                 >
                   <div className="mb-5 px-6 flex flex-col items-center font-light">
-                    <h3 className="text-2xl font-bold text-primary mb-3">
+                    <h3 className="text-2xl font-black text-primary mb-3">
                       {title}
                     </h3>
                   </div>

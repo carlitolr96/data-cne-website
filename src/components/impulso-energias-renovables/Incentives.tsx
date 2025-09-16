@@ -17,7 +17,7 @@ export default function Incentives() {
       <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col gap-12 min-h-[70vh] justify-center">
 
         <div className="flex flex-col md:flex-row items-center justify-center text-center md:space-x-4 uppercase">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-green text-white px-3 py-1">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black bg-green text-white px-3 py-1">
             Incentivos
           </h1>
           <span className="text-2xl sm:text-3xl md:text-4xl text-primary font-medium mt-2 md:mt-0">
@@ -37,7 +37,7 @@ export default function Incentives() {
             </p>
             <span
               ref={amountRef}
-              className="bg-green text-white px-4 py-2 font-semibold text-lg sm:text-2xl md:text-3xl"
+              className="bg-green text-white px-4 py-2 font-bold text-lg sm:text-2xl md:text-3xl"
             >
               RD$0.00
             </span>

@@ -7,7 +7,7 @@ export default function ElectricityHome() {
   return (
     <section className="bg-white relative overflow-hidden">
       <div className="max-w-7xl min-h-screen mx-auto py-10 md:py-5 px-6 md:px-4 flex flex-col items-center justify-center text-center">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl text-primary font-extrabold mb-6">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl text-primary font-black mb-6">
           ¿Cómo llega la electricidad a tu hogar?
         </h1>
 
@@ -23,7 +23,7 @@ export default function ElectricityHome() {
                 key={i}
                 className="flex flex-col items-center transition-all duration-200"
               >
-                <h3 className="text-lg sm:text-xl font-bold text-primary mb-3">
+                <h3 className="text-lg sm:text-xl font-black text-primary mb-3">
                   {title}
                 </h3>
               </li>
@@ -39,7 +39,7 @@ export default function ElectricityHome() {
                 className="flex-1 flex flex-col items-center transition-all duration-200"
               >
                 <div className="mb-5 px-6 flex flex-col items-center font-light">
-                  <h3 className="text-2xl font-bold text-primary mb-3">
+                  <h3 className="text-2xl font-black text-primary mb-3">
                     {title}
                   </h3>
                 </div>
@@ -126,7 +126,7 @@ export default function ElectricityHome() {
               />
             </div>
 
-            <h3 className="text-lg sm:text-xl font-bold text-primary mb-3">
+            <h3 className="text-lg sm:text-xl font-black text-primary mb-3 md:hidden block">
               Transmisión
             </h3>
 
@@ -183,7 +183,7 @@ export default function ElectricityHome() {
               />
             </div>
 
-            <h3 className="text-lg sm:text-xl font-bold text-primary mb-3">
+            <h3 className="text-lg sm:text-xl font-black text-primary mb-3 md:hidden block">
               Distribución
             </h3>
 

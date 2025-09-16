@@ -23,7 +23,7 @@ export default function RecordInvestments() {
   return (
     <section className="bg-white min-h-screen flex flex-col justify-center py-10 sm:py-12">
       <div className="max-w-6xl mx-auto px-4 flex flex-col justify-center items-center text-center mb-10">
-        <h1 className="font-extrabold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary px-3 py-1 uppercase tracking-wide mb-3">
+        <h1 className="font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary px-3 py-1 uppercase tracking-wide mb-3">
           INVERSIONES RÉCORD
         </h1>
 

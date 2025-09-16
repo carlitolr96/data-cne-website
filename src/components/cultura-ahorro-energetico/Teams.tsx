@@ -16,7 +16,7 @@ export default function Teams() {
             height={50}
             className="mb-4"
           />
-          <h2 className="text-3xl font-extrabold text-center text-primary uppercase">
+          <h2 className="text-3xl font-black text-center text-primary uppercase">
             Conoce el equipo
           </h2>
         </div>

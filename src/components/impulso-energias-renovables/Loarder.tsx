@@ -32,7 +32,7 @@ const Loader: React.FC = () => {
         <div className="mb-6 sm:mb-8 px-10">
           <h1 className="text-2xl sm:text-4xl md:text-4xl font-bold mb-10 leading-tight">
             Cerca del{" "}
-            <span className="bg-red px-1 py-1">
+            <span className="bg-red px-1 py-1 font-black">
               25% de la energía que consumes en tu día a día
             </span>{" "}
             proviene de fuentes renovables.

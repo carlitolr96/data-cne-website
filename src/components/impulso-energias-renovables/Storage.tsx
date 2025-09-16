@@ -36,7 +36,7 @@ export default function Storage() {
                 width={100}
                 height={100}
               />
-              <h2 className="font-extrabold text-xl sm:text-2xl md:text-3xl uppercase">
+              <h2 className="font-black text-xl sm:text-2xl md:text-3xl uppercase">
                 Almacenamiento: Tecnología en crecimiento para un sistema
                 estable
                 <span className="block w-12 h-[3px] bg-red mt-2" />
@@ -85,7 +85,7 @@ export default function Storage() {
 
         <div className="flex flex-col items-center md:items-end text-primary space-y-10">
           <div className="w-full text-end">
-            <h3 className="font-extrabold text-xl sm:text-2xl uppercase">
+            <h3 className="font-black text-xl sm:text-2xl uppercase">
               Estatus
             </h3>
             <span className="block w-12 h-[3px] bg-red mt-1 ml-auto" />
@@ -93,7 +93,7 @@ export default function Storage() {
             <div className="flex items-center justify-end gap-3 mt-6">
               <h1
                 ref={proyectosRef}
-                className="text-5xl sm:text-6xl font-extrabold"
+                className="text-5xl sm:text-6xl font-black"
               >
                 0
               </h1>
@@ -105,7 +105,7 @@ export default function Storage() {
 
             <p
               ref={energiaRef}
-              className="font-extrabold text-5xl md:text-7xl mt-4"
+              className="font-black text-5xl md:text-7xl mt-4"
             >
               0 MWh
             </p>
@@ -120,7 +120,7 @@ export default function Storage() {
           />
 
           <div className="w-full text-end">
-            <h3 className="font-extrabold text-xl sm:text-2xl uppercase">
+            <h3 className="font-black text-xl sm:text-2xl uppercase">
               Beneficios
             </h3>
             <span className="block w-12 h-[3px] bg-red mt-1 ml-auto" />

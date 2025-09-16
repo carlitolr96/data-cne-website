@@ -9,7 +9,7 @@ export default function AttractiveReliable() {
         <div className="flex flex-col md:flex-row items-center justify-center uppercase gap-2 md:gap-4 mb-4">
           <h1 className="text-2xl sm:text-4xl md:text-5xl text-white font-semibold mb-5">
             UN MERCADO {""}
-            <span className="text-3xl sm:text-4xl md:text-5xl text-white bg-red font-bold px-2 py-1">
+            <span className="text-3xl sm:text-4xl md:text-5xl text-white bg-red font-black px-2 py-1">
               ATRACTIVO Y CONFIABLE
             </span>
           </h1>

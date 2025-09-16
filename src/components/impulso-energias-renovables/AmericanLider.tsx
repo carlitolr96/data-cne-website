@@ -48,16 +48,16 @@ export default function AmericanLider() {
         <div className="mb-0 md:mb-32 relative z-0">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
             <span className="text-primary">REPÚBLICA DOMINICANA, </span>
-            <span className="bg-red text-white px-4 py-2 font-extrabold">
+            <span className="bg-red text-white px-4 py-2 font-black">
               LÍDER EN LA TRANSICIÓN
             </span>
           </h1>
 
-          <div className="bg-red text-white px-4 py-2 font-extrabold text-2xl md:text-3xl lg:text-4xl">
+          <div className="bg-red text-white px-4 py-2 font-black text-2xl md:text-3xl lg:text-4xl">
             ENERGÉTICA EN AMÉRICA LATINA Y EL CARIBE
           </div>
 
-          <p className="text-primary text-lg md:text-xl font-medium max-w-4xl mb-12 leading-relaxed relative z-10">
+          <p className="text-primary text-lg md:text-xl font-medium max-w-4xl mb-12 leading-relaxed relative z-10 mt-5">
             El país continúa fortaleciendo su posición como uno de los destinos
             más atractivos para la inversión en energías renovables:
           </p>

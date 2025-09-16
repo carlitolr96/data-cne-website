@@ -7,7 +7,7 @@ export default function MainAxes() {
     <section className="bg-white py-16 border-b-2 border-red">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 px-6">
         <div className="w-full text-center">
-          <h1 className="font-extrabold uppercase text-primary text-2xl md:text-3xl mb-20">
+          <h1 className="font-black uppercase text-primary text-2xl md:text-3xl mb-20">
             Ejes Principales
           </h1>
 

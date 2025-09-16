@@ -33,9 +33,9 @@ const Hero: React.FC = () => {
             ref={titleRef}
             className="text-2xl md:text-3xl lg:text-5xl font-light leading-tight"
           >
-            Las <span className="font-bold">energías renovables</span> son el
+            Las <span className="font-black">energías renovables</span> son el
             motor de un{" "}
-            <span className="font-bold">
+            <span className="font-black">
               futuro sostenible, impulsando desarrollo, innovación
             </span>{" "}
             y bienestar para todos.

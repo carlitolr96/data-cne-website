@@ -9,7 +9,7 @@ export default function Sensitized() {
       <div className="relative w-full">
         <div className="max-w-7xl mx-auto px-6 sm:px-6 flex justify-end">
           <div className="max-w-2xl text-right text-white">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-black leading-tight">
               Personas sensibilizadas en el uso racional de la energía
             </h1>
           </div>

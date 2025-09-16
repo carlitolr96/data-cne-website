@@ -14,7 +14,7 @@ export default function GenerationCapacity() {
     <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div>
-          <h1 className="min-w-90 text-2xl md:text-3xl font-extrabold text-primary mb-4">
+          <h1 className="min-w-90 text-2xl md:text-3xl font-black text-primary mb-4">
             EN LOS ÚLTIMOS AÑOS, LA REPÚBLICA DOMINICANA HA INCREMENTADO
             SIGNIFICATIVAMENTE SU{" "}
             <span className="bg-red text-white px-4">

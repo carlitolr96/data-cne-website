@@ -14,7 +14,7 @@ export default function RenewableEnergies() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-24">
           <div className="flex-1 text-center md:text-start">
-            <h1 className="text-primary text-2xl md:text-3xl font-extrabold font-montserrat mb-4">
+            <h1 className="text-primary text-2xl md:text-3xl font-black font-montserrat mb-4">
               Energías renovables
             </h1>
             <p className="text-primary font-medium leading-relaxed">
@@ -48,7 +48,7 @@ export default function RenewableEnergies() {
         </div>
 
         <div className="mt-16 text-center">
-          <h2 className="font-extrabold text-2xl text-primary mb-10">
+          <h2 className="font-black text-2xl text-primary mb-10">
             Fuentes
           </h2>
           <div className="flex flex-wrap justify-center gap-12">

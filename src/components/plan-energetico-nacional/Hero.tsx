@@ -1,11 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import NavBar from "@/components/NavBar";
 import DocumentPEN from "@/components/plan-energetico-nacional/DocumentPEN";
+import { textReveal } from "@/utils/animations";
 
 export default function Hero() {
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
   const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
 
   const threshold = 12;
@@ -19,6 +22,10 @@ export default function Hero() {
 
     setTilt({ x: y * -threshold, y: x * threshold });
   };
+
+  useEffect(() => {
+    textReveal(titleRef.current);
+  }, []);
 
   return (
     <section className="relative min-h-screen flex flex-col">
@@ -43,10 +50,10 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4">
         <NavBar />
         <div className="max-w-4xl text-center text-white mt-10 md:mt-20">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium uppercase leading-tight">
-            <span className="font-extrabold">Plan Energético</span>
+          <h1 ref={titleRef} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light uppercase leading-tight">
+            <span className="font-black">Plan Energético</span>
             <br />
-            <span className="font-extrabold">Nacional</span> 2025-2038
+            <span className="font-black">Nacional</span> 2025-2038
           </h1>
         </div>
       </div>

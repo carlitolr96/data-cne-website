@@ -1,9 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import NavBar from "@/components/NavBar";
+import { textReveal } from "@/utils/animations";
 
 const Hero: React.FC = () => {
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    textReveal(titleRef.current);
+  }, []);
   return (
     <section className="relative w-full min-h-100 overflow-hidden pt-24">
       <div className="absolute inset-0">
@@ -22,7 +28,7 @@ const Hero: React.FC = () => {
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <NavBar />
         <div className="max-w-6xl text-center text-white">
-          <h1 className="text-2xl md:text-3xl lg:text-5xl font-extrabold">
+          <h1 ref={titleRef} className="text-2xl md:text-3xl lg:text-5xl font-black">
             DIVISIÓN DE DIFUSIÓN EN EL USO RACIONAL DE LA ENERGÍA
           </h1>
           <div className="flex justify-center mt-4">
