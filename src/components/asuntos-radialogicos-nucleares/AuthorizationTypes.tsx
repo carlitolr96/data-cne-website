@@ -28,6 +28,7 @@ export default function AuthorizationTypes() {
                 height={100}
                 priority
                 quality={70}
+                layout="responsive"
                 className="w-full h-110 object-cover rounded-lg shadow-lg"
               />
             </div>

@@ -15,19 +15,21 @@ export default function MainAxes() {
             {mainaxes.map((axes, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center text-center"
+                className="flex flex-col items-center text-center group cursor-pointer"
               >
-                <div className="flex items-center justify-center rounded-full h-14 w-14 bg-green mb-4">
-                  <span className="text-white font-bold text-xl">
+                <div className="flex items-center justify-center rounded-full h-14 w-14 bg-green mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:bg-green/80">
+                  <span className="text-white font-bold text-xl transition-colors duration-300 group-hover:text-yellow-300">
                     {axes.number}
                   </span>
                 </div>
 
                 <div className="text-primary text-sm md:text-base">
-                  <h2 className="font-extrabold text-md mb-1">
+                  <h2 className="font-extrabold text-md mb-1 transition-colors duration-300 group-hover:text-green">
                     {axes.title}
-                    <p className="font-normal">{axes.description}</p>
                   </h2>
+                  <p className="font-normal transition-colors duration-300 group-hover:text-gray-600">
+                    {axes.description}
+                  </p>
                 </div>
               </div>
             ))}

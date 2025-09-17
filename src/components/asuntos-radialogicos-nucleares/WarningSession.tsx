@@ -8,7 +8,7 @@ export default function WarningSession() {
       <div className="relative w-full">
         <div className="max-w-7xl mx-auto px-6 sm:px-6 flex justify-center">
           <div className="max-w-4xl text-center text-white">
-            <h1 className="text-3xl sm:text-4xl md:text-4xl font-black leading-tight mb-3 sm:mb-5 uppercase">
+            <h1 className="text-2xl sm:text-4xl md:text-4xl font-black leading-tight mb-3 sm:mb-5 uppercase">
               Pero si no se manejan bien, pueden ser peligrosas. Por eso es
               clave tener controles y licencias adecuadas. 
             </h1>

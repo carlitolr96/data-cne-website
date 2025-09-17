@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { assets } from "@/assets/assets";
+import { radiationNatural, radiationArtificial } from "@/assets/assets";
 
 export default function IonizingOrigin() {
   return (
@@ -29,50 +29,22 @@ export default function IonizingOrigin() {
               </div>
 
               <div className="space-y-3 pl-8">
-                <div className="flex items-center gap-5">
-                  <Image
-                    src={assets.SunARN}
-                    alt="CityPEN overlay"
-                    width={40}
-                    height={40}
-                    priority
-                  />
-                  <div className="border-2 rounded-lg border-primary p-4">
-                    <span className="text-primary text-base md:text-sm font-bold uppercase">
-                      RAYOS CÓSMICOS
-                    </span>
+                {radiationNatural.map((item, index) => (
+                  <div key={index} className="flex items-center gap-5">
+                    <Image
+                      src={item.icon}
+                      alt={item.label}
+                      width={40}
+                      height={40}
+                      priority
+                    />
+                    <div className="border-2 rounded-lg border-primary p-4">
+                      <span className="text-primary text-base md:text-sm font-bold uppercase">
+                        {item.label}
+                      </span>
+                    </div>
                   </div>
-                </div>
-
-                <div className="flex items-center gap-5">
-                  <Image
-                    src={assets.PlanetARN}
-                    alt="CityPEN overlay"
-                    width={40}
-                    height={40}
-                    priority
-                  />
-                  <div className="border-2 rounded-lg border-primary p-4">
-                    <span className="text-primary text-base md:text-sm font-bold uppercase">
-                      EL SUELO, EL AIRE (RADÓN)
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-5">
-                  <Image
-                    src={assets.HomeARN}
-                    alt="CityPEN overlay"
-                    width={40}
-                    height={40}
-                    priority
-                  />
-                  <div className="border-2 rounded-lg border-primary p-4">
-                    <span className="text-primary text-base md:text-sm font-bold uppercase">
-                      EL AGUA Y HASTA ALGUNOS ALIMENTOS.
-                    </span>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -105,50 +77,22 @@ export default function IonizingOrigin() {
               </div>
 
               <div className="space-y-3 pl-8">
-                <div className="flex items-center gap-5">
-                  <Image
-                    src={assets.XRayARN}
-                    alt="CityPEN overlay"
-                    width={40}
-                    height={40}
-                    priority
-                  />
-                  <div className="border-2 rounded-lg border-primary p-4">
-                    <span className="text-primary text-base md:text-sm font-bold uppercase">
-                      los rayos X en medicina
-                    </span>
+                {radiationArtificial.map((item, index) => (
+                  <div key={index} className="flex items-center gap-5">
+                    <Image
+                      src={item.icon}
+                      alt={item.label}
+                      width={40}
+                      height={40}
+                      priority
+                    />
+                    <div className="border-2 rounded-lg border-primary p-4">
+                      <span className="text-primary text-base md:text-sm font-bold uppercase">
+                        {item.label}
+                      </span>
+                    </div>
                   </div>
-                </div>
-
-                <div className="flex items-center gap-5">
-                  <Image
-                    src={assets.PlantChimneyARN}
-                    alt="CityPEN overlay"
-                    width={40}
-                    height={40}
-                    priority
-                  />
-                  <div className="border-2 rounded-lg border-primary p-4">
-                    <span className="text-primary text-base md:text-sm font-bold uppercase">
-                      los reactores nucleares
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-5">
-                  <Image
-                    src={assets.RadioactiveARN}
-                    alt="CityPEN overlay"
-                    width={40}
-                    height={40}
-                    priority
-                  />
-                  <div className="border-2 rounded-lg border-primary p-4">
-                    <span className="text-primary text-base md:text-sm font-bold uppercase">
-                      ciertos equipos industriales
-                    </span>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 

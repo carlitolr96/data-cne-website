@@ -17,7 +17,7 @@ export default function UsoRadiaciones() {
       <h2 className="text-xl md:text-2xl font-black text-[#13346D] mb-5">
         ¿DÓNDE SE USAN EN EL PAÍS?
       </h2>
-      <p className="text-primary max-w-2xl mx-auto mb-12 text-2xl">
+      <p className="text-primary max-w-2xl mx-auto mb-12 text-lg md:text-2xl">
         En República Dominicana las radiaciones ionizantes se aplican en
         diferentes prácticas, por ejemplo:
       </p>
@@ -56,7 +56,7 @@ export default function UsoRadiaciones() {
           </div>
         </div>
 
-        <div className="bg-[#FF9000] rounded-lg shadow-lg p-6 max-w-5xl w-full">
+        <div className="bg-light rounded-lg shadow-lg p-6 max-w-5xl w-full">
           <div className="flex flex-col md:flex-row items-center gap-6">
             <Image
               src={assets.FactoryIndustryARM}
@@ -70,28 +70,28 @@ export default function UsoRadiaciones() {
             </div>
 
             <div className="flex flex-col md:flex-row gap-6 flex-1 justify-between">
-              <div className="flex flex-col items-center justify-center text-center text-white font-montserrat flex-1">
+              <div className="flex flex-col items-center justify-center text-center text-primary font-montserrat flex-1">
                 <span className="font-medium text-sm">
                   Ensayos no destructivos
                 </span>
               </div>
 
-              <div className="hidden md:block w-0.5 bg-primary self-stretch"></div>
+              <div className="hidden md:block w-0.5 bg-[#FFBF00] self-stretch"></div>
 
-              <div className="flex flex-col items-center justify-center text-center text-white flex-1">
+              <div className="flex flex-col items-center justify-center text-center text-primary flex-1">
                 <span className="font-medium text-sm">
                   Medición de densidad, humedad y nivel llenado
                 </span>
               </div>
 
-              <div className="hidden md:block w-0.5 bg-primary self-stretch"></div>
+              <div className="hidden md:block w-0.5 bg-[#FFBF00] self-stretch"></div>
 
-              <div className="flex flex-col items-center justify-center text-center text-white flex-1">
+              <div className="flex flex-col items-center justify-center text-center text-primary flex-1">
                 <span className="font-medium text-sm">Esterilización</span>
               </div>
-              <div className="hidden md:block w-0.5 bg-primary self-stretch"></div>
+              <div className="hidden md:block w-0.5 bg-[#FFBF00] self-stretch"></div>
 
-              <div className="flex flex-col items-center text-center justify-center text-white flex-1">
+              <div className="flex flex-col items-center text-center justify-center text-primary flex-1">
                 <span className="font-medium text-sm">
                   Producción de radioisótopos
                 </span>
@@ -107,12 +107,12 @@ export default function UsoRadiaciones() {
         </div>
 
         <div className="max-w-sm">
-          <h1 className="text-primary text-end font-medium text-md">
+          <h1 className="text-primary font-medium text-md text-center md:text-right">
             De las autorizaciones emitidas corresponden a la práctica de
             Radiodiagnóstico
           </h1>
-          <div className="flex flex-col items-end mt-4">
-            <p className="text-md font-medium text-primary mb-3 text-right">
+          <div className="flex flex-col items-center md:items-end mt-4">
+            <p className="text-md font-medium text-primary mb-3 text-center md:text-right">
               Para más información
             </p>
             <Boton href="/" icon="TapIcon" iconPosition="right">
@@ -124,3 +124,5 @@ export default function UsoRadiaciones() {
     </section>
   );
 }
+
+

@@ -1,8 +1,6 @@
 "use client";
 
 import { assets } from "@/assets/assets";
-import React from "react";
-import Boton from "@/components/Boton";
 import Image from "next/image";
 
 export default function DisseminationProgram() {
@@ -15,7 +13,7 @@ export default function DisseminationProgram() {
 
         <div className="hidden md:flex flex-col items-center justify-center w-full h-full text-primary mt-12">
           <ul className="list-none flex flex-nowrap items-center justify-center w-full max-w-7xl">
-            {["Educación Básica", "Educación Media", "Otras instituciones"].map(
+            {["Educación Básica", "Educación Media", "Otras Instituciones"].map(
               (title, i) => (
                 <li
                   key={i}
@@ -61,7 +59,7 @@ export default function DisseminationProgram() {
           <div className="flex">
             <div className="flex flex-col items-center text-center">
               <h3 className="text-lg sm:text-xl md:hidden font-bold text-primary mb-3">
-                Otras instituciones
+                Otras Instituciones
               </h3>
 
               <Image
@@ -108,15 +106,6 @@ export default function DisseminationProgram() {
             </div>
           </div>
         </div>
-        <Boton
-          href="/"
-          color="green"
-          iconPosition="right"
-          icon="TapIcon"
-          className="uppercase mt-3"
-        >
-          Solicitud de Charla
-        </Boton>
       </div>
 
       <div className="absolute bottom-0 right-0 w-[280px] sm:w-[350px] md:w-[420px] lg:w-[500px] opacity-95"></div>

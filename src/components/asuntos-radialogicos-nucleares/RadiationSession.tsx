@@ -43,6 +43,7 @@ export default function RadiationSession() {
                   height={100}
                   priority
                   quality={70}
+                  layout="responsive"
                   className="w-full h-80 object-cover rounded-lg shadow-lg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-transparent rounded-lg"></div>

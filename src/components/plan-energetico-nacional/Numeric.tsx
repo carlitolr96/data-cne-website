@@ -1,10 +1,25 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { assets } from "@/assets/assets";
+import { animateCurrencyNumeric, animateNumeric } from "@/utils/animations";
 import Image from "next/image";
 import Boton from "@/components/Boton";
 
 export default function Numeric() {
+  const pibRef = useRef<HTMLParagraphElement>(null);
+  const pibPlusRef = useRef<HTMLParagraphElement>(null);
+  const energiaRef1 = useRef<HTMLParagraphElement>(null);
+  const energiaRef2 = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    animateCurrencyNumeric(pibRef.current, 11000, "US$", false);
+    animateCurrencyNumeric(pibPlusRef.current, 22000, "+US$", false);
+
+    animateNumeric(energiaRef1.current, 25397, " GWh");
+    animateNumeric(energiaRef2.current, 50794, " GWh");
+  }, []);
+
   return (
     <section className="relative w-full bg-primary bg-cover bg-center bg-no-repeat min-h-[80vh] overflow-hidden flex items-center justify-center px-6 sm:px-10 md:px-16 lg:px-24">
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -26,8 +41,11 @@ export default function Numeric() {
               <h3 className="font-semibold text-lg md:text-2xl">
                 BUSCA DUPLICAR PIB
               </h3>
-              <p className="font-black text-4xl md:text-6xl lg:text-7xl">
-                US$11,000
+              <p
+                ref={pibRef}
+                className="font-black text-4xl md:text-6xl lg:text-7xl"
+              >
+                US$0
               </p>
               <h3 className="font-bold text-lg md:text-2xl mt-2">EN 2024</h3>
             </div>
@@ -39,8 +57,11 @@ export default function Numeric() {
               priority
               className="py-5"
             />
-            <p className="font-black text-4xl md:text-6xl lg:text-7xl">
-              +US$22,000
+            <p
+              ref={pibPlusRef}
+              className="font-black text-4xl md:text-6xl lg:text-7xl"
+            >
+              +US$0
             </p>
           </div>
 
@@ -49,8 +70,11 @@ export default function Numeric() {
               <h3 className="font-semibold text-sm sm:text-base md:text-xl mb-2 md:mb-3 px-2 md:px-0 max-w-xs md:max-w-none md:whitespace-nowrap">
                 EN EFECTO, SE DUPLICARÁ LA OFERTA ENERGÉTICA
               </h3>
-              <p className="font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
-                25,397 GWH
+              <p
+                ref={energiaRef1}
+                className="font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl"
+              >
+                0 GWH
               </p>
             </div>
 
@@ -64,8 +88,11 @@ export default function Numeric() {
             />
 
             <div className="text-center">
-              <p className="font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
-                50,794 GWH
+              <p
+                ref={energiaRef2}
+                className="font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl"
+              >
+                0 GWH
               </p>
             </div>
           </div>

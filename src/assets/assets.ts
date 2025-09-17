@@ -85,6 +85,7 @@ import BackPackIcon from "../assets/BackpackIcon.svg";
 import ClassIcon from "../assets/ClassIcon.svg";
 import Conference from "../assets/ConferenceIcon.svg";
 import TeamsIcon from "../assets/TemsIcon.svg";
+import KidsCAE from "../assets/KidsCAE.svg";
 
 //Sidebar Tablero Dinamico
 import VoltageTowerBar from "../assets/VoltageTowerBar.svg";
@@ -134,6 +135,18 @@ import HomeARN from "../assets/HomeARN.svg";
 import XRayARN from "../assets/XRayARN.svg";
 import PlantChimneyARN from "../assets/PlantChimneyARN.svg";
 import RadioactiveARN from "../assets/RadioactiveARN.svg";
+import SaludXRayARN from "../assets/SaludXRayARN.svg";
+import RealthaARN from "../assets/RealthaARN.svg";
+import MedicineHealthARN from "../assets/MedicineHealthARN.svg";
+import FoliageARN from "../assets/FoliageARN.svg";
+import GlobeARN from "../assets/GlobeARN.svg";
+import WatherARM from "../assets/WatherARM.svg";
+import EnergyLeafARN from "../assets/EnergyLeafARN.svg";
+import NuclearPlantARN from "../assets/NuclearPlantARN.svg";
+import NuclearCircleARN from "../assets/NuclearCircleARN.svg";
+import IndustryARN from "../assets/IndustryARN.svg";
+import WrenchARN from "../assets/WrenchARN.svg";
+import FactoryARN from "../assets/FactoryARN.svg";
 
 export const assets = {
   logoCNE,
@@ -251,6 +264,19 @@ export const assets = {
   XRayARN,
   PlantChimneyARN,
   RadioactiveARN,
+  KidsCAE,
+  SaludXRayARN,
+  RealthaARN,
+  MedicineHealthARN,
+  FoliageARN,
+  GlobeARN,
+  WatherARM,
+  EnergyLeafARN,
+  NuclearPlantARN,
+  NuclearCircleARN,
+  IndustryARN,
+  WrenchARN,
+  FactoryARN,
 } as const;
 
 export interface Requirements {
@@ -396,6 +422,35 @@ export interface Steps {
 
 export interface Principale {
   title: string;
+}
+
+export interface RadiationNatural {
+  icon: string;
+  label: string;
+}
+
+export interface RadiationArtificial {
+  icon: string;
+  label: string;
+}
+
+export interface SectionsTemario {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  items?: string[];
+  subtitle2?: string;
+  items2?: string[];
+}
+
+export interface PracticalSectionsTemario {
+  title: string;
+  items: string[];
+}
+
+export interface BenefitsIonizantes {
+  title: string;
+  image: string[];
 }
 
 export const itemsystem: ItemSystem[] = [
@@ -954,3 +1009,122 @@ export const principales: Principale[] = [
     title: "Monitorear los niveles de exposición",
   },
 ];
+
+export const radiationNatural: RadiationNatural[] = [
+  {
+    icon: assets.SunARN,
+    label: "RAYOS CÓSMICOS",
+  },
+  {
+    icon: assets.PlanetARN,
+    label: "EL SUELO, EL AIRE (RADÓN)",
+  },
+  {
+    icon: assets.HomeARN,
+    label: "EL AGUA Y HASTA ALGUNOS ALIMENTOS.",
+  },
+];
+
+export const radiationArtificial: RadiationArtificial[] = [
+  {
+    icon: assets.XRayARN,
+    label: "los rayos X en medicina",
+  },
+  {
+    icon: assets.PlantChimneyARN,
+    label: "los reactores nucleares",
+  },
+  {
+    icon: assets.RadioactiveARN,
+    label: "ciertos equipos industriales",
+  },
+];
+
+export const sectionsTemario: SectionsTemario[] = [
+  {
+    title: "DEFINICIÓN DE LA ENERGÍA",
+    subtitle: "¿QUÉ ES LA ENERGÍA?",
+    description: "Definición básica y conceptos clave.",
+  },
+  {
+    title: "TIPOS DE ENERGÍA Y CONSUMO ENERGÉTICO",
+    items: [
+      "Energía Mecánica, Luminosa, Sonora, Calorífica, química, eléctrica, etc.",
+      "Principales sectores de consumo (residencial, laboral, escuelas y transporte)",
+    ],
+  },
+  {
+    title: "FUENTES DE ENERGÍA",
+    subtitle: "FUENTES NO RENOVABLES:",
+    items: [
+      "Combustibles fósiles: carbón, petróleo, gas natural",
+      "Energía nuclear",
+    ],
+    subtitle2: "FUENTES RENOVABLES:",
+    items2: [
+      "Energía solar",
+      "Energía eólica",
+      "Energía hidroeléctrica",
+      "Biomasa",
+      "Geotérmica",
+    ],
+  },
+  {
+    title:
+      "IMPORTANCIA DEL AHORRO ENERGÉTICO Y CÓMO LLEGA LA ENERGÍA ELÉCTRICA A LOS CENTROS DE CONSUMO",
+    items: [
+      "Razones ambientales: cambio climático y sostenibilidad",
+      "Productor, red de alta tensión, distribuidor y consumidor.",
+    ],
+  },
+  {
+    title: "ESTRATEGIAS Y MODOS DE AHORRO ENERGÉTICO",
+    description:
+      "¿Qué podemos hacer para contribuir al cuidado de nuestro planeta?",
+  },
+];
+
+export const practicalSectionsTemario: PracticalSectionsTemario[] = [
+  {
+    title: "EN EL HOGAR:",
+    items: [
+      "Uso eficiente de electrodomésticos",
+      "Iluminación LED",
+      "Aislamiento térmico y ventilación natural",
+      "Buenas prácticas diarias (desconectar aparatos, uso racional del agua caliente)",
+    ],
+  },
+  {
+    title: "EN EL TRANSPORTE:",
+    items: [
+      "Uso del transporte público",
+      "Movilidad eléctrica o compartida",
+      "Mantenimiento del vehículo",
+    ],
+  },
+  {
+    title: "USO DE ENERGÍAS RENOVABLES A PEQUEÑA ESCALA",
+    items: ["Paneles solares domésticos"],
+  },
+];
+
+export const benefitsIonizantes: BenefitsIonizantes[] = [
+  {
+    title: "Salud",
+    image: [SaludXRayARN, RealthaARN, MedicineHealthARN],
+  },
+  {
+    title: "Energía",
+    image: [EnergyLeafARN, NuclearPlantARN, NuclearCircleARN],
+  },
+  {
+    title: "Medio ambiente y cambio climático",
+    image: [FoliageARN, GlobeARN, WatherARM],
+  },
+  {
+    title: "Industria",
+    image: [IndustryARN, WrenchARN, FactoryARN],
+  },
+];
+
+

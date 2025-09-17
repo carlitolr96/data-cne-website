@@ -59,7 +59,6 @@ export const textReveal = (element: HTMLElement | null) => {
   });
 };
 
-
 /* ========================================
    Sección: Animación de contadores
 ======================================== */
@@ -246,6 +245,65 @@ export const animateCurrency = (
       element.textContent = `${prefix}${obj.val
         .toFixed(2)
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+    },
+  });
+};
+
+/**
+ * Animar los Numeric PEN
+ */
+export const animateCurrencyNumeric = (
+  element: HTMLElement | null,
+  endValue: number,
+  prefix = "US$",
+  withDecimals = false
+) => {
+  if (!element) return;
+
+  const obj = { val: 0 };
+  gsap.to(obj, {
+    val: endValue,
+    duration: 2,
+    ease: "power1.out",
+    scrollTrigger: {
+      trigger: element,
+      start: "top 80%",
+      once: true,
+    },
+    onUpdate: () => {
+      const value = withDecimals
+        ? obj.val.toFixed(2) // con decimales
+        : Math.floor(obj.val).toString(); // sin decimales
+
+      element.textContent = `${prefix}${Number(value).toLocaleString("en-US")}`;
+    },
+  });
+};
+
+
+export const animateNumeric = (
+  element: HTMLElement | null,
+  endValue: number,
+  suffix: string = "",
+  duration: number = 2,
+  start: number = 0
+) => {
+  if (!element) return;
+
+  const obj = { val: start };
+
+  gsap.to(obj, {
+    val: endValue,
+    duration,
+    ease: "power1.out",
+    scrollTrigger: {
+      trigger: element,
+      start: "top 80%", // cuando el elemento entra al 80% de la pantalla
+      once: true,       // solo una vez
+    },
+    onUpdate: () => {
+      const value = Math.floor(obj.val);
+      element.textContent = `${Number(value).toLocaleString("en-US")}${suffix}`;
     },
   });
 };
