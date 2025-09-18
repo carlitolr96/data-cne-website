@@ -1,5 +1,5 @@
 import { useRef, useEffect, useCallback, useState } from "react";
-import { animateBarHeight, animateNumber } from "@/utils/animations"; // Ajusta la ruta
+import { animateBarHeight, animateNumber } from "@/utils/animations";
 
 interface BarData { value: number; label: string; color?: string }
 interface ModularChartProps {
@@ -66,12 +66,12 @@ export default function ModularChart({
     >
       <div className="relative w-full flex justify-center items-end gap-5">
         {data.map((item, i) => (
-          <div key={`${item.label}-${i}`} className="relative flex flex-col items-center justify-end z-10">
-            <span ref={(el) => setNumberRef(el, i)} className="mb-1 text-primary text-sm md:text-xl font-bold whitespace-nowrap z-10">0</span>
+          <div key={`${item.label}-${i}`} className="relative flex flex-col items-center justify-end">
+            <span ref={(el) => setNumberRef(el, i)} className="mb-1 text-primary text-sm md:text-xl font-bold whitespace-nowrap">0</span>
 
             <div
               ref={(el) => setBarRef(el, i)}
-              className={`${barWidth} relative z-10`}
+              className={`${barWidth} relative`}
               style={{
                 backgroundColor: item.color || "#000000",
                 height: "0px",
@@ -79,7 +79,7 @@ export default function ModularChart({
               }}
             />
 
-            <span className="mt-2 text-primary text-lg font-medium text-center z-10">{item.label}</span>
+            <span className="mt-2 text-primary text-lg font-medium text-center">{item.label}</span>
           </div>
         ))}
       </div>

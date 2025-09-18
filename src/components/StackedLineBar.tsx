@@ -124,7 +124,7 @@ export default function StackedLineBar({
           meta.data.forEach((bar: any, index: number) => {
             const value = dataset.data[index];
             const x = bar.x;
-            const y = bar.y - 10; // 👈 Se dibuja arriba de la barra
+            const y = bar.y - 10;
 
             ctx.font = '900 14px "Montserrat", sans-serif';
             ctx.textAlign = "center";

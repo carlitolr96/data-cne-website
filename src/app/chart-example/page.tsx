@@ -74,7 +74,7 @@ export default function Charts() {
         </div>
       </div>
 
-      <Boton href="" onClick={refresh}>
+      <Boton href="/" onClick={refresh}>
         Actualizar
       </Boton>
     </div>

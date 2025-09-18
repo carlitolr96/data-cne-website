@@ -1,19 +1,10 @@
 "use client";
 
 import React from "react";
-import ModularLine, { DataPoint, LineConfig } from "@/components/ModularLine";
+import ModularLine from "@/components/ModularLine";
 import { evolutionPoints } from "@/assets/assets";
 
 export default function NuclearEvolution() {
-  const data: DataPoint[] = [
-    { year: 2019, green: 1.2, red: 0.0, blue: 0.5 },
-    { year: 2025, green: 8.8, red: 2.4, blue: 4.0 },
-  ];
-
-  const lines: LineConfig[] = [
-    { key: "green", color: "#FF9000", width: 3, radius: 4 },
-  ];
-
   return (
     <section className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-6 md:px-4">
@@ -45,7 +36,7 @@ export default function NuclearEvolution() {
           </div>
 
           <div className="lg:w-1/1 flex items-center justify-center">
-            <ModularLine data={data} lines={lines} width={600} height={360} />
+            <ModularLine />
           </div>
         </div>
       </div>
