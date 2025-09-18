@@ -61,11 +61,12 @@ export default function EditionPEN() {
                 <div className="flex flex-col items-center">
                   <Image
                     src={doc.image}
-                    alt={`Document cover ${index + 1}`}
+                    alt={`Document Cover ${index + 1}`}
                     width={100}
                     height={100}
                     priority
                     quality={70}
+                    layout="responsive"
                     className="md:w-52 w-48 h-64 bg-cover bg-center rounded-lg shadow-lg border-2 border-gray-200 mb-5"
                   />
                   <p className="text-primary text-sm font-medium text-center md:text-start">

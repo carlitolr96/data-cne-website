@@ -12,6 +12,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { IconType } from "react-icons";
+import type { StaticImageData } from "next/image";
 
 //Components
 import TapIcon from "./Tap-Icon.svg";
@@ -453,6 +454,15 @@ export interface BenefitsIonizantes {
   image: string[];
 }
 
+export interface LocationsPoint {
+  id: string;
+  name: string;
+  description: string;
+  x: number;
+  y: number; 
+  icon?: StaticImageData | string;
+}
+
 export const itemsystem: ItemSystem[] = [
   {
     icon: DoneSheck,
@@ -541,27 +551,27 @@ export const teammembers: TeamMembers[] = [
 
 export const editionpen: EditionPen[] = [
   {
-    image: "/portadas-pen-2025-04.png",
+    image: "/Portadas-PEN2025-05.png",
     description:
       "Un análisis detallado de cómo está hoy nuestro sistema eléctrico: generación, demanda, renovables, precios y cobertura.",
   },
   {
-    image: "/portadas-pen-2025-1.png",
+    image: "/Portadas-PEN2025-05.png",
     description:
       "Modelos técnicos que indican qué tipo de plantas se necesitan, dónde y cuándo construirlas para responder a la demanda proyectada.",
   },
   {
-    image: "/portadas-pen-2025-03.png",
+    image: "/Portadas-PEN2025-05.png",
     description:
       "Evaluación del potencial solar, eólico, hidráulico y de biomasa del país, con metas claras de expansión limpia.",
   },
   {
-    image: "/portadas-pen-2025-01.png",
+    image: "/Portadas-PEN2025-05.png",
     description:
       "Proyecciones de consumo, crecimiento económico y necesidades futuras para asegurar energía suficiente y sostenible.",
   },
   {
-    image: "/portadas-pen-2025-02.png",
+    image: "/Portadas-PEN2025-05.png",
     description:
       "Define cómo asegurar el suministro confiable de gas natural, GLP y otros combustibles clave en la matriz energética.",
   },
@@ -724,7 +734,7 @@ export const categories: Category[] = [
     id: "1",
     title: "Plan Energético",
     subtitle: "Nacional",
-    icon: DevelopingMarketing,
+    icon: ZapNav,
     color: "text-red-500",
     url: "/plan-energetico-nacional",
   },
@@ -732,7 +742,7 @@ export const categories: Category[] = [
     id: "2",
     title: "Impulso a las",
     subtitle: "Energías Renovables",
-    icon: RenewableEnergy,
+    icon: BatteryNav,
     color: "text-red-500",
     url: "/impulso-energias-renovables",
   },
@@ -740,7 +750,7 @@ export const categories: Category[] = [
     id: "3",
     title: "Cultura de",
     subtitle: "ahorro energético",
-    icon: PowerManagement,
+    icon: LightBulbNav,
     color: "text-red-500",
     url: "/cultura-ahorro-energetico",
   },
@@ -748,7 +758,7 @@ export const categories: Category[] = [
     id: "4",
     title: "Asuntos radiológicos",
     subtitle: "y Nucleares",
-    icon: NuclearMark,
+    icon: NuclearNav,
     color: "text-yellow-500",
     url: "/asuntos-radialogicos-nucleares",
   },
@@ -756,7 +766,7 @@ export const categories: Category[] = [
     id: "5",
     title: "Generación",
     subtitle: "Distribuida",
-    icon: PanelEnergy,
+    icon: SolarNav,
     color: "text-red-500",
     url: "/generacion-distribuida",
   },
@@ -938,17 +948,17 @@ export const itemsionizantes: ItemsIonizantes[] = [
 
 export const evolutionPoints: EvolutionPoint[] = [
   {
-    title: "Aumento de autorizaciones",
+    title: "Mayor uso de aplicaciones nucleares en el país",
     icon: TrendingUp,
     color: "text-orange-500",
   },
   {
-    title: "Mayor seguridad",
+    title: "Un sistema de regulación más robusto",
     icon: Shield,
     color: "text-green",
   },
   {
-    title: "Alertas y controles",
+    title: "Mayor conciencia sobre la protección radiológica",
     icon: AlertTriangle,
     color: "text-red",
   },
@@ -1126,5 +1136,32 @@ export const benefitsIonizantes: BenefitsIonizantes[] = [
     image: [IndustryARN, WrenchARN, FactoryARN],
   },
 ];
+
+export const locationsCAE: LocationsPoint[] = [
+  {
+    id: "1",
+    name: "Proyecto Solar",
+    description: "Planta de energía solar en desarrollo.",
+    x: 30,
+    y: 40,
+  },
+  {
+    id: "2",
+    name: "Parque Eólico",
+    description: "Generación eólica en la costa.",
+    x: 70,
+    y: 50,
+    icon: "",
+  },
+  {
+    id: "3",
+    name: "Parque Hidraulico",
+    description: "Generación Hidraulico en la costa.",
+    x: 70,
+    y: 30,
+    icon: "",
+  },
+];
+
 
 

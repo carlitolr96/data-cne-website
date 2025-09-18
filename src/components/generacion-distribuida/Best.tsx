@@ -25,7 +25,7 @@ export default function Best() {
 
             <div className="flex flex-col md:flex-row gap-6 flex-1 justify-between">
               <div className="flex flex-col items-center text-center text-primary font-montserrat flex-1">
-                <span className="font-black text-sm">
+                <span className="font-bold text-sm">
                   APROVECHA EL SOL
                   <br />
                   COMO FUENTE LIMPIA

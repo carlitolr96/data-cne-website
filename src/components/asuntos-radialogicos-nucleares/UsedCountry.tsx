@@ -103,7 +103,7 @@ export default function UsoRadiaciones() {
 
       <div className="flex flex-col md:flex-row justify-center items-center gap-8">
         <div className="w-70">
-          <ModularChart data={chartData} />
+          <ModularChart barWidth="w-30" data={chartData} />
         </div>
 
         <div className="max-w-sm">

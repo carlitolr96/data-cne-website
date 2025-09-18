@@ -42,7 +42,6 @@ export default function Stage() {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 1044 209"
                   width="100%"
-                  height="auto"
                   className="block"
                 >
                   <path

@@ -12,6 +12,7 @@
     "chart.js": "^4.5.0",
     "chartjs-plugin-datalabels": "^2.2.0",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.23.15",
     "gsap": "^3.13.0",
     "hamburger-react": "^2.5.2",
     "lucide-react": "^0.540.0",

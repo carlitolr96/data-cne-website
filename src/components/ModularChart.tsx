@@ -1,18 +1,12 @@
-"use client";
+import { useRef, useEffect, useCallback, useState } from "react";
+import { animateBarHeight, animateNumber } from "@/utils/animations"; // Ajusta la ruta
 
-import { useRef, useEffect, useCallback } from "react";
-
-interface BarData {
-  value: number;
-  label: string;
-  color?: string;
-}
-
+interface BarData { value: number; label: string; color?: string }
 interface ModularChartProps {
   data: BarData[];
   heightFactor?: number;
   barWidth?: string;
-  className?: string; 
+  className?: string;
 }
 
 export default function ModularChart({
@@ -24,19 +18,38 @@ export default function ModularChart({
   const barsRef = useRef<(HTMLDivElement | null)[]>([]);
   const numbersRef = useRef<(HTMLSpanElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!inView) return;
 
     data.forEach((item, i) => {
       const bar = barsRef.current[i];
       const number = numbersRef.current[i];
+
       if (bar && number) {
-        bar.style.height = `${item.value * heightFactor}px`;
-        number.textContent = `${item.value}`;
+        animateBarHeight(bar, item.value * heightFactor, 1000);
+        animateNumber(number, item.value, 1000);
       }
     });
-  }, [data, heightFactor]);
+  }, [inView, data, heightFactor]);
 
   const setBarRef = useCallback((el: HTMLDivElement | null, i: number) => {
     barsRef.current[i] = el;
@@ -49,35 +62,24 @@ export default function ModularChart({
   return (
     <div
       ref={containerRef}
-      className={`relative flex flex-col-reverse md:flex-row items-center justify-center md:space-x-10 h-auto md:h-64 ${className}`}
+      className={`relative flex flex-col-reverse items-center h-auto md:h-64 ${className}`}
     >
-      <div className="flex gap-5 justify-center md:justify-start">
+      <div className="relative w-full flex justify-center items-end gap-5">
         {data.map((item, i) => (
-          <div
-            key={item.label}
-            className="relative flex flex-col items-center justify-end"
-          >
-            <span
-              ref={(el) => setNumberRef(el, i)}
-              className="mb-1 text-primary text-sm md:text-xl font-bold whitespace-nowrap"
-            >
-              0
-            </span>
+          <div key={`${item.label}-${i}`} className="relative flex flex-col items-center justify-end z-10">
+            <span ref={(el) => setNumberRef(el, i)} className="mb-1 text-primary text-sm md:text-xl font-bold whitespace-nowrap z-10">0</span>
 
             <div
               ref={(el) => setBarRef(el, i)}
-              className={`${barWidth} relative z-0`}
+              className={`${barWidth} relative z-10`}
               style={{
                 backgroundColor: item.color || "#000000",
                 height: "0px",
                 transformOrigin: "bottom",
-                transition: "height 1s ease-in-out",
               }}
             />
 
-            <span className="mt-2 text-primary text-lg font-medium text-center">
-              {item.label}
-            </span>
+            <span className="mt-2 text-primary text-lg font-medium text-center z-10">{item.label}</span>
           </div>
         ))}
       </div>

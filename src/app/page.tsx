@@ -37,7 +37,11 @@ export default function Home() {
 
       <header className="relative top-0 left-0 w-full z-50">
         <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4">
-          <Link href="https://cne.gob.do/" target="_blank" className="flex items-center gap-2">
+          <Link
+            href="https://cne.gob.do/"
+            target="_blank"
+            className="flex items-center gap-2"
+          >
             <Image
               src={assets.logoCNE}
               alt="CNE Logo"
@@ -45,12 +49,12 @@ export default function Home() {
               height={70}
               quality={70}
               priority
-              className="w-[100px] md:w-[190px] h-auto"
+              className="w-[100px] md:w-[170px] h-auto"
             />
           </Link>
 
           <Boton
-            href="/tablero-dinamico/proyectos-renovables"
+            href="/tablero-dinamico"
             icon="GrapChart"
             iconPosition="left"
             color="green"
@@ -114,7 +118,7 @@ export default function Home() {
               ? "bg-white/80 opacity-50 pointer-events-none"
               : isActive
               ? "bg-primary text-white scale-105"
-              : "bg-white/95 hover:bg-white hover:scale-105 cursor-pointer"
+              : "group relative bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300 hover:shadow-2xl hover:scale-105"
           }
         `}
               >
@@ -129,12 +133,12 @@ export default function Home() {
                       height={48}
                     />
                   </div>
-                  <div className="w-px h-10 bg-primary"></div>
+                  <div className="w-px h-10 bg-white"></div>
                   <div className="text-left">
-                    <div className="text-primary text-base sm:text-lg font-semibold">
+                    <div className="text-white text-base sm:text-lg font-medium">
                       {category.title}
                     </div>
-                    <div className="text-primary text-base sm:text-lg font-bold">
+                    <div className="text-white text-base sm:text-lg font-extrabold">
                       {category.subtitle}
                     </div>
                   </div>

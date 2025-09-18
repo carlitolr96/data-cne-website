@@ -35,7 +35,7 @@ export default function NuclearEvolution() {
                 <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 flex-1">
                   <div className="flex items-center gap-3">
                     <point.icon className={`w-5 h-5 ${point.color}`} />
-                    <h1 className="text-primary font-medium text-md leading-tight">
+                    <h1 className="text-primary font-medium text-md leading-tight uppercase">
                       {point.title}
                     </h1>
                   </div>

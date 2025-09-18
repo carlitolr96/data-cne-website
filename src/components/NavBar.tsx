@@ -54,12 +54,12 @@ const NavBar = () => {
 
         <div className="flex items-center gap-2 sm:gap-5">
           <Boton
-            href="/tablero-dinamico/proyectos-renovables"
+            href="/tablero-dinamico"
             color="green"
             iconPosition="left"
             icon="GrapChart"
             className={`uppercase whitespace-nowrap text-xs px-3 py-2 sm:text-sm sm:px-4 sm:py-2 ${
-              normalizePath(pathname) === "/tablero-dinamico/proyectos-renovables" ? "bg-green-600" : ""
+              normalizePath(pathname) === "/tablero-dinamico" ? "bg-green-600" : ""
             }`}
             showTextOnMobile={false}
           >

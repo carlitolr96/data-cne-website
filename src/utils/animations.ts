@@ -721,53 +721,6 @@ export const animatePercentageOnce = (
   });
 };
 
-/* ========================================
-   Sección: Animación de Line Charts
-======================================== */
-// export const animateLineChart = (
-//   pathRef: React.RefObject<SVGPathElement | null>,
-//   pointsRef: React.MutableRefObject<(SVGCircleElement | null)[]>
-// ) => {
-//   if (!pathRef.current) return;
-
-//   const path = pathRef.current;
-//   const pathLength = path.getTotalLength();
-//   path.style.strokeDasharray = `${pathLength}`;
-//   path.style.strokeDashoffset = `${pathLength}`;
-
-//   const tl = gsap.timeline({ delay: 0.5 });
-//   tl.to(path, { strokeDashoffset: 0, duration: 2, ease: "power2.out" });
-
-//   // Filtrar puntos nulos
-//   const validPoints = pointsRef.current.filter(
-//     (point) => point !== null
-//   ) as SVGCircleElement[];
-
-//   validPoints.forEach((point, index) => {
-//     gsap.set(point, { scale: 0, transformOrigin: "center" });
-//     tl.to(
-//       point,
-//       { scale: 1, duration: 0.3, ease: "back.out(1.7)" },
-//       `-=${1.8 - index * 0.3}`
-//     );
-//   });
-
-//   const finalPoint = validPoints[validPoints.length - 1];
-//   if (finalPoint) {
-//     tl.to(
-//       finalPoint,
-//       {
-//         scale: 1.3,
-//         duration: 0.5,
-//         yoyo: true,
-//         repeat: 1,
-//         ease: "power2.inOut",
-//       },
-//       "+=0.5"
-//     );
-//   }
-// };
-
 export interface DataPoint {
   year: number;
   value: number;
@@ -777,6 +730,33 @@ export interface DataPoint {
 export interface LineChartAnimationParams {
   pathRef: React.RefObject<SVGPathElement | null>;
   pointsRef: React.MutableRefObject<(SVGCircleElement | null)[]>;
+}
+
+export function animateBarHeight(
+  bar: HTMLDivElement,
+  targetHeight: number,
+  duration = 1000
+) {
+  bar.style.transition = `height ${duration}ms ease-in-out`;
+  bar.style.height = `${targetHeight}px`;
+}
+
+export function animateNumber(
+  element: HTMLSpanElement,
+  targetValue: number,
+  duration = 1000
+) {
+  let start = 0;
+  const stepTime = Math.ceil(duration / targetValue);
+
+  const step = () => {
+    start += 1;
+    if (start > targetValue) start = targetValue;
+    element.textContent = `${start}`;
+    if (start < targetValue) requestAnimationFrame(step);
+  };
+
+  step();
 }
 
 /**
@@ -960,3 +940,4 @@ export const animateDoubleLineChart = (
     });
   });
 };
+

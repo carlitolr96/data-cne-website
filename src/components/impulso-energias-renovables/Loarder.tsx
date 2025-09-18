@@ -39,12 +39,12 @@ const Loader: React.FC = () => {
           </h1>
         </div>
 
-        <div className="flex flex-row items-center justify-center w-full overflow-x-auto gap-4 px-2 sm:px-0 py-10">
+        <div className="flex flex-col md:flex-row items-center justify-center w-full gap-4">
           {/* 2019 */}
-          <div className="flex flex-col items-center text-center min-w-[60px]">
+          <div className="flex flex-col items-center text-center mb-4 md:mb-0">
             <div
               ref={percent2019Ref}
-              className="text-2xl sm:text-3xl font-bold mb-1"
+              className="text-2xl sm:text-5xl font-black mb-1"
             >
               0%
             </div>
@@ -52,12 +52,12 @@ const Loader: React.FC = () => {
               className="w-5 h-5 rounded-full border-2 border-white mb-2"
               style={{ backgroundColor: "#FFBF00" }}
             />
-            <div className="text-sm sm:text-base font-semibold">2019</div>
+            <div className="text-lg sm:text-md font-bold">2019</div>
           </div>
 
-          {/* Barra de progreso */}
-          <div className="flex-1 flex items-center min-w-[100px]">
-            <div className="h-2 bg-white/20 rounded-full w-full overflow-hidden">
+          {/* Línea de conexión */}
+          <div className="flex-1 flex items-center justify-center">
+            <div className="w-full md:h-2 md:w-full h-2 bg-white/20 rounded-full overflow-hidden">
               <div
                 ref={progressRef}
                 className="h-full rounded-full"
@@ -70,10 +70,10 @@ const Loader: React.FC = () => {
           </div>
 
           {/* 2025 */}
-          <div className="flex flex-col items-center text-center min-w-[60px]">
+          <div className="flex flex-col items-center text-center mb-4 md:mb-0">
             <div
               ref={percent2025Ref}
-              className="text-2xl sm:text-3xl font-bold mb-1"
+              className="text-2xl sm:text-5xl font-black mb-1"
             >
               0%
             </div>
@@ -81,19 +81,19 @@ const Loader: React.FC = () => {
               className="w-5 h-5 rounded-full border-2 border-white mb-2"
               style={{ backgroundColor: "#7DB925" }}
             />
-            <div className="text-sm sm:text-base font-semibold">2025</div>
+            <div className="text-lg sm:text-md font-bold">2025</div>
           </div>
 
-          {/* Barra vacía */}
-          <div className="flex-1 flex items-center min-w-[100px]">
-            <div className="h-2 bg-white/20 rounded-full w-full" />
+          {/* Línea de conexión */}
+          <div className="flex-1 flex items-center justify-center">
+            <div className="w-full md:h-2 md:w-full h-2 bg-white/20 rounded-full" />
           </div>
 
           {/* 2030 */}
-          <div className="flex flex-col items-center text-center min-w-[60px]">
+          <div className="flex flex-col items-center text-center">
             <div
               ref={percent2030Ref}
-              className="text-2xl sm:text-3xl font-bold mb-1"
+              className="text-2xl sm:text-5xl font-black mb-1"
             >
               0%
             </div>
@@ -101,7 +101,7 @@ const Loader: React.FC = () => {
               className="w-5 h-5 rounded-full border-2 border-white mb-2"
               style={{ backgroundColor: "#19E53E" }}
             />
-            <div className="text-sm sm:text-base font-semibold">2030</div>
+            <div className="text-lg sm:text-md font-bold">2030</div>
           </div>
         </div>
       </div>

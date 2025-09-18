@@ -82,12 +82,20 @@ export default function StackedLineBar({
             label: (context) => `Valor: ${context.parsed.y}`,
           },
         },
+        datalabels: {
+          display: false,
+        },
       },
       scales: {
         x: {
           type: "category",
           grid: { display: false },
-          ticks: { color: "#ffffff", font: { size: 11, weight: 900 }, maxRotation: 45, minRotation: 0 },
+          ticks: {
+            color: "#ffffff",
+            font: { size: 11, weight: 900 },
+            maxRotation: 45,
+            minRotation: 0,
+          },
         },
         y: {
           display: false,
@@ -96,8 +104,13 @@ export default function StackedLineBar({
           suggestedMax: Math.max(...data.map((item) => item.value)) * 1.1,
         },
       },
-      animation: { duration: animate ? 1500 : 0, easing: "easeOutQuart" },
-      layout: { padding: { top: showValues ? 30 : 20, bottom: 15, left: 10, right: 10 } },
+      animation: {
+        duration: animate ? 1500 : 0,
+        easing: "easeOutQuart",
+      },
+      layout: {
+        padding: { top: showValues ? 30 : 20, bottom: 15, left: 10, right: 10 },
+      },
     };
 
     const valuePlugin = {
@@ -111,7 +124,7 @@ export default function StackedLineBar({
           meta.data.forEach((bar: any, index: number) => {
             const value = dataset.data[index];
             const x = bar.x;
-            const y = bar.y - 10;
+            const y = bar.y - 10; // 👈 Se dibuja arriba de la barra
 
             ctx.font = '900 14px "Montserrat", sans-serif';
             ctx.textAlign = "center";
@@ -134,5 +147,10 @@ export default function StackedLineBar({
     return () => chartInstance.current?.destroy();
   }, [data, animate, barPercentage, categoryPercentage, showValues]);
 
-  return <canvas ref={canvasRef} className={`w-full h-64 md:h-72 lg:h-80 ${className}`} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className={`w-full h-64 md:h-72 lg:h-80 ${className}`}
+    />
+  );
 }

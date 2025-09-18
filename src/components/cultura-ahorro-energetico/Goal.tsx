@@ -84,7 +84,7 @@ export default function Goal() {
       <div className="mx-auto flex flex-col sm:flex-row relative">
         <div className="w-full md:w-90 flex flex-col items-center md:items-end justify-center bg-green text-white px-8 py-6 sm:rounded-r-full rounded-r-none z-0 mb-4 sm:mb-0">
           <div className="flex flex-col items-center">
-            <span className="font-black text-base sm:text-lg uppercase">
+            <span className="font-black text-base sm:text-3xl uppercase">
               Meta
             </span>
           </div>

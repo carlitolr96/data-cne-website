@@ -52,13 +52,13 @@ export default function Satisfaction() {
 
         <div className="w-[80%] sm:w-[30%] md:w-[40%] h-25 sm:h-[100] rounded-xl bg-green text-white shadow-lg flex items-center justify-center mt-13">
           <div className="flex items-center justify-center gap-10 px-4 h-full text-center">
-            <h1 className="text-xl text-start sm:text-2xl w-min font-bold">
+            <h1 className="text-xl text-start sm:text-2xl w-min font-black uppercase">
               Satisfacción al cliente
             </h1>
 
             <div className="hidden sm:block w-0.5 h-16 bg-light"></div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black">
               100%
             </h1>
           </div>

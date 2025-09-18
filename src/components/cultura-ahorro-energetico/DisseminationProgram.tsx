@@ -36,7 +36,7 @@ export default function DisseminationProgram() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-20 mt-12">
           <div className="flex flex-col items-center text-center">
-            <h3 className="text-lg sm:text-xl md:hidden font-bold text-primary mb-3">
+            <h3 className="text-2xl sm:text-xl md:hidden font-bold text-primary mb-3">
               Educación Básica
             </h3>
 
@@ -58,7 +58,7 @@ export default function DisseminationProgram() {
 
           <div className="flex">
             <div className="flex flex-col items-center text-center">
-              <h3 className="text-lg sm:text-xl md:hidden font-bold text-primary mb-3">
+              <h3 className="text-2xl sm:text-xl md:hidden font-bold text-primary mb-3">
                 Otras Instituciones
               </h3>
 
@@ -82,7 +82,7 @@ export default function DisseminationProgram() {
 
           <div className="flex flex-col">
             <div className="flex flex-col items-center text-center">
-              <h3 className="text-lg sm:text-xl md:hidden font-bold text-primary mb-3">
+              <h3 className="text-2xl sm:text-xl md:hidden font-bold text-primary mb-3">
                 Educación Media
               </h3>
 

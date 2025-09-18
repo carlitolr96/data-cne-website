@@ -1,42 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { assets, locationspoint } from "@/assets/assets";
+import MapWithPoints from "@/components/MapWithPoints";
 import Image from "next/image";
 import Boton from "@/components/Boton";
-import { animateMapLocations } from "@/utils/animations";
-
-interface LocationPoint {
-  id: string;
-  name: string;
-  description: string;
-  x: number;
-  y: number;
-}
 
 export default function MapsLocation() {
-  const pointsRef = useRef<HTMLButtonElement[]>([]);
-  const tooltipsRef = useRef<HTMLDivElement[]>([]);
-  const [activeId, setActiveId] = useState<string | null>(null);
-
-  useEffect(() => {
-    animateMapLocations(pointsRef.current, tooltipsRef.current, activeId);
-  }, [activeId]);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        !pointsRef.current.some((el) => el?.contains(event.target as Node)) &&
-        !tooltipsRef.current.some((el) => el?.contains(event.target as Node))
-      ) {
-        setActiveId(null);
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, []);
-
   return (
     <section className="bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative flex flex-col md:flex-row items-center md:items-start">
@@ -64,55 +33,7 @@ export default function MapsLocation() {
           </div>
 
           <div className="relative w-full h-[300px] mb-6">
-            <Image
-              src={assets.MapaOneSVG}
-              alt="Mapa CNE"
-              fill
-              priority
-              quality={70}
-              className="object-contain"
-            />
-            {locationspoint.map((loc: LocationPoint, i: number) => (
-              <div key={loc.id}>
-                <button
-                  type="button"
-                  ref={(el) => {
-                    if (el) pointsRef.current[i] = el;
-                  }}
-                  className="absolute z-10"
-                  style={{
-                    left: `${loc.x}%`,
-                    top: `${loc.y}%`,
-                    transform: "translate(-50%, -50%)",
-                  }}
-                  onClick={() =>
-                    setActiveId(activeId === loc.id ? null : loc.id)
-                  }
-                >
-                  <div className="w-5 h-5 bg-red hover:bg-red-700 rounded-full cursor-pointer shadow-lg outline-2 outline-offset-2" />
-                </button>
-                {activeId === loc.id && (
-                  <div
-                    ref={(el) => {
-                      if (el) tooltipsRef.current[i] = el;
-                    }}
-                    data-id={loc.id}
-                    style={{
-                      top: `calc(${loc.y}% - 6rem)`,
-                      left: `${loc.x}%`,
-                      transform: "translateX(-50%)",
-                    }}
-                    className="absolute w-56 p-4 rounded-xl bg-white shadow-lg border border-gray-200 z-50"
-                  >
-                    <div className="absolute -bottom-3 left-1/2 w-3 h-3 bg-red rounded-full border-2 border-white transform -translate-x-1/2" />
-                    <h4 className="text-primary font-bold text-lg mb-1">
-                      {loc.name}
-                    </h4>
-                    <p className="text-sm text-gray-600">{loc.description}</p>
-                  </div>
-                )}
-              </div>
-            ))}
+            <MapWithPoints mapImage={assets.MapaOneSVG} points={locationspoint} /> 
           </div>
 
           <Boton href="/" icon="TapIcon" iconPosition="right">
@@ -123,56 +44,7 @@ export default function MapsLocation() {
         <div className="hidden md:block w-full relative">
           <div className="absolute inset-0 flex items-center justify-start pl-8">
             <div className="relative w-full max-w-4xl">
-              <Image
-                src={assets.MapaOneSVG}
-                alt="Mapa CNE"
-                width={800}
-                height={600}
-                priority
-                quality={70}
-                className="w-full h-auto z-0"
-              />
-              {locationspoint.map((loc: LocationPoint, i: number) => (
-                <div key={loc.id}>
-                  <button
-                    type="button"
-                    ref={(el) => {
-                      if (el) pointsRef.current[i] = el;
-                    }}
-                    className="absolute z-10"
-                    style={{
-                      left: `${loc.x}%`,
-                      top: `${loc.y}%`,
-                      transform: "translate(-50%, -50%)",
-                    }}
-                    onClick={() =>
-                      setActiveId(activeId === loc.id ? null : loc.id)
-                    }
-                  >
-                    <div className="w-5 h-5 bg-red hover:bg-red-700 rounded-full cursor-pointer shadow-lg outline-2 outline-offset-2" />
-                  </button>
-                  {activeId === loc.id && (
-                    <div
-                      ref={(el) => {
-                        if (el) tooltipsRef.current[i] = el;
-                      }}
-                      data-id={loc.id}
-                      style={{
-                        top: `calc(${loc.y}% - 6rem)`,
-                        left: `${loc.x}%`,
-                        transform: "translateX(-50%)",
-                      }}
-                      className="absolute w-56 p-4 rounded-xl bg-white shadow-lg border border-gray-200 z-50"
-                    >
-                      <div className="absolute -bottom-3 left-1/2 w-3 h-3 bg-red rounded-full border-2 border-white transform -translate-x-1/2" />
-                      <h4 className="text-primary font-bold text-lg mb-1">
-                        {loc.name}
-                      </h4>
-                      <p className="text-sm text-gray-600">{loc.description}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
+              <MapWithPoints mapImage={assets.MapaOneSVG} points={locationspoint} />
             </div>
           </div>
 
