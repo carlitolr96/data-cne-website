@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import DobleBarChart from "@/components/DobleBarChart";
 import CircularBar from "@/components/CircularBar";
-import { animateDoubleChartsTwo } from "@/utils/animations";
 
 export default function RecordInvestments() {
   const data = [30, 25, 20, 25, 80, 60];
@@ -18,7 +17,7 @@ export default function RecordInvestments() {
     },
   ];
 
-  const sectionRef = useRef<HTMLElement | null>(null);
+  // const sectionRef = useRef<HTMLElement | null>(null);
 
   return (
     <section className="bg-white min-h-screen flex flex-col justify-center py-10 sm:py-12">

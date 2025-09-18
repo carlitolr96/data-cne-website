@@ -10,6 +10,8 @@ import {
   Tooltip,
   Legend,
   ChartOptions,
+  Chart,
+  ChartDataset,
 } from "chart.js";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -38,14 +40,12 @@ export default function StackedLineBar({
   categoryPercentage = 0.8,
 }: ModularChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const chartInstance = useRef<ChartJS | null>(null);
+  const chartInstance = useRef<Chart<"bar", number[], string> | null>(null);
 
   useEffect(() => {
     if (!canvasRef.current) return;
 
-    if (chartInstance.current) {
-      chartInstance.current.destroy();
-    }
+    if (chartInstance.current) chartInstance.current.destroy();
 
     const chartData = {
       labels: data.map((item) => item.label),
@@ -55,7 +55,6 @@ export default function StackedLineBar({
           backgroundColor: data.map((item) => item.color || "#6366f1"),
           borderColor: data.map((item) => item.color || "#6366f1"),
           borderWidth: 0,
-          borderRadius: 0,
           barPercentage,
           categoryPercentage,
         },
@@ -81,9 +80,6 @@ export default function StackedLineBar({
             title: (tooltipItems) => tooltipItems[0].label,
             label: (context) => `Valor: ${context.parsed.y}`,
           },
-        },
-        datalabels: {
-          display: false,
         },
       },
       scales: {
@@ -115,16 +111,16 @@ export default function StackedLineBar({
 
     const valuePlugin = {
       id: "valuePlugin",
-      afterDatasetsDraw: (chart: any) => {
+      afterDatasetsDraw: (chart: Chart<"bar", number[], string>) => {
         if (!showValues) return;
         const ctx = chart.ctx;
-        ctx.save();
-        chart.data.datasets.forEach((dataset: any, i: number) => {
+
+        chart.data.datasets.forEach((dataset: ChartDataset<"bar", number[]>, i) => {
           const meta = chart.getDatasetMeta(i);
-          meta.data.forEach((bar: any, index: number) => {
-            const value = dataset.data[index];
-            const x = bar.x;
-            const y = bar.y - 10;
+          meta.data.forEach((bar, index) => {
+            const value = dataset.data[index] as number;
+            const x = (bar as any).x;
+            const y = (bar as any).y - 10;
 
             ctx.font = '900 14px "Montserrat", sans-serif';
             ctx.textAlign = "center";
@@ -133,7 +129,6 @@ export default function StackedLineBar({
             ctx.fillText(value.toString(), x, y);
           });
         });
-        ctx.restore();
       },
     };
 
