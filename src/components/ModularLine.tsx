@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import {
   Chart as ChartJS,
@@ -12,17 +10,24 @@ import {
   Legend,
   ChartOptions,
   ChartData,
+  Plugin,
+  LineController,
+  LineElement as LineElementType,
+  PointElement as PointElementType,
+  Chart,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-const valuePlugin = {
+interface ValuePluginChart extends Chart<"line"> {}
+
+const valuePlugin: Plugin<"line"> = {
   id: "valuePlugin",
-  afterDatasetsDraw: (chart: any) => {
+  afterDatasetsDraw: (chart: ValuePluginChart) => {
     const { ctx } = chart;
-    chart.data.datasets.forEach((dataset: any, datasetIndex: number) => {
+    chart.data.datasets.forEach((dataset, datasetIndex) => {
       const meta = chart.getDatasetMeta(datasetIndex);
       if (!meta.hidden) {
-        const lastPoint = meta.data[meta.data.length - 1];
+        const lastPoint = meta.data[meta.data.length - 1] as unknown as { x: number; y: number };
         const value = dataset.data[dataset.data.length - 1];
         if (lastPoint) {
           ctx.save();
@@ -30,7 +35,7 @@ const valuePlugin = {
           ctx.font = '900 14px "Montserrat", sans-serif';
           ctx.textAlign = "left";
           ctx.textBaseline = "middle";
-          ctx.fillText(value, lastPoint.x + 10, lastPoint.y - 10);
+          ctx.fillText(`${value}`, lastPoint.x + 10, lastPoint.y - 10);
 
           ctx.beginPath();
           ctx.moveTo(lastPoint.x, lastPoint.y);
@@ -74,11 +79,7 @@ const options: ChartOptions<"line"> = {
   scales: {
     x: {
       grid: { display: false },
-      border: {
-        display: true,
-        width: 3,
-        color: "#183B6B",
-      },
+      border: { display: true, width: 3, color: "#183B6B" },
       ticks: {
         color: "#183B6B",
         font: { weight: "bold" },
@@ -90,11 +91,7 @@ const options: ChartOptions<"line"> = {
     },
     y: {
       grid: { display: false },
-      border: {
-        display: true,
-        width: 3,
-        color: "#183B6B",
-      },
+      border: { display: true, width: 3, color: "#183B6B" },
       ticks: { display: false },
     },
   },
@@ -105,7 +102,7 @@ const data: ChartData<"line"> = {
   datasets: [
     {
       label: "Valores",
-      data: [0, 8, 15, 10, 20, 30],
+      data: [0, 8, 15, 10, 20, 30, 25],
       borderColor: "#FF8C00",
       backgroundColor: "#FF8C00",
       pointBackgroundColor: "#FF8C00",

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { PanelRightClose, PanelRightOpen, X, Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { assets } from "../../assets/assets";
-import Boton from "@/components/Boton";
 import SideBarNav from "@/components/tablero-dinamico/SideBarNav";
 import Link from "next/link";
 import Image from "next/image";
