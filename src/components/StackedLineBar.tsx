@@ -12,6 +12,7 @@ import {
   ChartOptions,
   Chart,
   ChartDataset,
+  Element as ChartElement,
 } from "chart.js";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -117,10 +118,11 @@ export default function StackedLineBar({
 
         chart.data.datasets.forEach((dataset: ChartDataset<"bar", number[]>, i) => {
           const meta = chart.getDatasetMeta(i);
-          meta.data.forEach((bar, index) => {
+          meta.data.forEach((bar: ChartElement, index: number) => {
             const value = dataset.data[index] as number;
-            const x = (bar as any).x;
-            const y = (bar as any).y - 10;
+            const barElement = bar as BarElement;
+            const x = barElement.x;
+            const y = barElement.y - 10;
 
             ctx.font = '900 14px "Montserrat", sans-serif';
             ctx.textAlign = "center";

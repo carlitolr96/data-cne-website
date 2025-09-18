@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Chart as ChartJS,
@@ -11,23 +13,18 @@ import {
   ChartOptions,
   ChartData,
   Plugin,
-  LineController,
-  LineElement as LineElementType,
-  PointElement as PointElementType,
   Chart,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-interface ValuePluginChart extends Chart<"line"> {}
-
 const valuePlugin: Plugin<"line"> = {
   id: "valuePlugin",
-  afterDatasetsDraw: (chart: ValuePluginChart) => {
+  afterDatasetsDraw: (chart: Chart<"line">) => {
     const { ctx } = chart;
     chart.data.datasets.forEach((dataset, datasetIndex) => {
       const meta = chart.getDatasetMeta(datasetIndex);
       if (!meta.hidden) {
-        const lastPoint = meta.data[meta.data.length - 1] as unknown as { x: number; y: number };
+        const lastPoint = meta.data[meta.data.length - 1] as { x: number; y: number };
         const value = dataset.data[dataset.data.length - 1];
         if (lastPoint) {
           ctx.save();

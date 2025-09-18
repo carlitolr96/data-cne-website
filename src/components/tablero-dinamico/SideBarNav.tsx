@@ -77,7 +77,7 @@ export default function SideBarNavTwo({
             <div key={index} className="relative">
               <Link
                 href={item.url}
-                className={`flex items-center px-2 py-2 mt-3 text-sm font-semibold rounded-md transition-colors
+                className={`flex items-center px-2 py-2 mt-3 text-sm font-medium rounded-md transition-colors
                   ${isOpen ? "justify-start" : "justify-center"}
                   ${
                     isActive
