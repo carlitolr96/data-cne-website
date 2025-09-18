@@ -6,6 +6,7 @@ import {
   CategoryScale,
   LinearScale,
   BarElement,
+  BarController, 
   Title,
   Tooltip,
   Legend,
@@ -15,7 +16,7 @@ import {
   Element as ChartElement,
 } from "chart.js";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, BarController, Title, Tooltip, Legend);
 
 interface BarData {
   value: number;
