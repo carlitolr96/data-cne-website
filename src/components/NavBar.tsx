@@ -14,7 +14,6 @@ const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Normaliza la ruta eliminando slashes al final
   const normalizePath = (path: string) => path.replace(/\/+$/, "");
 
   useEffect(() => {
@@ -70,7 +69,6 @@ const NavBar = () => {
         </div>
       </nav>
 
-      {/* Menú móvil */}
       <div
         className={`md:hidden fixed inset-0 bg-black/60 backdrop-blur-lg z-50 transform transition-transform duration-300 overflow-y-auto ${
           isMenuOpen ? "translate-y-0" : "-translate-y-full"

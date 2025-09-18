@@ -87,7 +87,7 @@ const LineChartDoble: React.FC<LineChartDobleProps> = ({ data }) => {
         ticks: {
           color: "#183B6B",
           font: { weight: "bold", size: 16 },
-          callback: function (val, index) {
+          callback: function (val) {
             const label = this.getLabelForValue(val as number);
             return label === "2020" || label === "2024" ? label : "";
           },

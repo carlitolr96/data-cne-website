@@ -44,7 +44,7 @@ const Boton: FC<BotonProps> = ({
   const iconElement =
     icon &&
     (typeof assets[icon] === "string" && assets[icon].endsWith(".svg") ? (
-      <img
+      <Image
         src={assets[icon]}
         alt={`${icon} icon`}
         className={`${iconPosition === "left" ? "mr-2" : "ml-2"} w-5 h-5`}

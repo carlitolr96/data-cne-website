@@ -82,7 +82,7 @@ const options: ChartOptions<"line"> = {
       ticks: {
         color: "#183B6B",
         font: { weight: "bold" },
-        callback: function (val, index) {
+        callback: function (val) {
           const label = this.getLabelForValue(val as number);
           return label === "2019" || label === "2025" ? label : "";
         },
