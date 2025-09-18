@@ -1,154 +1,126 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
-import { animateDoubleLineChart } from "@/utils/animations";
+import React from "react";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  ChartOptions,
+  ChartData,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
-export interface DataPoint {
-  year: number;
-  [key: string]: number;
-}
+const valuePlugin = {
+  id: "valuePlugin",
+  afterDatasetsDraw: (chart: any) => {
+    const { ctx } = chart;
+    chart.data.datasets.forEach((dataset: any, datasetIndex: number) => {
+      const meta = chart.getDatasetMeta(datasetIndex);
+      if (!meta.hidden) {
+        const lastPoint = meta.data[meta.data.length - 1];
+        const value = dataset.data[dataset.data.length - 1];
+        if (lastPoint) {
+          ctx.save();
+          ctx.fillStyle = "#183B6B";
+          ctx.font = '900 14px "Montserrat", sans-serif';
+          ctx.textAlign = "left";
+          ctx.textBaseline = "middle";
+          ctx.fillText(value, lastPoint.x + 10, lastPoint.y - 10);
 
-export interface LineConfig {
-  key: string;
-  color: string;
-  width?: number;
-  radius?: number;
-  label?: string;
-}
+          ctx.beginPath();
+          ctx.moveTo(lastPoint.x, lastPoint.y);
+          ctx.lineTo(lastPoint.x + 20, lastPoint.y - 20);
+          ctx.strokeStyle = "#FF8C00";
+          ctx.lineWidth = 2;
+          ctx.stroke();
 
-interface ModularLineProps {
-  data: DataPoint[];
-  lines: LineConfig[];
-  width?: number;
-  height?: number;
-  padding?: number;
-}
+          ctx.beginPath();
+          ctx.moveTo(lastPoint.x + 20, lastPoint.y - 20);
+          ctx.lineTo(lastPoint.x + 15, lastPoint.y - 15);
+          ctx.lineTo(lastPoint.x + 25, lastPoint.y - 15);
+          ctx.closePath();
+          ctx.fillStyle = "#FF8C00";
+          ctx.fill();
 
-const ModularLine: React.FC<ModularLineProps> = ({
-  data,
-  lines,
-  width = 560,
-  height = 340,
-  padding = 48,
-}) => {
-  const svgRef = useRef<SVGSVGElement>(null);
+          ctx.restore();
+        }
+      }
+    });
+  },
+};
 
-  // Refs para paths y círculos
-  const pathRefs = useRef<SVGPathElement[]>([]);
-  const circleRefs = useRef<SVGCircleElement[][]>([]);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  valuePlugin
+);
 
-  // Inicializa arrays de círculos si no existen
-  if (circleRefs.current.length !== lines.length) {
-    circleRefs.current = lines.map(() => []);
-  }
+const options: ChartOptions<"line"> = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false },
+  },
+  scales: {
+    x: {
+      grid: { display: false },
+      border: {
+        display: true,
+        width: 3,
+        color: "#183B6B",
+      },
+      ticks: {
+        color: "#183B6B",
+        font: { weight: "bold" },
+        callback: function (val, index) {
+          const label = this.getLabelForValue(val as number);
+          return label === "2019" || label === "2025" ? label : "";
+        },
+      },
+    },
+    y: {
+      grid: { display: false },
+      border: {
+        display: true,
+        width: 3,
+        color: "#183B6B",
+      },
+      ticks: { display: false },
+    },
+  },
+};
 
-  const maxY = Math.max(
-    ...data.flatMap((d) => lines.map((line) => d[line.key]))
-  );
-  const yDomainMax = maxY * 1.15;
+const data: ChartData<"line"> = {
+  labels: [2019, 2020, 2021, 2022, 2023, 2024, 2025],
+  datasets: [
+    {
+      label: "Valores",
+      data: [0, 8, 15, 10, 20, 30],
+      borderColor: "#FF8C00",
+      backgroundColor: "#FF8C00",
+      pointBackgroundColor: "#FF8C00",
+      pointBorderColor: "#FFFFFF",
+      pointBorderWidth: 2,
+      borderWidth: 3,
+      tension: 0,
+    },
+  ],
+};
 
-  const xScale = (year: number) =>
-    padding + ((year - data[0].year) / (data[data.length - 1].year - data[0].year)) *
-      (width - 2 * padding);
-
-  const yScale = (v: number) => height - padding - (v / yDomainMax) * (height - 2 * padding);
-
-  const linePath = (lineKey: string) =>
-    data
-      .map((d, i) => `${i === 0 ? "M" : "L"} ${xScale(d.year)} ${yScale(d[lineKey])}`)
-      .join(" ");
-
-//   useEffect(() => {
-//     // Pasa solo arrays de elementos al animador
-//     animateDoubleLineChart(
-//       pathRefs.current,
-//       circleRefs.current.map(arr => arr)
-//     );
-//   }, []);
-
+const ModularLine: React.FC = () => {
   return (
-    <div className="relative w-full h-[260px] sm:h-[300px] md:h-[360px] lg:h-[420px]">
-      <svg
-        ref={svgRef}
-        viewBox={`0 0 ${width} ${height}`}
-        width="100%"
-        height="100%"
-        className="overflow-visible"
-      >
-        {Array.from({ length: 5 }).map((_, i) => {
-          const value = (yDomainMax / 4) * i;
-          const y = yScale(value);
-          return (
-            <g key={i}>
-              <line
-                x1={padding}
-                x2={width - padding}
-                y1={y}
-                y2={y}
-                stroke="#CDCDCD"
-                strokeWidth={1}
-                strokeDasharray="4 4"
-              />
-              <text
-                x={padding - 10}
-                y={y + 4}
-                textAnchor="end"
-                className="fill-[#183B6B] font-medium"
-                style={{ fontSize: 12 }}
-              >
-                {value.toFixed(1)}
-              </text>
-            </g>
-          );
-        })}
-
-        <line
-          x1={padding}
-          y1={padding * 0.5}
-          x2={padding}
-          y2={height - padding}
-          stroke="#183B6B"
-          strokeWidth={3}
-        />
-        <line
-          x1={padding}
-          y1={height - padding}
-          x2={width - padding}
-          y2={height - padding}
-          stroke="#183B6B"
-          strokeWidth={3}
-        />
-
-        {lines.map((line, lineIndex) => (
-          <React.Fragment key={line.key}>
-            <path
-              ref={(el) => {
-                if (el) pathRefs.current[lineIndex] = el;
-              }}
-              d={linePath(line.key)}
-              fill="none"
-              stroke={line.color}
-              strokeWidth={line.width || 3}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            {data.map((d, i) => (
-              <circle
-                key={`${line.key}-${d.year}`}
-                ref={(el) => {
-                  if (el) circleRefs.current[lineIndex][i] = el;
-                }}
-                cx={xScale(d.year)}
-                cy={yScale(d[line.key])}
-                r={line.radius || 4}
-                fill={line.color}
-                stroke="#ffffff"
-                strokeWidth={2}
-              />
-            ))}
-          </React.Fragment>
-        ))}
-      </svg>
+    <div className="w-[80%] h-[350px]">
+      <Line options={options} data={data} />
     </div>
   );
 };
