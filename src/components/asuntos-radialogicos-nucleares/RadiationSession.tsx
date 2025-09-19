@@ -37,7 +37,7 @@ export default function RadiationSession() {
             <div className="lg:w-1/1">
               <div className="relative">
                 <Image
-                  src="/BannerPanelRD.jpg"
+                  src="/portadas-arn/Radiacion-Clinico.jpg"
                   alt="CityPEN overlay"
                   width={500}
                   height={100}

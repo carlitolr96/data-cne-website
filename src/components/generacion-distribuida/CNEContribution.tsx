@@ -37,7 +37,7 @@ export default function CNEContribution() {
 
             <div className="relative w-full md:w-2/3 h-48 md:h-100 md:rounded-l-xl overflow-hidden">
               <Image
-                src="/BenefitsImg.jpg"
+                src="/portadas-gd/CNEOffice2025.jpg"
                 alt="Card Image"
                 fill
                 priority

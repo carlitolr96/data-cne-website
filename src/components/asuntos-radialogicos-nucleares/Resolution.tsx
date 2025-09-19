@@ -21,7 +21,7 @@ export default function Resolution() {
 
         
         <Image
-          src="/BannerPanelRD.jpg"
+          src="/portadas-arn/ProteccionRadiologica.jpeg"
           alt="Resolution Document"
           width={100}
           height={100}
@@ -30,7 +30,7 @@ export default function Resolution() {
           className="md:w-52 w-50 h-64 bg-cover bg-center rounded-lg shadow-lg border-1 border-gray-300/60 mb-5"
         />
         <Image
-          src="/BannerPanelRD.jpg"
+          src="/portadas-arn/NormaSF.png"
           alt="Resolution Document"
           width={100}
           height={100}

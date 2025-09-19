@@ -543,27 +543,27 @@ export const teammembers: TeamMembers[] = [
 
 export const editionpen: EditionPen[] = [
   {
-    image: "/Portadas-PEN2025-05.png",
+    image: "/portadas-pen/PEN2025-04.jpg",
     description:
       "Un análisis detallado de cómo está hoy nuestro sistema eléctrico: generación, demanda, renovables, precios y cobertura.",
   },
   {
-    image: "/Portadas-PEN2025-05.png",
+    image: "/portadas-pen/PEN2025-06.jpg",
     description:
       "Modelos técnicos que indican qué tipo de plantas se necesitan, dónde y cuándo construirlas para responder a la demanda proyectada.",
   },
   {
-    image: "/Portadas-PEN2025-05.png",
+    image: "/portadas-pen/PEN2025-03.jpg",
     description:
       "Evaluación del potencial solar, eólico, hidráulico y de biomasa del país, con metas claras de expansión limpia.",
   },
   {
-    image: "/Portadas-PEN2025-05.png",
+    image: "/portadas-pen/PEN2025-01.jpg",
     description:
       "Proyecciones de consumo, crecimiento económico y necesidades futuras para asegurar energía suficiente y sostenible.",
   },
   {
-    image: "/Portadas-PEN2025-05.png",
+    image: "/portadas-pen/PEN2025-02.jpg",
     description:
       "Define cómo asegurar el suministro confiable de gas natural, GLP y otros combustibles clave en la matriz energética.",
   },
@@ -907,19 +907,19 @@ export const regulations: Regulations[] = [
   {
     title: "Ley 57-07:",
     description: "Promueve el uso de energías renovables en todo el país.",
-    image: "",
+    image: "/portadas-gd/Ley57-07.png",
   },
   {
     title: "Reglamento de Medición Neta:",
     description:
       "Explica cómo se mide la energía que los usuarios envían a la red y cómo se descuenta de su factura.",
-    image: "",
+    image: "/portadas-gd/ReglamentoMedicion.png",
   },
   {
     title: "Reglamento de Interconexión de Generación Distribuida:",
     description:
       "Establece los requisitos técnicos para conectar estos sistemas a la red.",
-    image: "",
+    image: "/portadas-gd/ReglamentoGeneracion.png",
   },
 ];
 

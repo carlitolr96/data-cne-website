@@ -14,43 +14,38 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 interface DoughnutChartProps {
-  data: number[];
-  labels: string[];
-  colors?: string[];
+  data: { label: string; value: number; color: string }[];
   title?: string;
 }
 
-const DoughnutChart: React.FC<DoughnutChartProps> = ({
-  data,
-  labels,
-  colors,
-  title,
-}) => {
+const DoughnutChart: React.FC<DoughnutChartProps> = ({ data, title }) => {
   const chartData = {
-    labels,
+    labels: data.map((d) => d.label),
     datasets: [
       {
-        data,
-        backgroundColor: colors || ["#A7D4FB", "#4AB6F5", "#0094F0"],
-        borderWidth: 0,
-        cutout: "70%",
+        data: data.map((d) => d.value),
+        backgroundColor: data.map((d) => d.color),
+        borderWidth: 2,
+        borderColor: "#fff",
+        cutout: "65%", 
       },
     ],
   };
 
   const options: ChartOptions<"doughnut"> = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "right", 
+        position: "right",
         labels: {
           usePointStyle: true,
           pointStyle: "rect",
-          padding: 20,
-          color: "#144C84",
+          padding: 16,
+          color: "#333",
           font: {
-            size: 14,
-            weight: "bold",
+            size: 13,
+            weight: "normal",
           },
         },
       },
@@ -58,15 +53,15 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({
       title: {
         display: !!title,
         text: title,
-        color: "#333",
+        color: "#144C84",
         font: { size: 16, weight: "bold" },
       },
       datalabels: {
-        color: "#333",
+        color: "#000",
         formatter: (value: number, ctx) => {
           const rawData = ctx.chart.data.datasets[0].data as number[];
           const total = rawData.reduce((acc, val) => acc + val, 0);
-          const percentage = ((value / total) * 100).toFixed(0) + "%";
+          const percentage = ((value / total) * 100).toFixed(1) + " %";
           return percentage;
         },
         font: {
@@ -75,11 +70,18 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({
         },
         anchor: "end",
         align: "end",
+        offset: 8, 
       },
     },
   };
 
-  return <Doughnut data={chartData} options={options} />;
+  return (
+    <div className="relative w-full flex justify-center items-center">
+      <div className="w-[300px] sm:w-[350px] md:w-[400px] lg:w-[450px] h-[300px] sm:h-[400px] md:h-[480px] lg:h-[560px]">
+        <Doughnut data={chartData} options={options} />
+      </div>
+    </div>
+  );
 };
 
 export default DoughnutChart;

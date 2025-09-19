@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
           style={{
             backgroundImage: `
               linear-gradient(to bottom, rgba(19, 52, 109, 1) 30%, rgba(37, 102, 211, 0.1) 150%),
-              url('/BenefitsImg.jpg')
+              url('/portadas-arn/Nuclear-Portada.jpg')
             `,
             backgroundBlendMode: "multiply",
           }}

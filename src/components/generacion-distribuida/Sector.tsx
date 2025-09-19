@@ -3,9 +3,11 @@
 import DoughnutChart from "@/components/DoughnutChart";
 
 export default function Sector() {
-  const data = [10, 10, 22];
-  const labels = ["Residencial", "Comercial", "Industrial"];
-  const colors = ["#009FEF", "#8BC7F7", "#46B3F3"];
+  const chartDoughnutData = [
+  { label: "Bienes Raices", value: 13.8, color: "#164EA1" },
+  { label: "Energía", value: 25.7, color: "#284098" },
+  { label: "Comunicaciones", value: 1.8, color: "#15ABDF" },
+];
 
   return (
     <section className="bg-light py-16">
@@ -31,11 +33,7 @@ export default function Sector() {
                 Capacidad instalada por sector - junio 2025 (kwp)
               </p>
               <div className="w-full flex justify-center h-100">
-                <DoughnutChart
-                  data={data}
-                  labels={labels}
-                  colors={colors}
-                />
+                <DoughnutChart data={chartDoughnutData} />
               </div>
             </div>
           </div>
