@@ -22,10 +22,6 @@ import GrapChart from "./Grap-Chart.svg";
 import logoCNE from "./Logo-CNE.svg";
 import logoDataCNE from "./Logo-DataCNE.svg";
 import logoAzulDataCNE from "./logo-Azul-DataCNE.svg";
-import DevelopingMarketing from "./Developing-Marketing.svg";
-import LawDoc from "./Law-Doc.svg";
-import NuclearMark from "./Nuclear-Mark.svg";
-import PowerManagement from "./Power-Management.svg";
 import RenewableEnergy from "./Renewable-Energy.svg";
 import PanelEnergy from "./Panel-Energy.svg";
 
@@ -50,8 +46,8 @@ import DocumentIcon from "../assets/Document-Icon.svg";
 import HansStageIcon from "../assets/Hans-Stage-Icon.svg";
 import SavingIcon from "../assets/Saving-Icon.svg";
 import HomeNav from "../assets/Home-Nav.svg";
-import ZapNav from "../assets/Zap-Nav.svg";
-import LightBulbNav from "../assets/LightBulb-Nav.svg";
+import ZapNav from "../assets/ZapNav.svg";
+import LightBulbNav from "../assets/LightBulbNav.svg";
 import SolarNav from "../assets/Solar-Nav.svg";
 import BatteryNav from "../assets/Battery-Nav.svg";
 import NuclearNav from "../assets/Nuclear-Nav.svg";
@@ -96,8 +92,8 @@ import EolicBar from "../assets/EolicBar.svg";
 import PetroliumBar from "../assets/PetroliumBar.svg";
 import NuclearBar from "../assets/NuclearBar.svg";
 import PanelBar from "../assets/PanelBar.svg";
-import ElectricBar from "../assets/ElectricBar.svg";
 import PanelSolarBar from "../assets/PanelSolarBar.svg";
+import ElectricBar from "../assets/ElectricBar.svg";
 import VoltageTowerAzulBar from "../assets/VoltageTowerAzulBar.svg";
 import MapaRDAzulBar from "../assets/MapaRDAzulBar.svg";
 import ChartRenovableAzulBar from "../assets/ChartRenovableAzulBar.svg";
@@ -152,10 +148,6 @@ import FactoryARN from "../assets/FactoryARN.svg";
 export const assets = {
   logoCNE,
   logoDataCNE,
-  LawDoc,
-  DevelopingMarketing,
-  NuclearMark,
-  PowerManagement,
   RenewableEnergy,
   PanelEnergy,
   GrapChart,

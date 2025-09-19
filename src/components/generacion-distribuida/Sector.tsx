@@ -35,7 +35,6 @@ export default function Sector() {
                   data={data}
                   labels={labels}
                   colors={colors}
-                  title="Participación por sector"
                 />
               </div>
             </div>
