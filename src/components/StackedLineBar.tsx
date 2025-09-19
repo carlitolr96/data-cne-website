@@ -1,16 +1,17 @@
-"use client";
-
-import { useRef, useEffect } from "react";
 import {
   Chart as ChartJS,
+  ChartDataset,
+  ChartOptions,
   CategoryScale,
   LinearScale,
   BarElement,
   Title,
   Tooltip,
   Legend,
-  ChartOptions,
+  Chart,
+  ActiveElement,
 } from "chart.js";
+import { useRef, useEffect } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -49,10 +50,7 @@ export default function StackedLineBar({
 
   useEffect(() => {
     if (!canvasRef.current) return;
-
-    if (chartInstance.current) {
-      chartInstance.current.destroy();
-    }
+    if (chartInstance.current) chartInstance.current.destroy();
 
     const chartData = {
       labels: data.map((item) => item.label),
@@ -89,9 +87,7 @@ export default function StackedLineBar({
             label: (context) => `Valor: ${context.parsed.y}`,
           },
         },
-        datalabels: {
-          display: false,
-        },
+        datalabels: { display: false },
       },
       scales: {
         x: {
@@ -122,28 +118,37 @@ export default function StackedLineBar({
 
     const valuePlugin = {
       id: "valuePlugin",
-      afterDatasetsDraw: (chart: any) => {
+      afterDatasetsDraw: (chart: Chart<"bar">) => {
         if (!showValues) return;
-
         const ctx = chart.ctx;
         ctx.save();
 
-        chart.data.datasets.forEach((dataset: any, i: number) => {
-          const meta = chart.getDatasetMeta(i);
+        chart.data.datasets.forEach(
+          (
+            dataset: ChartDataset<"bar", (number | [number, number] | null)[]>,
+            i: number
+          ) => {
+            const meta = chart.getDatasetMeta(i);
 
-          meta.data.forEach((bar: any, index: number) => {
-            // bar no tiene tipado perfecto en Chart.js 4, por eso usamos Element
-            const value = dataset.data[index] as number;
-            const x = (bar as any).x;
-            const y = (bar as any).y - 10;
+            meta.data.forEach((bar: ActiveElement | any, index: number) => {
+              const value = dataset.data[index];
 
-            ctx.font = '900 14px "Montserrat", sans-serif';
-            ctx.textAlign = "center";
-            ctx.textBaseline = "bottom";
-            ctx.fillStyle = "#ffffff";
-            ctx.fillText(value.toString(), x, y);
-          });
-        });
+              // Convertir tupla [number, number] a texto legible
+              const displayValue = Array.isArray(value)
+                ? value.join(" - ")
+                : value;
+
+              const x = bar.x;
+              const y = bar.y - 10;
+
+              ctx.font = '900 14px "Montserrat", sans-serif';
+              ctx.textAlign = "center";
+              ctx.textBaseline = "bottom";
+              ctx.fillStyle = "#ffffff";
+              ctx.fillText(displayValue?.toString() ?? "", x, y);
+            });
+          }
+        );
 
         ctx.restore();
       },
