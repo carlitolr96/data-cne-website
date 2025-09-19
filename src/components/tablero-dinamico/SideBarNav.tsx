@@ -52,7 +52,7 @@ export default function SideBarNavTwo({
           <Image
             src={assets.logoDataCNE}
             alt="Data CNE"
-            width={isOpen ? 100 : 40}
+            width={isOpen ? 100 : 60}
             height={40}
             priority
             quality={70}

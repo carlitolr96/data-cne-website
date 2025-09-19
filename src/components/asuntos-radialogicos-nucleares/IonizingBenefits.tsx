@@ -17,7 +17,7 @@ export default function IonizingBenefits() {
         />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen py-16 px-6">
+      <div className="relative flex flex-col items-center justify-center min-h-screen py-16 px-6">
         <div className="text-center mb-12 md:mb-16 max-w-5xl">
           <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-black uppercase mb-4">
             Beneficios de las aplicaciones de las radiaciones ionizantes 
@@ -30,7 +30,7 @@ export default function IonizingBenefits() {
               <div className="group relative bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:shadow-2xl hover:scale-105 w-full h-30 flex items-center justify-center">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <div className="relative z-10 flex items-center justify-center gap-4 w-full">
+                <div className="relative flex items-center justify-center gap-4 w-full">
                   {benefit.image.map((IconSrc, imageIndex) => (
                     <div
                       key={imageIndex}
