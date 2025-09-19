@@ -12,7 +12,14 @@ import {
   ChartOptions,
 } from "chart.js";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 interface BarData {
   value: number;
@@ -117,14 +124,18 @@ export default function StackedLineBar({
       id: "valuePlugin",
       afterDatasetsDraw: (chart: any) => {
         if (!showValues) return;
+
         const ctx = chart.ctx;
         ctx.save();
+
         chart.data.datasets.forEach((dataset: any, i: number) => {
           const meta = chart.getDatasetMeta(i);
+
           meta.data.forEach((bar: any, index: number) => {
-            const value = dataset.data[index];
-            const x = bar.x;
-            const y = bar.y - 10;
+            // bar no tiene tipado perfecto en Chart.js 4, por eso usamos Element
+            const value = dataset.data[index] as number;
+            const x = (bar as any).x;
+            const y = (bar as any).y - 10;
 
             ctx.font = '900 14px "Montserrat", sans-serif';
             ctx.textAlign = "center";
@@ -133,6 +144,7 @@ export default function StackedLineBar({
             ctx.fillText(value.toString(), x, y);
           });
         });
+
         ctx.restore();
       },
     };
