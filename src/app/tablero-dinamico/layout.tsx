@@ -72,7 +72,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       )}
 
       <div className="flex-1 flex flex-col relative z-0">
-        <div className="bg-white p-2 flex justify-between md:justify-start">
+        <div className="bg-white p-2 flex justify-between md:justify-start border-b-2 border-gray-200">
           <Link href="/">
             <Image
               src={assets.logoAzulDataCNE}
@@ -105,7 +105,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           )}
         </div>
 
-        <main className="flex-1 bg-white overflow-auto">
+        <main className="flex-1 bg-white overflow-hidden">
           {isLoading ? (
             <div className="flex items-center justify-center min-h-full">
               <div className="text-center">

@@ -1,14 +1,13 @@
 "use client";
 
 import { IoIosArrowForward } from "react-icons/io";
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
     <section
-      className="relative flex flex-col items-center justify-center text-sm px-4 md:px-16 lg:px-24 xl:px-32 bg-white text-white min-h-100 overflow-hidden"
+      className="relative flex flex-col items-center justify-center h-screen text-sm px-4 md:px-16 lg:px-24 xl:px-32 bg-white text-white overflow-hidden"
       style={{
         background:
           "radial-gradient(125% 125% at 50% 10%, #fff 40%, #17447A 100%)",
@@ -21,9 +20,8 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <Link
-          href="/"
-          className="group flex items-center gap-2 rounded-full p-1 pr-3 mt-44 text-primary bg-white/20 backdrop-blur-md border-1 border-gray/50"
+        <div
+          className="group flex items-center gap-2 rounded-full p-1 pr-3 text-primary bg-white/20 backdrop-blur-md border-1 border-gray/50"
         >
           <span className="bg-primary text-white text-xs px-3.5 py-1 rounded-full">
             New
@@ -32,17 +30,17 @@ export default function Hero() {
             <span>Centro de Datos</span>
             <IoIosArrowForward className="group-hover:translate-x-0.5 transition duration-300" />
           </p>
-        </Link>
+        </div>
       </motion.div>
 
       <motion.h1
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-        className="text-5xl leading-[68px] md:text-6xl md:leading-[84px] font-bold max-w-2xl text-center text-gray-500 font-montserrat uppercase"
+        className="text-5xl leading-[68px] md:text-6xl md:leading-[84px] font-bold max-w-2xl text-center text-gray-500 font-montserrat"
       >
         Descubre la energia en{" "}
-        <span className="bg-gradient-to-r text-white from-primary to-blue-300 px-3 whitespace-nowrap font-black">
+        <span className="bg-gradient-to-r text-white from-primary to-blue-300 px-3 whitespace-nowrap font-black uppercase">
           cifras
         </span>
       </motion.h1>
@@ -61,7 +59,7 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, delay: 0.6, ease: "easeOut" }}
-        className="relative w-full max-w-4xl mt-16 h-[341px] overflow-hidden px-3 pt-3 rounded-t-3xl"
+        className="relative w-full max-w-4xl mt-55 md:mt-16 h-[px] md:h-[457px] overflow-hidden px-3 pt-3 rounded-t-3xl"
       >
         <div className="absolute -inset-2 rounded-t-2xl border-t border-gray-300 z-0">
           <div className="w-full h-full bg-white/30 backdrop-blur-xl rounded-t-2xl"></div>
@@ -72,7 +70,7 @@ export default function Hero() {
           height={800}
           priority
           quality={70}
-          className="w-full h-full object-cover object-top rounded-t-2xl relative z-10"
+          className="w-full h-full object-contain md:object-cover object-top rounded-t-2xl relative"
           alt="Hero Sections Image"
         />
       </motion.div>
