@@ -130,10 +130,9 @@ export default function StackedLineBar({
           ) => {
             const meta = chart.getDatasetMeta(i);
 
-            meta.data.forEach((bar: ActiveElement | any, index: number) => {
+            meta.data.forEach((bar, index: number) => {
               const value = dataset.data[index];
 
-              // Convertir tupla [number, number] a texto legible
               const displayValue = Array.isArray(value)
                 ? value.join(" - ")
                 : value;
