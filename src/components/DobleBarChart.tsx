@@ -69,7 +69,7 @@ export default function DobleBarChart({
   return (
     <div
       ref={sectionRef}
-      className="flex items-end justify-center gap-16 relative h-72"
+      className="flex items-end justify-center gap-14 relative h-72"
     >
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-light"></div>
 
@@ -98,7 +98,7 @@ export default function DobleBarChart({
               />
             </div>
 
-            <div className="flex flex-col items-center justify-center px-4 text-primary text-center font-montserrat">
+            <div className="flex flex-col items-center justify-center text-primary text-center font-montserrat">
               <span
                 ref={(el) => {
                   if (el) centerNumberRef.current[i] = el;

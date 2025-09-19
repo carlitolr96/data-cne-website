@@ -160,14 +160,14 @@ const LineChartTwo: React.FC = () => {
               {index === data.length - 1 && (
                 <>
                   <rect
-                    x={xScale(point.year) + 0}
+                    x={xScale(point.year) + -140}
                     y={yScale(point.value) - 32}
                     width="140"
                     height="25"
                     fill="#22c55e"
                   />
                   <text
-                    x={xScale(point.year) + 70}
+                    x={xScale(point.year) + -70}
                     y={yScale(point.value) - 15}
                     textAnchor="middle"
                     className="text-xs sm:text-sm fill-white font-bold"
@@ -181,7 +181,7 @@ const LineChartTwo: React.FC = () => {
         </svg>
 
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-6">
-          <p className="text-sm sm:text-sm text-primary font-medium">
+          <p className="text-sm md:text-sm text-primary font-medium text-center text-nowrap">
             Ahorro en millones de dólares
           </p>
         </div>

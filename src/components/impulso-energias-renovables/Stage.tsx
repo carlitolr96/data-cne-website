@@ -14,7 +14,7 @@ export default function Stage() {
           </h2>
         </div>
 
-        <div className="mt-12 flex flex-col">
+        {/* <div className="mt-12 flex flex-col">
           {stageicon.map((stage, index) => (
             <div
               key={stage.id}
@@ -66,7 +66,6 @@ export default function Stage() {
                           : "md:flex-row"
                       }`}
                     >
-                      {/* Label lateral solo en escritorio */}
                       <div
                         className={`hidden md:flex flex-col ${
                           Number(stage.id) % 2 === 0
@@ -81,7 +80,6 @@ export default function Stage() {
                         </span>
                       </div>
 
-                      {/* Contenido principal */}
                       <div
                         className={`flex-1 flex flex-col md:flex-row items-center gap-5 ${
                           Number(stage.id) % 2 === 0
@@ -89,22 +87,17 @@ export default function Stage() {
                             : "md:flex-row text-right"
                         }`}
                       >
-                        {/* Número + título */}
                         <div className="flex flex-col items-center md:items-start gap-2 shrink-0">
-                          {/* Número → grande en móvil centrado, aún más grande en desktop */}
                           <div className="text-4xl md:text-6xl font-extrabold leading-none text-center md:text-left">
                             {String(stage.id).padStart(2, "0")}
                           </div>
-                          {/* Título → debajo en móvil, a la par en escritorio */}
                           <h2 className="uppercase text-md md:text-sm leading-tight font-semibold opacity-90 max-w-[170px] text-center md:text-left">
                             {stage.title}
                           </h2>
                         </div>
 
-                        {/* Línea divisoria solo escritorio */}
                         <div className="hidden md:block w-0.5 h-25 bg-green opacity-90" />
 
-                        {/* Descripción */}
                         <p
                           className={`text-2xl md:text-base leading-relaxed opacity-95 flex-1 text-center md:text-end 
               min-h-[100px] md:min-h-0 py-2`}
@@ -118,7 +111,7 @@ export default function Stage() {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         <div className="mt-12 flex flex-col items-center justify-center text-center">
           <p className="font-bold text-white text-lg">
