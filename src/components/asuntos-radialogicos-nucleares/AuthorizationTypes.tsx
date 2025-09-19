@@ -11,7 +11,7 @@ export default function AuthorizationTypes() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundColor: "#13346D",
-            backgroundImage: "url('/BannerElectrica.jpg')",
+            backgroundImage: "url('/portadas-arn/Hombre-Monitoreo.jpg')",
             backgroundBlendMode: "multiply",
           }}
         />
@@ -22,7 +22,7 @@ export default function AuthorizationTypes() {
           <div className="relative">
             <div className="w-full h-full rounded-lg shadow-lg bg-gray-800/20">
               <Image
-                src="/BannerPanelRD.jpg"
+                src="/portadas-arn/Nuclear-Centro-Medico.jpg"
                 alt="CityPEN overlay"
                 width={500}
                 height={100}

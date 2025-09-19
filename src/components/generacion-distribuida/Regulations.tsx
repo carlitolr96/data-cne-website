@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { regulations } from "@/assets/assets";
+import Image from "next/image";
 
 interface Tilt {
   x: number;
@@ -9,7 +10,6 @@ interface Tilt {
 }
 
 export default function Regulations() {
-  // Cada tarjeta tiene su propio tilt
   const [tilts, setTilts] = useState<Tilt[]>(
     Array(regulations.length).fill({ x: 0, y: 0 })
   );
@@ -20,7 +20,8 @@ export default function Regulations() {
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     index: number
   ) => {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const { left, top, width, height } =
+      e.currentTarget.getBoundingClientRect();
     const x = ((e.clientX - left) / width - 0.5) * 2 * threshold;
     const y = ((e.clientY - top) / height - 0.5) * 2 * threshold;
 
@@ -45,7 +46,10 @@ export default function Regulations() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {regulations.map((regulation, index) => (
-              <div key={index} className="flex flex-col items-center text-center cursor-pointer">
+              <div
+                key={index}
+                className="flex flex-col items-center text-center cursor-pointer"
+              >
                 <div className="relative mb-6">
                   <div
                     onMouseMove={(e) => handleMove(e, index)}
@@ -53,12 +57,17 @@ export default function Regulations() {
                     style={{
                       transform: `perspective(1000px) rotateX(${tilts[index].x}deg) rotateY(${tilts[index].y}deg)`,
                     }}
-                    className="w-48 h-64 bg-cover bg-center rounded-lg shadow-lg border-2 border-gray-200 transition-transform duration-300"
+                    className="w-50 h-full bg-cover bg-center rounded-lg shadow-lg border-2 border-gray-200 transition-transform duration-300"
                   >
-                    <div
-                      className="w-full h-full rounded-lg"
-                      style={{ backgroundImage: `url('${regulation.image}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-                    ></div>
+                    <Image
+                      src={regulation.image}
+                      alt="Portada de Normas Generacion Distribuida"
+                      width={300}
+                      height={400}
+                      priority
+                      quality={70}
+                      className="object-cover shadow-2xl rounded-md"
+                    />
                   </div>
                 </div>
 

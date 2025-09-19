@@ -67,7 +67,7 @@ export default function Hero() {
           }}
         >
           <Image
-            src="/Portadas-PEN2025-05.png"
+            src="/portadas-pen/PEN2025-05.jpg"
             alt="Portada PEN 2025-2038"
             width={300}
             height={400}

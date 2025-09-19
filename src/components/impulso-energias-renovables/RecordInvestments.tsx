@@ -1,13 +1,21 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import DobleBarChart from "@/components/DobleBarChart";
-import CircularBar from "@/components/CircularBar";
+import DoughnutChart from "@/components/DoughnutChart";
 
 export default function RecordInvestments() {
-  const data = [30, 25, 20, 25, 80, 60];
-  const labels = ["Energía", "Agua", "Transporte", "Industria"];
-  const colors = ["#00b4fc", "#005bc5", "#012677", "#001449"];
+const chartDoughnutData = [
+  { label: "Bienes Raices", value: 13.8, color: "#164EA1" },
+  { label: "Energía", value: 25.7, color: "#284098" },
+  { label: "Comunicaciones", value: 1.8, color: "#15ABDF" },
+  { label: "Comercio", value: 9.4, color: "#148780" },
+  { label: "Minería", value: 14.5, color: "#65686C" },
+  { label: "Financiero", value: 3.0, color: "#4C5561" },
+  { label: "Zonas Francas", value: 6.9, color: "#109B49" },
+  { label: "Turismo", value: 22.4, color: "#006C3E" },
+  { label: "Otros", value: 2.4, color: "#999FA2" },
+];
 
   const chartData = [
     {
@@ -46,14 +54,11 @@ export default function RecordInvestments() {
 
         <div className="hidden lg:block w-px h-80 bg-red mx-6"></div>
 
-        <div className="flex-1 flex flex-col items-center">
-          <CircularBar
-            data={data}
-            labels={labels}
-            colors={colors}
-            title="Participación por sector"
-          />
-          <p className="text-primary text-sm font-light mt-2 text-center">
+        <div className="flex-1">
+          <div className="flex flex-col justify-center items-center">
+            <DoughnutChart data={chartDoughnutData} />
+          </div>
+          <p className="text-primary text-sm font-light mt-4 text-center">
             Participación en la IED por sector 2019 - 2024
           </p>
         </div>

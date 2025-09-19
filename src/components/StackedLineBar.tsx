@@ -6,17 +6,13 @@ import {
   CategoryScale,
   LinearScale,
   BarElement,
-  BarController,
   Title,
   Tooltip,
   Legend,
   ChartOptions,
-  Chart,
-  ChartDataset,
-  Element,
 } from "chart.js";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, BarController, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 interface BarData {
   value: number;
@@ -42,7 +38,7 @@ export default function StackedLineBar({
   categoryPercentage = 0.8,
 }: ModularChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const chartInstance = useRef<Chart<"bar", number[], string> | null>(null);
+  const chartInstance = useRef<ChartJS | null>(null);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -86,6 +82,9 @@ export default function StackedLineBar({
             label: (context) => `Valor: ${context.parsed.y}`,
           },
         },
+        datalabels: {
+          display: false,
+        },
       },
       scales: {
         x: {
@@ -93,7 +92,7 @@ export default function StackedLineBar({
           grid: { display: false },
           ticks: {
             color: "#ffffff",
-            font: { size: 11, weight: "bold" },
+            font: { size: 11, weight: 900 },
             maxRotation: 45,
             minRotation: 0,
           },
@@ -114,29 +113,26 @@ export default function StackedLineBar({
       },
     };
 
-    // Plugin tipado correctamente
     const valuePlugin = {
       id: "valuePlugin",
-      afterDatasetsDraw: (chart: Chart<"bar", number[], string>) => {
+      afterDatasetsDraw: (chart: any) => {
         if (!showValues) return;
         const ctx = chart.ctx;
         ctx.save();
-
-        chart.data.datasets.forEach((dataset: ChartDataset<"bar", number[]>, i) => {
+        chart.data.datasets.forEach((dataset: any, i: number) => {
           const meta = chart.getDatasetMeta(i);
-          meta.data.forEach((bar: Element, index: number) => {
-            const value = dataset.data[index] as number;
-            // BarElement tiene propiedades x, y
-            const { x, y } = bar as unknown as { x: number; y: number };
+          meta.data.forEach((bar: any, index: number) => {
+            const value = dataset.data[index];
+            const x = bar.x;
+            const y = bar.y - 10;
 
             ctx.font = '900 14px "Montserrat", sans-serif';
             ctx.textAlign = "center";
             ctx.textBaseline = "bottom";
             ctx.fillStyle = "#ffffff";
-            ctx.fillText(value.toString(), x, y - 10);
+            ctx.fillText(value.toString(), x, y);
           });
         });
-
         ctx.restore();
       },
     };
