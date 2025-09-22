@@ -5,37 +5,49 @@ trigger:
       - qa
 
 pool:
-  vmImage: "windows-latest"
+  vmImage: "ubuntu-latest"
 
 variables:
-  # Nombre de tu app en QA y Producción
-  QA_WEBAPP_NAME: "tu-app-qa"
-  PROD_WEBAPP_NAME: "tu-app-prod"
+  QA_WEBAPP_NAME: "datacne-qa"
+  PROD_WEBAPP_NAME: "DataCNE"
   NODE_VERSION: "20.x"
 
 steps:
   - task: NodeTool@0
     inputs:
       versionSpec: "$(NODE_VERSION)"
-    displayName: "Instalar Node.js"
+    displayName: "Install Node.js"
 
   - script: |
-      npm install
+      npm ci
       npm run build
-    displayName: "Build Next.js app"
+    displayName: "Install & Build"
 
-  # Deploy a QA
+  # Empaquetar el build para desplegar
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+      includeRootFolder: false
+      archiveType: zip
+      archiveFile: "$(Build.ArtifactStagingDirectory)/app.zip"
+      replaceExistingArchive: true
+    displayName: "Create artifact ZIP"
+
+  # Deploy a slot QA (cuando la rama sea qa)
   - task: AzureWebApp@1
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/qa')
     inputs:
-      azureSubscription: "Nombre-de-tu-service-connection"
-      appName: "$(QA_WEBAPP_NAME)"
-      package: "$(System.DefaultWorkingDirectory)"
+      azureSubscription: "ConectDataCNE"    # <--- exactamente como lo nombraste en Service connections
+      appName: "$(datacne-qa)"
+      package: "$(Build.ArtifactStagingDirectory)/app.zip"
+      slotName: "qa"                               # despliega al slot datacne-qa
+    displayName: "Deploy to QA slot"
 
-  # Deploy a Producción
+  # Deploy a producción (cuando la rama sea main)
   - task: AzureWebApp@1
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
     inputs:
-      azureSubscription: "Nombre-de-tu-service-connection"
-      appName: "$(PROD_WEBAPP_NAME)"
-      package: "$(System.DefaultWorkingDirectory)"
+      azureSubscription: "ConectDataCNE"
+      appName: "$(DataCNE)"
+      package: "$(Build.ArtifactStagingDirectory)/app.zip"
+    displayName: "Deploy to Production"
