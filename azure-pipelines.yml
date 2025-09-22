@@ -1,42 +1,52 @@
 trigger:
-  branches:
-    include:
-      - main   # producción
-      - qa     # pruebas
+  - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
+
+variables:
+  NODE_VERSION: '18.x'   # Next.js soporta Node 18 y 20
 
 steps:
-# 1. Instalar Node.js
-- task: NodeTool@0
+# 1. Checkout del repo
+- task: Checkout@1
   inputs:
-    versionSpec: '18.x'   # o la versión que uses (16.x, 20.x)
-  displayName: 'Instalar Node.js'
+    fetchDepth: 1
 
-# 2. Instalar dependencias
+# 2. Instalar Node
+- task: UseNode@1
+  inputs:
+    versionSpec: $(NODE_VERSION)
+    checkLatest: true
+
+# 3. Instalar dependencias
 - script: |
     npm install
   displayName: 'Instalar dependencias'
 
-# 3. Build
+# 4. Build del proyecto
 - script: |
     npm run build
-  displayName: 'Compilar proyecto'
+  displayName: 'Build Next.js'
 
-# 4. Publicar artefactos de build
-- task: CopyFiles@2
-  inputs:
-    contents: |
-      build/**         # CRA / Vite
-      .next/**         # Next.js
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Copiar artefactos de build'
+# 5. Exportar (solo si usas `next export`)
+# Si es SSR, no lo pongas
+- script: |
+    npm run export
+  displayName: 'Exportar sitio (static)'
 
-# 5. Deploy a Azure Web App
-- task: AzureWebApp@1
+# 6. Archivar para publicar
+- task: ArchiveFiles@2
   inputs:
-    azureSubscription: 'CNE-PublishProfile'   # tu service connection
-    appName: 'AppDataCNE'                     # nombre de tu Web App en Azure
-    package: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Deploy a Azure Web App'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/out' # usa `.next` si no exportas
+    includeRootFolder: false
+    archiveType: zip
+    archiveFile: $(Build.ArtifactStagingDirectory)/build.zip
+    replaceExistingArchive: true
+
+# 7. Publicar en artifacts (necesario para Release)
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
