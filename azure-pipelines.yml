@@ -1,53 +1,42 @@
 trigger:
   branches:
     include:
-      - main
-      - qa
+      - main   # producción
+      - qa     # pruebas
 
 pool:
-  vmImage: "ubuntu-latest"
-
-variables:
-  QA_WEBAPP_NAME: "datacne-qa"
-  PROD_WEBAPP_NAME: "DataCNE"
-  NODE_VERSION: "20.x"
+  vmImage: ubuntu-latest
 
 steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: "$(NODE_VERSION)"
-    displayName: "Install Node.js"
+# 1. Instalar Node.js
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'   # o la versión que uses (16.x, 20.x)
+  displayName: 'Instalar Node.js'
 
-  - script: |
-      npm ci
-      npm run build
-    displayName: "Install & Build"
+# 2. Instalar dependencias
+- script: |
+    npm install
+  displayName: 'Instalar dependencias'
 
-  # Empaquetar el build para desplegar
-  - task: ArchiveFiles@2
-    inputs:
-      rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
-      includeRootFolder: false
-      archiveType: zip
-      archiveFile: "$(Build.ArtifactStagingDirectory)/app.zip"
-      replaceExistingArchive: true
-    displayName: "Create artifact ZIP"
+# 3. Build
+- script: |
+    npm run build
+  displayName: 'Compilar proyecto'
 
-  # Deploy a slot QA (cuando la rama sea qa)
-  - task: AzureWebApp@1
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/qa')
-    inputs:
-      azureSubscription: "ConectDataCNE"    # <--- exactamente como lo nombraste en Service connections
-      appName: "$(datacne-qa)"
-      package: "$(Build.ArtifactStagingDirectory)/app.zip"
-      slotName: "qa"                               # despliega al slot datacne-qa
-    displayName: "Deploy to QA slot"
+# 4. Publicar artefactos de build
+- task: CopyFiles@2
+  inputs:
+    contents: |
+      build/**         # CRA / Vite
+      .next/**         # Next.js
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Copiar artefactos de build'
 
-  # Deploy a producción (cuando la rama sea main)
-  - task: AzureWebApp@1
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
-    inputs:
-      azureSubscription: "ConectDataCNE"
-      appName: "$(DataCNE)"
-      package: "$(Build.ArtifactStagingDirectory)/app.zip"
-    displayName: "Deploy to Production"
+# 5. Deploy a Azure Web App
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'CNE-PublishProfile'   # tu service connection
+    appName: 'AppDataCNE'                     # nombre de tu Web App en Azure
+    package: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Deploy a Azure Web App'
