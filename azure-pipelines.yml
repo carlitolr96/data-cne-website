@@ -1,52 +1,53 @@
 trigger:
-  - main
+  branches:
+    include:
+      - main
+      - qa
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 
 variables:
-  NODE_VERSION: '18.x'   # Next.js soporta Node 18 y 20
+  QA_WEBAPP_NAME: "datacne-qa"
+  PROD_WEBAPP_NAME: "DataCNE"
+  NODE_VERSION: "20.x"
 
 steps:
-# 1. Checkout del repo
-- task: Checkout@1
-  inputs:
-    fetchDepth: 1
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "$(NODE_VERSION)"
+    displayName: "Install Node.js"
 
-# 2. Instalar Node
-- task: UseNode@1
-  inputs:
-    versionSpec: $(NODE_VERSION)
-    checkLatest: true
+  - script: |
+      npm ci
+      npm run build
+    displayName: "Install & Build"
 
-# 3. Instalar dependencias
-- script: |
-    npm install
-  displayName: 'Instalar dependencias'
+  # Empaquetar el build para desplegar
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+      includeRootFolder: false
+      archiveType: zip
+      archiveFile: "$(Build.ArtifactStagingDirectory)/app.zip"
+      replaceExistingArchive: true
+    displayName: "Create artifact ZIP"
 
-# 4. Build del proyecto
-- script: |
-    npm run build
-  displayName: 'Build Next.js'
+  # Deploy a slot QA (cuando la rama sea qa)
+  - task: AzureWebApp@1
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/qa')
+    inputs:
+      azureSubscription: "ConectDataCNE"    # <--- exactamente como lo nombraste en Service connections
+      appName: "$(datacne-qa)"
+      package: "$(Build.ArtifactStagingDirectory)/app.zip"
+      slotName: "qa"                               # despliega al slot datacne-qa
+    displayName: "Deploy to QA slot"
 
-# 5. Exportar (solo si usas `next export`)
-# Si es SSR, no lo pongas
-- script: |
-    npm run export
-  displayName: 'Exportar sitio (static)'
-
-# 6. Archivar para publicar
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/out' # usa `.next` si no exportas
-    includeRootFolder: false
-    archiveType: zip
-    archiveFile: $(Build.ArtifactStagingDirectory)/build.zip
-    replaceExistingArchive: true
-
-# 7. Publicar en artifacts (necesario para Release)
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+  # Deploy a producción (cuando la rama sea main)
+  - task: AzureWebApp@1
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+    inputs:
+      azureSubscription: "ConectDataCNE"
+      appName: "$(DataCNE)"
+      package: "$(Build.ArtifactStagingDirectory)/app.zip"
+    displayName: "Deploy to Production"
