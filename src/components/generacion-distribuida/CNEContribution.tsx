@@ -82,7 +82,7 @@ export default function CNEContribution() {
                 <ModularChart data={chartData} />
               </div>
               <p className="mt-4 text-primary text-sm font-medium text-center">
-                Capacidad instalada por EDEs
+                (Cantidad de usuarios por distribuidoras)
               </p>
             </div>
           </div>

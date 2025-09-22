@@ -10,7 +10,7 @@ export default function AuthorizationTypes() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundColor: "#13346D",
+            backgroundColor: "rgba(19, 52, 109, 1)",
             backgroundImage: "url('/portadas-arn/Hombre-Monitoreo.jpg')",
             backgroundBlendMode: "multiply",
           }}
@@ -47,11 +47,15 @@ export default function AuthorizationTypes() {
                   key={index}
                   className="flex justify-end items-center gap-2 text-[20px]"
                 >
-                  <h2>
-                    <span className="font-extrabold">{auth.code}:</span>{" "}
+                  <h2 className="flex items-center gap-3">
                     {auth.title}
+                    <div className="border-2 w-15 h-15 flex items-center justify-center p-1 bg-green rounded-md">
+                      <span className="font-extrabold text-base leading-none">
+                        {auth.code}
+                      </span>
+                    </div>
                   </h2>
-                  <span className="w-3 h-3 bg-[#FF9000] rounded-full inline-block ml-2"></span>
+                  {/* <span className="w-3 h-3 bg-[#FF9000] rounded-full inline-block ml-2"></span> */}
                 </div>
               ))}
             </div>
@@ -64,11 +68,12 @@ export default function AuthorizationTypes() {
 
             <div className="space-y-2">
               <div className="flex justify-end items-center gap-2 text-[20px]">
-                <p className="text-[20px] uppercase">
-                  Importación, Exportación, Especial, Transferencia,
-                  Modificación.
-                </p>
-                <span className="w-3 h-3 bg-[#FF9000] rounded-full inline-block ml-2"></span>
+                <ul className="text-md uppercase">
+                  <li>Importación</li>
+                  <li>Exportación Especial</li>
+                  <li>Transferencia</li>
+                  <li>Modificación</li>
+                </ul>
               </div>
             </div>
           </div>

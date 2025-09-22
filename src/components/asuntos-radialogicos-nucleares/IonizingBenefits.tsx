@@ -10,8 +10,7 @@ export default function IonizingBenefits() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundColor: "#13346D",
-            backgroundImage: "url('/BannerElectrica.jpg')",
+            backgroundImage: "linear-gradient(to bottom, rgba(19, 52, 109, 1) 30%, rgba(37, 102, 211, 0.1) 150%), url('/portadas-arn/DesechosARM.png')",
             backgroundBlendMode: "multiply",
           }}
         />

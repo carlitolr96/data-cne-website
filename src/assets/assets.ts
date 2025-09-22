@@ -1,4 +1,4 @@
-import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaYoutube, FaSpotify } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { PiSolarPanelDuotone } from "react-icons/pi";
 import {
@@ -464,7 +464,7 @@ export const itemsystem: ItemSystem[] = [
   {
     icon: DoneSheck,
     description:
-      "Esa energía viaja por líneas de transmisión hasta llegar a nuestras casas, negociose industrias.",
+      "Esa energía viaja por líneas de transmisión hasta llegar a nuestras casas, negocios e industrias.",
   },
   {
     icon: DoneSheck,
@@ -545,27 +545,27 @@ export const editionpen: EditionPen[] = [
   {
     image: "/portadas-pen/PEN2025-04.jpg",
     description:
-      "Un análisis detallado de cómo está hoy nuestro sistema eléctrico: generación, demanda, renovables, precios y cobertura.",
+      "Analiza en detalle el estado actual del sistema eléctrico: generación, demanda, renovables, precios y cobertura.",
   },
   {
     image: "/portadas-pen/PEN2025-06.jpg",
     description:
-      "Modelos técnicos que indican qué tipo de plantas se necesitan, dónde y cuándo construirlas para responder a la demanda proyectada.",
+      "Indica mediante modelos técnicos qué tipo de plantas se necesitan, dónde y cuándo construirlas para responder a la demanda proyectada.",
   },
   {
     image: "/portadas-pen/PEN2025-03.jpg",
     description:
-      "Evaluación del potencial solar, eólico, hidráulico y de biomasa del país, con metas claras de expansión limpia.",
+      "Evalúa el potencial solar, eólico, hídrico y de biomasa del país, con metas claras de expansión limpia.",
   },
   {
     image: "/portadas-pen/PEN2025-01.jpg",
     description:
-      "Proyecciones de consumo, crecimiento económico y necesidades futuras para asegurar energía suficiente y sostenible.",
+      "Proyecta el consumo, el crecimiento económico y las necesidades futuras para asegurar energía suficiente, sostenible y confiable.",
   },
   {
     image: "/portadas-pen/PEN2025-02.jpg",
     description:
-      "Define cómo asegurar el suministro confiable de gas natural, GLP y otros combustibles clave en la matriz energética.",
+      "Define cómo garantizar el suministro confiable de gas natural, GLP y otros combustibles clave en la matriz energética.",
   },
 ];
 
@@ -634,7 +634,7 @@ export const renewableenergiesfonts: RenewableEnergiesFonts[] = [
   },
   {
     icon: EolicAir,
-    title: "Eolica",
+    title: "Eólica",
   },
   {
     icon: BiomasaRSU,
@@ -642,7 +642,7 @@ export const renewableenergiesfonts: RenewableEnergiesFonts[] = [
   },
   {
     icon: Minihidraulic,
-    title: "Minihidraulica",
+    title: "Minihidráulica",
   },
 ];
 
@@ -704,19 +704,19 @@ export const reportingtile: ReportingTile[] = [
   {
     id: "2",
     number: "55,138",
-    description: "Empleos Creados, concesiones definitivas",
+    description: "Empleos creados, concesiones definitivas",
     icon: Bulk,
   },
   {
     id: "3",
     number: "3,201,007",
-    description: "Estimación de toneladas de co2 equivalentes evitadas",
+    description: "Estimación de toneladas de CO2 equivalentes evitadas",
     icon: Petrolium,
   },
   {
     id: "4",
     number: "7,697,586",
-    description: "Estimación de barriles equivalentes de petróleo ahorrados",
+    description: "Estimación de barriles de petróleo equivalentes ahorrados",
     icon: Oil,
   },
 ];
@@ -741,14 +741,14 @@ export const categories: Category[] = [
   {
     id: "3",
     title: "Cultura de",
-    subtitle: "ahorro energético",
+    subtitle: "Ahorro Energético",
     icon: LightBulbNav,
     color: "text-red-500",
     url: "/cultura-ahorro-energetico",
   },
   {
     id: "4",
-    title: "Asuntos radiológicos",
+    title: "Asuntos Radiológicos",
     subtitle: "y Nucleares",
     icon: NuclearNav,
     color: "text-yellow-500",
@@ -767,24 +767,29 @@ export const categories: Category[] = [
 export const socialicon: SocialIcon[] = [
   {
     id: "1",
-    url: "https://facebook.com",
+    url: "https://www.facebook.com/CNEREPDOM",
     icon: FaFacebookF,
   },
   {
     id: "2",
-    url: "https://instagram.com",
+    url: "https://www.instagram.com/cnerdo/",
     icon: FaInstagram,
   },
   {
     id: "3",
-    url: "https://x.com/",
+    url: "https://x.com/CNE_RD",
     icon: FaXTwitter,
   },
   {
     id: "4",
-    url: "https://youtube.com",
+    url: "https://m.youtube.com/c/Comisi%C3%B3nNacionaldeEnerg%C3%ADa",
     icon: FaYoutube,
   },
+  {
+    id: "5",
+    url: "https://open.spotify.com/show/5B8zkCo5AfkivJScTrx4Tl?si=qs_GzKyjQMepcgdVrkQEdA",
+    icon: FaSpotify,
+  }
 ];
 
 export const stageicon: StageIcon[] = [
@@ -1052,7 +1057,7 @@ export const sectionsTemario: SectionsTemario[] = [
     title: "TIPOS DE ENERGÍA Y CONSUMO ENERGÉTICO",
     items: [
       "Energía Mecánica, Luminosa, Sonora, Calorífica, química, eléctrica, etc.",
-      "Principales sectores de consumo (residencial, laboral, escuelas y transporte)",
+      "Principales sectores de consumo: residencial, laboral, escuelas y transporte.",
     ],
   },
   {
@@ -1066,7 +1071,7 @@ export const sectionsTemario: SectionsTemario[] = [
     items2: [
       "Energía solar",
       "Energía eólica",
-      "Energía hidroeléctrica",
+      "Energía hidráulica",
       "Biomasa",
       "Geotérmica",
     ],

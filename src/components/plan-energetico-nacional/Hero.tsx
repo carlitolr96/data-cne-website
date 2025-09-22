@@ -28,36 +28,38 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col">
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `
-              linear-gradient(
-                to bottom, 
-                rgba(19, 52, 109, 1) 50%, 
-                rgba(37, 102, 211, 0.1) 100%
-              ),
-              url('/BannerPEN.jpg')
-            `,
-            backgroundBlendMode: "multiply",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-      </div>
+    <section className="relative min-h-screen">
+      <div
+        className="absolute inset-0 bg-fixed bg-no-repeat"
+        style={{
+          backgroundImage: `
+            linear-gradient(
+              to bottom, 
+              rgba(19, 52, 109, 0.9) 50%, 
+              rgba(37, 102, 211, 0.3) 120%,
+              transparent 100%
+            ),
+            url('/BannerPEN.jpg')
+          `,
+          backgroundBlendMode: "multiply",
+          backgroundSize: "cover",
+          backgroundPosition: "center bottom",
+        }}
+      />
       <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4">
         <NavBar />
-        <div className="max-w-4xl text-center text-white mt-10 md:mt-20">
-          <h1 ref={titleRef} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light uppercase leading-tight">
+        <div className="max-w-4xl text-center text-white">
+          <h1
+            ref={titleRef}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light uppercase leading-tight"
+          >
             <span className="font-black">Plan Energético</span>
             <br />
             <span className="font-black">Nacional</span> 2025-2038
           </h1>
         </div>
       </div>
-      <div className="absolute z-5 top-[55vh] md:top-[66vh] left-1/2 transform -translate-x-1/2 md:left-[32%] md:translate-x-0 w-auto max-w-[280px] sm:max-w-[300px] md:max-w-none right-auto">
+      <div className="absolute z-5 top-[55vh] md:top-[66vh] left-1/2 transform -translate-x-1/2 md:left-[27%] md:translate-x-0 w-auto max-w-[280px] sm:max-w-[300px] md:max-w-none right-auto">
         <div
           className="overflow-hidden transition-transform duration-200 ease-out cursor-pointer w-[280px] sm:w-[300px] md:w-auto"
           onMouseMove={handleMove}
@@ -69,7 +71,7 @@ export default function Hero() {
           <Image
             src="/portadas-pen/PEN2025-05.jpg"
             alt="Portada PEN 2025-2038"
-            width={300}
+            width={420}
             height={400}
             priority
             quality={70}

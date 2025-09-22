@@ -66,7 +66,7 @@ export default function Operations() {
             <span ref={capacityRef} className="font-extrabold text-primary">
               0 MW
             </span>
-            , están transformando <br />
+            {""} están transformando <br />
             la matriz energética
           </p>
 
@@ -77,7 +77,7 @@ export default function Operations() {
 
         <div className="flex-1 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red font-medium text-sm text-white px-4 py-1 rounded-md z-2 whitespace-nowrap">
-            ÚLTIMO 4 PROYECTO
+            ÚLTIMOS 4 PROYECTOS
           </div>
           <Swiper
             modules={[Pagination, Autoplay]}

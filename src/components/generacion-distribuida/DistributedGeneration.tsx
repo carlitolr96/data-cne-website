@@ -26,7 +26,7 @@ export default function DistributedGeneration() {
             priority
             quality={70}
             layout="responsive"
-            className="mb-4"
+            className="mb-4 rounded-lg"
           />
         </div>
       </div>

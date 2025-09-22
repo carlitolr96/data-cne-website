@@ -9,16 +9,16 @@ export default function TextoSection() {
         <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-24">
           <div className="flex-1">
             <h2 className="text-3xl md:text-4xl font-black text-primary mb-8 font-montserrat">
-              Uso Racional de la Energía
+              Programa de Uso Racional de la Energía
             </h2>
 
             <p className="text-primary/90 text-lg leading-relaxed mb-6">
-              Es un programa que se desarrolla principalmente a través de{" "}
+              Es un programa que se desarrolla principalmente a través de
               <span className="font-semibold">
                 charlas educativas, talleres, seminarios y campamentos
-              </span>
+              </span>{" "}
               de verano, entre otras actividades similares, con el propósito de
-              crear una cultura de eficiencia energética en toda la población, y
+              crear una cultura de eficiencia energética en toda la población y
               fomentar la adopción de{" "}
               <span className="font-semibold">buenas prácticas de consumo</span>{" "}
               de energía en los sectores residencial, comercial, público y de

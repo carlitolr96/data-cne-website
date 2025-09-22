@@ -18,8 +18,7 @@ export default function ProgressBar({ currentStep }: ProgressBarProps) {
             </h2>
             <p className="text-primary text-base leading-relaxed">
               Toda persona o empresa que utilice fuentes de radiación ionizante
-              en RD debe de contar con una autorización otorgada por el por la
-              CNE.
+              en RD debe de contar con una autorización otorgada por la CNE.
             </p>
           </div>
 

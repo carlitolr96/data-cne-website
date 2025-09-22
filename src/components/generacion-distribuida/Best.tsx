@@ -4,8 +4,8 @@ export default function Best() {
   return (
     <section className="relative w-full overflow-hidden pb-10">
       <div
-        className="relative h-[320px] md:h-[250px] lg:h-[300px] bg-cover bg-center"
-        style={{ backgroundImage: "url('/BenefitsImg.jpg')" }}
+        className="relative h-[320px] md:h-[250px] lg:h-[300px] bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: "url('/portadas-gd/PanelSolarGD.jpg')" }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/40"></div>
         <div className="relative flex items-center justify-center h-full text-center px-6">

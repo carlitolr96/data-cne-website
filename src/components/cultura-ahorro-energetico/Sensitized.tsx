@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Sensitized() {
   return (
-    <section className="relative w-full flex items-center justify-end overflow-hidden h-[600px] sm:h-[550px] min-h-[450px] bg-[url('/BannerEscuela.jpg')] bg-cover bg-center">
+    <section className="relative w-full flex items-center justify-end overflow-hidden h-[600px] sm:h-[550px] min-h-[450px] bg-[url('/BannerEscuela.jpg')] bg-cover bg-center bg-fixed">
       <div className="absolute inset-0 bg-gradient-to-l from-primary" />
       <div className="absolute inset-0 bg-primary opacity-30" />
 

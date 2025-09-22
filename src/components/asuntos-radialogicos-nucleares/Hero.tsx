@@ -13,18 +13,16 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative w-full min-h-100 overflow-hidden pt-24">
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `
+      <div
+        className="absolute inset-0 bg-cover bg-fixed bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `
               linear-gradient(to bottom, rgba(19, 52, 109, 1) 30%, rgba(37, 102, 211, 0.1) 150%),
               url('/portadas-arn/Nuclear-Portada.jpg')
             `,
-            backgroundBlendMode: "multiply",
-          }}
-        />
-      </div>
+          backgroundBlendMode: "multiply",
+        }}
+      />
 
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <NavBar />
@@ -33,7 +31,10 @@ const Hero: React.FC = () => {
             ref={titleRef}
             className="text-2xl md:text-3xl lg:text-5xl font-light leading-tight"
           >
-            <span className="font-black">Radiación Ionizante bajo control:</span><br />
+            <span className="font-black">
+              Radiación Ionizante bajo control:
+            </span>
+            <br />
             Protección radiológica para todos
           </h1>
         </div>

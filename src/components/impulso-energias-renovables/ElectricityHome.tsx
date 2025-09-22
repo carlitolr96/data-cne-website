@@ -13,7 +13,7 @@ export default function ElectricityHome() {
 
         <p className="max-w-4xl text-primary font-medium text-base md:text-2xl">
           La energía que usas a diario pasa por un proceso antes de llegar a ti.
-          Descubre cómo funciona en solo 3 pasos.
+          Descubre cómo funciona en solo tres pasos.
         </p>
 
         <div className="hidden flex-col items-center justify-center w-full h-full text-primary mt-12 md:hidden">
@@ -71,7 +71,7 @@ export default function ElectricityHome() {
                   />
                 </div>
                 <span className="text-sm text-primary">
-                  <strong>Térmicas</strong> (Gas natural, carbón, Fuel oil)
+                  <strong>Térmicas</strong> (Gas natural, carbón, fuel oil)
                 </span>
               </div>
 
@@ -84,7 +84,7 @@ export default function ElectricityHome() {
                   />
                 </div>
                 <span className="text-sm text-primary">
-                  <strong>Hidroeléctricas</strong> (agua)
+                  <strong>Hidroeléctricas</strong> (Agua)
                 </span>
               </div>
 
@@ -97,7 +97,7 @@ export default function ElectricityHome() {
                   />
                 </div>
                 <span className="text-sm text-primary">
-                  <strong>Solares y eólicas</strong> (Sol y viento)
+                  <strong>Solares y Eólicas</strong> (Sol y viento)
                 </span>
                 <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
                   <Image
@@ -110,8 +110,8 @@ export default function ElectricityHome() {
             </div>
 
             <p className="text-primary text-[15px] font-bold mt-1">
-              Estas transforman diferentes fuentes energía en electricidad lista
-              para ser transportada
+              Estas transforman diferentes fuentes de energía en electricidad,
+              lista para ser transportada.
             </p>
           </div>
 
@@ -130,7 +130,6 @@ export default function ElectricityHome() {
               Transmisión
             </h3>
 
-            {/* Texto solo en móvil */}
             <div className="md:hidden">
               <p className="text-primary text-center text-[15px] leading-relaxed mb-5">
                 Una vez generada, la electricidad viaja por redes de alto
@@ -146,7 +145,6 @@ export default function ElectricityHome() {
               </p>
             </div>
 
-            {/* Imagen + texto en escritorio */}
             <div className="hidden md:flex mb-6 relative items-start text-start gap-5">
               <Image
                 src={assets.Transmicion}
@@ -214,8 +212,8 @@ export default function ElectricityHome() {
                   comercios e industrias.
                 </p>
                 <p className="text-primary text-start text-[15px] leading-relaxed">
-                  Así, al encender una luz o conectar un electrodoméstico,
-                  recibes la energía que recorrió este camino para llegar a ti.
+                  Así, al encender una luz o conectar un electrodoméstico, la
+                  energía llega hasta ti tras un largo recorrido.
                 </p>
               </div>
             </div>

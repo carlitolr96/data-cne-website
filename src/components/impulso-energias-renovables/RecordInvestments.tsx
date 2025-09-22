@@ -40,7 +40,7 @@ const chartDoughnutData = [
         </span>
 
         <p className="text-primary font-light sm:text-base md:text-sm mt-3">
-          (Datos del Banco Central enero - septiembre 2024)
+          (Datos del Banco Central Enero-junio 2025)
         </p>
       </div>
 

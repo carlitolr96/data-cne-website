@@ -11,25 +11,26 @@ const Hero: React.FC = () => {
     textReveal(titleRef.current);
   }, []);
   return (
-    <section className="relative w-full min-h-100 overflow-hidden pt-24">
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `
-          linear-gradient(to bottom, rgba(19, 52, 109, 1) 15%, rgba(37, 102, 211, 0.1) 110%),
+    <section className="relative w-full min-h-100 overflow-hidden">
+      <div
+        className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `
+          linear-gradient(to bottom, rgba(19, 52, 109, 1) 30%, rgba(37, 102, 211, 0.1) 150%),
             url('./BannerEnergetico.jpg')
             `,
-            backgroundBlendMode: "multiply",
-          }}
-        />
-      </div>
+          backgroundBlendMode: "multiply",
+        }}
+      />
 
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <NavBar />
-        <div className="max-w-6xl text-center text-white">
-          <h1 ref={titleRef} className="text-2xl md:text-3xl lg:text-5xl font-black">
-            DIVISIÓN DE DIFUSIÓN EN EL USO RACIONAL DE LA ENERGÍA
+        <div className="max-w-3xl text-center text-white">
+          <h1
+            ref={titleRef}
+            className="text-2xl md:text-3xl lg:text-5xl font-black"
+          >
+            División de Difusión de Uso Racional de la Energía
           </h1>
           <div className="flex justify-center mt-4">
             <div className="w-70 h-1 bg-red-600 rounded"></div>

@@ -14,7 +14,7 @@ export default function Stage() {
           </h2>
         </div>
 
-        {/* <div className="mt-12 flex flex-col">
+        <div className="mt-12 flex flex-col">
           {stageicon.map((stage, index) => (
             <div
               key={stage.id}
@@ -111,7 +111,7 @@ export default function Stage() {
               </div>
             </div>
           ))}
-        </div> */}
+        </div>
 
         <div className="mt-12 flex flex-col items-center justify-center text-center">
           <p className="font-bold text-white text-lg">

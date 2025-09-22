@@ -2,7 +2,7 @@
 
 export default function WarningSession() {
   return (
-    <section className="relative w-full flex items-center justify-center sm:justify-start overflow-hidden h-[400px] sm:h-[410px] md:h-[390px] bg-[url('/portadas-arn/Scientists-Biologists.jpg')] bg-cover bg-center">
+    <section className="relative w-full flex items-center justify-center sm:justify-start overflow-hidden h-[400px] sm:h-[410px] md:h-[390px] bg-[url('/portadas-arn/Scientists-Biologists.jpg')] bg-cover bg-fixed bg-center">
       <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-l from-primary opacity-50" />
       <div className="absolute inset-0 bg-primary opacity-30" />
       <div className="relative w-full">

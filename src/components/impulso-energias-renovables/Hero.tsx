@@ -13,9 +13,8 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative w-full min-h-100 overflow-hidden pt-24">
-      <div className="absolute inset-0">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-fixed bg-center bg-no-repeat"
           style={{
             backgroundImage: `
               linear-gradient(to bottom, rgba(19, 52, 109, 1) 15%, rgba(37, 102, 211, 0.1) 110%),
@@ -24,7 +23,6 @@ const Hero: React.FC = () => {
             backgroundBlendMode: "multiply",
           }}
         />
-      </div>
 
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <NavBar />

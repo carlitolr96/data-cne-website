@@ -26,10 +26,10 @@ export default function PMNSection() {
     <section className="bg-primary text-white py-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex-col justify-center">
-          <h2 className="text-center text-md md:text-3xl font-black uppercase pb-10">
-            República Dominicana pasó de tener 80 MW en el año 2019 a más de 400
-            MW en el 2025 de generación distribuida interconectada al sistema
-            eléctrico bajo el Programa de Medición Neta
+          <h2 className="text-center text-md md:text-3xl font-medium uppercase pb-10">
+            República Dominicana pasó de tener <span className="font-black">80 MW en el año 2019</span> a más de <span className="font-black">400
+            MW en el 2025</span> de generación distribuida interconectada al sistema
+            eléctrico bajo el <span className="font-black">Programa de Medición Neta</span>
           </h2>
           <p className="font-light text-white text-sm sm:text-base md:text-2xl text-center uppercase">
             crecimiento del pmn junio 2025
