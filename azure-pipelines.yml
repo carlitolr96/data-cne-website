@@ -5,7 +5,7 @@ trigger:
       - qa
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: 'PoolAgentDataCNE'
 
 variables:
   QA_WEBAPP_NAME: "datacne-qa"
