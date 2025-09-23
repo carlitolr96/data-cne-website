@@ -5,51 +5,43 @@ trigger:
       - qa
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: 'PoolAgentDataCNE'
 
 variables:
   QA_WEBAPP_NAME: "datacne-qa"
   PROD_WEBAPP_NAME: "DataCNE"
   NODE_VERSION: "20.x"
-  # Carpeta donde está el package.json, cambia si no está en la raíz
-  PROJECT_DIR: "$(System.DefaultWorkingDirectory)"  
 
 steps:
-  # Instalar Node.js
   - task: NodeTool@0
     inputs:
       versionSpec: "$(NODE_VERSION)"
     displayName: "Install Node.js"
 
-  # Build del proyecto Next.js
   - script: |
       npm ci
       npm run build
       npm run export
-    workingDirectory: "$(PROJECT_DIR)"
     displayName: "Build Next.js static export"
 
-  # Crear artifact ZIP
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: "$(PROJECT_DIR)/out"
+      rootFolderOrFile: "$(System.DefaultWorkingDirectory)/out"
       includeRootFolder: false
       archiveType: zip
       archiveFile: "$(Build.ArtifactStagingDirectory)/app.zip"
       replaceExistingArchive: true
     displayName: "Create artifact ZIP"
 
-  # Deploy a QA (slot)
   - task: AzureWebApp@1
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/qa')
     inputs:
-      azureSubscription: "ConectDataCNE"
+      azureSubscription: "ConectDataCNE" 
       appName: "$(QA_WEBAPP_NAME)"
       package: "$(Build.ArtifactStagingDirectory)/app.zip"
       slotName: "qa"
     displayName: "Deploy to QA slot"
 
-  # Deploy a Producción
   - task: AzureWebApp@1
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
     inputs:
