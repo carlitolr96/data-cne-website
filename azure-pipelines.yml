@@ -5,7 +5,7 @@ trigger:
       - qa
 
 pool:
-  vmImage: "ubuntu-latest"
+  vmImage: 'ubuntu-latest'
 
 variables:
   QA_WEBAPP_NAME: "datacne-qa"
@@ -21,33 +21,33 @@ steps:
   - script: |
       npm ci
       npm run build
-    displayName: "Install & Build"
+      npm run export
+    displayName: "Build Next.js static export"
 
-  # Empaquetar el build para desplegar
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+      rootFolderOrFile: "$(System.DefaultWorkingDirectory)/out"
       includeRootFolder: false
       archiveType: zip
       archiveFile: "$(Build.ArtifactStagingDirectory)/app.zip"
       replaceExistingArchive: true
     displayName: "Create artifact ZIP"
 
-  # Deploy a slot QA (cuando la rama sea qa)
+  # Deploy QA (slot)
   - task: AzureWebApp@1
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/qa')
     inputs:
-      azureSubscription: "ConectDataCNE"    # <--- exactamente como lo nombraste en Service connections
-      appName: "$(datacne-qa)"
+      azureSubscription: "ConectDataCNE" 
+      appName: "$(QA_WEBAPP_NAME)"
       package: "$(Build.ArtifactStagingDirectory)/app.zip"
-      slotName: "qa"                               # despliega al slot datacne-qa
+      slotName: "qa"
     displayName: "Deploy to QA slot"
 
-  # Deploy a producción (cuando la rama sea main)
+  # Deploy Producción
   - task: AzureWebApp@1
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
     inputs:
       azureSubscription: "ConectDataCNE"
-      appName: "$(DataCNE)"
+      appName: "$(PROD_WEBAPP_NAME)"
       package: "$(Build.ArtifactStagingDirectory)/app.zip"
     displayName: "Deploy to Production"
