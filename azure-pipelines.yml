@@ -5,7 +5,7 @@ trigger:
       - qa
 
 pool:
-  name: 'PoolAgentDataCNE'
+  vmImage: 'ubuntu-latest'
 
 variables:
   QA_WEBAPP_NAME: "datacne-qa"
@@ -33,7 +33,6 @@ steps:
       replaceExistingArchive: true
     displayName: "Create artifact ZIP"
 
-  # Deploy QA (slot)
   - task: AzureWebApp@1
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/qa')
     inputs:
@@ -43,7 +42,6 @@ steps:
       slotName: "qa"
     displayName: "Deploy to QA slot"
 
-  # Deploy Producción
   - task: AzureWebApp@1
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
     inputs:
