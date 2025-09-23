@@ -22,11 +22,12 @@ steps:
       npm ci
       npm run build
       npm run export
+    workingDirectory: "$(System.DefaultWorkingDirectory)/frontend"
     displayName: "Build Next.js static export"
 
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: "$(System.DefaultWorkingDirectory)/out"
+      rootFolderOrFile: "$(System.DefaultWorkingDirectory)/frontend/out"
       includeRootFolder: false
       archiveType: zip
       archiveFile: "$(Build.ArtifactStagingDirectory)/app.zip"
