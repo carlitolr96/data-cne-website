@@ -6,8 +6,7 @@
     "optimize:images": "ts-node scripts/optimize-images.ts",
     "build": "npm run optimize:images && next build && next export",
     "dev": "next dev",
-    "start": "next start",
-    "export": "next export"
+    "start": "next start"
   },
   "dependencies": {
     "chart.js": "^4.5.0",
