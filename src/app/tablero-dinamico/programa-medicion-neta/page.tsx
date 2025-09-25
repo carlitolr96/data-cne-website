@@ -10,6 +10,7 @@ export default function ProgramaMedicionNeta() {
         height="860"
         src="https://app.powerbi.com/view?r=eyJrIjoiMzBkNmY4YmYtY2JiMi00OTk0LWE5ZDItNDMxMjU2NDYyZDIxIiwidCI6IjNiZTZlZTYxLWNiYjktNDZmNC1iYzJiLWE2ZjU4ZmVlZDJmNSIsImMiOjJ9"
         allowFullScreen={true}
+        className="hidden lg:block" 
       ></iframe>
 
       {/* Versión móvil */}
@@ -17,7 +18,7 @@ export default function ProgramaMedicionNeta() {
         title="Power BI Medicion Neta Vertical"
         width="375"
         height="1024"
-        src="https://app.powerbi.com/reportEmbed?reportId=50800a9c-b1ec-4338-8a9e-605cfe8a4cf0&autoAuth=true&ctid=3be6ee61-cbb9-46f4-bc2b-a6f58feed2f5"
+        src="https://app.powerbi.com/view?r=eyJrIjoiNTk1Y2VjNmItMzAyNC00NjdhLWIwMDEtYzhmMzZhY2Q0OWI4IiwidCI6IjNiZTZlZTYxLWNiYjktNDZmNC1iYzJiLWE2ZjU4ZmVlZDJmNSIsImMiOjJ9"
         allowFullScreen={true}
         className="block lg:hidden"
       ></iframe>

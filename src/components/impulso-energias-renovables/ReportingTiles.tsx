@@ -17,9 +17,15 @@ export default function ReportingTiles() {
       (el): el is HTMLElement => el !== null
     );
 
-    animateNumberList(elements, targets, (value) =>
-      value.toLocaleString("en-US")
-    );
+    animateNumberList(elements, targets, (value) => {
+      if (value >= 1_000_000) {
+        // Más de 7 cifras → mostrar en millones
+        return `${(value / 1_000_000).toFixed(2)}`;
+      } else {
+        // Menos de 7 cifras → mostrar con comas
+        return value.toLocaleString("en-US");
+      }
+    });
   }, []);
 
   return (
@@ -49,9 +55,7 @@ export default function ReportingTiles() {
                 >
                   0
                 </span>
-                <span className="text-sm">
-                  {tile.description}
-                </span>
+                <span className="text-sm">{tile.description}</span>
 
                 {index < reportingtile.length - 1 && (
                   <div className="bg-red w-full h-[2px] mt-4 md:hidden"></div>

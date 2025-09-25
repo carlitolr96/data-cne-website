@@ -94,6 +94,7 @@ import NuclearBar from "../assets/NuclearBar.svg";
 import PanelBar from "../assets/PanelBar.svg";
 import PanelSolarBar from "../assets/PanelSolarBar.svg";
 import ElectricBar from "../assets/ElectricBar.svg";
+import ElectricAzulBar from "../assets/ElectricAzulBar.svg";
 import VoltageTowerAzulBar from "../assets/VoltageTowerAzulBar.svg";
 import MapaRDAzulBar from "../assets/MapaRDAzulBar.svg";
 import ChartRenovableAzulBar from "../assets/ChartRenovableAzulBar.svg";
@@ -571,16 +572,34 @@ export const editionpen: EditionPen[] = [
 
 export const tablerodinamicobar: TableroDinamicoBar[] = [
   {
-    icon: VoltageTowerBar,
-    iconActive: VoltageTowerAzulBar,
-    title: "Demanda Eléctrica Nacional",
-    url: "/tablero-dinamico/demanda-electrica-nacional",
+    icon: EolicBar,
+    iconActive: EolicAzulBar,
+    title: "Proyectos Renovables",
+    url: "/tablero-dinamico/proyectos-renovables",
   },
   {
     icon: PanelSolarBar,
     iconActive: PanelSolarAzulBar,
     title: "Programa Medición Neta",
     url: "/tablero-dinamico/programa-medicion-neta",
+  },
+    {
+    icon: ElectricBar,
+    iconActive: ElectricAzulBar,
+    title: "Programa de Difusión",
+    url: "/tablero-dinamico/programa-difucion",
+  },
+  {
+    icon: NuclearBar,
+    iconActive: NuclearAzulBar,
+    title: "Asuntos Nucleares",
+    url: "/tablero-dinamico/asuntos-nucleares",
+  },
+  {
+    icon: VoltageTowerBar,
+    iconActive: VoltageTowerAzulBar,
+    title: "Demanda Eléctrica Nacional",
+    url: "/tablero-dinamico/demanda-electrica-nacional",
   },
   {
     icon: MapaRDBar,
@@ -595,22 +614,10 @@ export const tablerodinamicobar: TableroDinamicoBar[] = [
     url: "/tablero-dinamico/variable-macroeconomicas",
   },
   {
-    icon: EolicBar,
-    iconActive: EolicAzulBar,
-    title: "Proyectos Renovables",
-    url: "/tablero-dinamico/proyectos-renovables",
-  },
-  {
     icon: PetroliumBar,
     iconActive: PetroliumAzulBar,
     title: "Importación de Hidrocarburos",
     url: "/tablero-dinamico/importancia-hidrocarburos",
-  },
-  {
-    icon: NuclearBar,
-    iconActive: NuclearAzulBar,
-    title: "Asuntos Nucleares",
-    url: "/tablero-dinamico/asuntos-nucleares",
   },
   {
     icon: PanelBar,
@@ -709,13 +716,13 @@ export const reportingtile: ReportingTile[] = [
   },
   {
     id: "3",
-    number: "15.55",
+    number: "15.550.000",
     description: "Estimación millones de toneladas de CO2 equivalentes evitadas",
     icon: Petrolium,
   },
   {
     id: "4",
-    number: "5.94",
+    number: "5.940.000",
     description: "Estimación millones de barriles de petróleo equivalentes ahorrados (Bep)",
     icon: Oil,
   },

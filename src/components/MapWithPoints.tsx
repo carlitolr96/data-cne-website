@@ -36,7 +36,6 @@ export default function MapWithPoints({
     animateMapLocations(pointsRef.current, tooltipsRef.current, activeId);
   }, [activeId]);
 
-  // Cierra tooltips al hacer click afuera
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -53,7 +52,6 @@ export default function MapWithPoints({
 
   return (
     <div className={`relative ${className}`}>
-      {/* Imagen del mapa */}
       <Image
         src={mapImage}
         alt="Mapa"

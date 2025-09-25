@@ -594,8 +594,12 @@ export const animateDoubleChartsTwo = ({
     const number2 = numbers2Ref.current[i];
     const centerNumber = centerNumberRef.current[i];
 
-    const total = item.value1 + item.value2;
-    const targetPercent = total > 0 ? (item.value1 / total) * 100 : 0;
+    // Calcular el porcentaje de crecimiento: (final - inicial) / inicial * 100
+    const initialValue = item.value1; // 1141
+    const finalValue = item.value2;   // 276.7
+    const growthPercentage = initialValue !== 0 
+      ? ((finalValue - initialValue) / initialValue) * 100 
+      : 0;
 
     if (bar1 && number1) {
       gsap.to(bar1, {
@@ -616,7 +620,6 @@ export const animateDoubleChartsTwo = ({
       );
     }
 
-    //Con la coma cuando pase de 4 Cifras 1,141
     if (bar2 && number2) {
       gsap.to(bar2, {
         height: `${item.value2 * heightFactor}px`,
@@ -636,16 +639,16 @@ export const animateDoubleChartsTwo = ({
       );
     }
 
-    //
     if (centerNumber) {
       gsap.to(
         { val: 0 },
         {
-          val: targetPercent,
+          val: growthPercentage,
           duration: 1,
           ease: "power3.out",
           onUpdate() {
-            centerNumber.textContent = `${this.targets()[0].val.toFixed(1)}%`;
+            const currentValue = this.targets()[0].val;
+            centerNumber.textContent = `${currentValue.toFixed(1)}%`;
           },
         }
       );
@@ -666,6 +669,11 @@ export const animateBarsOnce = ({
   heightFactor: number;
   trigger: HTMLElement;
 }) => {
+  const formatter = new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
   data.forEach((item, i) => {
     const bar = barsRef.current[i];
     const number = numbersRef.current[i];
@@ -673,7 +681,6 @@ export const animateBarsOnce = ({
 
     const obj = { val: 0 };
 
-    //Poner la Coma a numero que pasen de 4 cifras
     gsap.to(bar, {
       height: item.value * heightFactor,
       duration: 2,
@@ -690,7 +697,7 @@ export const animateBarsOnce = ({
       duration: 2,
       ease: "power3.out",
       onUpdate: () => {
-        number.textContent = `${obj.val.toFixed(2)} MW`;
+        number.textContent = `${formatter.format(obj.val)} MW`;
       },
       scrollTrigger: {
         trigger,
@@ -703,16 +710,18 @@ export const animateBarsOnce = ({
 
 export const animatePercentageOnce = (
   element: HTMLElement | null,
+  startValue: number,
   endValue: number,
   trigger: HTMLElement
 ) => {
   if (!element) return;
 
+  // Fórmula: (final - inicial) / inicial * 100
+  const percentage = ((endValue - startValue) / startValue) * 100;
 
-  //Restar el final menos el inicial entre el inicial (2,033.79 - 574.33) / 574.33 = 254% 
   const obj = { val: 0 };
   gsap.to(obj, {
-    val: endValue,
+    val: percentage,
     duration: 2,
     ease: "power1.out",
     onUpdate: () => {

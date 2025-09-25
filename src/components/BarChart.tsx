@@ -23,7 +23,8 @@ export default function BarChart({ data, heightFactor = 1.5 }: BarChartProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || data.length < 2) return;
+
     animateBarsOnce({
       data,
       barsRef,
@@ -31,7 +32,12 @@ export default function BarChart({ data, heightFactor = 1.5 }: BarChartProps) {
       heightFactor,
       trigger: containerRef.current,
     });
-    animatePercentageOnce(percentRef.current, 13.9, containerRef.current);
+
+    // Tomar el primer y último valor para calcular el % de aumento
+    const startValue = data[0].value;
+    const endValue = data[data.length - 1].value;
+
+    animatePercentageOnce(percentRef.current, startValue, endValue, containerRef.current);
   }, [data, heightFactor]);
 
   const setBarRef = useCallback((el: HTMLDivElement | null, i: number) => {

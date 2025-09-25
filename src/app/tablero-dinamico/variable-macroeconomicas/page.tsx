@@ -10,6 +10,7 @@ export default function VariableMacroeconomicas() {
         height="860"
         src="https://app.powerbi.com/view?r=eyJrIjoiYzM2MDc5NGItYWUwYy00YTE5LWFiOGQtY2M2NmJjMjM3ZDU3IiwidCI6IjNiZTZlZTYxLWNiYjktNDZmNC1iYzJiLWE2ZjU4ZmVlZDJmNSIsImMiOjJ9"
         allowFullScreen={true}
+        className="hidden lg:block" 
       ></iframe>
 
       {/* Versión móvil */}

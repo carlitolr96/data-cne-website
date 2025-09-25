@@ -28,8 +28,6 @@ export default function RecordInvestments() {
     },
   ];
 
-  // const sectionRef = useRef<HTMLElement | null>(null);
-
   return (
     <section className="bg-white min-h-screen flex flex-col justify-center py-10 sm:py-12">
       <div className="max-w-6xl mx-auto px-4 flex flex-col justify-center items-center text-center mb-10">
@@ -51,7 +49,7 @@ export default function RecordInvestments() {
         <div className="flex-1 flex flex-col items-center">
           <DobleBarChart data={chartData} />
           <p className="text-primary text-sm font-light mt-2 text-center">
-            Evolución comparativa de IED en MM USD 2019 - 2024
+            Evolución comparativa de IED en MM USD
           </p>
         </div>
 

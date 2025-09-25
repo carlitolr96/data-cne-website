@@ -8,7 +8,7 @@ export default function GenerationCapacity() {
   const [chartData] = useState([
     { value: 574.33, label: "2019", color: "#ff0000" },
     { value: 2033.79, label: "2025", color: "#17447a" },
-  ]);
+  ]); 
 
   return (
     <section className="bg-white py-20">
