@@ -38,12 +38,12 @@ export default function PMNSection() {
 
         <div className="mt-10 flex justify-center">
           <div className="w-full">
-            <StackedLineBar
+            {/* <StackedLineBar
               data={data}
               className="my-chartPMN"
               showValues={true}
               animate={true}
-            />
+            /> */}
           </div>
         </div>
 

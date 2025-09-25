@@ -452,7 +452,7 @@ export interface LocationsPoint {
   name: string;
   description: string;
   x: number;
-  y: number; 
+  y: number;
   icon?: StaticImageData | string;
 }
 
@@ -583,7 +583,7 @@ export const tablerodinamicobar: TableroDinamicoBar[] = [
     title: "Programa Medición Neta",
     url: "/tablero-dinamico/programa-medicion-neta",
   },
-    {
+  {
     icon: ElectricBar,
     iconActive: ElectricAzulBar,
     title: "Programa de Difusión",
@@ -670,9 +670,9 @@ export const navitemsone: NavItemsOne[] = [
     url: "/impulso-energias-renovables",
   },
   {
-    icon: SolarNav,
-    label: "Generación Distribuida",
-    url: "/generacion-distribuida",
+    icon: LightBulbNav,
+    label: "Cultura De Ahorro Energético",
+    url: "/cultura-ahorro-energetico",
   },
   {
     icon: NuclearNav,
@@ -680,9 +680,9 @@ export const navitemsone: NavItemsOne[] = [
     url: "/asuntos-radialogicos-nucleares",
   },
   {
-    icon: LightBulbNav,
-    label: "Cultura De Ahorro Energético",
-    url: "/cultura-ahorro-energetico",
+    icon: SolarNav,
+    label: "Generación Distribuida",
+    url: "/generacion-distribuida",
   },
 ];
 
@@ -717,13 +717,15 @@ export const reportingtile: ReportingTile[] = [
   {
     id: "3",
     number: "15.550.000",
-    description: "Estimación millones de toneladas de CO2 equivalentes evitadas",
+    description:
+      "Estimación millones de toneladas de CO2 equivalentes evitadas",
     icon: Petrolium,
   },
   {
     id: "4",
     number: "5.940.000",
-    description: "Estimación millones de barriles de petróleo equivalentes ahorrados (Bep)",
+    description:
+      "Estimación millones de barriles de petróleo equivalentes ahorrados (Bep)",
     icon: Oil,
   },
 ];
@@ -796,7 +798,7 @@ export const socialicon: SocialIcon[] = [
     id: "5",
     url: "https://open.spotify.com/show/5B8zkCo5AfkivJScTrx4Tl?si=qs_GzKyjQMepcgdVrkQEdA",
     icon: FaSpotify,
-  }
+  },
 ];
 
 export const stageicon: StageIcon[] = [
@@ -1166,6 +1168,3 @@ export const locationsCAE: LocationsPoint[] = [
     icon: "",
   },
 ];
-
-
-
