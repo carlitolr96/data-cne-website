@@ -8,8 +8,8 @@ import { assets } from "@/assets/assets";
 
 export default function UsoRadiaciones() {
   const [chartData] = useState([
-    { value: 90, label: "", color: "#1D3C51" },
-    { value: 28, label: "", color: "#144C84" },
+    { value: 80.94, label: "", color: "#1D3C51" },
+    { value: 9.08, label: "", color: "#144C84" },
   ]);
 
   return (
@@ -102,15 +102,15 @@ export default function UsoRadiaciones() {
       </div>
 
       <div className="flex flex-col md:flex-row justify-center items-center gap-8">
-        <div className="w-70">
+        {/* <div className="w-70">
           <ModularChart barWidth="w-30" data={chartData} />
-        </div>
+        </div> */}
 
         <div className="max-w-sm">
-          <h1 className="text-primary font-medium text-md text-center md:text-right">
+          {/* <h1 className="text-primary font-medium text-md text-center md:text-right">
             De las autorizaciones emitidas corresponden a la práctica de
             Radiodiagnóstico
-          </h1>
+          </h1> */}
           <div className="flex flex-col items-center md:items-end mt-4">
             <p className="text-md font-medium text-primary mb-3 text-center md:text-right">
               Para más información

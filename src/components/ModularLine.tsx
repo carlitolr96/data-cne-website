@@ -80,10 +80,6 @@ const options: ChartOptions<"line"> = {
       ticks: {
         color: "#183B6B",
         font: { weight: "bold" },
-        callback: function (val) {
-          const label = this.getLabelForValue(val as number);
-          return label === "2019" || label === "2025" ? label : "";
-        },
       },
     },
     y: {
@@ -99,7 +95,7 @@ const data: ChartData<"line"> = {
   datasets: [
     {
       label: "Valores",
-      data: [0, 8, 15, 10, 20, 30, 25],
+      data: [0, 8, 15, 20, 25, 30, 35],
       borderColor: "#FF8C00",
       backgroundColor: "#FF8C00",
       pointBackgroundColor: "#FF8C00",

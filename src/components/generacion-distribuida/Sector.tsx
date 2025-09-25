@@ -22,7 +22,7 @@ export default function Sector() {
               <div className="text-start space-y-2">
                 <h1 className="text-primary text-2xl font-black font-montserrat uppercase">
                   {
-                    "A junio de 2025, el sector industrial lidera la generación distribuida en el país, con el 62% de la capacidad instalada, seguido del sector residencial (22%) y el comercial (15%)."
+                    "A julio de 2025, el sector industrial lidera la generación distribuida en el país, con el 62% de la capacidad instalada, seguido del sector residencial (22%) y el comercial (15%)."
                   }
                 </h1>
               </div>
@@ -30,7 +30,7 @@ export default function Sector() {
 
             <div className="lg:w-1/2 flex flex-col items-center">
               <p className="mb-4 text-primary text-sm font-bold text-center">
-                Capacidad instalada por sector - junio 2025 (kwp)
+                Capacidad instalada por sector - julio 2025 (kwp)
               </p>
               <div className="w-full flex justify-center h-100">
                 <DoughnutChart data={chartDoughnutData} />

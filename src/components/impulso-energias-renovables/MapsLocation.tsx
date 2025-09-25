@@ -1,6 +1,7 @@
 "use client";
 
 import { assets, locationspoint } from "@/assets/assets";
+import { PiHandTap } from "react-icons/pi";
 import MapWithPoints from "@/components/MapWithPoints";
 import Image from "next/image";
 import Boton from "@/components/Boton";
@@ -23,17 +24,32 @@ export default function MapsLocation() {
           </div>
 
           <div className="text-center mb-0 md:mb-6">
-            <h2 className="text-primary text-3xl font-extrabold leading-tight">
-              XX PROYECTOS
+            <h2 className="text-primary text-3xl font-black leading-tight">
+              19 PROYECTOS
             </h2>
             <p className="text-primary text-base mb-6">
               que aportarán{" "}
-              <span className="font-extrabold text-primary">xxx</span>
+              <span className="font-black text-primary">1,290.05 MW</span>
             </p>
           </div>
 
           <div className="relative w-full h-[300px] mb-6">
-            <MapWithPoints mapImage={assets.MapaOneSVG} points={locationspoint} /> 
+            <MapWithPoints
+              mapImage={assets.MapaOneSVG}
+              points={locationspoint}
+            />
+            <div className="flex justify-center items-center text-center">
+              <p className="text-sm text-gray-400 mr-1">
+                Interaccion en los puntos rojos
+              </p>
+              <PiHandTap
+                className="text-primary"
+                style={{
+                  top: "20px",
+                  right: "20px",
+                }}
+              />
+            </div>
           </div>
 
           <Boton href="/" icon="TapIcon" iconPosition="right">
@@ -44,7 +60,22 @@ export default function MapsLocation() {
         <div className="hidden md:block w-full relative">
           <div className="absolute inset-0 flex items-center justify-start pl-8">
             <div className="relative w-full max-w-4xl">
-              <MapWithPoints mapImage={assets.MapaOneSVG} points={locationspoint} />
+              <MapWithPoints
+                mapImage={assets.MapaOneSVG}
+                points={locationspoint}
+              />
+              <div className="flex justify-center items-center text-center">
+                <p className="text-sm text-gray-400 mr-1">
+                  Interaccion en los puntos rojos
+                </p>
+                <PiHandTap
+                  className="text-primary"
+                  style={{
+                    top: "20px",
+                    right: "20px",
+                  }}
+                />
+              </div>
             </div>
           </div>
 
@@ -63,12 +94,12 @@ export default function MapsLocation() {
               </div>
 
               <div className="text-left">
-                <h2 className="text-primary text-4xl font-extrabold leading-tight">
-                  XX PROYECTOS
+                <h2 className="text-primary text-4xl font-black leading-tight">
+                  19 PROYECTOS
                 </h2>
                 <p className="text-primary text-lg mb-12">
                   que aportarán{" "}
-                  <span className="font-extrabold text-primary">xxx</span>
+                  <span className="font-black text-primary">1,290.05 MW</span>
                 </p>
               </div>
 

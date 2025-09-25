@@ -77,7 +77,7 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({ data, title }) => {
 
   return (
     <div className="relative w-full flex justify-center items-center">
-      <div className="w-[300px] sm:w-[350px] md:w-[400px] lg:w-[450px] h-[300px] sm:h-[400px] md:h-[480px] lg:h-[560px]">
+      <div className="w-[300px] sm:w-[350px] md:w-[400px] lg:w-[420px] h-[300px] sm:h-[400px] md:h-[300px] lg:h-[350px]">
         <Doughnut data={chartData} options={options} />
       </div>
     </div>

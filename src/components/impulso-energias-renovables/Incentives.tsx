@@ -9,9 +9,10 @@ export default function Incentives() {
   const amountRef = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
-    animateAmount(amountRef.current, 5000000);
+    animateAmount(amountRef.current, 8000000);
   }, []);
 
+//10,927 Solicitud de incentivos
 const incentivesData: DataPoint[] = [
   { year: 2020, green: 1.2, red: 0.0 },
   { year: 2021, green: 3.6, red: 0.6 },

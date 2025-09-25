@@ -11,7 +11,7 @@ interface ModularChartProps {
 
 export default function ModularChart({
   data,
-  heightFactor = 0.8,
+  heightFactor = 0.05,
   barWidth = "w-17",
   className = "",
 }: ModularChartProps) {
@@ -79,7 +79,7 @@ export default function ModularChart({
               }}
             />
 
-            <span className="mt-2 text-primary text-lg font-medium text-center">{item.label}</span>
+            <span className="mt-2 text-primary text-md font-medium text-center">{item.label}</span>
           </div>
         ))}
       </div>

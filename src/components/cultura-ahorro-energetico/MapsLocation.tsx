@@ -1,6 +1,7 @@
 "use client";
 
 import MapWithPoints from "@/components/MapWithPoints";
+import { PiHandTap } from "react-icons/pi";
 import { assets, locationsCAE } from "@/assets/assets";
 
 export default function MapsLocation() {
@@ -10,6 +11,18 @@ export default function MapsLocation() {
         <div className="absolute inset-0 flex items-center justify-start pl-0">
           <div className="relative w-full max-w-4xl">
             <MapWithPoints mapImage={assets.MapaOneSVG} points={locationsCAE} />
+            <div className="flex justify-center items-center text-center">
+              <p className="text-sm text-gray-400 mr-1">
+                Interaccion en los puntos rojos
+              </p>
+              <PiHandTap
+                className="text-primary"
+                style={{
+                  top: "20px",
+                  right: "20px",
+                }}
+              />
+            </div>
           </div>
         </div>
 

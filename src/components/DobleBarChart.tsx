@@ -6,6 +6,8 @@ import { animateDoubleChartsTwo } from "@/utils/animations";
 interface DoubleBarData {
   value1: number;
   value2: number;
+  valueText1: string;
+  valueText2: string;
   color1?: string;
   color2?: string;
   centerText: string;
@@ -18,7 +20,7 @@ interface DobleBarChartProps {
 
 export default function DobleBarChart({
   data,
-  heightFactor = 1.5,
+  heightFactor = 0.26,
 }: DobleBarChartProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
@@ -71,7 +73,7 @@ export default function DobleBarChart({
       ref={sectionRef}
       className="flex items-end justify-center gap-14 relative h-72"
     >
-      <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-light"></div>
+      <div className="absolute bottom-7 left-0 w-full h-[1.5px] bg-light"></div>
 
       {data.map((item, i) => (
         <div key={i} className="flex flex-col items-center text-center">
@@ -83,7 +85,7 @@ export default function DobleBarChart({
                 }}
                 className="mb-1 text-primary text-xl font-extrabold"
               >
-                US$0
+                0
               </span>
               <div
                 ref={(el) => {
@@ -96,6 +98,7 @@ export default function DobleBarChart({
                   transformOrigin: "bottom",
                 }}
               />
+               <span className="mt-2 text-sm text-primary">{item.valueText1}</span>
             </div>
 
             <div className="flex flex-col items-center justify-center text-primary text-center font-montserrat">
@@ -119,9 +122,8 @@ export default function DobleBarChart({
                 }}
                 className="mb-1 text-white bg-green py-2 px-3 text-2xl font-extrabold whitespace-nowrap"
               >
-                US$0
+                0
               </span>
-              <span className="text-sm text-primary whitespace-nowrap font-medium">Millones invertidos</span>
               <div
                 ref={(el) => {
                   if (el) bars2Ref.current[i] = el;
@@ -133,6 +135,7 @@ export default function DobleBarChart({
                   transformOrigin: "bottom",
                 }}
               />
+              <span className="mt-2 text-sm text-primary">{item.valueText2}</span>
             </div>
           </div>
         </div>

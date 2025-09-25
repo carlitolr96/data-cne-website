@@ -16,10 +16,10 @@ export default function Goal() {
   const format = new Intl.NumberFormat("es-DO");
 
   const finalValues = {
-    numberDef: 50000,
-    dateProv: 65716,
-    femenino: 33302,
-    masculino: 32414,
+    numberDef: 60000,
+    dateProv: 43618,
+    femenino: 22474,
+    masculino: 21044,
   } as const;
 
   useEffect(() => {

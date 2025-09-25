@@ -13,10 +13,10 @@ export default function Storage() {
 
   useEffect(() => {
     if (proyectosRef.current) {
-      animateNumberStorage(proyectosRef.current, 25, false); // sin MWh
+      animateNumberStorage(proyectosRef.current, 34, false); // sin MWh
     }
     if (energiaRef.current) {
-      animateNumberStorage(energiaRef.current, 234958); // con MWh
+      animateNumberStorage(energiaRef.current, 3511); // con MWh
     }
   }, []);
 

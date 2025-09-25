@@ -6,15 +6,15 @@ import Boton from "@/components/Boton";
 
 export default function EmitionsSession() {
   const [chartData1] = useState([
-    { value: 300, label: "LPO", color: "#0B4B93" },
-    { value: 138, label: "Permisos", color: "#00E019" },
-    { value: 125, label: "LIO", color: "#FFD807" },
-    { value: 87, label: "IR", color: "#089EE8" },
+    { value: 5984, label: "LPO", color: "#0B4B93" },
+    { value: 1400, label: "Permisos", color: "#00E019" },
+    { value: 1377, label: "LIO", color: "#FFD807" },
+    { value: 892, label: "IR", color: "#089EE8" },
   ]);
 
   const [chartData2] = useState([
-    { value: 90, label: "permisos de importación ", color: "#B5A031" },
-    { value: 28, label: "permisos de exportación ", color: "#346C88" },
+    { value: 1327, label: "permisos de importación ", color: "#B5A031" },
+    { value: 69, label: "permisos de exportación ", color: "#346C88" },
   ]);
 
   return (
@@ -30,7 +30,11 @@ export default function EmitionsSession() {
       </div>
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10 px-0 md:px-6 mt-10">
-        <div className="flex-1 flex flex-col items-center">
+        <div className="flex-1 flex flex-col justify-end">
+          <div className="flex flex-col justify-end text-end text-primary">
+            <h2 className="font-medium text-xl">Total acumulado:</h2>
+            <p className="font-black text-xl">+11,000 autorizaciones</p>
+          </div>
           <ModularChart data={chartData1} />
         </div>
 

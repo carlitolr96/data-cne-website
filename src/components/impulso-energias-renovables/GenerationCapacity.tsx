@@ -6,8 +6,8 @@ import Boton from "@/components/Boton";
 
 export default function GenerationCapacity() {
   const [chartData] = useState([
-    { value: 571.33, label: "2019", color: "#ff0000" },
-    { value: 1403.13, label: "2024", color: "#17447a" },
+    { value: 574.33, label: "2019", color: "#ff0000" },
+    { value: 2033.79, label: "2025", color: "#17447a" },
   ]);
 
   return (

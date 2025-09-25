@@ -113,9 +113,9 @@ export const animateConcessionCounters = (
 ) => {
   if (!section) return;
 
-  const projectsValue = 84;
-  const investmentsValue = 54;
-  const capacityValue = 3107;
+  const projectsValue = 89;
+  const investmentsValue = 47;
+  const capacityValue = 2645;
 
   const objProjects = { val: 0 };
   const objInvestments = { val: 0 };
@@ -413,7 +413,7 @@ export const animateNumbers = (
   if (projectsEl) {
     const obj = { val: 0 };
     gsap.to(obj, {
-      val: 35,
+      val: 44,
       duration: 1.5,
       ease: "power3.out",
       onUpdate: () => {
@@ -428,7 +428,7 @@ export const animateNumbers = (
   if (capacityEl) {
     const obj = { val: 0 };
     gsap.to(obj, {
-      val: 1436.31,
+      val: 2033.79,
       duration: 1.8,
       ease: "power3.out",
       onUpdate: () => {
@@ -610,12 +610,13 @@ export const animateDoubleChartsTwo = ({
           duration: 1,
           ease: "power3.out",
           onUpdate() {
-            number1.textContent = `US$${this.targets()[0].val.toFixed(1)}`;
+            number1.textContent = `${this.targets()[0].val.toFixed(1)}`;
           },
         }
       );
     }
 
+    //Con la coma cuando pase de 4 Cifras 1,141
     if (bar2 && number2) {
       gsap.to(bar2, {
         height: `${item.value2 * heightFactor}px`,
@@ -629,12 +630,13 @@ export const animateDoubleChartsTwo = ({
           duration: 1,
           ease: "power3.out",
           onUpdate() {
-            number2.textContent = `US$${this.targets()[0].val.toFixed(1)}`;
+            number2.textContent = `${this.targets()[0].val.toFixed(1)}`;
           },
         }
       );
     }
 
+    //
     if (centerNumber) {
       gsap.to(
         { val: 0 },
@@ -671,6 +673,7 @@ export const animateBarsOnce = ({
 
     const obj = { val: 0 };
 
+    //Poner la Coma a numero que pasen de 4 cifras
     gsap.to(bar, {
       height: item.value * heightFactor,
       duration: 2,
@@ -705,6 +708,8 @@ export const animatePercentageOnce = (
 ) => {
   if (!element) return;
 
+
+  //Restar el final menos el inicial entre el inicial (2,033.79 - 574.33) / 574.33 = 254% 
   const obj = { val: 0 };
   gsap.to(obj, {
     val: endValue,

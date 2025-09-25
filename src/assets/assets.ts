@@ -697,26 +697,26 @@ export const slideoperations: SlideOperations[] = [
 export const reportingtile: ReportingTile[] = [
   {
     id: "1",
-    number: "7,179 MM",
-    description: "Recomendación de incentivos a concesionarios",
+    number: "8,202",
+    description: "Recomendación de incentivos a concesionarios (MM DOP)",
     icon: Money,
   },
   {
     id: "2",
-    number: "55,138",
+    number: "57,960",
     description: "Empleos creados, concesiones definitivas",
     icon: Bulk,
   },
   {
     id: "3",
-    number: "3,201,007",
-    description: "Estimación de toneladas de CO2 equivalentes evitadas",
+    number: "15.55",
+    description: "Estimación millones de toneladas de CO2 equivalentes evitadas",
     icon: Petrolium,
   },
   {
     id: "4",
-    number: "7,697,586",
-    description: "Estimación de barriles de petróleo equivalentes ahorrados",
+    number: "5.94",
+    description: "Estimación millones de barriles de petróleo equivalentes ahorrados (Bep)",
     icon: Oil,
   },
 ];
