@@ -21,7 +21,6 @@ steps:
   - script: |
       npm ci
       npm run build
-      npm run export
     workingDirectory: "$(System.DefaultWorkingDirectory)"
     displayName: "Build Next.js static export"
 
