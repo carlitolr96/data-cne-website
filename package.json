@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "optimize:images": "ts-node scripts/optimize-images.ts",
-    "build": "npm run optimize:images && next build && next export",
+    "build": "npm run optimize:images && next build",
     "dev": "next dev",
     "start": "next start",
-    "lint": "next lint",
-    "export": "next build"
+    "lint": "next lint"
   },
   "dependencies": {
     "chart.js": "^4.5.0",
