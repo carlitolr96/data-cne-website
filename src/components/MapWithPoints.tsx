@@ -4,13 +4,22 @@ import { useEffect, useRef, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { animateMapLocations } from "@/utils/animations";
 
-export interface LocationPoint {
+interface BaseLocationPoint {
   id: string;
   name: string;
-  description: string;
-  x: number; // porcentaje en X
-  y: number; // porcentaje en Y
-  icon?: StaticImageData | string; // imagen personalizada opcional
+  x: number;
+  y: number;
+  icon?: StaticImageData | string;
+}
+
+export interface LocationPoint extends BaseLocationPoint {
+  capacidad?: number;
+  capacidadBateria?: number;
+  provincia?: string;
+  total?: number;
+  femenino?: number;
+  masculino?: number;
+  dataType?: "energy" | "cae" | "default";
 }
 
 interface MapWithPointsProps {
@@ -19,7 +28,73 @@ interface MapWithPointsProps {
   width?: number;
   height?: number;
   className?: string;
+  dataType?: "energy" | "cae" | "auto";
 }
+
+const EnergyTooltip = ({ loc }: { loc: LocationPoint }) => (
+  <div className="flex-col items-center w-full justify-between">
+    <p className="font-bold text-gray-600 text-[13px]">
+      Capacidad: <span className="font-light">{loc.capacidad} MWn</span>
+    </p>
+    <div className="w-full h-px bg-gray-300/60 my-1"></div>
+    <p className="font-bold text-gray-600 text-[13px]">
+      BESS: <span className="font-light">{loc.capacidadBateria || 0} MWh</span>
+    </p>
+    <div className="w-full h-px bg-gray-300/60 my-1"></div>
+    <div className="flex flex-col">
+      <span className="font-bold text-gray-600 text-[13px]">Provincia:</span>
+      <span className="font-light text-gray-800 text-[13px]">{loc.provincia}</span>
+    </div>
+  </div>
+);
+
+const CAETooltip = ({ loc }: { loc: LocationPoint }) => (
+  <div className="flex-col items-center w-full justify-between">
+    <p className="font-bold text-gray-600 text-[13px]">
+      Sensibilizados: <span className="font-light">{loc.total?.toLocaleString()}</span>
+    </p>
+  </div>
+);
+
+const DefaultTooltip = ({ loc }: { loc: LocationPoint }) => {
+  const hasEnergyData = loc.capacidad !== undefined || loc.provincia !== undefined;
+  const hasCAEData = loc.total !== undefined || loc.femenino !== undefined || loc.masculino !== undefined;
+
+  if (hasEnergyData && !hasCAEData) {
+    return <EnergyTooltip loc={loc} />;
+  }
+  
+  if (hasCAEData && !hasEnergyData) {
+    return <CAETooltip loc={loc} />;
+  }
+
+  return (
+    <div className="flex-col items-center w-full justify-between">
+      {loc.capacidad !== undefined && (
+        <>
+          <p className="font-bold text-gray-600 text-[13px]">
+            Capacidad: <span className="font-light">{loc.capacidad} MWn</span>
+          </p>
+          <div className="w-full h-px bg-gray-300/60 my-1"></div>
+        </>
+      )}
+      {loc.total !== undefined && (
+        <>
+          <p className="font-bold text-gray-600 text-[13px]">
+            Total: <span className="font-light">{loc.total.toLocaleString()}</span>
+          </p>
+          <div className="w-full h-px bg-gray-300/60 my-1"></div>
+        </>
+      )}
+      {loc.provincia && (
+        <div className="flex flex-col">
+          <span className="font-bold text-gray-600 text-[13px]">Provincia:</span>
+          <span className="font-light text-gray-800 text-[13px]">{loc.provincia}</span>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default function MapWithPoints({
   mapImage,
@@ -27,6 +102,7 @@ export default function MapWithPoints({
   width = 800,
   height = 600,
   className = "",
+  dataType = "auto",
 }: MapWithPointsProps) {
   const pointsRef = useRef<HTMLButtonElement[]>([]);
   const tooltipsRef = useRef<HTMLDivElement[]>([]);
@@ -50,6 +126,18 @@ export default function MapWithPoints({
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
+  const renderTooltipContent = (loc: LocationPoint) => {
+    switch (dataType) {
+      case "energy":
+        return <EnergyTooltip loc={loc} />;
+      case "cae":
+        return <CAETooltip loc={loc} />;
+      case "auto":
+      default:
+        return <DefaultTooltip loc={loc} />;
+    }
+  };
+
   return (
     <div className={`relative ${className}`}>
       <Image
@@ -62,7 +150,6 @@ export default function MapWithPoints({
         className="w-full h-auto"
       />
 
-      {/* Puntos dinámicos */}
       {points.map((loc, i) => (
         <div key={loc.id}>
           <button
@@ -91,7 +178,6 @@ export default function MapWithPoints({
             )}
           </button>
 
-          {/* Tooltip */}
           {activeId === loc.id && (
             <div
               ref={(el) => {
@@ -105,8 +191,12 @@ export default function MapWithPoints({
               }}
               className="absolute w-56 p-4 rounded-xl bg-white shadow-lg border border-gray-200 z-50"
             >
-              <h4 className="text-primary font-bold text-lg mb-1">{loc.name}</h4>
-              <p className="text-sm text-gray-600">{loc.description}</p>
+              <h4 className="text-primary font-bold text-md mb-2">
+                {loc.name}
+              </h4>
+              <div className="flex flex-col items-center gap-2 w-full p-2 rounded-b-lg bg-white border-t border-gray-500/20">
+                {renderTooltipContent(loc)}
+              </div>
             </div>
           )}
         </div>

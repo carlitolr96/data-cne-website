@@ -1,88 +1,149 @@
-import { useRef, useEffect, useCallback, useState } from "react";
-import { animateBarHeight, animateNumber } from "@/utils/animations";
+"use client";
 
-interface BarData { value: number; label: string; color?: string }
+import { useRef } from "react";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ChartOptions,
+  Plugin,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+interface BarData { 
+  value: number; 
+  label: string; 
+  color?: string; 
+}
+
 interface ModularChartProps {
   data: BarData[];
-  heightFactor?: number;
-  barWidth?: string;
   className?: string;
 }
 
+const valuePlugin: Plugin<"bar"> = {
+  id: "valuePlugin",
+  afterDatasetsDraw(chart) {
+    const { ctx, data, scales } = chart;
+    ctx.save();
+    
+    data.datasets.forEach((dataset, datasetIndex) => {
+      const meta = chart.getDatasetMeta(datasetIndex);
+      
+      meta.data.forEach((bar, index) => {
+        const value = dataset.data[index] as number;
+        
+        ctx.fillStyle = "#000000";
+        ctx.font = "bold 16px Montserrat";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "bottom";
+        
+        ctx.fillText(
+          value.toString(),
+          bar.x,
+          bar.y - 10
+        );
+      });
+    });
+    
+    ctx.restore();
+  },
+};
+
 export default function ModularChart({
   data,
-  heightFactor = 0.05,
-  barWidth = "w-17",
   className = "",
 }: ModularChartProps) {
-  const barsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const numbersRef = useRef<(HTMLSpanElement | null)[]>([]);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [inView, setInView] = useState(false);
+  const chartRef = useRef<ChartJS<"bar">>(null);
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setInView(true);
-            observer.disconnect();
-          }
-        });
+  const chartData = {
+    labels: data.map(item => item.label),
+    datasets: [
+      {
+        data: data.map(item => item.value),
+        backgroundColor: data.map(item => item.color || "#000000"),
+        borderWidth: 0,
+        borderRadius: 0,
+        barThickness: 60,
+        datalabels: {
+          display: false
+        }
       },
-      { threshold: 0.3 }
-    );
-    observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, []);
+    ],
+  };
 
-  useEffect(() => {
-    if (!inView) return;
-
-    data.forEach((item, i) => {
-      const bar = barsRef.current[i];
-      const number = numbersRef.current[i];
-
-      if (bar && number) {
-        animateBarHeight(bar, item.value * heightFactor, 1000);
-        animateNumber(number, item.value, 1000);
-      }
-    });
-  }, [inView, data, heightFactor]);
-
-  const setBarRef = useCallback((el: HTMLDivElement | null, i: number) => {
-    barsRef.current[i] = el;
-  }, []);
-
-  const setNumberRef = useCallback((el: HTMLSpanElement | null, i: number) => {
-    numbersRef.current[i] = el;
-  }, []);
+  const options: ChartOptions<"bar"> = {
+    responsive: true,
+    maintainAspectRatio: false,
+    indexAxis: 'x',
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: "#1B4C84",
+          font: {
+            size: 14,
+            weight: "bold",
+            family: "Montserrat",
+          },
+        },
+      },
+      y: {
+        beginAtZero: true,
+        grid: {
+          display: false,
+        },
+        ticks: {
+          display: false,
+        },
+        border: {
+          display: false,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        enabled: true,
+        callbacks: {
+          label: function(context) {
+            return `Valor: ${context.parsed.y}`;
+          },
+        },
+      },
+    },
+    animation: {
+      duration: 1000,
+      easing: 'easeOutQuart',
+    },
+  };
 
   return (
-    <div
-      ref={containerRef}
-      className={`relative flex flex-col-reverse items-center h-auto md:h-64 ${className}`}
-    >
-      <div className="relative w-full flex justify-center items-end gap-5">
-        {data.map((item, i) => (
-          <div key={`${item.label}-${i}`} className="relative flex flex-col items-center justify-end">
-            <span ref={(el) => setNumberRef(el, i)} className="mb-1 text-primary text-sm md:text-xl font-bold whitespace-nowrap">0</span>
-
-            <div
-              ref={(el) => setBarRef(el, i)}
-              className={`${barWidth} relative`}
-              style={{
-                backgroundColor: item.color || "#000000",
-                height: "0px",
-                transformOrigin: "bottom",
-              }}
-            />
-
-            <span className="mt-2 text-primary text-md font-medium text-center">{item.label}</span>
-          </div>
-        ))}
-      </div>
+    <div className={`relative w-full h-full ${className}`}>
+      <Bar 
+        ref={chartRef}
+        data={chartData} 
+        options={options}
+        plugins={[valuePlugin]}
+        className="h-full"
+      />
     </div>
   );
 }

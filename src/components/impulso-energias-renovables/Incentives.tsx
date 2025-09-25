@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
-import LineChartDoble, { DataPoint } from "@/components/LineChartDoble";
+import React, { useRef, useEffect, useState } from "react";
 import Boton from "@/components/Boton";
 import { animateAmount } from "@/utils/animations";
+import ModularChart from "@/components/ModularChart";
 
 export default function Incentives() {
   const amountRef = useRef<HTMLSpanElement | null>(null);
@@ -12,14 +12,15 @@ export default function Incentives() {
     animateAmount(amountRef.current, 8000000);
   }, []);
 
-//10,927 Solicitud de incentivos
-const incentivesData: DataPoint[] = [
-  { year: 2020, green: 1.2, red: 0.0 },
-  { year: 2021, green: 3.6, red: 0.6 },
-  { year: 2022, green: 3.3, red: 1.4 },
-  { year: 2023, green: 7.6, red: 1.6 },
-  { year: 2024, green: 8.8, red: 2.4 },
-];
+  const [chartData] = useState([
+    { value: 883, label: "2019", color: "#1B4C84" },
+    { value: 571, label: "2020", color: "#1B4C84" },
+    { value: 190, label: "2021", color: "#1B4C84" },
+    { value: 912, label: "2022", color: "#1B4C84" },
+    { value: 631, label: "2023", color: "#1B4C84" },
+    { value: 937, label: "2024", color: "#1B4C84" },
+    { value: 1023, label: "2025", color: "#1B4C84" },
+  ]);
 
   return (
     <section className="bg-white py-12 md:py-20">
@@ -34,10 +35,7 @@ const incentivesData: DataPoint[] = [
         </div>
 
         <div className="flex flex-col lg:flex-row items-center gap-0 md:gap-24 w-full mt-8">
-          <div className="w-full lg:w-10/12 h-72 sm:h-80 md:h-96">
-            <LineChartDoble data={incentivesData} />
-          </div>
-
+          <ModularChart data={chartData} />
           <div className="flex flex-col items-center lg:items-start gap-2 text-center lg:text-left lg:w-1/2">
             <p className="text-primary text-lg sm:text-xl md:text-2xl font-medium leading-relaxed">
               Para la inversión en sistemas y equipos de energía renovable

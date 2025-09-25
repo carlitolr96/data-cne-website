@@ -1,9 +1,22 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
+import React from "react";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ChartOptions,
+} from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import { Bar } from "react-chartjs-2";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
-import { animateBarsOnce, animatePercentageOnce } from "@/utils/animations";
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
 interface BarData {
   value: number;
@@ -16,79 +29,85 @@ interface BarChartProps {
   heightFactor?: number;
 }
 
-export default function BarChart({ data, heightFactor = 1.5 }: BarChartProps) {
-  const barsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const numbersRef = useRef<(HTMLSpanElement | null)[]>([]);
-  const percentRef = useRef<HTMLSpanElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+export default function BarChart({ data, heightFactor = 1 }: BarChartProps) {
+  if (data.length < 2) return null;
 
-  useEffect(() => {
-    if (!containerRef.current || data.length < 2) return;
+  const startValue = data[0].value;
+  const endValue = data[data.length - 1].value;
+  const percentage = ((endValue - startValue) / startValue) * 100;
 
-    animateBarsOnce({
-      data,
-      barsRef,
-      numbersRef,
-      heightFactor,
-      trigger: containerRef.current,
-    });
+  const chartData = {
+    labels: data.map((d) => d.label),
+    datasets: [
+      {
+        data: data.map((d) => d.value),
+        backgroundColor: data.map((d) => d.color || "#17447a"),
+        borderRadius: 0,
+        barThickness: 60,
+      },
+    ],
+  };
 
-    // Tomar el primer y último valor para calcular el % de aumento
-    const startValue = data[0].value;
-    const endValue = data[data.length - 1].value;
-
-    animatePercentageOnce(percentRef.current, startValue, endValue, containerRef.current);
-  }, [data, heightFactor]);
-
-  const setBarRef = useCallback((el: HTMLDivElement | null, i: number) => {
-    barsRef.current[i] = el;
-  }, []);
-
-  const setNumberRef = useCallback((el: HTMLSpanElement | null, i: number) => {
-    numbersRef.current[i] = el;
-  }, []);
+  const options: ChartOptions<"bar"> = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      datalabels: {
+        anchor: "end",
+        align: "end",
+        formatter: (value: number) => `${value.toLocaleString("en-US")} MW`,
+        font: {
+          weight: "bold",
+          family: "Montserrat",
+          size: 14,
+        },
+        color: "#17447a",
+      },
+      title: {
+        display: false,
+        font: {
+          size: 18,
+          weight: "bold",
+          family: "Montserrat",
+        },
+        color: "#17447a",
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          font: {
+            size: 14,
+            weight: "bold",
+            family: "Montserrat",
+          },
+          color: "#17447a",
+        },
+      },
+      y: {
+        display: false,
+      },
+    },
+  };
 
   return (
-    <div
-      ref={containerRef}
-      className="relative flex flex-col-reverse md:flex-row items-center justify-center md:space-x-10 h-auto md:h-64"
-    >
-      <div className="flex gap-5 justify-center md:justify-start">
-        {data.map((item, i) => (
-          <div
-            key={item.label}
-            className="relative flex flex-col items-center justify-end h-48"
-          >
-            <span
-              ref={(el) => setNumberRef(el, i)}
-              className="mb-1 text-primary text-sm md:text-xl font-bold whitespace-nowrap"
-            >
-              0 MW
-            </span>
-
-            <div
-              ref={(el) => setBarRef(el, i)}
-              className="w-16 bg-primary relative z-0"
-              style={{
-                backgroundColor: item.color || "#000000",
-                height: "0px",
-                transformOrigin: "bottom",
-              }}
-            />
-
-            <span className="mt-2 text-primary text-lg font-bold">
-              {item.label}
-            </span>
-          </div>
-        ))}
+    <div className="flex flex-col md:flex-row items-center justify-center gap-10">
+      <div className="w-64 h-64">
+        <Bar data={chartData} options={options} />
       </div>
 
-      <div className="flex flex-col items-center mt-6 ml-6 md:mt-0 md:ml-0 mb-5">
+      <div className="flex flex-col items-center mt-6 md:mt-0">
         <span className="flex items-center text-4xl font-extrabold text-primary">
-          <span ref={percentRef}>0%</span>
+          {percentage.toFixed(1)}%
           <Image
             src={assets.ArrowUpWideIcon}
-            alt="CNE Arrow Up Wide"
+            alt="Arrow Up"
             width={30}
             height={30}
             className="ml-2"

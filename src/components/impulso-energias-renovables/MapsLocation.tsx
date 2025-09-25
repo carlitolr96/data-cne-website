@@ -37,6 +37,7 @@ export default function MapsLocation() {
             <MapWithPoints
               mapImage={assets.MapaOneSVG}
               points={locationspoint}
+              dataType="energy"
             />
             <div className="flex justify-center items-center text-center">
               <p className="text-sm text-gray-400 mr-1">
@@ -63,6 +64,7 @@ export default function MapsLocation() {
               <MapWithPoints
                 mapImage={assets.MapaOneSVG}
                 points={locationspoint}
+                dataType="energy"
               />
               <div className="flex justify-center items-center text-center">
                 <p className="text-sm text-gray-400 mr-1">

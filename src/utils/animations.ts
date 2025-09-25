@@ -708,6 +708,7 @@ export const animateBarsOnce = ({
   });
 };
 
+
 export const animatePercentageOnce = (
   element: HTMLElement | null,
   startValue: number,
@@ -716,7 +717,6 @@ export const animatePercentageOnce = (
 ) => {
   if (!element) return;
 
-  // Fórmula: (final - inicial) / inicial * 100
   const percentage = ((endValue - startValue) / startValue) * 100;
 
   const obj = { val: 0 };
@@ -919,7 +919,6 @@ export const animateDoubleLineChart = (
   paths: (SVGPathElement | null)[],
   pointsArray: React.MutableRefObject<(SVGCircleElement | null)[]>[]
 ) => {
-  // Filtrar paths nulos
   const validPaths = paths.filter((path) => path !== null) as SVGPathElement[];
 
   validPaths.forEach((path, index) => {

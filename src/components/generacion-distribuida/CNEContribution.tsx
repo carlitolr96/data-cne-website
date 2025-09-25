@@ -5,8 +5,6 @@ import Image from "next/image";
 import ModularChart from "@/components/ModularChart";
 
 export default function CNEContribution() {
-
-
   //Editar tamano
   const [chartData] = useState([
     { value: 271, label: "EDENORTE", color: "#1B4C84" },

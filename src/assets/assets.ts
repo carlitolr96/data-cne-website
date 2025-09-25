@@ -381,9 +381,11 @@ export interface EditionPen {
 export interface LocationPoint {
   id: string;
   name: string;
-  description: string;
   x: number;
   y: number;
+  capacidad: number;
+  capacidadBateria?: number;
+  provincia: string;
 }
 
 export interface Regulations {
@@ -454,6 +456,15 @@ export interface LocationsPoint {
   x: number;
   y: number;
   icon?: StaticImageData | string;
+}
+
+export interface LocationsCAE {
+  id: string;
+  name: string;
+  x: number;
+  y: number;
+  icon?: StaticImageData | string;
+  total: number;
 }
 
 export const itemsystem: ItemSystem[] = [
@@ -834,32 +845,163 @@ export const stageicon: StageIcon[] = [
 
 export const locationspoint: LocationPoint[] = [
   {
-    id: "santo-domingo",
-    name: "Santo Domingo",
-    description: "Capital del país con proyectos solares y eólicos en marcha.",
-    x: 55,
+    id: "parque-fotovoltaico-fv5",
+    name: "PARQUE FOTOVOLTAICO FV5",
+    x: 85,
+    y: 40,
+    capacidad: 13.2,
+    capacidadBateria: 16.5,
+    provincia: "La Altagracia",
+  },
+  {
+    id: "san-pedro-bio-energy-fase-ii",
+    name: "SAN PEDRO BIO-ENERGY (FASE II)",
+    x: 75,
+    y: 55,
+    capacidad: 30,
+    provincia: "San Pedro de Macorís",
+  },
+  {
+    id: "integra-solar",
+    name: "INTEGRA SOLAR",
+    x: 65,
     y: 60,
+    capacidad: 9.9,
+    provincia: "Santo Domingo",
   },
   {
-    id: "santiago",
-    name: "Santiago",
-    description: "Centro de proyectos hidroeléctricos en la zona norte.",
+    id: "parque-eolico-esperanza",
+    name: "PARQUE EOLICO ESPERANZA",
+    x: 30,
+    y: 40,
+    capacidad: 50,
+    provincia: "Valverde",
+  },
+  {
+    id: "planta-solar-fotovoltaica-payita-2",
+    name: "PLANTA SOLAR FOTOVOLTAICA PAYITA 2",
+    x: 60,
+    y: 45,
+    capacidad: 49.98,
+    capacidadBateria: 60,
+    provincia: "María Trinidad Sánchez",
+  },
+  {
+    id: "helios-solar-park",
+    name: "HELIOS SOLAR PARK",
+    x: 65,
+    y: 58,
+    capacidad: 92.4,
+    capacidadBateria: 115.6,
+    provincia: "Santo Domingo",
+  },
+  {
+    id: "dicayagua-solar-park",
+    name: "DICAYAGUA SOLAR PARK",
     x: 40,
-    y: 35,
+    y: 50,
+    capacidad: 145,
+    capacidadBateria: 308,
+    provincia: "Santigo",
   },
   {
-    id: "punta-cana",
-    name: "Punta Cana",
-    description: "Expansión de energía renovable para turismo sostenible.",
-    x: 80,
+    id: "instalacion-fotovoltaica-santa-clara-energy-group",
+    name: "INSTALACION FOTOVOLTAICA SANTA CLARA ENERGY GROUP DE 84 MWp/67.70 MWn",
+    x: 63,
+    y: 62,
+    capacidad: 67.7,
+    capacidadBateria: 80.12,
+    provincia: "Santo Domingo",
+  },
+  {
+    id: "parque-solar-tornasol",
+    name: "PARQUE SOLAR TORNASOL",
+    x: 55,
     y: 65,
+    capacidad: 48.29,
+    provincia: "Peravia",
   },
   {
-    id: "san-cristobal",
-    name: "San Cristobal",
-    description: "Expansión de energía renovable para turismo sostenible.",
+    id: "pimentel-energy",
+    name: "PIMENTEL ENERGY",
     x: 50,
+    y: 45,
+    capacidad: 119.6,
+    capacidadBateria: 48.614,
+    provincia: "Duarte",
+  },
+  {
+    id: "parque-solar-girasol-ii",
+    name: "PARQUE SOLAR GIRASOL II",
+    x: 60,
     y: 65,
+    capacidad: 48.29,
+    provincia: "San Cristobal",
+  },
+  {
+    id: "parque-solar-dominicana-azul",
+    name: "PARQUE SOLAR DOMINICANA AZUL",
+    x: 61,
+    y: 44,
+    capacidad: 82.888,
+    capacidadBateria: 99.2,
+    provincia: "María Trinidad Sánchez",
+  },
+  {
+    id: "planta-solar-fotovoltaica-payita-1",
+    name: "PLANTA SOLAR FOTOVOLTAICA PAYITA 1",
+    x: 59,
+    y: 46,
+    capacidad: 50,
+    provincia: "María Trinidad Sánchez",
+  },
+  {
+    id: "montecristi-solar-fase-ii",
+    name: "MONTECRISTI SOLAR FASE II",
+    x: 25,
+    y: 35,
+    capacidad: 52.8,
+    provincia: "Montecristi",
+  },
+  {
+    id: "bani-solar",
+    name: "BANI SOLAR",
+    x: 54,
+    y: 66,
+    capacidad: 160,
+    provincia: "Peravia",
+  },
+  {
+    id: "parque-energy-solar-del-este-cabreto-i",
+    name: "PARQUE ENERGY SOLAR DEL ESTE CABRETO I",
+    x: 67,
+    y: 59,
+    capacidad: 50,
+    provincia: "Santo Domingo",
+  },
+  {
+    id: "natural-world-energy-villarpando",
+    name: "NATURAL WORLD ENERGY, VILLARPANDO",
+    x: 45,
+    y: 70,
+    capacidad: 100,
+    provincia: "Azua",
+  },
+  {
+    id: "parque-generacion-electro-solar",
+    name: "PARQUE GENERACION ELECTRO SOLAR",
+    x: 46,
+    y: 69,
+    capacidad: 40,
+    provincia: "Azua",
+  },
+  {
+    id: "planta-de-valoracion-de-residuos-solidos-ecoparque-rafey",
+    name: "PLANTA DE VALORACIÓN DE RESIDUOS SÓLIDOS DE LA CIUDAD DE SANTIAGO ECOPARQUE RAFEY",
+    x: 41,
+    y: 51,
+    capacidad: 80,
+    provincia: "Santiago",
   },
 ];
 
@@ -1143,28 +1285,208 @@ export const benefitsIonizantes: BenefitsIonizantes[] = [
   },
 ];
 
-export const locationsCAE: LocationsPoint[] = [
+export const locationsCAE: LocationsCAE[] = [
   {
-    id: "1",
-    name: "Proyecto Solar",
-    description: "Planta de energía solar en desarrollo.",
+    id: "azua",
+    name: "Azua",
+    x: 45,
+    y: 70,
+    total: 17411,
+  },
+  {
+    id: "bahoruco",
+    name: "Bahoruco",
+    x: 40,
+    y: 65,
+    total: 1825,
+  },
+  {
+    id: "barahona",
+    name: "Barahona",
+    x: 35,
+    y: 68,
+    total: 6195,
+  },
+  {
+    id: "distrito-nacional",
+    name: "Distrito Nacional",
+    x: 65,
+    y: 60,
+    total: 15750,
+  },
+  {
+    id: "duarte",
+    name: "Duarte",
+    x: 55,
+    y: 45,
+    total: 2693,
+  },
+  {
+    id: "el-seibo",
+    name: "El Seibo",
+    x: 75,
+    y: 50,
+    total: 1721,
+  },
+  {
+    id: "elias-pina",
+    name: "Elias Piña",
+    x: 35,
+    y: 55,
+    total: 409,
+  },
+  {
+    id: "espaillat",
+    name: "Espaillat",
+    x: 50,
+    y: 40,
+    total: 13517,
+  },
+  {
+    id: "hato-mayor",
+    name: "Hato Mayor",
+    x: 70,
+    y: 55,
+    total: 2025,
+  },
+  {
+    id: "hermanas-mirabal",
+    name: "Hermanas Mirabal",
+    x: 60,
+    y: 45,
+    total: 350,
+  },
+  {
+    id: "independencia",
+    name: "Independencia",
+    x: 30,
+    y: 65,
+    total: 1612,
+  },
+  {
+    id: "la-altagracia",
+    name: "La Altagracia",
+    x: 80,
+    y: 45,
+    total: 7827,
+  },
+  {
+    id: "la-romana",
+    name: "La Romana",
+    x: 75,
+    y: 60,
+    total: 8668,
+  },
+  {
+    id: "la-vega",
+    name: "La Vega",
+    x: 50,
+    y: 50,
+    total: 11379,
+  },
+  {
+    id: "maria-trinidad-sanchez",
+    name: "María Trinidad Sánchez",
+    x: 65,
+    y: 40,
+    total: 248,
+  },
+  {
+    id: "monsenor-nouel",
+    name: "Monseñor Nouel",
+    x: 55,
+    y: 55,
+    total: 4286,
+  },
+  {
+    id: "monte-plata",
+    name: "Monte Plata",
+    x: 70,
+    y: 58,
+    total: 4409,
+  },
+  {
+    id: "montecristi",
+    name: "Montecristi",
+    x: 25,
+    y: 35,
+    total: 3080,
+  },
+  {
+    id: "peravia",
+    name: "Peravia",
+    x: 55,
+    y: 65,
+    total: 848,
+  },
+  {
+    id: "puerto-plata",
+    name: "Puerto Plata",
+    x: 40,
+    y: 35,
+    total: 6834,
+  },
+  {
+    id: "samana",
+    name: "Samaná",
+    x: 70,
+    y: 35,
+    total: 75,
+  },
+  {
+    id: "san-cristobal",
+    name: "San Cristobal",
+    x: 60,
+    y: 65,
+    total: 5027,
+  },
+  {
+    id: "san-jose-de-ocoa",
+    name: "San José de Ocoa",
+    x: 50,
+    y: 60,
+    total: 922,
+  },
+  {
+    id: "san-juan",
+    name: "San Juan",
+    x: 40,
+    y: 60,
+    total: 3916,
+  },
+  {
+    id: "san-pedro-de-macoris",
+    name: "San Pedro de Macoris",
+    x: 72,
+    y: 62,
+    total: 5907,
+  },
+  {
+    id: "santiago",
+    name: "Santiago",
+    x: 45,
+    y: 45,
+    total: 47462,
+  },
+  {
+    id: "santiago-rodriguez",
+    name: "Santiago Rodríguez",
+    x: 35,
+    y: 40,
+    total: 210,
+  },
+  {
+    id: "santo-domingo",
+    name: "Santo Domingo",
+    x: 65,
+    y: 62,
+    total: 117565,
+  },
+  {
+    id: "valverde",
+    name: "Valverde",
     x: 30,
     y: 40,
-  },
-  {
-    id: "2",
-    name: "Parque Eólico",
-    description: "Generación eólica en la costa.",
-    x: 70,
-    y: 50,
-    icon: "",
-  },
-  {
-    id: "3",
-    name: "Parque Hidraulico",
-    description: "Generación Hidraulico en la costa.",
-    x: 70,
-    y: 30,
-    icon: "",
+    total: 2384,
   },
 ];

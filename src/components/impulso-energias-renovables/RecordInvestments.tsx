@@ -7,14 +7,14 @@ import Boton from "@/components/Boton";
 
 export default function RecordInvestments() {
   const chartDoughnutData = [
-    { label: "Bienes Raices", value: 13.8, color: "#164EA1" },
     { label: "Energía", value: 25.7, color: "#284098" },
-    { label: "Comunicaciones", value: 1.8, color: "#15ABDF" },
-    { label: "Comercio", value: 9.4, color: "#148780" },
-    { label: "Minería", value: 14.5, color: "#65686C" },
-    { label: "Financiero", value: 3.0, color: "#4C5561" },
-    { label: "Zonas Francas", value: 6.9, color: "#109B49" },
     { label: "Turismo", value: 22.4, color: "#006C3E" },
+    { label: "Minería", value: 14.5, color: "#65686C" },
+    { label: "Bienes Raices", value: 13.8, color: "#164EA1" },
+    { label: "Comercio", value: 9.4, color: "#148780" },
+    { label: "Zonas Francas", value: 6.9, color: "#109B49" },
+    { label: "Financiero", value: 3.0, color: "#4C5561" },
+    { label: "Comunicaciones", value: 1.8, color: "#15ABDF" },
     { label: "Otros", value: 2.4, color: "#999FA2" },
   ];
 
@@ -39,14 +39,10 @@ export default function RecordInvestments() {
           Sector energético encabeza captación de inversión extranjera directa
           (IED)
         </span>
-
-        <p className="text-primary font-light sm:text-base md:text-sm mt-3">
-          (Datos del Banco Central Enero-junio 2025)
-        </p>
       </div>
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10 px-0 md:px-6 mt-10">
-        <div className="flex-1 flex flex-col items-center">
+        <div className="flex-1 flex flex-col mt-18">
           <DobleBarChart data={chartData} />
           <p className="text-primary text-sm font-light mt-2 text-center">
             Evolución comparativa de IED en MM USD
@@ -58,9 +54,9 @@ export default function RecordInvestments() {
         <div className="flex-1">
           <div className="flex flex-col justify-center items-center">
             <DoughnutChart data={chartDoughnutData} />
-            <p className="text-primary text-sm font-light mt-4 text-center">
-              Participación en la IED por sector 2019 - 2024
-            </p>
+        <p className="text-primary font-light sm:text-base md:text-sm mt-3">
+          (Datos del Banco Central Enero-junio 2025)
+        </p>
           </div>
         </div>
       </div>

@@ -49,17 +49,16 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({ data, title }) => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: false, // Ocultamos la leyenda nativa
+        display: false,
       },
       tooltip: { 
         enabled: true,
         callbacks: {
           label: function(context) {
             const label = context.label || '';
-            const value = data[context.dataIndex].value; // Valor original
-            const total = data.reduce((acc, item) => acc + item.value, 0);
-            const percentage = ((value / total) * 100).toFixed(1) + '%';
-            return `${label}: ${value} (${percentage})`;
+            const value = data[context.dataIndex].value;
+            // Solo mostrar el valor, sin porcentaje
+            return `${label}: ${value}`;
           }
         }
       },
@@ -67,24 +66,10 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({ data, title }) => {
         display: !!title,
         text: title,
         color: "#144C84",
-        font: { size: 16, weight: "bold" },
+        font: { size: 16, weight: "bold", family: "Montserrat" },
       },
       datalabels: {
-        color: "#000",
-        formatter: (value: number, ctx) => {
-          if (value === 0) return ""; // Ocultar porcentaje si está desactivado
-          const originalValue = data[ctx.dataIndex].value;
-          const total = data.reduce((acc, item) => acc + item.value, 0);
-          const percentage = ((originalValue / total) * 100).toFixed(1) + "%";
-          return percentage;
-        },
-        font: {
-          weight: "bold",
-          size: 12,
-        },
-        anchor: "end",
-        align: "end",
-        offset: 8, 
+        display: false, // ← Esto desactiva completamente los datalabels
       },
     },
   };
@@ -93,7 +78,7 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({ data, title }) => {
 
   return (
     <div className="relative w-full flex flex-col lg:flex-row justify-center items-start gap-8 p-4">
-      <div className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] lg:w-[350px] lg:h-[350px] mx-auto">
+      <div className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] lg:w-[300px] lg:h-[300px] mx-auto">
         <Doughnut 
           ref={chartRef}
           data={chartData} 
@@ -123,9 +108,9 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({ data, title }) => {
                   <span className="text-sm font-medium text-gray-700">
                     {item.label}
                   </span>
-                  <span className="text-sm font-bold text-gray-900 ml-4">
+                  {/* <span className="text-sm font-bold text-gray-900 ml-4">
                     {percentage}
-                  </span>
+                  </span> */}
                 </div>
               </div>
             );
@@ -154,9 +139,9 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({ data, title }) => {
                   <span className="text-sm font-medium text-gray-700">
                     {item.label}
                   </span>
-                  <span className="text-sm font-bold text-gray-900 ml-4">
+                  {/* <span className="text-sm font-bold text-gray-900 ml-4">
                     {percentage}
-                  </span>
+                  </span> */}
                 </div>
               </div>
             );

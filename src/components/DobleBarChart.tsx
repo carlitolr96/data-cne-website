@@ -4,8 +4,8 @@ import { useRef, useEffect } from "react";
 import { animateDoubleChartsTwo } from "@/utils/animations";
 
 interface DoubleBarData {
-  value1: number; // valor inicial (ej: 1141)
-  value2: number; // valor final (ej: 276.7)
+  value1: number;
+  value2: number; 
   valueText1: string;
   valueText2: string;
   color1?: string;

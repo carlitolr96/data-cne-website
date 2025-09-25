@@ -10,7 +10,11 @@ export default function MapsLocation() {
       <div className="max-w-7xl mx-auto relative">
         <div className="absolute inset-0 flex items-center justify-start pl-0">
           <div className="relative w-full max-w-4xl">
-            <MapWithPoints mapImage={assets.MapaOneSVG} points={locationsCAE} />
+            <MapWithPoints
+              mapImage={assets.MapaOneSVG}
+              points={locationsCAE}
+              dataType="cae"
+            />
             <div className="flex justify-center items-center text-center">
               <p className="text-sm text-gray-400 mr-1">
                 Interaccion en los puntos rojos

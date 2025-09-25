@@ -13,8 +13,8 @@ export default function EmitionsSession() {
   ]);
 
   const [chartData2] = useState([
-    { value: 1327, label: "permisos de importación ", color: "#B5A031" },
-    { value: 69, label: "permisos de exportación ", color: "#346C88" },
+    { value: 1327, label: "Permisos de importación ", color: "#B5A031" },
+    { value: 69, label: "Permisos de exportación ", color: "#346C88" },
   ]);
 
   return (
@@ -30,20 +30,18 @@ export default function EmitionsSession() {
       </div>
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10 px-0 md:px-6 mt-10">
-        <div className="flex-1 flex flex-col justify-end">
+        <div className="w-full flex justify-end">
           <div className="flex flex-col justify-end text-end text-primary">
             <h2 className="font-medium text-xl">Total acumulado:</h2>
             <p className="font-black text-xl">+11,000 autorizaciones</p>
+            <ModularChart data={chartData1} />
           </div>
-          <ModularChart data={chartData1} />
         </div>
 
         <div className="hidden lg:block w-0.5 h-80 bg-[#FF9000] mx-6"></div>
 
-        <div className="flex-1 flex flex-col items-center p-5">
-          <div className="border-1 rounded-md border-primary">
-            <ModularChart className="uppercase" data={chartData2} />
-          </div>
+        <div className="w-full flex items-center p-5">
+          <ModularChart className="uppercase" data={chartData2} />
         </div>
       </div>
 
