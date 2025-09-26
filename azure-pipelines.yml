@@ -13,17 +13,22 @@ variables:
   NODE_VERSION: "20.x"
 
 steps:
+  # 1. Instalar Node.js
   - task: NodeTool@0
     inputs:
       versionSpec: "$(NODE_VERSION)"
     displayName: "Install Node.js"
 
+  # 2. Instalar dependencias y compilar optimize-images.ts
   - script: |
       npm ci
+      npx tsc scripts/optimize-images.ts --esModuleInterop --target ES2019 --module commonjs --outDir scripts/build
+      node scripts/build/optimize-images.js
       npm run build
     workingDirectory: "$(System.DefaultWorkingDirectory)"
     displayName: "Build Next.js static export"
 
+  # 3. Empaquetar artefacto (carpeta out/)
   - task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: "$(System.DefaultWorkingDirectory)/out"
@@ -33,15 +38,17 @@ steps:
       replaceExistingArchive: true
     displayName: "Create artifact ZIP"
 
+  # 4. Deploy a QA slot (rama qa)
   - task: AzureWebApp@1
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/qa')
     inputs:
-      azureSubscription: "ConectDataCNE" 
+      azureSubscription: "ConectDataCNE"
       appName: "$(QA_WEBAPP_NAME)"
       package: "$(Build.ArtifactStagingDirectory)/app.zip"
       slotName: "qa"
     displayName: "Deploy to QA slot"
 
+  # 5. Deploy a producción (rama main)
   - task: AzureWebApp@1
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
     inputs:
