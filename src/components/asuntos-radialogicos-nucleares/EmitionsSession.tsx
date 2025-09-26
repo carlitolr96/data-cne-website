@@ -34,15 +34,24 @@ export default function EmitionsSession() {
           <div className="flex flex-col justify-end text-end text-primary">
             <h2 className="font-medium text-xl">Total acumulado:</h2>
             <p className="font-black text-xl">+11,000 autorizaciones</p>
-            <ModularChart data={chartData1} />
+            <div
+              style={{ width: "500px", height: "400px" }}
+              className="relative"
+            >
+              <div className="absolute inset-0">
+                <ModularChart data={chartData1} />
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="hidden lg:block w-0.5 h-80 bg-[#FF9000] mx-6"></div>
+        {/* <div className="hidden lg:block w-0.5 h-80 bg-[#FF9000] mx-6"></div> */}
 
-        <div className="w-full flex items-center p-5">
-          <ModularChart className="uppercase" data={chartData2} />
-        </div>
+        {/* <div className="w-full flex items-center p-5">
+          <div style={{ width: "400px", height: "490px" }}>
+            <ModularChart className="uppercase" data={chartData2} />
+          </div>
+        </div> */}
       </div>
 
       <div className="mt-12 flex flex-col items-center justify-center text-center">

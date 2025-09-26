@@ -4,8 +4,8 @@ import DoughnutChart from "@/components/DoughnutChart";
 
 export default function Sector() {
   const chartDoughnutData = [
+    { label: "Energía", value: 25.7, color: "#284098" },
   { label: "Bienes Raices", value: 13.8, color: "#164EA1" },
-  { label: "Energía", value: 25.7, color: "#284098" },
   { label: "Comunicaciones", value: 1.8, color: "#15ABDF" },
 ];
 

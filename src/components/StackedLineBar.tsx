@@ -35,6 +35,7 @@ interface ModularChartProps {
   animate?: boolean;
   barPercentage?: number;
   categoryPercentage?: number;
+  barThickness?: number;
 }
 
 export default function StackedLineBar({
@@ -43,6 +44,7 @@ export default function StackedLineBar({
   showValues = false,
   animate = true,
   barPercentage = 0.9,
+  barThickness= 50,
   categoryPercentage = 0.8,
 }: ModularChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -63,6 +65,7 @@ export default function StackedLineBar({
           borderRadius: 0,
           barPercentage,
           categoryPercentage,
+          barThickness,
         },
       ],
     };
@@ -161,7 +164,7 @@ export default function StackedLineBar({
     });
 
     return () => chartInstance.current?.destroy();
-  }, [data, animate, barPercentage, categoryPercentage, showValues]);
+  }, [data, animate, barPercentage, categoryPercentage, showValues, barThickness]);
 
   return (
     <canvas

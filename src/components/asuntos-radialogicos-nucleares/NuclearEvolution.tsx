@@ -22,7 +22,7 @@ export default function NuclearEvolution() {
           <div className="lg:w-1/2 space-y-6">
             {evolutionPoints.map((point, index) => (
               <div key={index} className="flex items-center gap-4">
-                <div className="w-3 h-3 bg-orange-500 rounded-full flex-shrink-0"></div>
+                <div className="w-3 h-3 bg-[#FF9000] rounded-full flex-shrink-0"></div>
                 <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 flex-1">
                   <div className="flex items-center gap-3">
                     <point.icon className={`w-5 h-5 ${point.color}`} />

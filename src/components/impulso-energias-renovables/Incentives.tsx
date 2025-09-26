@@ -13,10 +13,6 @@ export default function Incentives() {
   }, []);
 
   const [chartData] = useState([
-    { value: 883, label: "2019", color: "#1B4C84" },
-    { value: 571, label: "2020", color: "#1B4C84" },
-    { value: 190, label: "2021", color: "#1B4C84" },
-    { value: 912, label: "2022", color: "#1B4C84" },
     { value: 631, label: "2023", color: "#1B4C84" },
     { value: 937, label: "2024", color: "#1B4C84" },
     { value: 1023, label: "2025", color: "#1B4C84" },
@@ -35,7 +31,9 @@ export default function Incentives() {
         </div>
 
         <div className="flex flex-col lg:flex-row items-center gap-0 md:gap-24 w-full mt-8">
-          <ModularChart data={chartData} />
+          <div style={{ width: '500px', height: '300px' }}>
+            <ModularChart data={chartData} />
+          </div>
           <div className="flex flex-col items-center lg:items-start gap-2 text-center lg:text-left lg:w-1/2">
             <p className="text-primary text-lg sm:text-xl md:text-2xl font-medium leading-relaxed">
               Para la inversión en sistemas y equipos de energía renovable

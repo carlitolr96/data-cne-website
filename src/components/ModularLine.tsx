@@ -17,44 +17,29 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-const valuePlugin: Plugin<"line"> = {
-  id: "valuePlugin",
-  afterDatasetsDraw: (chart: Chart<"line">) => {
-    const { ctx } = chart;
-    chart.data.datasets.forEach((dataset, datasetIndex) => {
-      const meta = chart.getDatasetMeta(datasetIndex);
-      if (!meta.hidden) {
-        const lastPoint = meta.data[meta.data.length - 1] as { x: number; y: number };
-        const value = dataset.data[dataset.data.length - 1];
-        if (lastPoint) {
-          ctx.save();
-          ctx.fillStyle = "#183B6B";
-          ctx.font = '900 14px "Montserrat", sans-serif';
-          ctx.textAlign = "left";
-          ctx.textBaseline = "middle";
-          ctx.fillText(`${value}`, lastPoint.x + 10, lastPoint.y - 10);
-
-          ctx.beginPath();
-          ctx.moveTo(lastPoint.x, lastPoint.y);
-          ctx.lineTo(lastPoint.x + 20, lastPoint.y - 20);
-          ctx.strokeStyle = "#FF8C00";
-          ctx.lineWidth = 2;
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(lastPoint.x + 20, lastPoint.y - 20);
-          ctx.lineTo(lastPoint.x + 15, lastPoint.y - 15);
-          ctx.lineTo(lastPoint.x + 25, lastPoint.y - 15);
-          ctx.closePath();
-          ctx.fillStyle = "#FF8C00";
-          ctx.fill();
-
-          ctx.restore();
-        }
-      }
-    });
-  },
-};
+// const valuePlugin: Plugin<"line"> = {
+//   id: "valuePlugin",
+//   afterDatasetsDraw: (chart: Chart<"line">) => {
+//     const { ctx } = chart;
+//     chart.data.datasets.forEach((dataset, datasetIndex) => {
+//       const meta = chart.getDatasetMeta(datasetIndex);
+//       if (!meta.hidden) {
+//         const lastPoint = meta.data[meta.data.length - 1] as { x: number; y: number };
+//         const value = dataset.data[dataset.data.length - 1];
+//         if (lastPoint) {
+//           ctx.save();
+//           ctx.fillStyle = "#183B6B";
+//           ctx.font = '900 14px "Montserrat", sans-serif';
+//           ctx.textAlign = "left";
+//           ctx.textBaseline = "middle";
+//           ctx.fillText(`${value}`, lastPoint.x + 10, lastPoint.y - 10);
+          
+//           ctx.restore();
+//         }
+//       }
+//     });
+//   },
+// };
 
 ChartJS.register(
   CategoryScale,
@@ -64,7 +49,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  valuePlugin
+  // valuePlugin
 );
 
 const options: ChartOptions<"line"> = {

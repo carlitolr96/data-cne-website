@@ -78,9 +78,6 @@ export default function ModularChart({
         borderWidth: 0,
         borderRadius: 0,
         barThickness: 60,
-        datalabels: {
-          display: false
-        }
       },
     ],
   };
@@ -91,58 +88,43 @@ export default function ModularChart({
     indexAxis: 'x',
     scales: {
       x: {
-        grid: {
-          display: false,
-        },
+        grid: { display: false },
         ticks: {
           color: "#1B4C84",
-          font: {
-            size: 14,
-            weight: "bold",
-            family: "Montserrat",
-          },
+          font: { size: 14, weight: "bold", family: "Montserrat" },
         },
       },
       y: {
         beginAtZero: true,
-        grid: {
-          display: false,
-        },
-        ticks: {
-          display: false,
-        },
-        border: {
-          display: false,
+        grid: { display: false },
+        ticks: { display: false },
+        border: { display: false },
+        afterFit: function(axis) {
+          axis.width = 50;
         },
       },
     },
     plugins: {
-      legend: {
-        display: false,
-      },
-      tooltip: {
-        enabled: true,
-        callbacks: {
-          label: function(context) {
-            return `Valor: ${context.parsed.y}`;
-          },
-        },
-      },
+      legend: { display: false },
+      tooltip: { enabled: true },
     },
-    animation: {
-      duration: 1000,
-      easing: 'easeOutQuart',
-    },
+    layout: {
+      padding: {
+        top: 30,
+        right: 20,
+        bottom: 0,
+        left: 20
+      }
+    }
   };
 
   return (
-    <div className={`relative w-full h-full ${className}`}>
+    <div className={`relative w-full h-full min-h-[300px] ${className}`}>
       <Bar 
         ref={chartRef}
         data={chartData} 
         options={options}
         plugins={[valuePlugin]}
-        className="h-full"
       />
     </div>
   );

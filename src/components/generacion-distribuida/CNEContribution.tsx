@@ -79,7 +79,7 @@ export default function CNEContribution() {
             </div>
 
             <div className="lg:w-1/2 w-full flex flex-col items-center">
-              <div className="w-full max-w-md flex justify-center h-64">
+              <div style={{ width: "400px", height: "350px" }}>
                 <ModularChart data={chartData} />
               </div>
               <p className="mt-4 text-primary text-sm font-medium text-center">
