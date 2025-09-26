@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
   "dev": "next dev",
-  "build": "npm run optimize:images && next build && next export",
+  "build:local": "npm run optimize:images && next build && next export",
   "optimize:images": "ts-node scripts/optimize-images.ts",
-  "build:ci": "tsc scripts/optimize-images.ts --outDir scripts/build --esModuleInterop --module commonjs && node scripts/build/optimize-images.js && next build && next export"
+  "build:ci": "tsc scripts/optimize-images.ts --outDir scripts/build --esModuleInterop --module commonjs && node scripts/build/optimize-images.js && next build && next export",
+  "build": "npm run build:ci"
 },
   "dependencies": {
     "@amcharts/amcharts5": "^5.13.6",
