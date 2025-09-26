@@ -90,17 +90,21 @@ export default function Goal() {
           </div>
         </div>
 
-        <div className="hidden sm:block absolute top-0 left-[calc(40rem)] w-[calc(80%-16.3rem)] h-full bg-gray z-0"></div>
+        {/* <div className="hidden sm:block absolute top-0 left-[calc(40rem)] w-[calc(80%-16.3rem)] h-full bg-gray z-0"></div> */}
 
         <div className="max-w-7xl flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-around px-6 py-4 gap-6 relative z-0 w-full">
+          {/* Primer número */}
           <div className="flex items-center sm:items-center justify-center gap-3 min-w-[120px]">
             <h1 className="text-6xl sm:text-5xl font-extrabold text-primary">
               {format.format(numberDef)}
             </h1>
           </div>
 
+          {/* Línea divisoria */}
+          <div className="block sm:hidden w-full h-0.5 bg-red"></div>
           <div className="hidden sm:block w-0.5 h-16 bg-red"></div>
 
+          {/* Segundo número */}
           <div className="flex flex-col items-center justify-center gap-3 min-w-[120px]">
             <h1 className="text-6xl sm:text-5xl font-extrabold text-primary">
               {format.format(dateProv)}
@@ -110,8 +114,11 @@ export default function Goal() {
             </span>
           </div>
 
+          {/* Línea divisoria */}
+          <div className="block sm:hidden w-full h-0.5 bg-red"></div>
           <div className="hidden sm:block w-0.5 h-16 bg-red"></div>
 
+          {/* Femenino */}
           <div className="flex flex-col items-center text-center sm:text-right min-w-[140px]">
             <div className="flex gap-2">
               <Image
@@ -129,8 +136,11 @@ export default function Goal() {
             </span>
           </div>
 
+          {/* Línea divisoria */}
+          <div className="block sm:hidden w-full h-0.5 bg-red"></div>
           <div className="hidden sm:block w-0.5 h-16 bg-red"></div>
 
+          {/* Masculino */}
           <div className="flex flex-col items-center text-center sm:text-right min-w-[140px]">
             <div className="flex gap-2">
               <Image
@@ -148,6 +158,7 @@ export default function Goal() {
             </span>
           </div>
         </div>
+        
       </div>
     </section>
   );

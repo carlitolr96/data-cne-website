@@ -44,7 +44,7 @@ export default function StackedLineBar({
   showValues = false,
   animate = true,
   barPercentage = 0.9,
-  barThickness= 50,
+  barThickness = 50,
   categoryPercentage = 0.8,
 }: ModularChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -63,7 +63,8 @@ export default function StackedLineBar({
           borderColor: data.map((item) => item.color || "#6366f1"),
           borderWidth: 0,
           borderRadius: 0,
-          barPercentage,
+          maxBarThickness: 60,
+          barPercentage: 0.6,
           categoryPercentage,
           barThickness,
         },
@@ -138,7 +139,7 @@ export default function StackedLineBar({
 
               const displayValue = Array.isArray(value)
                 ? value.join(" - ")
-                : value;
+                : (value as number).toLocaleString("en-US");
 
               const x = bar.x;
               const y = bar.y - 10;
@@ -164,7 +165,14 @@ export default function StackedLineBar({
     });
 
     return () => chartInstance.current?.destroy();
-  }, [data, animate, barPercentage, categoryPercentage, showValues, barThickness]);
+  }, [
+    data,
+    animate,
+    barPercentage,
+    categoryPercentage,
+    showValues,
+    barThickness,
+  ]);
 
   return (
     <canvas

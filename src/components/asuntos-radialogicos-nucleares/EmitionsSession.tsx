@@ -12,10 +12,10 @@ export default function EmitionsSession() {
     { value: 892, label: "IR", color: "#089EE8" },
   ]);
 
-  const [chartData2] = useState([
-    { value: 1327, label: "Permisos de importación ", color: "#B5A031" },
-    { value: 69, label: "Permisos de exportación ", color: "#346C88" },
-  ]);
+  // const [chartData2] = useState([
+  //   { value: 1327, label: "Permisos de importación ", color: "#B5A031" },
+  //   { value: 69, label: "Permisos de exportación ", color: "#346C88" },
+  // ]);
 
   return (
     <section className="bg-light min-h-screen flex flex-col justify-center py-10 sm:py-12">
@@ -34,10 +34,7 @@ export default function EmitionsSession() {
           <div className="flex flex-col justify-end text-end text-primary">
             <h2 className="font-medium text-xl">Total acumulado:</h2>
             <p className="font-black text-xl">+11,000 autorizaciones</p>
-            <div
-              style={{ width: "500px", height: "400px" }}
-              className="relative"
-            >
+            <div className="w-full sm:w-[500px] h-[400px] relative">
               <div className="absolute inset-0">
                 <ModularChart data={chartData1} />
               </div>

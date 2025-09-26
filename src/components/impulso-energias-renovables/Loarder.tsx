@@ -39,9 +39,9 @@ const Loader: React.FC = () => {
           </h1>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center w-full gap-4">
-          {/* 2019 */}
-          <div className="flex flex-col items-center text-center mb-4 md:mb-0">
+        <div className="flex flex-row items-center justify-center w-full gap-4">
+          {/* Punto 2019 */}
+          <div className="flex flex-col items-center text-center">
             <div
               ref={percent2019Ref}
               className="text-2xl sm:text-5xl font-black mb-1"
@@ -55,13 +55,14 @@ const Loader: React.FC = () => {
             <div className="text-lg sm:text-md font-bold">2019</div>
           </div>
 
-          {/* Línea de conexión */}
+          {/* Barra con degradado y animación */}
           <div className="flex-1 flex items-center justify-center">
-            <div className="w-full md:h-2 md:w-full h-2 bg-white/20 rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden">
               <div
                 ref={progressRef}
-                className="h-full rounded-full"
+                className="h-full rounded-full transition-all duration-1000"
                 style={{
+                  width: "0%", // 👉 este ancho lo actualizas con JS para animar
                   background:
                     "linear-gradient(90deg, #FFBF00 0%, #7DB925 70%, #19E53E 100%)",
                 }}
@@ -69,8 +70,8 @@ const Loader: React.FC = () => {
             </div>
           </div>
 
-          {/* 2025 */}
-          <div className="flex flex-col items-center text-center mb-4 md:mb-0">
+          {/* Punto 2025 */}
+          <div className="flex flex-col items-center text-center">
             <div
               ref={percent2025Ref}
               className="text-2xl sm:text-5xl font-black mb-1"
@@ -84,12 +85,12 @@ const Loader: React.FC = () => {
             <div className="text-lg sm:text-md font-bold">2025</div>
           </div>
 
-          {/* Línea de conexión */}
+          {/* Barra vacía después de 2025 */}
           <div className="flex-1 flex items-center justify-center">
-            <div className="w-full md:h-2 md:w-full h-2 bg-white/20 rounded-full" />
+            <div className="w-full h-2 bg-white/20 rounded-full" />
           </div>
 
-          {/* 2030 */}
+          {/* Punto 2030 */}
           <div className="flex flex-col items-center text-center">
             <div
               ref={percent2030Ref}

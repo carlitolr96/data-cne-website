@@ -6,6 +6,7 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 export const metadata = {
   title: "Data CNE Website",
   description: "Conectando datos, impulsando energía",
+  viewport: "width=device-width, initial-scale=1.0",
 };
 
 export default function RootLayout({
@@ -16,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content={metadata.description} />
         <meta charSet="UTF-8" />
       </head>

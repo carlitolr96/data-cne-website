@@ -58,7 +58,7 @@ export default function BarChart({ data, heightFactor = 1 }: BarChartProps) {
       datalabels: {
         anchor: "end",
         align: "end",
-        formatter: (value: number) => `${value.toLocaleString("en-US")} MW`,
+        formatter: (value: number) => `${value.toLocaleString("en-US")}`,
         font: {
           weight: "bold",
           family: "Montserrat",

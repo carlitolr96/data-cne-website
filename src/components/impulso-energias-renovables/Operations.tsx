@@ -114,7 +114,7 @@ export default function Operations() {
                       width={18}
                       height={18}
                     />
-                    <span className="text-xs sm:text-sm md:text-base">
+                    <span className="text-xs sm:text-sm md:text-base text-nowrap">
                       {slide.location}
                     </span>
                   </div>

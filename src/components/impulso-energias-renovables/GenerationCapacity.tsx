@@ -26,7 +26,7 @@ export default function GenerationCapacity() {
 
         <div className="flex flex-col items-center md:items-center">
           <h2 className="text-lg font-semibold text-primary mb-2">
-            Capacidad instalada
+            Capacidad Instalada (Mw)
           </h2>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">

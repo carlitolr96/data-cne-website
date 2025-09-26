@@ -704,19 +704,19 @@ export const navitemsone: NavItemsOne[] = [
 export const slideoperations: SlideOperations[] = [
   {
     img: "/Swiper-Slide/image-estadisticas/PLANTASOLARCUMAYASAProvinciaRomanaCumayasa.jpg",
-    location: "PLANTA SOLAR CUMAYASA Provincia La Romana - Cumayasa",
+    location: "Planta Solar Cumayasa - La Romana",
   },
   {
     img: "/Swiper-Slide/image-estadisticas/PLANTASOLARLucilaProvinciaPeraviaNizao.jpg",
-    location: "PLANTA SOLAR Lucila Provincia Peravia - Nizao",
+    location: "Planta Solar Lucila - Peravia",
   },
   {
     img: "/Swiper-Slide/image-estadisticas/PLANTASOLARMARTIProvinciaSantoDomingo.jpg",
-    location: "PLANTA SOLAR MARTI Provincia - Santo Domingo",
+    location: "Planta Solar Martí - Santo Domingo",
   },
   {
     img: "/Swiper-Slide/image-estadisticas/PLANTASOLARProvinciaBani.jpg",
-    location: "PLANTA SOLAR Provincia - Bani",
+    location: "Planta Solar - Bani",
   },
 ];
 

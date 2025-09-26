@@ -5,6 +5,8 @@ import StackedLineBar from "@/components/StackedLineBar";
 
 export default function PMNSection() {
   const [data] = useState([
+    { value: 131, label: "2019", color: "#fff" },
+    { value: 177, label: "2020", color: "#fff" },
     { value: 220, label: "2021", color: "#fff" },
     { value: 282, label: "2022", color: "#fff" },
     { value: 351, label: "2023", color: "#fff" },
@@ -17,9 +19,11 @@ export default function PMNSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex-col justify-center">
           <h2 className="text-center text-md md:text-3xl font-medium uppercase pb-10">
-            República Dominicana pasó de tener <span className="font-black">131 MW en el año 2019</span> a más de <span className="font-black">400
-            MW en el 2025</span> de generación distribuida interconectada al sistema
-            eléctrico bajo el <span className="font-black">Programa de Medición Neta</span>
+            República Dominicana pasó de tener{" "}
+            <span className="font-black">131 MW en el año 2019</span> a más de{" "}
+            <span className="font-black">400 MW en el 2025</span> de generación
+            distribuida interconectada al sistema eléctrico bajo el{" "}
+            <span className="font-black">Programa de Medición Neta</span>
           </h2>
           <p className="font-light text-white text-sm sm:text-base md:text-2xl text-center uppercase">
             crecimiento del pmn junio 2025
@@ -32,7 +36,7 @@ export default function PMNSection() {
               data={data}
               showValues={true}
               animate={true}
-               barThickness={70} 
+              barThickness={70}
             />
           </div>
         </div>

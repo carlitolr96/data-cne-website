@@ -39,7 +39,7 @@ export default function Concession() {
           </div>
         </div>
 
-        <div className="hidden sm:block absolute top-0 left-[calc(46rem)] w-[calc(75%-16.3rem)] h-full bg-gray z-0"></div>
+        {/* <div className="hidden sm:block absolute top-0 left-[calc(46rem)] w-[calc(75%-16.3rem)] h-full bg-gray z-0"></div> */}
 
         <div className="max-w-7xl flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-around px-6 py-4 gap-6 relative z-0 w-full">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 min-w-[120px] text-center sm:text-left">
@@ -53,6 +53,7 @@ export default function Concession() {
             </span>
           </div>
 
+          <div className="block sm:hidden w-full h-0.5 bg-red-600"></div>
           <div className="hidden sm:block w-0.5 h-16 bg-red-600"></div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 min-w-[120px] text-center sm:text-left">
@@ -65,9 +66,10 @@ export default function Concession() {
             </span>
           </div>
 
+          <div className="block sm:hidden w-full h-0.5 bg-red-600"></div>
           <div className="hidden sm:block w-0.5 h-16 bg-red-600"></div>
 
-          <div className="flex flex-col items-center sm:items-end text-center sm:text-right min-w-[140px]">
+          <div className="flex flex-col items-center sm:items-end text-center sm:text-right min-w-[140px] mb-5 md:mb-0">
             <h1 className="text-6xl sm:text-4xl md:text-6xl font-black text-primary">
               {capacidadMW.toLocaleString("en-US")} MW
             </h1>

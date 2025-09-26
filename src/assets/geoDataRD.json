@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "SD",
+      "properties": { "name": "Santo Domingo" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-69.9, 18.4],
+            [-69.8, 18.4],
+            [-69.8, 18.5],
+            [-69.9, 18.5],
+            [-69.9, 18.4]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "LV",
+      "properties": { "name": "La Vega" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-70.1, 19.2],
+            [-70.0, 19.2],
+            [-70.0, 19.3],
+            [-70.1, 19.3],
+            [-70.1, 19.2]
+          ]
+        ]
+      }
+    }
+  ]
+}

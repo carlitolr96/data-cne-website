@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function AuthorizationTypes() {
   return (
-    <section className="relative w-full min-h-100 overflow-hidden">
+    <section className="relative w-full min-h-100 py-16 overflow-hidden">
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"

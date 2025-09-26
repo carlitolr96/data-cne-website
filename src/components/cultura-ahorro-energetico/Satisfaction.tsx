@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 export default function Satisfaction() {
   return (
-    <section className="relative min-h-[60vh] md:min-h-screen flex flex-col items-center justify-center">
+    <section className="relative min-h-[60vh] md:min-h-screen flex flex-col items-center justify-center py-16">
       <div className="absolute inset-0 flex flex-col">
         <div className="flex-1 bg-white"></div>
         <div className="flex-1 bg-primary"></div>

@@ -59,9 +59,9 @@ export default function Hero() {
           </h1>
         </div>
       </div>
-      <div className="absolute z-5 top-[55vh] md:top-[66vh] left-1/2 transform -translate-x-1/2 md:left-[27%] md:translate-x-0 w-auto max-w-[280px] sm:max-w-[300px] md:max-w-none right-auto">
+      <div className="absolute z-5 top-[55vh] md:top-[66vh] left-1/2 transform -translate-x-1/2 md:left-[22%] md:translate-x-0 w-auto max-w-[280px] sm:max-w-[300px] md:max-w-none right-auto">
         <div
-          className="overflow-hidden transition-transform duration-200 ease-out cursor-pointer w-[280px] sm:w-[300px] md:w-auto"
+          className="overflow-hidden transition-transform duration-200 ease-out cursor-pointer w-[280px] sm:w-[300px] md:w-[290px] lg:w-[350px]"
           onMouseMove={handleMove}
           onMouseLeave={() => setTilt({ x: 0, y: 0 })}
           style={{

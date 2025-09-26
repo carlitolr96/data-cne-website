@@ -1,10 +1,12 @@
 "use client";
 
+
 import { assets, locationspoint } from "@/assets/assets";
 import { PiHandTap } from "react-icons/pi";
 import MapWithPoints from "@/components/MapWithPoints";
 import Image from "next/image";
 import Boton from "@/components/Boton";
+import AmChartMap from "@/components/MapWithPoints"
 
 export default function MapsLocation() {
   return (
@@ -61,10 +63,11 @@ export default function MapsLocation() {
         <div className="hidden md:block w-full relative">
           <div className="absolute inset-0 flex items-center justify-start pl-8">
             <div className="relative w-full max-w-4xl">
-              <MapWithPoints
+              <AmChartMap
                 mapImage={assets.MapaOneSVG}
                 points={locationspoint}
-                dataType="energy"
+                width={800}
+                height={600}
               />
               <div className="flex justify-center items-center text-center">
                 <p className="text-sm text-gray-400 mr-1">

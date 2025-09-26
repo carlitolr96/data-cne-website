@@ -32,7 +32,7 @@ export default function EditionPEN() {
   };
 
   return (
-    <section className="bg-light py-12 md:py-0">
+    <section className="bg-light py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col gap-12 min-h-[90vh] justify-center">
         <div className="max-w-full mx-auto relative">
           <h1 className="text-center font-black text-[#17447a] text-2xl md:text-3xl mb-6">

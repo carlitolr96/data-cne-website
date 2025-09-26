@@ -31,13 +31,13 @@ export default function Incentives() {
         </div>
 
         <div className="flex flex-col lg:flex-row items-center gap-0 md:gap-24 w-full mt-8">
-          <div style={{ width: '500px', height: '300px' }}>
+          <div className="w-full sm:w-[500px] h-[300px]">
             <ModularChart data={chartData} />
           </div>
           <div className="flex flex-col items-center lg:items-start gap-2 text-center lg:text-left lg:w-1/3">
-            <p className="text-primary text-lg sm:text-xl md:text-2xl font-medium leading-relaxed">
+            <p className="text-primary text-lg sm:text-lg md:text-xl font-medium leading-relaxed">
               Para la inversión en sistemas y equipos de energía renovable
-              gestionadas, representando un monto superior a los
+              gestionadas, se ha otorgado un monto acumulado en exenciones de impuestos superior a
             </p>
             <span
               ref={amountRef}
@@ -45,8 +45,8 @@ export default function Incentives() {
             >
               RD$0.00
             </span>
-            <p className="text-primary text-lg sm:text-xl md:text-2xl font-medium leading-relaxed">
-              en exención de impuestos.
+            <p className="text-primary text-lg sm:text-lg md:text-xl font-medium leading-relaxed">
+              , desde el inicio del programa hasta la fecha.
             </p>
           </div>
         </div>

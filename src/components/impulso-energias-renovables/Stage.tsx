@@ -58,14 +58,13 @@ export default function Stage() {
 
         <div className="relative antialiased text-sm font-semibold">
           <div className="hidden sm:block w-1 bg-green absolute h-full left-1/2 transform -translate-x-1/2" />
-
           {stageicon.map((stage: StageItemProps, index: number) => (
             <div
               key={stage.id}
               ref={(el) => {
                 if (el) cardsRef.current[index] = el;
               }}
-              className="mt-6 sm:mt-0 sm:mb-12 relative opacity-0"
+              className="mt-12 sm:mt-0 sm:mb-12 relative opacity-0"
             >
               <div className="flex flex-col sm:flex-row items-center">
                 <div
@@ -87,7 +86,7 @@ export default function Stage() {
                   </div>
                 </div>
 
-                <div className="rounded-full bg-green border-white border-4 w-14 h-14 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center">
+                <div className="rounded-full bg-green border-white border-4 w-14 h-14 absolute left-1/2 -translate-y-8 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center">
                   <Image
                     src={stage.icon}
                     alt={stage.title}
