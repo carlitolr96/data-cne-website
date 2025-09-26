@@ -34,7 +34,7 @@ export default function Incentives() {
           <div style={{ width: '500px', height: '300px' }}>
             <ModularChart data={chartData} />
           </div>
-          <div className="flex flex-col items-center lg:items-start gap-2 text-center lg:text-left lg:w-1/2">
+          <div className="flex flex-col items-center lg:items-start gap-2 text-center lg:text-left lg:w-1/3">
             <p className="text-primary text-lg sm:text-xl md:text-2xl font-medium leading-relaxed">
               Para la inversión en sistemas y equipos de energía renovable
               gestionadas, representando un monto superior a los

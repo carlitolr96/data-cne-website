@@ -467,6 +467,10 @@ export interface LocationsCAE {
   total: number;
 }
 
+export interface SlideSatisfaction {
+img: string;
+}
+
 export const itemsystem: ItemSystem[] = [
   {
     icon: DoneSheck,
@@ -699,16 +703,50 @@ export const navitemsone: NavItemsOne[] = [
 
 export const slideoperations: SlideOperations[] = [
   {
-    img: "https://api.dataifx.co:8010/sites/default/files/styles/original/public/2023-01/CATATUMBO%201.jpg?itok=k7bPKQIp",
-    location: "Location 1",
+    img: "/Swiper-Slide/image-estadisticas/PLANTASOLARCUMAYASAProvinciaRomanaCumayasa.jpg",
+    location: "PLANTA SOLAR CUMAYASA Provincia La Romana - Cumayasa",
   },
   {
-    img: "https://api.dataifx.co:8010/sites/default/files/styles/original/public/2023-01/CATATUMBO%201.jpg?itok=k7bPKQIp",
-    location: "Location 2",
+    img: "/Swiper-Slide/image-estadisticas/PLANTASOLARLucilaProvinciaPeraviaNizao.jpg",
+    location: "PLANTA SOLAR Lucila Provincia Peravia - Nizao",
   },
   {
-    img: "https://api.dataifx.co:8010/sites/default/files/styles/original/public/2023-01/CATATUMBO%201.jpg?itok=k7bPKQIp",
-    location: "Location 3",
+    img: "/Swiper-Slide/image-estadisticas/PLANTASOLARMARTIProvinciaSantoDomingo.jpg",
+    location: "PLANTA SOLAR MARTI Provincia - Santo Domingo",
+  },
+  {
+    img: "/Swiper-Slide/image-estadisticas/PLANTASOLARProvinciaBani.jpg",
+    location: "PLANTA SOLAR Provincia - Bani",
+  },
+];
+
+export const slidesatisfaction: SlideSatisfaction[] = [
+  {
+    img: "/Swiper-Slide/image-difucion/image-1.jpg",
+  },
+  {
+    img: "/Swiper-Slide/image-difucion/image-2.jpg",
+  },
+  {
+    img: "/Swiper-Slide/image-difucion/image-3.jpg",
+  },
+  {
+    img: "/Swiper-Slide/image-difucion/image-4.jpg",
+  },
+  {
+    img: "/Swiper-Slide/image-difucion/image-5.jpg",
+  },
+  {
+    img: "/Swiper-Slide/image-difucion/image-6.jpg",
+  },
+  {
+    img: "/Swiper-Slide/image-difucion/image-7.jpg",
+  },
+    {
+    img: "/Swiper-Slide/image-difucion/image-8.jpg",
+  },
+      {
+    img: "/Swiper-Slide/image-difucion/image-9.jpg",
   },
 ];
 

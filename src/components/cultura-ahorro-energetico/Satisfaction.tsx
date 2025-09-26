@@ -3,7 +3,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import { slideoperations } from "@/assets/assets";
+import { slidesatisfaction } from "@/assets/assets";
 import Image from "next/image";
 
 import "swiper/css";
@@ -32,12 +32,12 @@ export default function Satisfaction() {
           loop={true}
           className="overflow-hidden w-[85%] sm:w-[80%] lg:w-[70%] mx-auto"
         >
-          {slideoperations.map((slide, index) => (
+          {slidesatisfaction.map((slide, index) => (
             <SwiperSlide key={index}>
               <div className="relative w-full h-[260px] sm:h-[340px] md:h-[420px] lg:h-[500px] xl:h-[580px] overflow-hidden rounded-2xl shadow-lg">
                 <Image
                   src={slide.img}
-                  alt={slide.location}
+                  alt="Imagenes de Charlas"
                   fill
                   className="object-cover object-center"
                   priority

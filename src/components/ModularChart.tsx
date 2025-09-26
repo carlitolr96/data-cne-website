@@ -46,15 +46,17 @@ const valuePlugin: Plugin<"bar"> = {
       meta.data.forEach((bar, index) => {
         const value = dataset.data[index] as number;
         
+        // Solo dibujar el texto arriba de la barra
         ctx.fillStyle = "#000000";
         ctx.font = "bold 16px Montserrat";
         ctx.textAlign = "center";
         ctx.textBaseline = "bottom";
         
+        // Posicionar bien arriba de la barra
         ctx.fillText(
           value.toString(),
           bar.x,
-          bar.y - 10
+          bar.y - 15 // Aumentar distancia para estar más arriba
         );
       });
     });
@@ -78,6 +80,10 @@ export default function ModularChart({
         borderWidth: 0,
         borderRadius: 0,
         barThickness: 60,
+        // Asegurar que no muestre labels internos
+        datalabels: {
+          display: false
+        }
       },
     ],
   };
@@ -99,18 +105,30 @@ export default function ModularChart({
         grid: { display: false },
         ticks: { display: false },
         border: { display: false },
+        // Añadir más espacio arriba para los valores
         afterFit: function(axis) {
-          axis.width = 50;
+          axis.height = axis.height + 30; // Más espacio para los valores superiores
         },
       },
     },
     plugins: {
       legend: { display: false },
-      tooltip: { enabled: true },
+      tooltip: { 
+        enabled: true,
+        callbacks: {
+          label: function(context) {
+            return `Valor: ${context.parsed.y}`;
+          },
+        }
+      },
+      // Desactivar cualquier plugin de datalabels que pueda estar mostrando números internos
+      datalabels: {
+        display: false
+      }
     },
     layout: {
       padding: {
-        top: 30,
+        top: 40, // Más padding arriba para los valores
         right: 20,
         bottom: 0,
         left: 20
