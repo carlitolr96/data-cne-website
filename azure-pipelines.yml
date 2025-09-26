@@ -22,9 +22,9 @@ steps:
   # 2. Instalar dependencias y compilar optimize-images.ts
   - script: |
       npm ci
+      npm run build:ci
       npx tsc scripts/optimize-images.ts --esModuleInterop --target ES2019 --module commonjs --outDir scripts/build
       node scripts/build/optimize-images.js
-      npm run build
     workingDirectory: "$(System.DefaultWorkingDirectory)"
     displayName: "Build Next.js static export"
 
