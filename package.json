@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "optimize:images": "ts-node scripts/optimize-images.ts",
-    "build": "npm run optimize:images && next build",
+    "optimize:images": "ts-node-esm scripts/optimize-images.ts",
+    "build": "npm run optimize:images && next build && next export",
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint"
