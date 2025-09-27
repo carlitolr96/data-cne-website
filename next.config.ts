@@ -2,9 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: 'export', // activa exportación estática
+  output: 'export',
   images: {
-    unoptimized: true, // para que Azure no falle con la optimización de imágenes
+    unoptimized: true,
   },
 };
 
